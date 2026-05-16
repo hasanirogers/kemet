@@ -1,0 +1,28 @@
+---
+title: "Light and Dark Mode (Polarity)"
+layout: "../../layouts/Content.astro"
+---
+
+# Light and Dark Mode (Polarity)
+
+Kemet UI ships with the concept of "polarity". This is slightly different from light and dark mode. But it's related. Polarity refers the context of which a component sits on. A "light" polarity means that the component is assumed to be sitting on a light back around. A "dark" polarity means that the component is assumed to be sitting on a dark background.
+
+Kemet UI controls for polarity by adding an attribute of polarity to the &lt;html&gt; tag. This attribute is set to "light" by default. To use "dark mode", set the attribute to "dark".
+
+<br />
+```html
+<html polarity="dark">
+  ...
+</html>
+```
+<br />
+You can also use the `polarity` attribute on any element. This will override the `polarity` attribute on the &lt;html&gt; tag.
+
+<br />
+```html
+<div polarity="dark">
+  <kemet-component>
+    ...
+  </kemet-component>
+</div>
+```

@@ -1,28 +1,26 @@
 {
-  "name": "web",
-  "version": "0.1.0",
+  "name": "@kemet/web",
   "type": "module",
-  "private": true,
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev --port 3000",
-    "build": "next build",
-    "start": "next start",
+    "dev": "concurrently \"npm run dev:astro\" \"npm run dev:ui\"",
+    "dev:astro": "astro dev --host",
+    "dev:ui": "cd ../../packages/ui && npm run watch:dev",
+    "build": "astro build",
     "lint": "eslint --max-warnings 0",
-    "check-types": "next typegen && tsc --noEmit"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@repo/ui": "*",
-    "next": "16.2.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "@astrojs/mdx": "^4.3.10",
+    "@kemet/typescript-config": "*",
+    "kemet-ui": "*",
+    "astro": "^5.15.4",
+    "highlight.js": "^11.11.1",
+    "lit": "^3.3.1"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "eslint": "^9.39.1",
-    "typescript": "5.9.2"
+    "concurrently": "^9.2.1",
+    "sass-embedded": "^1.93.3"
   }
 }

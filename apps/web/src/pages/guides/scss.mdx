@@ -1,0 +1,44 @@
+---
+title: "Integrations"
+layout: "../../layouts/Content.astro"
+---
+
+# Using SCSS
+
+Part of the beauty of Kemet UI is that you may configure the Core API however you please. Kemet UI acts more like a attribute generator that allows you to layout content. To customize the Core API, you need to work with SCSS directly.
+
+In the following example we're going to customize the name of the breakpoints Kemet UI uses. Checkout the project.
+
+<iframe src="https://stackblitz.com/edit/kemet-using-scss?ctl=1&embed=1&file=index.html" width="100%"></iframe>
+
+The breakpoints are defined in a SCSS map named `$breakpoints`. The defaults are:
+
+```scss
+$breakpoints: (
+  tiny: 0,
+  small: 321px,
+  medium: 768px,
+  large: 1024px,
+  huge: 1440px
+);
+```
+
+Notice that in `index.html` we're not using tiny, small, medium, large, or huge. We're using `mobile`. For example.
+
+```html
+<div ... kemet-type-size="mobile:plus-3"></div>
+```
+
+This is because this app has overwritten the breakpoint map. Since Kemet UI uses [Sass Modules](https://sass-lang.com/documentation/at-rules/use), to overwrite the variables we need to use the `with` keyword.
+
+```scss
+@use 'kemet-ui/dist/styles/shared/_config.scss' with (
+  $breakpoints: (
+    mobile: 0,
+    tablet: 768px,
+    desktop: 1024px,
+  )
+);
+```
+
+This tells Sass to import the given file with the variables you've defined here instead in the library. You can overwrite any variable you want. To see a full list of configuration variables [checkout the docs](https://storybook.kemet.dev/?path=/docs/styles-config--docs).

@@ -1,0 +1,92 @@
+:root {
+  --app-page-width: 1280px;
+  --app-color: var(--kemet-color-neutral-800);
+  --app-border: 1px solid rgb(var(--kemet-color-black) / 50%);
+  --app-background-color: var(--kemet-color-white);
+  --app-nav-width: 320px;
+  --app-page-width: 960px;
+
+  --kemet-color-text: var(--app-color);
+  --kemet-color-primary: var(--kemet-color-sky-800);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+
+  color: rgb(var(--app-color));
+  background-color: rgb(var(--app-background-color));
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+a {
+  color: rgb(var(--kemet-color-primary));
+  text-decoration: none;
+}
+
+main {
+  display: block;
+
+  @media only screen and (min-width: 960px) {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: auto 1fr;
+  }
+}
+
+article {
+  max-width: var(--app-page-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+pre:has(code) {
+  padding: 1rem;
+  outline-offset: 4px;
+  outline: 2px dashed black;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 720px;
+}
+
+kemet-drawer {
+  --kemet-drawer-width: var(--app-nav-width);
+}
+
+[slot="content"] {
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    border-bottom: 1px solid rgb(var(--kemet-color-black) / 50%);
+  }
+}

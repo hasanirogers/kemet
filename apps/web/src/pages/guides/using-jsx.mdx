@@ -1,0 +1,28 @@
+---
+title: "Integrations"
+layout: "../../layouts/Content.astro"
+---
+
+# Using JSX with Web Components
+
+Popular frameworks such as React and Solid use JSX. The guide will details ways to get TypeScript and your editor to recognize Web Components in JSX.
+
+## The cheap workaround method
+
+A simple method to get Web Components to not error out in JSX is to simply declare an JSX interface with your Web Components using any. For example, create a global declarations file in the root of your project called `declarations.d.ts` and add the following:
+
+```ts
+declare namespace JSX {
+  interface IntrinsicElements {
+    'kemet-button': any;
+    'kemet-icon-bootstrap': any;
+    'kemet-drawer': any;
+  }
+}
+```
+
+This will get any TypeScript errors to go away. But we lose all the autocomplete and API intellisense information.
+
+## The proper way
+
+**coming soon**

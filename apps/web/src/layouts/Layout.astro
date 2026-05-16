@@ -1,0 +1,32 @@
+---
+import '../styles/base.scss';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Kemet UI | A Modern Blueprint System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+    <script>
+      import "kemet-ui/styles/kemet.base.scss";
+      import "kemet-ui/styles/kemet.core.scss";
+      import "kemet-ui/elements/button";
+      import "../components/docs-intro/docs-intro.ts";
+      import "../components/docs-everywhere/docs-everywhere.ts";
+      import "../components/docs-started/docs-started.ts";
+      import "../components/docs-guides/docs-guides.ts";
+      import "../components/docs-intro-cards/docs-intro-cards.ts";
+      import "../components/docs-designless/docs-designless.ts";
+      import "../components/docs-footer/docs-footer.ts";
+    </script>
+	</body>
+</html>

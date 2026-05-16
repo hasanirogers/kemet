@@ -1,19 +1,17 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@kemet/typescript-config/lit",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+    "paths": {
+      "kemet-ui": ["../../packages/ui/src"],
+      "kemet-ui/*": ["../../packages/ui/src/*"]
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
-    "next.config.js",
-    ".next/types/**/*.ts"
+    "**/*.mdx",
+    "**/*.md",
+    "global.d.ts"
   ],
   "exclude": ["node_modules"]
 }

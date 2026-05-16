@@ -1,9 +1,13 @@
 {
-  "name": "@repo/typescript-config",
+  "name": "@kemet/typescript-config",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    "./astro": "./astro.json",
+    "./lit": "./lit.json"
   }
 }

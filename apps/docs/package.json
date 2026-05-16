@@ -1,28 +1,36 @@
 {
-  "name": "docs",
-  "version": "0.1.0",
-  "type": "module",
-  "private": true,
+  "name": "@kemet/docs",
+  "version": "1.0.0",
+  "description": "Docs for Kemet UI",
   "scripts": {
-    "dev": "next dev --port 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint --max-warnings 0",
-    "check-types": "next typegen && tsc --noEmit"
+    "build": "storybook build",
+    "dev": "storybook dev -p 6006"
+  },
+  "author": {
+    "name": "Hasani Rogers",
+    "email": "hasani@deificarts.com"
   },
   "dependencies": {
-    "@repo/ui": "*",
-    "next": "16.2.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "kemet-ui": "*"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "eslint": "^9.39.1",
-    "typescript": "5.9.2"
-  }
+    "@kemet/eslint-config": "*",
+    "@kemet/typescript-config": "*",
+    "@chromatic-com/storybook": "^4.1.2",
+    "@storybook/addon-a11y": "^10.0.1",
+    "@storybook/addon-docs": "^10.0.1",
+    "@storybook/addon-links": "^10.0.1",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/web-components-vite": "^10.0.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "chromatic": "^13.3.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-syntax-highlighter": "^15.6.6",
+    "remark-gfm": "^4.0.1",
+    "sass": "^1.93.2",
+    "storybook": "^10.0.1"
+  },
+  "homepage": "https://kemet.dev"
 }

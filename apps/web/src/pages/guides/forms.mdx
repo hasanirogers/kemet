@@ -1,0 +1,153 @@
+---
+title: "Integrations"
+layout: "../../layouts/Content.astro"
+---
+
+# Working with Forms
+
+Kemet UI ships with a number of form elements. These form elements are design to mimic HTML5 form APIs. This means that you work with handling data and validation like you would with standard HTML5 form APIs. This guide will cover how to achieve some common functionality while using Kemet UI's form elements. It's based on the following Stackblitz which you can view for reference:
+
+<iframe src="https://stackblitz.com/edit/kemet-forms?ctl=1&embed=1&file=index.html" width="100%"></iframe>
+
+## Handling Data
+
+To collect data form a form you can use the [FormData API](https://developer.mozilla.org/en-US/docs/Web/API/FormData). Kemet UI's form elements work with a standard form element which can use to handle the data. Checkout the following example from the Stackblitz.
+
+**html**
+```html
+<form id="collecting-data" kemet-margin-top="tiny:normal">
+  <kemet-field slug="first-name" label="First Name">
+    <kemet-input slot="input" name="firstName" rounded></kemet-input>
+  </kemet-field>
+  <p>
+    <kemet-button>Submit</kemet-button>
+  </p>
+</form>
+```
+
+**javascript**
+```javascript
+const forms = {
+  collectingID: document.getElementById('collecting-data'),
+  ...
+};
+
+// handle collection data
+forms.collectingID.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(forms.collectingID);
+  const firstName = formData.get('firstName');
+
+  alert(`First name is: ${firstName}.`);
+});
+```
+
+We use the `.get()` method from FormData to get the name of field and display it to the user.
+
+**Note that you must give the input element a name for this to work.**
+
+If you want to loop through all fields you can do so using `.entries()` like this:
+
+```javascript
+for (let pair of formData.entries()) {
+   console.log(pair[0]+ ', '+ pair[1]);
+}
+```
+
+This will log the key/value pair of every field with a name in the formData.
+
+
+## Validation
+
+<br />
+
+### Handling Errors
+
+Error handling is mostly automated while working with Kemet UI. `kemet-field` and it's supported input elements all come with a status property that is set to `error` when an error is detected in the field. You can use the `required` property like you would on any standard HTML5 field. You can also use the `pattern` property. Give the field a regex and it will use it to match against the string entered by the user.
+
+### Handling Custom Error Messages
+
+Validation messages are handled by the `kemet-field` component. It ships with a property called `message.` You can set this property to the appropriate message dynamically. To know why a form field failed, you need to listen to the `kemet-input-status` event. This event carries an object that contains the HTM5 ValidityState object. The ValidityState object has a group of boolean properties that describes the reasons for validation failure. Those properties are:
+
+* badInput
+* customError
+* patternMismatch
+* rangeOverflow
+* rangeUnderflow
+* stepMismatch
+* tooLong
+* tooShort
+* typeMismatch
+* valid
+* valueMissing
+
+See the [MDN ValidityState docs](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) for more information on the ValidityState object.
+
+How you use the ValidityState object depends on your JavaScript implementation. Across frameworks however, you must listen to the `kemet-input-status` event. You can then access the ValidityState object with `event.details.validity`. Here's example of setting a custom message in Vanilla JavaScript.
+
+**html**
+```html
+<form id="custom-error">
+  <kemet-field slug="account" label="Account Number*" message="Account number is required.">
+    <kemet-input required pattern="^[a-zA-Z0-9]*$" slot="input" name="account" rounded></kemet-input>
+  </kemet-field>
+  <p>
+    <kemet-button>Submit</kemet-button>
+  </p>
+</form>
+```
+
+**javascript**
+```javascript
+const forms = {
+  ...
+  customError: document.getElementById('custom-error'),
+};
+
+// handle custom error
+const accountField = forms.customError.querySelector('kemet-field');
+
+accountField.addEventListener('kemet-input-status', (event) => {
+  if (event.detail.validity.patternMismatch) {
+    accountField.message = 'Special characters are not allowed.'
+  }
+});
+```
+
+Note that the `kemet-count` component passes a special ValidityState object property named `passedLimit`. Use `event.target.validity.passedLimit` to access.
+
+### Handling Success
+
+Kemet UI cannot know what success means for your component. Therefor it is your responsibility to define the success status of a field. Set the status property of a field or input to success when appropriate. For example:
+
+**html**
+```html
+<form id="handling-success">
+  <kemet-field slug="email" label="Email">
+    <kemet-input type="email" slot="input" name="email" rounded></kemet-input>
+  </kemet-field>
+</form>
+```
+
+**javascript**
+```javascript
+const forms = {
+  ...
+  handlingSuccess: document.getElementById('handling-success'),
+};
+
+// handle handling success
+const emailInput = forms.handlingSuccess.querySelector('kemet-input');
+const emailField = forms.handlingSuccess.querySelector('kemet-field');
+
+emailInput.addEventListener('input', (event) => {
+  if (event.target.value === 'username@domain.com') {
+    emailField.status = 'success';
+    emailInput.status = 'success';
+  } else {
+    emailField.status = 'standard';
+    emailInput.status = 'standard';
+  }
+});
+```

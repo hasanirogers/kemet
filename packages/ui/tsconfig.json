@@ -1,9 +1,8 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": ["@kemet/typescript-config/lit"],
   "compilerOptions": {
-    "outDir": "dist",
-    "strictNullChecks": true
+    "jsx": "react-jsx"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./.storybook/**/*.ts", "./.storybook/**/*.tsx", "types/global.d.ts", "types/jsx.d.ts", "types/typewriter-effect.d.ts"],
+  "exclude": ["node_modules", "sandboxes", "./src/stories/**/*"]
 }
