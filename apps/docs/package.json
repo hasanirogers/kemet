@@ -16,12 +16,12 @@
   "devDependencies": {
     "@kemet/eslint-config": "*",
     "@kemet/typescript-config": "*",
-    "@chromatic-com/storybook": "^4.1.2",
-    "@storybook/addon-a11y": "^10.0.1",
-    "@storybook/addon-docs": "^10.0.1",
-    "@storybook/addon-links": "^10.0.1",
+    "@chromatic-com/storybook": "^5.2.1",
+    "@storybook/addon-a11y": "^10.4.0",
+    "@storybook/addon-docs": "^10.4.0",
+    "@storybook/addon-links": "^10.4.0",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/web-components-vite": "^10.0.1",
+    "@storybook/web-components-vite": "^10.4.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "chromatic": "^13.3.0",
@@ -30,7 +30,8 @@
     "react-syntax-highlighter": "^15.6.6",
     "remark-gfm": "^4.0.1",
     "sass": "^1.93.2",
-    "storybook": "^10.0.1"
+    "storybook": "^10.4.0",
+    "eslint-plugin-storybook": "10.4.0"
   },
   "homepage": "https://kemet.dev"
 }

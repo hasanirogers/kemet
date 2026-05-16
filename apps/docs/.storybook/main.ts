@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 import type { StorybookConfig } from '@storybook/web-components-vite';
 import remarkGfm from 'remark-gfm';
 
@@ -8,7 +10,7 @@ const config: StorybookConfig = {
   ],
   addons: [
     {
-      name: '@storybook/addon-docs',
+      name: getAbsolutePath("@storybook/addon-docs"),
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
@@ -17,16 +19,20 @@ const config: StorybookConfig = {
         },
       },
     },
-    '@storybook/addon-links',
-    '@storybook/addon-a11y',
-    '@storybook/preset-scss',
-    '@chromatic-com/storybook'
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/preset-scss"),
+    getAbsolutePath("@chromatic-com/storybook")
   ],
   framework: {
-    name: '@storybook/web-components-vite',
+    name: getAbsolutePath("@storybook/web-components-vite"),
     options: {}
   },
   docs: {}
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}

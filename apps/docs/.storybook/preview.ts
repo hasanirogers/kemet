@@ -31,7 +31,7 @@ const preview: Preview = {
 
   parameters: {
     layout: 'centered',
-    backgrounds: { disable: true },
+    backgrounds: { disabled: true },
     docs: {
       codePanel: true,
       source: {
