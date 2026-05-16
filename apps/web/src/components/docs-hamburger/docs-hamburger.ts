@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import styles from './styles.ts';
 import { stylesShared } from '../../styles/shared.ts';
-import KemetDrawer from 'kemet-ui/elements/drawer.mjs';
+import KemetDrawer from 'kemet-ui/elements/drawer';
 
 
 @customElement('docs-hamburger')
