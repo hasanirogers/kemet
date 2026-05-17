@@ -9,11 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+      - name: NPM Pack
+        working-directory: ./packages/ui
+        run: |
+          npm pack --pack-destination ../published
       - name: Build Site
         working-directory: ./
         env:
           NODE_ENV: production
-          npm_config_cache: ${{ runner.temp }}/npm-cache
         run: |
           npm install --include=dev --no-save
           npm run build
@@ -26,7 +29,7 @@ jobs:
           local_path: "./apps/web/dist/*"
           remote_path: "./sites/kemet-ui-site/"
           sftp_only: true
-          password: ${{ secrets.FTP_DEPLOY_PASSWORD }}
+          ssh_private_key: ${{ secrets.FTP_DEPLOY_PASSWORD }}
       - name: Deploy Docs
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -36,5 +39,5 @@ jobs:
           local_path: "./apps/docs/storybook-static/*"
           remote_path: "./sites/kemet-ui-site/docs/"
           sftp_only: true
-          password: ${{ secrets.FTP_DEPLOY_PASSWORD }}
+          ssh_private_key: ${{ secrets.FTP_DEPLOY_PASSWORD }}
     
