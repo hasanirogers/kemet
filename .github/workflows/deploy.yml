@@ -13,6 +13,7 @@ jobs:
         working-directory: ./
         env:
           NODE_ENV: production
+          npm_config_cache: ${{ runner.temp }}/npm-cache
         run: |
           npm install --include=dev --no-save
           npm run build
