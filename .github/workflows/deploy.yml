@@ -14,7 +14,7 @@ jobs:
         env:
           NODE_ENV: production
         run: |
-          npm ci
+          npm install --include=dev --no-save
           npm run build
       - name: Deploy Site
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
