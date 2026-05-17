@@ -20,7 +20,13 @@
               "aot": true,
               "extractLicenses": true,
               "namedChunks": false,
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
               "outputHashing": "all",
               "sourceMap": false
             }
@@ -33,7 +39,14 @@
             "polyfills": ["zone.js"],
             "scripts": [],
             "styles": ["src/index.scss"],
-            "tsConfig": "tsconfig.app.json"
+            "tsConfig": "tsconfig.app.json",
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": false
+              }
+            }
           }
         },
         "serve": {

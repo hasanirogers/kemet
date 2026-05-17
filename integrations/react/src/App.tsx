@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 
-import 'kemet-ui/elements/button'
-import 'kemet-ui/elements/drawer'
-import 'kemet-ui/elements/icon-bootstrap'
+import 'kemet-ui/elements/button.js'
+import 'kemet-ui/elements/drawer.js'
+import 'kemet-ui/elements/icon-bootstrap.js'
 
 function App() {
   const [count, setCount] = useState(0)

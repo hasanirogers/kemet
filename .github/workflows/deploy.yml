@@ -9,10 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - name: NPM Pack
-        working-directory: ./packages/ui
-        run: |
-          npm pack --pack-destination ../published
       - name: Build Site
         working-directory: ./
         env:
