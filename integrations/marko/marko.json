@@ -1,0 +1,5 @@
+{
+    "<kemet-button>": { "html": true} ,
+    "<kemet-drawer>": { "html": true },
+    "<kemet-icon-bootstrap>": { "html": true }
+}

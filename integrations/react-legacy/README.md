@@ -1,0 +1,1 @@
+Reactbox (Legacy) is a integration demo for using [Kemet UI Web Components](https://kemet.dev) in React 18 and older.

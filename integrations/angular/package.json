@@ -1,0 +1,31 @@
+{
+  "name": "@kemet/integrations-angular",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "update:cli": "ng update @angular/cli",
+    "update:all": "ng update @angular/cli @angular/core @angular/animations @angular/common @angular/compiler @angular/forms @angular/platform-browser @angular/router"
+  },
+  "dependencies": {
+    "@angular/animations": "^20.3.9",
+    "@angular/common": "^20.3.9",
+    "@angular/compiler": "^20.3.9",
+    "@angular/core": "^20.3.9",
+    "@angular/forms": "^20.3.9",
+    "@angular/platform-browser": "^20.3.9",
+    "@angular/router": "^20.3.9",
+    "kemet-ui": "*",
+    "rxjs": "^7.8.2",
+    "sass": "^1.93.3",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.15.1"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.8",
+    "@angular/cli": "^20.3.8",
+    "@angular/compiler-cli": "^20.3.9",
+    "typescript": "~5.9.3"
+  }
+}
