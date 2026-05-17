@@ -25,7 +25,8 @@ jobs:
           local_path: "./apps/web/dist/*"
           remote_path: "./sites/kemet-ui-site/"
           sftp_only: true
-          ssh_private_key: ${{ secrets.FTP_DEPLOY_PASSWORD }}
+          password: ${{ secrets.FTP_DEPLOY_PASSWORD }}
+          ssh_private_key: ""
       - name: Deploy Docs
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -35,5 +36,6 @@ jobs:
           local_path: "./apps/docs/storybook-static/*"
           remote_path: "./sites/kemet-ui-site/docs/"
           sftp_only: true
-          ssh_private_key: ${{ secrets.FTP_DEPLOY_PASSWORD }}
+          password: ${{ secrets.FTP_DEPLOY_PASSWORD }}
+          ssh_private_key: ""
     
