@@ -2,8 +2,8 @@ import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
   entryPoints: [
-    "src/elements/*.ts",
-    "src/wrappers/*.(ts|tsx)"
+    "src/elements/**/*.ts",
+    "src/wrappers/**/*.(ts|tsx)"
   ],
   format: ["cjs", "esm"],
   dts: true,

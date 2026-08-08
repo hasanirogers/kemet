@@ -12307,30 +12307,6 @@
       "path": "src/elements/button/index.ts",
       "declarations": [
         {
-          "kind": "variable",
-          "name": "variants",
-          "type": {
-            "text": "['standard', 'text', 'outlined']"
-          },
-          "default": "['standard', 'text', 'outlined']"
-        },
-        {
-          "kind": "variable",
-          "name": "targets",
-          "type": {
-            "text": "['_blank', '_self', '_parent', '_top']"
-          },
-          "default": "['_blank', '_self', '_parent', '_top']"
-        },
-        {
-          "kind": "variable",
-          "name": "types",
-          "type": {
-            "text": "['button', 'submit', 'reset']"
-          },
-          "default": "['button', 'submit', 'reset']"
-        },
-        {
           "kind": "class",
           "description": "",
           "name": "KemetButton",
@@ -12635,30 +12611,6 @@
         }
       ],
       "exports": [
-        {
-          "kind": "js",
-          "name": "variants",
-          "declaration": {
-            "name": "variants",
-            "module": "src/elements/button/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "targets",
-          "declaration": {
-            "name": "targets",
-            "module": "src/elements/button/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "types",
-          "declaration": {
-            "name": "types",
-            "module": "src/elements/button/index.ts"
-          }
-        },
         {
           "kind": "js",
           "name": "default",

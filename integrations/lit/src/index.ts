@@ -1,5 +1,5 @@
 import 'kemet-ui/styles/kemet.base.css';
-import 'kemet-ui/elements/button.js';
-import 'kemet-ui/elements/drawer.js';
-import 'kemet-ui/elements/icon-bootstrap.js';
+import 'kemet-ui/elements/button';
+import 'kemet-ui/elements/drawer';
+import 'kemet-ui/elements/icon-bootstrap';
 import './my-element';

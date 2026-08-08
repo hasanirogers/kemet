@@ -11,6 +11,7 @@ import '../../../../packages/ui/src/elements/tab';
 import '../../../../packages/ui/src/elements/tab-panel';
 
 import '../../../../packages/ui/src/elements/icon-bootstrap';
+import '../../../../packages/ui/src/elements/loader';
 
 
 
@@ -34,10 +35,18 @@ export default meta;
 type Story = StoryObj;
 
 const Template = (args: Args) => html`
-  <kemet-button variant="${ifDefined(args.variant)}" ?disabled=${args.disabled} href=${ifDefined(args.href !== '' ? args.href : undefined)} rounded=${ifDefined(args.rounded)}>
-    ${ifDefined(args.iconLeft !== '' && args.rounded !== EnumRoundedSizes.CIRCLE && args.iconLeft ? html`<kemet-icon-bootstrap slot="left" icon="${args.iconLeft}" size="18"></kemet-icon-bootstrap>` : undefined)}
-    ${args.rounded === EnumRoundedSizes.CIRCLE ? html`<kemet-icon-bootstrap icon="gear" size="24"></kemet-icon-bootstrap>` : 'Button'}
-    ${ifDefined(args.iconRight !== '' && args.rounded !== EnumRoundedSizes.CIRCLE && args.iconRight ? html`<kemet-icon-bootstrap slot="right" icon="${args.iconRight}" size="18"></kemet-icon-bootstrap>` : undefined)}
+  <kemet-button 
+    variant="${ifDefined(args.variant)}" 
+    ?disabled=${args.disabled} 
+    href=${ifDefined(args.href !== '' ? args.href : undefined)} 
+    rounded=${ifDefined(args.rounded)}
+    loading=${ifDefined(args.loading)}
+  >
+    Kemet Button
+    ${!!args.iconLeft ? html`<kemet-icon-bootstrap slot="left" icon="${args.iconLeft}" size="18"></kemet-icon-bootstrap>` : ''}
+    ${!!args.iconRight ? html`<kemet-icon-bootstrap slot="right" icon="${args.iconRight}" size="18"></kemet-icon-bootstrap>` : ''}
+    ${args.loading ? html`<kemet-loader variant="three-dots" slot="loader" size="12"></kemet-loader>` : ''}
+    ${!!args.iconButton ? html`<kemet-icon-bootstrap icon="gear" size="24" slot="icon-button"></kemet-icon-bootstrap>` : ''}
   </kemet-button>
 `;
 
@@ -54,10 +63,10 @@ export const Text: Story = {
   },
 };
 
-export const Circle: Story = {
+export const IconButton: Story = {
   render: args => Template(args),
   args: {
-    rounded: EnumRoundedSizes.CIRCLE,
+    iconButton: true,
   },
 };
 
@@ -137,3 +146,10 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+
+export const Loading: Story = {
+  args: {
+    loading: true,
+  },
+};
+

@@ -1,8 +1,8 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { TypeRoundedSizes } from '../../utilities/constants';
-import styles from './styles.css?inline';
 import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
 export enum EnumVariants {
   STANDARD = 'standard',
@@ -91,6 +91,9 @@ export default class KemetButton extends LitElement {
   @property({ type: Boolean, reflect: true, attribute: 'icon-right' })
   iconRight: boolean = false;
 
+  @property({ type: Boolean, reflect: true, attribute: 'icon-button' })
+  iconButton: boolean = false;
+
   @property({ type: String, reflect: true })
   rounded!: TypeRoundedSizes;
 
@@ -116,7 +119,9 @@ export default class KemetButton extends LitElement {
           @click=${(event: PointerEvent) => this.handleClick(event)}
         >
           <slot name="left" @slotchange=${this.handleLeftChange}></slot>
-          ${this.loading ? html`<slot name="loading"></slot>` : html`<slot></slot>`}
+          <slot name="icon-button" @slotchange=${this.handleIconButtonChange}></slot>
+          ${this.loading ? html`<slot name="loader"></slot>` : ''}
+          <span class="text"><slot></slot></span>
           <slot name="right" @slotchange=${this.handleRightChange}></slot>
         </a>
       `;
@@ -129,10 +134,13 @@ export default class KemetButton extends LitElement {
         type=${this.type}
         ?disabled=${this.disabled}
         aria-disabled=${this.disabled ? 'true' : 'false'}
+        aria-label=${this.loading ? 'Loading' : ''}
         @click=${(event: PointerEvent) => this.handleClick(event)}
       >
         <slot name="left" @slotchange=${this.handleLeftChange}></slot>
-        ${this.loading ? html`<slot name="loading"></slot>` : html`<slot></slot>`}
+        <slot name="icon-button" @slotchange=${this.handleIconButtonChange}></slot>
+        ${this.loading ? html`<slot name="loader"></slot>` : ''}
+        <span class="text"><slot></slot></span>
         <slot name="right" @slotchange=${this.handleRightChange}></slot>
       </button>
     `;
@@ -146,6 +154,11 @@ export default class KemetButton extends LitElement {
   handleRightChange() {
     const right = this.querySelector('[slot="right"]');
     if (right) this.iconRight = true;
+  }
+
+  handleIconButtonChange() {
+    const iconButton = this.querySelector('[slot="icon-button"]');
+    if (iconButton) this.iconButton = true;
   }
 
   /**

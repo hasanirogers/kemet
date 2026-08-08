@@ -3,6 +3,6 @@
   "compilerOptions": {
     "jsx": "react-jsx"
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./.storybook/**/*.ts", "./.storybook/**/*.tsx", "types/global.d.ts", "types/jsx.d.ts", "types/typewriter-effect.d.ts"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./.storybook/**/*.ts", "./.storybook/**/*.tsx", "types/global.d.ts", "types/jsx.d.ts", "types/typewriter-effect.d.ts", "types/vite-env.d.ts"],
   "exclude": ["node_modules", "sandboxes", "./src/stories/**/*"]
 }

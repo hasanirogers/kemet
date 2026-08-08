@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import HTMLKemetDrawerElement from 'kemet-ui/elements/drawer.js';
+import HTMLKemetDrawerElement from 'kemet-ui/elements/drawer';
 
 /**
  * An example element.
