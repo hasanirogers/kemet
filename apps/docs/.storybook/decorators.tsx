@@ -22,7 +22,7 @@ export const handlePolaritySwitching = (StoryFn: any, context) => {
   const [globals, updateGlobals] = useGlobals();
 
   useEffect(() => {
-    document.documentElement.setAttribute('polarity', globals.polarity);
+    document.documentElement.dataset.polarity = globals.polarity;
 
     if (context.viewMode === 'story') {
       if (globals.polarity === 'dark') {

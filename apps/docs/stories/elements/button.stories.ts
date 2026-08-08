@@ -1,6 +1,8 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumVariants } from '../../../../packages/ui/src/elements/button';
+import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/button';
 
@@ -9,8 +11,8 @@ import '../../../../packages/ui/src/elements/tab';
 import '../../../../packages/ui/src/elements/tab-panel';
 
 import '../../../../packages/ui/src/elements/icon-bootstrap';
-import { EnumVariants, variants } from '../../../../packages/ui/src/elements/button';
-import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
+
+
 
 const meta: Meta = {
   title: 'Actions / Button',
@@ -19,7 +21,7 @@ const meta: Meta = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: variants,
+      options: Object.values(EnumVariants),
     },
     rounded: {
       control: { type: 'select' },
@@ -32,7 +34,7 @@ export default meta;
 type Story = StoryObj;
 
 const Template = (args: Args) => html`
-  <kemet-button variant="${ifDefined(args.variant)}" ?disabled=${args.disabled} link=${ifDefined(args.link !== '' ? args.link : undefined)} rounded=${ifDefined(args.rounded)}>
+  <kemet-button variant="${ifDefined(args.variant)}" ?disabled=${args.disabled} href=${ifDefined(args.href !== '' ? args.href : undefined)} rounded=${ifDefined(args.rounded)}>
     ${ifDefined(args.iconLeft !== '' && args.rounded !== EnumRoundedSizes.CIRCLE && args.iconLeft ? html`<kemet-icon-bootstrap slot="left" icon="${args.iconLeft}" size="18"></kemet-icon-bootstrap>` : undefined)}
     ${args.rounded === EnumRoundedSizes.CIRCLE ? html`<kemet-icon-bootstrap icon="gear" size="24"></kemet-icon-bootstrap>` : 'Button'}
     ${ifDefined(args.iconRight !== '' && args.rounded !== EnumRoundedSizes.CIRCLE && args.iconRight ? html`<kemet-icon-bootstrap slot="right" icon="${args.iconRight}" size="18"></kemet-icon-bootstrap>` : undefined)}
@@ -40,7 +42,11 @@ const Template = (args: Args) => html`
 `;
 
 
-export const Standard: Story = {};
+export const Standard: Story = {
+  args: {
+    href: "https://google.com"
+  }
+};
 
 export const Text: Story = {
   args: {
@@ -92,6 +98,20 @@ export const OutlinedPill: Story = {
   },
 };
 
+export const Edge: Story = {
+  render: args => Template(args),
+  args: {
+    variant: EnumVariants.EDGE,
+  },
+};
+
+export const Plain: Story = {
+  render: args => Template(args),
+  args: {
+    variant: EnumVariants.PLAIN,
+  },
+};
+
 export const IconLeft: Story = {
   render: args => Template(args),
   args: {
@@ -108,7 +128,7 @@ export const IconRight: Story = {
 
 export const Link: Story = {
   args: {
-    link: 'https://google.com',
+    href: 'https://google.com',
   },
 };
 

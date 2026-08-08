@@ -988,436 +988,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/button.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "variants",
-          "type": {
-            "text": "['standard', 'text', 'outlined']"
-          },
-          "default": "['standard', 'text', 'outlined']"
-        },
-        {
-          "kind": "variable",
-          "name": "targets",
-          "type": {
-            "text": "['_blank', '_self', '_parent', '_top']"
-          },
-          "default": "['_blank', '_self', '_parent', '_top']"
-        },
-        {
-          "kind": "variable",
-          "name": "types",
-          "type": {
-            "text": "['button', 'submit', 'reset']"
-          },
-          "default": "['button', 'submit', 'reset']"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetButton",
-          "cssProperties": [
-            {
-              "description": "The font size.",
-              "name": "--kemet-button-font-size"
-            },
-            {
-              "description": "The text color.",
-              "name": "--kemet-button-color"
-            },
-            {
-              "description": "The width.",
-              "name": "--kemet-button-width"
-            },
-            {
-              "description": "The height.",
-              "name": "--kemet-button-height"
-            },
-            {
-              "description": "The border.",
-              "name": "--kemet-button-border"
-            },
-            {
-              "description": "The border radius.",
-              "name": "--kemet-button-border-radius"
-            },
-            {
-              "description": "The transition speed of the hover effect.",
-              "name": "--kemet-button-transition-speed"
-            },
-            {
-              "description": "The background color.",
-              "name": "--kemet-button-background-color"
-            },
-            {
-              "description": "The brightness of the hover effect.",
-              "name": "--kemet-button-hover-brightness"
-            },
-            {
-              "description": "The gap between the button and icons.",
-              "name": "--kemet-button-gap"
-            },
-            {
-              "description": "The button padding.",
-              "name": "--kemet-button-padding"
-            },
-            {
-              "description": "The decoration for a text button's hover.",
-              "name": "--kemet-button-hover-decoration"
-            },
-            {
-              "description": "The diameter of a circle button.",
-              "name": "--kemet-button-circle-size"
-            },
-            {
-              "description": "The border radius of the rounded button.",
-              "name": "--kemet-button-rounded-amount"
-            },
-            {
-              "description": "The width of the outline border.",
-              "name": "--kemet-button-border-width"
-            },
-            {
-              "description": "The style of the outline border.",
-              "name": "--kemet-button-border-style"
-            },
-            {
-              "description": "The color of the outline border.",
-              "name": "--kemet-button-border-color"
-            },
-            {
-              "description": "The opacity of the disabled state.",
-              "name": "--kemet-button-disabled-opacity"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The button or anchor element.",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Allows you to place an icon to the left of the button text.",
-              "name": "left"
-            },
-            {
-              "description": "Allows you to place an icon to the right of the button text.",
-              "name": "right"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the button is active",
-              "attribute": "active",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "hover",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true when the button is hovered",
-              "attribute": "hover",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true when the button is focused",
-              "attribute": "focused",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "link",
-              "type": {
-                "text": "string"
-              },
-              "description": "The url a button should link too",
-              "attribute": "link"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines whether not a button is disabled",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "TypeVariants"
-              },
-              "description": "Controls the type of button. standard | text | circle | rounded | pill",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "TypeTargets"
-              },
-              "description": "The target attribute for a link",
-              "attribute": "target"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "TypeTypes"
-              },
-              "description": "The type attribute for a button",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "iconLeft",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "icon-left",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "iconRight",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "icon-right",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "The border radius of the button",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "handleLeftChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleRightChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleMouseOver",
-              "description": "Sets hover to true onMouseOver",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleMouseOut",
-              "description": "Sets hover to false onMouseOut",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleClick",
-              "description": "Handles click behavior",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleBlur",
-              "description": "Handles blur",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyUp",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "object"
-                  },
-                  "description": "event object"
-                }
-              ],
-              "description": "Handles keyup",
-              "privacy": "private"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Outline style for a button",
-              "name": "outlined",
-              "kind": "field"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the button is active",
-              "fieldName": "active"
-            },
-            {
-              "name": "hover",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true when the button is hovered",
-              "fieldName": "hover"
-            },
-            {
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true when the button is focused",
-              "fieldName": "focused"
-            },
-            {
-              "name": "link",
-              "type": {
-                "text": "string"
-              },
-              "description": "The url a button should link too",
-              "fieldName": "link"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines whether not a button is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "TypeVariants"
-              },
-              "description": "Controls the type of button. standard | text | circle | rounded | pill",
-              "fieldName": "variant"
-            },
-            {
-              "name": "target",
-              "type": {
-                "text": "TypeTargets"
-              },
-              "description": "The target attribute for a link",
-              "fieldName": "target"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "TypeTypes"
-              },
-              "description": "The type attribute for a button",
-              "fieldName": "type"
-            },
-            {
-              "name": "icon-left",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "iconLeft"
-            },
-            {
-              "name": "icon-right",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "iconRight"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "The border radius of the button",
-              "fieldName": "rounded"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-button",
-          "customElement": true,
-          "summary": "A versatile button that can be used either to submit a form, trigger an action, or link to content."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "variants",
-          "declaration": {
-            "name": "variants",
-            "module": "src/elements/button.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "targets",
-          "declaration": {
-            "name": "targets",
-            "module": "src/elements/button.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "types",
-          "declaration": {
-            "name": "types",
-            "module": "src/elements/button.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetButton",
-            "module": "src/elements/button.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-button",
-          "declaration": {
-            "name": "KemetButton",
-            "module": "src/elements/button.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/card.ts",
       "declarations": [
         {
@@ -12731,6 +12301,387 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/button/index.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "variants",
+          "type": {
+            "text": "['standard', 'text', 'outlined']"
+          },
+          "default": "['standard', 'text', 'outlined']"
+        },
+        {
+          "kind": "variable",
+          "name": "targets",
+          "type": {
+            "text": "['_blank', '_self', '_parent', '_top']"
+          },
+          "default": "['_blank', '_self', '_parent', '_top']"
+        },
+        {
+          "kind": "variable",
+          "name": "types",
+          "type": {
+            "text": "['button', 'submit', 'reset']"
+          },
+          "default": "['button', 'submit', 'reset']"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetButton",
+          "cssProperties": [
+            {
+              "description": "The font size.",
+              "name": "--kemet-button-font-size"
+            },
+            {
+              "description": "The text color.",
+              "name": "--kemet-button-color"
+            },
+            {
+              "description": "The width.",
+              "name": "--kemet-button-width"
+            },
+            {
+              "description": "The height.",
+              "name": "--kemet-button-height"
+            },
+            {
+              "description": "The border.",
+              "name": "--kemet-button-border"
+            },
+            {
+              "description": "The border radius.",
+              "name": "--kemet-button-border-radius"
+            },
+            {
+              "description": "The transition speed of the hover effect.",
+              "name": "--kemet-button-transition-speed"
+            },
+            {
+              "description": "The background color.",
+              "name": "--kemet-button-background-color"
+            },
+            {
+              "description": "The brightness of the hover effect.",
+              "name": "--kemet-button-hover-brightness"
+            },
+            {
+              "description": "The gap between the button and icons.",
+              "name": "--kemet-button-gap"
+            },
+            {
+              "description": "The button padding.",
+              "name": "--kemet-button-padding"
+            },
+            {
+              "description": "The decoration for a text button's hover.",
+              "name": "--kemet-button-hover-decoration"
+            },
+            {
+              "description": "The diameter of a circle button.",
+              "name": "--kemet-button-circle-size"
+            },
+            {
+              "description": "The border radius of the rounded button.",
+              "name": "--kemet-button-rounded-amount"
+            },
+            {
+              "description": "The width of the outline border.",
+              "name": "--kemet-button-border-width"
+            },
+            {
+              "description": "The style of the outline border.",
+              "name": "--kemet-button-border-style"
+            },
+            {
+              "description": "The color of the outline border.",
+              "name": "--kemet-button-border-color"
+            },
+            {
+              "description": "The opacity of the disabled state.",
+              "name": "--kemet-button-disabled-opacity"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button or anchor element.",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Allows you to place an icon to the left of the button text.",
+              "name": "left"
+            },
+            {
+              "description": "Allows you to place an icon to the right of the button text.",
+              "name": "right"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "The url a button should link too",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines whether not a button is disabled",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "TypeVariants"
+              },
+              "description": "Controls the type of button. standard | text | circle | rounded | pill",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "TypeTargets"
+              },
+              "description": "The target attribute for a link",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "TypeTypes"
+              },
+              "description": "The type attribute for a button",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "iconLeft",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "icon-left",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconRight",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "icon-right",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "The border radius of the button",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "handleLeftChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleRightChange"
+            },
+            {
+              "kind": "method",
+              "name": "makeLightDOMButton",
+              "description": "Creates a button element in the light DOM for form submission",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "PointerEvent"
+                  }
+                }
+              ],
+              "description": "Handles click behavior",
+              "privacy": "private"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Outline style for a button",
+              "name": "outlined",
+              "kind": "field"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "The url a button should link too",
+              "fieldName": "href"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines whether not a button is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "TypeVariants"
+              },
+              "description": "Controls the type of button. standard | text | circle | rounded | pill",
+              "fieldName": "variant"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "TypeTargets"
+              },
+              "description": "The target attribute for a link",
+              "fieldName": "target"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "TypeTypes"
+              },
+              "description": "The type attribute for a button",
+              "fieldName": "type"
+            },
+            {
+              "name": "icon-left",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "iconLeft"
+            },
+            {
+              "name": "icon-right",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "iconRight"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "The border radius of the button",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-button",
+          "customElement": true,
+          "summary": "A versatile button that can be used either to submit a form, trigger an action, or link to content."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "variants",
+          "declaration": {
+            "name": "variants",
+            "module": "src/elements/button/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "targets",
+          "declaration": {
+            "name": "targets",
+            "module": "src/elements/button/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "types",
+          "declaration": {
+            "name": "types",
+            "module": "src/elements/button/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetButton",
+            "module": "src/elements/button/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-button",
+          "declaration": {
+            "name": "KemetButton",
+            "module": "src/elements/button/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/button/styles.css",
+      "declarations": [],
+      "exports": []
     }
   ]
 }

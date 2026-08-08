@@ -1,33 +1,29 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/button';
-import { FormSubmitController } from '../utilities/form-controller';
-import { TypeRoundedSizes } from '../utilities/constants';
+import { TypeRoundedSizes } from '../../utilities/constants';
+import styles from './styles.css?inline';
+import { emitEvent } from '../../utilities/events';
 
-export const variants = ['standard', 'text', 'outlined'] as const;
 export enum EnumVariants {
   STANDARD = 'standard',
   TEXT = 'text',
   OUTLINED = 'outlined',
+  PLAIN = 'plain',
+  EDGE = 'edge',
 }
-export type TypeVariants = typeof variants[number];
 
-export const targets = ['_blank', '_self', '_parent', '_top'] as const;
 export enum EnumTargets {
   BLANK = '_blank',
   SELF = '_self',
   PARENT = '_parent',
   TOP = '_top'
 }
-export type TypeTargets = typeof targets[number];
 
-export const types = ['button', 'submit', 'reset'] as const;
 export enum EnumTypes {
   BUTTON = 'button',
   SUBMIT = 'submit',
   RESET = 'reset'
 }
-export type TypeTypes = typeof types[number];
 
 /**
  * @since 1.0.0
@@ -36,10 +32,7 @@ export type TypeTypes = typeof types[number];
  * @tagname kemet-button
  * @summary A versatile button that can be used either to submit a form, trigger an action, or link to content.
  *
- * @prop {boolean} active - Determines if the button is active
- * @prop {boolean} hover - Is true when the button is hovered
- * @prop {boolean} focused - Is true when the button is focused
- * @prop {string} link - The url a button should link too
+ * @prop {string} href - The url a button should link too
  * @prop {boolean} outlined - Outline style for a button
  * @prop {boolean} disabled - Determines whether not a button is disabled
  * @prop {TypeVariants} variant - Controls the type of button. standard | text | circle | rounded | pill
@@ -75,34 +68,22 @@ export type TypeTypes = typeof types[number];
 
 @customElement('kemet-button')
 export default class KemetButton extends LitElement {
-  /** @internal */
-  formSubmitController: FormSubmitController;
-
-  static styles = [stylesBase];
-
-  @property({ type: Boolean, reflect: true })
-  active!: boolean;
-
-  @property({ type: Boolean, reflect: true })
-  hover!: boolean;
-
-  @property({ type: Boolean, reflect: true })
-  focused!: boolean;
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
-  link!: string;
+  href!: string;
 
   @property({ type: Boolean, reflect: true })
   disabled: boolean = false;
 
   @property({ reflect: true })
-  variant: TypeVariants = EnumVariants.STANDARD;
+  variant: EnumVariants = EnumVariants.STANDARD;
 
   @property()
-  target: TypeTargets = EnumTargets.SELF;
+  target: EnumTargets = EnumTargets.SELF;
 
   @property()
-  type: TypeTypes = EnumTypes.BUTTON;
+  type: EnumTypes = EnumTypes.BUTTON;
 
   @property({ type: Boolean, reflect: true, attribute: 'icon-left' })
   iconLeft: boolean = false;
@@ -113,34 +94,45 @@ export default class KemetButton extends LitElement {
   @property({ type: String, reflect: true })
   rounded!: TypeRoundedSizes;
 
-  constructor() {
-    super();
+  @property({ type: Boolean, reflect: true })
+  loading: boolean = false;
 
-    this.addEventListener('click', this.handleClick.bind(this));
-    this.addEventListener('mouseover', this.handleMouseOver.bind(this));
-    this.addEventListener('mouseout', this.handleMouseOut.bind(this));
-    this.addEventListener('blur', this.handleBlur.bind(this));
-    this.addEventListener('keyup', event => this.handleKeyUp(event));
 
-    /** @internal */
-    this.formSubmitController = new FormSubmitController(this);
+  firstUpdated() {
+    emitEvent(this, 'kemet-button-mounted', {
+      bubbles: true,
+      composed: true,
+    });
   }
 
   render() {
-    if (this.link && !this.disabled) {
+    if (this.href && !this.disabled) {
       return html`
-        <a href=${this.link} target=${this.target} class="button" role="button" part="button">
+        <a
+          href=${this.href}
+          target=${this.target}
+          class="button"
+          part="button"
+          @click=${(event: PointerEvent) => this.handleClick(event)}
+        >
           <slot name="left" @slotchange=${this.handleLeftChange}></slot>
-          <slot></slot>
+          ${this.loading ? html`<slot name="loading"></slot>` : html`<slot></slot>`}
           <slot name="right" @slotchange=${this.handleRightChange}></slot>
         </a>
       `;
     }
 
     return html`
-      <button class="button" part="button" type=${this.type} ?disabled=${this.disabled} aria-disabled=${this.disabled ? 'true' : 'false'}>
+      <button
+        class="button"
+        part="button"
+        type=${this.type}
+        ?disabled=${this.disabled}
+        aria-disabled=${this.disabled ? 'true' : 'false'}
+        @click=${(event: PointerEvent) => this.handleClick(event)}
+      >
         <slot name="left" @slotchange=${this.handleLeftChange}></slot>
-        <slot></slot>
+        ${this.loading ? html`<slot name="loading"></slot>` : html`<slot></slot>`}
         <slot name="right" @slotchange=${this.handleRightChange}></slot>
       </button>
     `;
@@ -157,59 +149,49 @@ export default class KemetButton extends LitElement {
   }
 
   /**
-   * Sets hover to true onMouseOver
+   * Creates a button element in the light DOM for form submission
    * @private
    */
-  handleMouseOver() {
-    this.hover = true;
-  }
+  makeLightDOMButton() {
+    const button = document.createElement('button');
 
-  /**
-   * Sets hover to false onMouseOut
-   * @private
-   */
-  handleMouseOut() {
-    this.hover = false;
+    for (const attribute of this.attributes) {
+      button.setAttribute(attribute.name, attribute.value);
+    }
+
+    button.type = this.type;
+    button.style.position = 'absolute !important';
+    button.style.width = '0 !important';
+    button.style.height = '0 !important';
+    button.style.clipPath = 'inset(50%) !important';
+    button.style.overflow = 'hidden !important';
+    button.style.whiteSpace = 'nowrap !important';
+    button.value = '';
+
+    return button;
   }
 
   /**
    * Handles click behavior
    * @private
    */
-  handleClick() {
-    if (!this.disabled) {
-      this.hover = false;
-      this.active = true;
-
-      setTimeout(() => {
-        this.active = false;
-      }, 300);
-
-      if (this.shadowRoot?.querySelector('button')) {
-        this.formSubmitController.submit();
-      }
+  handleClick(event: PointerEvent) {
+    if (this.disabled || this.loading) {
+      event?.preventDefault();
+      return;
     }
-  }
 
-  /**
-   * Handles blur
-   * @private
-   */
-  handleBlur() {
-    this.focused = false;
-    this.active = false;
-    this.hover = false;
-  }
+    const form = this.closest('form');
 
-  /**
-   * Handles keyup
-   * @private
-   * @param {object} event - event object
-   */
-  handleKeyUp(event: KeyboardEvent) {
-    if (event.key === 'Tab') {
-      this.focused = true;
+    if (!form || (this.type !== EnumTypes.SUBMIT && this.type !== EnumTypes.RESET)) {
+      return;
     }
+
+    const lightDOMButton = this.makeLightDOMButton();
+
+    form.appendChild(lightDOMButton);
+    lightDOMButton.click();
+    lightDOMButton.remove();
   }
 }
 
