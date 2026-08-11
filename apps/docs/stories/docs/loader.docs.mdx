@@ -1,0 +1,33 @@
+import { Meta, Canvas, ArgTypes, Controls } from '@storybook/addon-docs/blocks';
+import * as stories from '../elements/loader.stories'
+
+<Meta of={stories} />
+
+# Kemet Loader
+
+Indicates loading state.
+
+<kemet-tabs panel-effect="stacked" divider>
+  <kemet-tab slot="tab">Usage</kemet-tab>
+  <kemet-tab slot="tab">Story</kemet-tab>
+  <kemet-tab slot="tab">API</kemet-tab>
+  <kemet-tab-panel slot="panel">
+    ### Markup
+    ```html
+    <kemet-loader></kemet-loader>
+    ```
+
+    ### Import JavaScript
+    ```javascript
+    import 'kemet-ui/elements/loader';
+    ```
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <Canvas of={stories.Standard} />
+    <Controls of={stories.Standard} />
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    ### &lt;kemet-loader&gt;
+    <ArgTypes of="kemet-loader" />
+  </kemet-tab-panel>
+</kemet-tabs>

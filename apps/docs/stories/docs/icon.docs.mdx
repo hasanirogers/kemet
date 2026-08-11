@@ -1,0 +1,56 @@
+import { Meta, Canvas, ArgTypes, Controls } from '@storybook/addon-docs/blocks';
+import * as stories from '../elements/icon.stories'
+
+<Meta of={stories} />
+
+# Kemet Icon
+
+Load icons async from various icon libraries.
+
+<kemet-tabs panel-effect="stacked" divider>
+  <kemet-tab slot="tab">Usage</kemet-tab>
+  <kemet-tab slot="tab">Story</kemet-tab>
+  <kemet-tab slot="tab">API</kemet-tab>
+  <kemet-tab-panel slot="panel">
+    ### Markup
+    ```html
+    <kemet-icon name="[icon name]"></kemet-icon>
+    ```
+
+    ### Import JavaScript
+    ```javascript
+    import 'kemet-ui/elements/icon';
+    ```
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <Canvas of={stories.Standard} />
+    <Controls of={stories.Standard} />
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    ### &lt;kemet-icon&gt;
+    <ArgTypes of="kemet-icon" />
+  </kemet-tab-panel>
+</kemet-tabs>
+
+<hr /><br />
+
+### Libraries
+
+<kemet-tabs>
+  <kemet-tab slot="tab">Bootstrap</kemet-tab>
+  <kemet-tab slot="tab">FA Regular</kemet-tab>
+  <kemet-tab slot="tab">FA Solid</kemet-tab>
+  <kemet-tab slot="tab">FA Brands</kemet-tab>
+  <kemet-tab-panel slot="panel">
+    <docs-icons library="bootstrap"></docs-icons>
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <docs-icons library="fontawesome" family="regular"></docs-icons>
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <docs-icons library="fontawesome" family="solid"></docs-icons>
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <docs-icons library="fontawesome" family="brands"></docs-icons>
+  </kemet-tab-panel>
+</kemet-tabs>

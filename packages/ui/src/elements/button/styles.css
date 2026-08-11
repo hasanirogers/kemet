@@ -8,7 +8,6 @@
   --kemet-button-transition-speed: 300ms;
   --kemet-button-background-color: rgb(var(--kemet-color-foreground));
   --kemet-button-hover-brightness: 1.25;
-  --kemet-button-disabled-opacity: 0.5;
   --kemet-button-gap: 0.5rem;
   --kemet-button-padding: 1rem 1.25rem;
   --kemet-button-hover-decoration: underline;
@@ -36,7 +35,8 @@
 }
 
 :host([disabled]) {
-  opacity: var(--kemet-button-disabled-opacity);
+  --kemet-button-color: rgb(var(--kemet-color-white));
+  --kemet-button-background-color: rgb(var(--kemet-color-gray-500));
 }
 
 .button {

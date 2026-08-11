@@ -10,7 +10,7 @@ import '../../../../packages/ui/src/elements/tabs';
 import '../../../../packages/ui/src/elements/tab';
 import '../../../../packages/ui/src/elements/tab-panel';
 
-import '../../../../packages/ui/src/elements/icon-bootstrap';
+import '../../../../packages/ui/src/elements/icon';
 import '../../../../packages/ui/src/elements/loader';
 
 
@@ -43,10 +43,10 @@ const Template = (args: Args) => html`
     loading=${ifDefined(args.loading)}
   >
     Kemet Button
-    ${!!args.iconLeft ? html`<kemet-icon-bootstrap slot="left" icon="${args.iconLeft}" size="18"></kemet-icon-bootstrap>` : ''}
-    ${!!args.iconRight ? html`<kemet-icon-bootstrap slot="right" icon="${args.iconRight}" size="18"></kemet-icon-bootstrap>` : ''}
+    ${!!args.iconLeft ? html`<kemet-icon slot="left" name="${args.iconLeft}" size="18"></kemet-icon>` : ''}
+    ${!!args.iconRight ? html`<kemet-icon slot="right" name="${args.iconRight}" size="18"></kemet-icon>` : ''}
     ${args.loading ? html`<kemet-loader variant="three-dots" slot="loader" size="12"></kemet-loader>` : ''}
-    ${!!args.iconButton ? html`<kemet-icon-bootstrap icon="gear" size="24" slot="icon-button"></kemet-icon-bootstrap>` : ''}
+    ${!!args.iconButton ? html`<kemet-icon slot="icon-button" name="house" library="fontawesome" family="solid" size="24"></kemet-icon>` : ''}
   </kemet-button>
 `;
 

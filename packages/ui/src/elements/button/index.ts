@@ -62,8 +62,9 @@ export enum EnumTypes {
  * @cssproperty --kemet-button-border-width - The width of the outline border.
  * @cssproperty --kemet-button-border-style - The style of the outline border.
  * @cssproperty --kemet-button-border-color - The color of the outline border.
- * @cssproperty --kemet-button-disabled-opacity - The opacity of the disabled state.
  *
+ * @fires kemet-button-mounted - Fired when the button is mounted to the DOM
+ * @detail {HTMLElement} element - The button element
  */
 
 @customElement('kemet-button')
@@ -85,6 +86,9 @@ export default class KemetButton extends LitElement {
   @property()
   type: EnumTypes = EnumTypes.BUTTON;
 
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @property({ type: Boolean, reflect: true, attribute: 'icon-left' })
   iconLeft: boolean = false;
 
@@ -105,7 +109,11 @@ export default class KemetButton extends LitElement {
     emitEvent(this, 'kemet-button-mounted', {
       bubbles: true,
       composed: true,
+      detail: {
+        element: this,
+      },
     });
+    this.dom = 'mounted';
   }
 
   render() {

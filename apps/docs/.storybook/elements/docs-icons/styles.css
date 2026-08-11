@@ -1,3 +1,17 @@
+.search-container {
+  padding: 1rem 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
 .kemet-icons {
   padding: 2rem;
   display: grid;

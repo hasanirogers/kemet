@@ -12378,10 +12378,6 @@
             {
               "description": "The color of the outline border.",
               "name": "--kemet-button-border-color"
-            },
-            {
-              "description": "The opacity of the disabled state.",
-              "name": "--kemet-button-disabled-opacity"
             }
           ],
           "cssParts": [
@@ -12451,6 +12447,16 @@
             },
             {
               "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "iconLeft",
               "type": {
                 "text": "boolean"
@@ -12467,6 +12473,16 @@
               },
               "default": "false",
               "attribute": "icon-right",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconButton",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "icon-button",
               "reflects": true
             },
             {
@@ -12499,6 +12515,10 @@
             },
             {
               "kind": "method",
+              "name": "handleIconButtonChange"
+            },
+            {
+              "kind": "method",
               "name": "makeLightDOMButton",
               "description": "Creates a button element in the light DOM for form submission",
               "privacy": "private"
@@ -12524,6 +12544,12 @@
               "description": "Outline style for a button",
               "name": "outlined",
               "kind": "field"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the button is mounted to the DOM",
+              "name": "kemet-button-mounted"
             }
           ],
           "attributes": [
@@ -12569,6 +12595,14 @@
               "fieldName": "type"
             },
             {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            },
+            {
               "name": "icon-left",
               "type": {
                 "text": "boolean"
@@ -12583,6 +12617,14 @@
               },
               "default": "false",
               "fieldName": "iconRight"
+            },
+            {
+              "name": "icon-button",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "iconButton"
             },
             {
               "name": "rounded",
@@ -12631,7 +12673,270 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/icon/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'house'",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "library",
+              "type": {
+                "text": "string"
+              },
+              "default": "'bootstrap'",
+              "attribute": "library"
+            },
+            {
+              "kind": "field",
+              "name": "family",
+              "type": {
+                "text": "string"
+              },
+              "default": "'regular'",
+              "attribute": "family"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "16",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "version",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "version"
+            },
+            {
+              "kind": "method",
+              "name": "setupIntersectionObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "setIcon"
+            },
+            {
+              "kind": "method",
+              "name": "updateUrl",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "resolveIcon",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Promise<SVGResult>"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'house'",
+              "fieldName": "name"
+            },
+            {
+              "name": "library",
+              "type": {
+                "text": "string"
+              },
+              "default": "'bootstrap'",
+              "fieldName": "library"
+            },
+            {
+              "name": "family",
+              "type": {
+                "text": "string"
+              },
+              "default": "'regular'",
+              "fieldName": "family"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "16",
+              "fieldName": "size"
+            },
+            {
+              "name": "version",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "version"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetIcon",
+            "module": "src/elements/icon/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-icon",
+          "declaration": {
+            "name": "KemetIcon",
+            "module": "src/elements/icon/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/loader/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetLoader",
+          "cssProperties": [
+            {
+              "description": "The color of the loader.",
+              "name": "--kemet-loader-color"
+            },
+            {
+              "description": "The thickness of the loader.",
+              "name": "--kemet-loader-thickness"
+            },
+            {
+              "description": "The size of the dots in the loader.",
+              "name": "--kemet-loader-dot-size"
+            },
+            {
+              "description": "The size of the loader.",
+              "name": "--kemet-loader-size"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The main loader container",
+              "name": "loader"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "attribute": "size"
+            },
+            {
+              "kind": "method",
+              "name": "makeLoader"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the loader is mounted to the DOM",
+              "name": "kemet-loader-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-loader",
+          "customElement": true,
+          "summary": "Displays animations for a loading state."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KemetLoader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-loader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/button/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/loader/styles.css",
       "declarations": [],
       "exports": []
     }

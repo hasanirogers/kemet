@@ -1,18 +1,30 @@
-import { html, LitElement, css, unsafeCSS } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
+
 import styles from './styles.css?inline';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 
 @customElement('docs-icons')
 export default class DocsIcons extends LitElement {
   static styles = [unsafeCSS(styles)];
 
-  @property({ type: String }) library: string = 'bootstrap';
+  @property({ type: String, reflect: true })
+  library: string = 'bootstrap';
 
-  @state() slugs: string[] = [];
-  @state() loading: boolean = true;
+  @property({ type: String, reflect: true })
+  family: string = 'regular';
+
+  @state()
+  slugs: string[] = [];
+
+  @state()
+  loading: boolean = true;
+
+  @state()
+  searchQuery: string = '';
 
   firstUpdated() {
     this.getIcons();
@@ -23,45 +35,66 @@ export default class DocsIcons extends LitElement {
   }
 
   getIcons() {
-    fetch(this.getUrl())
-      .then(response => response.text())
-      .then(xmlString => (new DOMParser()).parseFromString(xmlString, 'text/xml'))
-      .then((spriteMap) => {
-        this.slugs = this.getSlugs(spriteMap);
-        this.loading = false;
-      });
-  }
+    console.log('getIcons called with library:', this.library, 'family:', this.family);
 
-  getUrl(){
     let url: string;
 
     switch (this.library) {
-      case 'bootstrap': url = 'https://unpkg.com/bootstrap-icons@latest/bootstrap-icons.svg'; break;
-      case 'lucide': url = 'https://unpkg.com/lucide-static@latest/font/lucide.svg'; break;
-      default: url = 'https://unpkg.com/bootstrap-icons@latest/bootstrap-icons.svg'; break;
+      case 'fontawesome':
+        url = `https://unpkg.com/@fortawesome/fontawesome-free@latest/sprites/${this.family}.svg`;
+        break;
+      case 'bootstrap':
+        url = 'https://unpkg.com/bootstrap-icons@latest/bootstrap-icons.svg';
+        break;
+      case 'lucide':
+        url = 'https://unpkg.com/lucide-static@latest/font/lucide.svg';
+        break;
+      default:
+        url = 'https://unpkg.com/bootstrap-icons@latest/bootstrap-icons.svg';
+        break;
     }
 
-    return url;
+    fetch(url)
+      .then(response => {
+        return response.text();
+      })
+      .then(xmlString => {
+        const spriteMap = (new DOMParser()).parseFromString(xmlString, 'text/xml');
+        this.slugs = this.getSlugs(spriteMap);
+        this.loading = false;
+      })
+      .catch(error => {
+        console.error('Error fetching icons:', error);
+      });
   }
 
-  getSlugs(spriteMap) {
+  getSlugs(spriteMap: Document) {
+    // get by glyph-name for lucide
     if (this.library === 'lucide') {
       const icons = spriteMap.documentElement.querySelectorAll('glyph');
-      const slugs = [];
+      const slugs: string[] = [];
+      let slug: string | null;
 
       icons.forEach((icon) => {
-        slugs.push(icon.getAttribute('glyph-name').replace(/^a+-/, ''));
+        slug = icon.getAttribute('glyph-name');
+        if (slug) {
+          slugs.push(slug.replace(/^a+-/, ''));
+        }
       });
 
       return slugs;
     }
 
-
+    // get by id for default
     const icons = spriteMap.documentElement.querySelectorAll('symbol');
-    const slugs: any[] = [];
+    const slugs: string[] = [];
+    let slug: string | null;
 
     icons.forEach((icon) => {
-      slugs.push(icon.getAttribute('id').replace(/^\d+-/, ''));
+      slug = icon.getAttribute('id');
+      if (slug) {
+        slugs.push(slug);
+      }
     });
 
     return slugs;
@@ -72,18 +105,34 @@ export default class DocsIcons extends LitElement {
       return html`<div class="kemet-icons">loading...</div>`;
     }
 
+    const filteredSlugs = this.slugs.filter(slug => 
+      slug.toLowerCase().includes(this.searchQuery)
+    );
+
     return html`
+      <div class="search-container">
+        <input 
+          type="text" 
+          placeholder="Search icons..." 
+          @input=${this.handleSearch}
+          .value=${this.searchQuery}
+        />
+      </div>
       <ul class="kemet-icons">
-        ${this.slugs.map(slug => html`
+        ${filteredSlugs.map(slug => html`
           <li>
             <figure>
-              ${this.library === 'bootstrap' ? html`<kemet-icon-bootstrap icon=${slug} size="32"></kemet-icon-bootstrap>` : null}
-              ${this.library === 'lucide' ? html`<kemet-icon-lucide icon=${slug} size="32"></kemet-icon-lucide>` : null}
+              <kemet-icon name=${slug} size="32" library=${this.library} family=${ifDefined(this.family)}></kemet-icon>
               <figcaption>${slug}</figcaption>
             </figure>
           </li>
         `)}
       </ul>
     `;
+  }
+
+  handleSearch(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery = target.value.toLowerCase();
   }
 }

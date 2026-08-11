@@ -1,6 +1,7 @@
 import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './styles.css?inline';
+import { emitEvent } from '../../utilities/events';
 
 export enum EnumVariants {
   NO_BORDER = 'no-border',
@@ -13,7 +14,7 @@ export enum EnumVariants {
   MESH = 'mesh',
 }
 
-  /**
+/**
  * @since 5.0.0
  * @status stable
  *
@@ -30,6 +31,8 @@ export enum EnumVariants {
  * @cssproperty --kemet-loader-dot-size - The size of the dots in the loader.
  * @cssproperty --kemet-loader-size - The size of the loader.
  *
+ * @fires kemet-loader-mounted - Fired when the loader is mounted to the DOM
+ * @detail {HTMLElement} element - The loader element
  */
 @customElement('kemet-loader')
 export class KemetLoader extends LitElement {
@@ -40,6 +43,16 @@ export class KemetLoader extends LitElement {
 
   @property({ type: Number })
   size: number = 48;
+
+  firstUpdated() {
+    emitEvent(this, 'kemet-loader-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+  }
 
   render() {
     if (
