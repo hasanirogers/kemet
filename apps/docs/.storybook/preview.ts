@@ -5,8 +5,9 @@ import * as html from 'prettier/plugins/html';
 import { handlePolaritySwitching, globalFormatting } from './decorators';
 import customElements from 'kemet-ui/custom-elements.json';
 
-import 'kemet-ui/styles/kemet.base.scss';
-import 'kemet-ui/styles/kemet.core.scss';
+// import 'kemet-ui/styles/kemet.base.scss';
+// import 'kemet-ui/styles/kemet.core.scss';
+import '../../../packages/tokens/dist/css/_variables.css';
 import './storybook.scss';
 
 setCustomElementsManifest(customElements);

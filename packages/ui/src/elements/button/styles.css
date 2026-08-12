@@ -1,12 +1,12 @@
 :host {
   --kemet-button-font-size: inherit;
-  --kemet-button-color: rgb(var(--kemet-color-background));
+  --kemet-button-color: var(--kemet-color-font-inverse-base);
   --kemet-button-width: auto;
   --kemet-button-height: auto;
   --kemet-button-border: 0;
   --kemet-button-border-radius: 0;
   --kemet-button-transition-speed: 300ms;
-  --kemet-button-background-color: rgb(var(--kemet-color-foreground));
+  --kemet-button-background-color: var(--kemet-color-background-button-primary-base);
   --kemet-button-hover-brightness: 1.25;
   --kemet-button-gap: 0.5rem;
   --kemet-button-padding: 1rem 1.25rem;
@@ -14,7 +14,7 @@
   --kemet-button-circle-size: 50px;
   --kemet-button-border-width: 1.5px;
   --kemet-button-border-style: solid;
-  --kemet-button-border-color: rgb(var(--kemet-color-foreground));
+  --kemet-button-border-color: var(--kemet-color-background-button-primary-base);
 
   cursor: pointer;
   display: inline-flex;
@@ -35,8 +35,8 @@
 }
 
 :host([disabled]) {
-  --kemet-button-color: rgb(var(--kemet-color-white));
-  --kemet-button-background-color: rgb(var(--kemet-color-gray-500));
+  --kemet-button-color: var(--kemet-color-font-disabled);
+  --kemet-button-background-color: var(--kemet-color-background-disabled);
 }
 
 .button {
@@ -59,7 +59,7 @@
 }
 
 :host([variant=text]) {
-  --kemet-button-color: rgb(var(--kemet-color-text));
+  --kemet-button-color: var(--kemet-color-font-base);
   --kemet-button-background-color: none;
 }
 
@@ -94,7 +94,7 @@
 }
 
 :host([variant=outlined]) {
-  --kemet-button-color: rgb(var(--kemet-color-foreground));
+  --kemet-button-color: var(--kemet-color-background-button-primary-base);
   --kemet-button-background-color: transparent;
   --kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--kemet-button-border-color);
 }
@@ -104,7 +104,7 @@
 }
 
 :host([variant=plain]) {
-  --kemet-button-color: rgb(var(--kemet-color-text));
+  --kemet-button-color: var(--kemet-color-font-base);
   --kemet-button-padding: 0;
   --kemet-button-border: none;
   --kemet-button-background-color: transparent;

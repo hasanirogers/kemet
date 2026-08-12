@@ -1,7 +1,8 @@
-import { html, HTMLTemplateResult, LitElement } from 'lit';
+import { html, HTMLTemplateResult, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
 /**
  * @since 5.0.0
@@ -60,6 +61,8 @@ export enum EnumLibrary {
 
 @customElement('kemet-icon')
 export default class KemetIcon extends LitElement {
+  static styles = [unsafeCSS(styles)];
+
   @property({ type: String })
   name: string = 'house';
 

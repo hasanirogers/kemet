@@ -10,7 +10,7 @@
   "scripts": {
     "analyze": "custom-elements-manifest analyze --litelement --globs \"src/elements/**/*\"",
     "build": "rimraf dist && npm run build:css && npm run build:scss && npm run build:ts",
-    "build:css": "sass src/styles/kemet.core.scss:dist/styles/kemet.core.css src/styles/kemet.base.scss:dist/styles/kemet.base.css && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
+    "build:css": "sass --load-path=node_modules src/styles/kemet.tokens.scss:dist/styles/kemet.tokens.css src/styles/kemet.core.scss:dist/styles/kemet.core.css src/styles/kemet.base.scss:dist/styles/kemet.base.css && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
     "build:scss": "cp -R src/styles dist",
     "build:ts": "tsup",
     "dev": "npm-watch",
@@ -21,19 +21,17 @@
     "pack": "npm pack --pack-destination ../published",
     "prepublish": "rimraf dist && npm run build",
     "test": "vitest --config=vitest.browser.config.mts",
-    "preversion": "npm run build",
-    "watch": "npm-watch",
-    "watch:dev": "concurrently \"sass --watch src/styles/kemet.core.scss:dist/styles/kemet.core.css src/styles/kemet.base.scss:dist/styles/kemet.base.css\" \"tsup --watch\""
+    "preversion": "npm run build"
   },
   "author": {
     "name": "Hasani Rogers",
-    "email": "dev@hasanirogers.me"
+    "email": "hasani.rogers@deificarts.com"
   },
   "license": "MIT",
   "keywords": [
     "web components",
     "custom elements",
-    "blueprint system"
+    "design system"
   ],
   "exports": {
     "./elements/*": "./dist/elements/*",
@@ -56,6 +54,7 @@
     "@lit/react": "^1.0.8",
     "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.21",
+    "kemet-tokens": "file:../published/kemet-tokens-1.0.0.tgz",
     "lit": "^3.1.2",
     "mobile-drag-drop": "2.2.0",
     "typewriter-effect": "^2.22.0"

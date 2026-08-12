@@ -1,0 +1,13 @@
+{
+  "border": {
+    "radius": {
+      "sm": { "value": "0.25rem", "type": "spacing" },
+      "md": { "value": "0.5rem", "type": "spacing" },
+      "lg": { "value": "1rem", "type": "spacing" },
+      "xl": { "value": "1.5rem", "type": "spacing" },
+      "circle": { "value": "50%", "type": "spacing" },
+      "pill": { "value": "999px", "type": "spacing" },
+      "base": { "value": "{border.radius.md}", "type": "spacing" }
+    }
+  }
+}

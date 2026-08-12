@@ -34,6 +34,52 @@ const Template = (args: Args) => html`
   <kemet-loader variant=${args.variant} size=${ifDefined(args.size)}></kemet-loader>
 `;
 
-export const Standard: Story = {
-  render: args => Template(args)
+export const NoBorder: Story = {};
+
+export const BorderTop: Story = {
+  args: {
+    variant: 'border-top'
+  }
 };
+
+export const DoubleBorder: Story = {
+  args: {
+    variant: 'double-border'
+  }
+};
+
+export const DoubleSpinners: Story = {
+  args: {
+    variant: 'double-spinners'
+  }
+};
+
+export const ThreeDots: Story = {
+  args: {
+    variant: 'three-dots',
+    size: 24
+  }
+};
+
+export const FullCircle: Story = {
+  args: {
+    variant: 'full-circle',
+    size: 24
+  }
+};
+
+export const Spinner: Story = {
+  args: {
+    variant: 'spinner'
+  }
+};
+
+export const Mesh: Story = {
+  args: {
+    variant: 'mesh',
+    size: 24
+  }
+};
+
+
+

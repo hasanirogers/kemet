@@ -1,5 +1,5 @@
 :host {
-  --kemet-loader-color: rgb(var(--kemet-color-primary));
+  --kemet-loader-color: var(--kemet-color-brand-primary-base);
   --kemet-loader-thickness: 4px;
   --kemet-loader-dot-size: 24px;
   --kemet-loader-size: 48px;
