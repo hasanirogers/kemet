@@ -4,6 +4,6 @@
    "compilerOptions": {
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "emitDecoratorMetadata": false
+    "emitDecoratorMetadata": true
   }
 }

@@ -1,0 +1,36 @@
+---
+import customElements from '../../../../packages/ui/custom-elements.json';
+import extractJSDocTags from '../utilities/extractJSDocTags.js';
+---
+
+<section>
+  <ul>
+    {
+      customElements.modules.map((element) => {
+        const tagsData = extractJSDocTags(element.path);
+        const title = (tagsData[0]?.className || '').replace(/([A-Z])/g, ' $1').trim();
+        const tags = tagsData[0]?.tags || {};
+        return (
+          <li>
+            <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary}>
+              <!-- TODO: Add pre-render placeholder -->
+            </web-element-card>
+          </li>
+        )
+      })
+    }
+  </ul>
+</section>
+<script>
+  import '../elements/element-card/index.js';
+</script>
+<style>
+  ul {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    list-style: none;
+    padding: 2rem 0;
+    margin: 0;
+  }
+</style>

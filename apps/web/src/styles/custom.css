@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
+@layer kemet-reset, starlight, kemet-overrides;
+
+@layer kemet-overrides {
+  html, body {
+    font-weight: 400;
+    font-family: "Finger Paint", "Georgia", serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    font-family: "Finger Paint", "Georgia", serif;
+  }
+
+  body {
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url('/pyramid-blueprint.png');
+    }
+
+    &::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.95;
+      background: black;
+      backdrop-filter: contrast(0.5);
+    }
+  }
+
+  .sidebar-pane {
+    /* --sl-sidebar-visibility: visible; */
+    --sl-sidebar-width: 320px;
+    --sl-color-bg-sidebar: transparent;
+  }
+
+  .sidebar-content {
+    border-right: 1px solid var(--sl-color-hairline);
+  }
+
+  .main-pane {
+    --sl-content-margin-inline: 0;
+    width: 100%;
+  }
+
+  .sl-container {
+    max-width: none;
+  }
+
+  .hero img {
+    @media screen and (width >= 50rem ) {
+      transform: scale(1.5);
+    }
+  }
+}

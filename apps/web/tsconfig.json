@@ -1,8 +1,5 @@
 {
-  "extends": ["@kemet/typescript-config/astro", "@kemet/typescript-config/lit"],
-  "include": [
-    "**/*.ts",
-    "../../packages/ui/src/**/*.ts",
-  ],
-  "exclude": ["node_modules"]
+  "extends": "../../packages/typescript-config/lit.json",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }
