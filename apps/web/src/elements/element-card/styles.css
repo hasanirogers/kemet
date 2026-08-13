@@ -15,6 +15,7 @@ span {
 
 h2 {
   color: var(--sl-color-white);
+  font-family: "Finger Paint", "Georgia", serif;
   letter-spacing: 0.05em;
   margin: 0;
   padding: 0;

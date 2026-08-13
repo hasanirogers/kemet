@@ -23,7 +23,7 @@ export class WebElementCard extends LitElement {
 
   render() {
     return html`
-      <a href=${`elements/${this.name}`}>
+      <a href=${`elements/${this.name.replace('kemet-', '')}`}>
         <h2>${this.title}</h2>
         <code>&lt;${this.name}&gt;</code>
         <p>${this.summary}</p>
