@@ -54,9 +54,9 @@
 
       "button": {
         "primary": {
-          "base": { "value": "{color.brand.primary.base}", "type": "color" },
-          "disabled": { "value": "{color.brand.primary.light}", "type": "color" },
-          "active": { "value": "{color.brand.primary.dark}", "type": "color" }
+          "base": { "value": "{color.base.grey.900}", "type": "color" },
+          "disabled": { "value": "{color.base.grey.500}", "type": "color" },
+          "active": { "value": "{color.base.grey.800}", "type": "color" }
         },
 
         "secondary": {

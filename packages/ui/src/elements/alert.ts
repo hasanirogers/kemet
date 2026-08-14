@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { emitEvent } from '../utilities/events';
 import { stylesBase } from '../styles/elements/alert';
-import { EnumStatuses, TypeRoundedSizes, TypeStatus } from '../utilities/constants';
+import { EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
 
 export const overlayPositions = ['fixed', 'top-full', 'bottom-full', 'top-right', 'top-left', 'bottom-right', 'bottom-left'] as const;
 export enum EnumOverlayPositions {
@@ -64,7 +64,7 @@ export default class KemetAlert extends LitElement {
   closable: boolean = false;
 
   @property({ type: String, reflect: true })
-  status: TypeStatus = EnumStatuses.Standard;
+  status: TypeAppearance = EnumAppearances.Standard;
 
   @property({ type: String, reflect: true, attribute: 'border-status' })
   borderStatus!: string;

@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { FormSubmitController } from '../utilities/form-controller';
 import { emitEvent } from '../utilities/events';
-import { EnumAxis, EnumStatuses, TypeAxis, TypeStatus } from '../utilities/constants';
+import { EnumAxis, EnumAppearances, TypeAxis, TypeAppearance } from '../utilities/constants';
 import type KemetRadio from './radio';
 
 import { stylesRadios } from '../styles/elements/radio';
@@ -48,7 +48,7 @@ export default class KemetRadios extends LitElement {
   name: string = 'radios';
 
   @property({ type: String, reflect: true })
-  status: TypeStatus = EnumStatuses.Standard;
+  status: TypeAppearance = EnumAppearances.Standard;
 
   @property({ type: String })
   message!: string;
@@ -94,7 +94,7 @@ export default class KemetRadios extends LitElement {
       target.checked = true;
       target.setAttribute('aria-checked', 'true');
       this.value = target.value;
-      this.status = EnumStatuses.Standard;
+      this.status = EnumAppearances.Standard;
 
       emitEvent(this, 'kemet-change', this);
     }

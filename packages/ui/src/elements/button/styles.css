@@ -1,42 +1,57 @@
 :host {
-  --kemet-button-font-size: inherit;
-  --kemet-button-color: var(--kemet-color-font-inverse-base);
-  --kemet-button-width: auto;
-  --kemet-button-height: auto;
-  --kemet-button-border: 0;
-  --kemet-button-border-radius: 0;
-  --kemet-button-transition-speed: 300ms;
-  --kemet-button-background-color: var(--kemet-color-background-button-primary-base);
+  /* public */
   --kemet-button-hover-brightness: 1.25;
-  --kemet-button-gap: 0.5rem;
-  --kemet-button-padding: 1rem 1.25rem;
-  --kemet-button-hover-decoration: underline;
+  --kemet-button-active-brightness: 1.75;
   --kemet-button-circle-size: 50px;
+  --kemet-button-transition-speed: 300ms;
+  --kemet-button-gap: 0.5rem;
   --kemet-button-border-width: 1.5px;
   --kemet-button-border-style: solid;
-  --kemet-button-border-color: var(--kemet-color-background-button-primary-base);
+
+  /* private */
+  --_kemet-button-brightness: 1;
+  --_kemet-button-font-size: inherit;
+  --_kemet-button-width: auto;
+  --_kemet-button-height: auto;
+  --_kemet-button-padding: 1rem 1.25rem;
+  --_kemet-button-font-color: var(--kemet-color-font-inverse-base);
+  --_kemet-button-border: 0;
+  --_kemet-button-border-radius: 0;
+  --_kemet-button-background-color: var(--kemet-color-background-button-primary-base);
+  --_kemet-button-hover-decoration: underline;
+  --_kemet-button-border-color: var(--kemet-color-background-button-primary-base);
 
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--kemet-button-font-size);
-  color: var(--kemet-button-color);
-  width: var(--kemet-button-width);
-  height: var(--kemet-button-height);
-  border: var(--kemet-button-border);
-  border-radius: var(--kemet-button-border-radius);
+  font-size: var(--_kemet-button-font-size);
+  color: var(--_kemet-button-font-color);
+  width: var(--_kemet-button-width);
+  height: var(--_kemet-button-height);
+  border: var(--_kemet-button-border);
+  border-radius: var(--_kemet-button-border-radius);
+  filter: brightness(var(--_kemet-button-brightness));
   transition: filter var(--kemet-button-transition-speed) ease;
-  background-color: var(--kemet-button-background-color);
+  background-color: var(--_kemet-button-background-color);
 }
 
 :host(:hover:not([disabled])) {
-  filter: brightness(var(--kemet-button-hover-brightness));
+  --_kemet-button-brightness: var(--kemet-button-hover-brightness);
+}
+
+:host(:active:not([disabled])) {
+  --_kemet-button-brightness: var(--kemet-button-active-brightness);
 }
 
 :host([disabled]) {
-  --kemet-button-color: var(--kemet-color-font-disabled);
-  --kemet-button-background-color: var(--kemet-color-background-disabled);
+  --_kemet-button-font-color: var(--kemet-color-font-disabled);
+  --_kemet-button-background-color: var(--kemet-color-background-disabled);
+}
+
+:host([polarity=dark]) {
+  --_kemet-button-font-color: var(--kemet-color-font-base);
+  --_kemet-button-background-color: var(--kemet-color-background-base);
 }
 
 .button {
@@ -49,7 +64,7 @@
   color: inherit;
   font-size: inherit;
   width: 100%;
-  padding: var(--kemet-button-padding);
+  padding: var(--_kemet-button-padding);
   border: 0;
   background: none;
 }
@@ -59,68 +74,96 @@
 }
 
 :host([variant=text]) {
-  --kemet-button-color: var(--kemet-color-font-base);
-  --kemet-button-background-color: none;
+  --_kemet-button-font-color: var(--kemet-color-font-base);
+  --_kemet-button-background-color: none;
 }
 
 :host([variant=text]:hover) {
-  text-decoration: var(--kemet-button-hover-decoration);
+  text-decoration: var(--_kemet-button-hover-decoration);
+}
+
+:host([appearance]) {
+  --_kemet-button-font-color: var(--kemet-color-font-inverse-base);
+}
+
+:host([appearance=brand]) {
+  --_kemet-button-background-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=success]) {
+  --_kemet-button-background-color: var(--kemet-color-background-success);
+}
+
+:host([appearance=warning]) {
+  --_kemet-button-background-color: var(--kemet-color-background-warning);
+}
+
+:host([appearance=error]) {
+  --_kemet-button-background-color: var(--kemet-color-background-error);
+}
+
+:host([appearance=info]) {
+  --_kemet-button-background-color: var(--kemet-color-background-info);
+}
+
+:host([appearance=link]) {
+  --_kemet-button-background-color: var(--kemet-color-background-link);
 }
 
 :host([rounded]) {
-  --kemet-button-border-radius: var(--kemet-border-radius-md);
+  --_kemet-button-border-radius: var(--kemet-border-radius-md);
 }
 
 :host([rounded=sm]) {
-  --kemet-button-border-radius: var(--kemet-border-radius-sm);
+  --_kemet-button-border-radius: var(--kemet-border-radius-sm);
 }
 
 :host([rounded=lg]) {
-  --kemet-button-border-radius: var(--kemet-border-radius-lg);
+  --_kemet-button-border-radius: var(--kemet-border-radius-lg);
 }
 
 :host([rounded=xl]) {
-  --kemet-button-border-radius: var(--kemet-border-radius-xl);
+  --_kemet-button-border-radius: var(--kemet-border-radius-xl);
 }
 
 :host([rounded=circle]) {
-  --kemet-button-border-radius: var(--kemet-border-radius-circle);
-  --kemet-button-width: var(--kemet-button-circle-size);
-  --kemet-button-height: var(--kemet-button-circle-size);
+  --_kemet-button-border-radius: var(--kemet-border-radius-circle);
+  --_kemet-button-width: var(--kemet-button-circle-size);
+  --_kemet-button-height: var(--kemet-button-circle-size);
 }
 
 :host([rounded=pill]) {
-  --kemet-button-border-radius: var(--kemet-border-radius-pill);
+  --_kemet-button-border-radius: var(--kemet-border-radius-pill);
 }
 
 :host([variant=outlined]) {
-  --kemet-button-color: var(--kemet-color-background-button-primary-base);
-  --kemet-button-background-color: transparent;
-  --kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--kemet-button-border-color);
+  --_kemet-button-font-color: var(--kemet-color-background-button-primary-base);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
 }
 
 :host([variant=edge]) {
-  --kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) rgba(255, 255, 255, 0.25);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) rgba(255, 255, 255, 0.25);
 }
 
 :host([variant=plain]) {
-  --kemet-button-color: var(--kemet-color-font-base);
-  --kemet-button-padding: 0;
-  --kemet-button-border: none;
-  --kemet-button-background-color: transparent;
+  --_kemet-button-font-color: var(--kemet-color-font-base);
+  --_kemet-button-padding: 0;
+  --_kemet-button-border: none;
+  --_kemet-button-background-color: transparent;
 }
 
 :host([icon-left]) {
-  --kemet-button-padding: 1rem 1.25rem 1rem .75rem;
+  --_kemet-button-padding: 1rem 1.25rem 1rem .75rem;
 }
 
 :host([icon-right]) {
-  --kemet-button-padding:  1rem .75rem 1rem 1.25rem;
+  --_kemet-button-padding:  1rem .75rem 1rem 1.25rem;
 }
 
 
 ::slotted([slot="loader"]) {
-  --kemet-loader-color: var(--kemet-button-color);
+  --kemet-loader-color: var(--_kemet-button-font-color);
   position: absolute;
   top: 50%;
   left: 50%;

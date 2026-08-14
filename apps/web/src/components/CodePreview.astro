@@ -1,0 +1,17 @@
+---
+interface Props {
+  code: string;
+  language?: string;
+}
+
+const { code, language = 'html' } = Astro.props;
+---
+
+<web-code language={language} code={code}></web-code>
+
+<script type="module">
+  import '../elements/code';
+  // UI
+  import '../../../../packages/tokens/dist/css/_variables.css';
+  import '../../../../packages/ui/src/elements/button/index.js';
+</script>

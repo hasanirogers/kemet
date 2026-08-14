@@ -1,0 +1,22 @@
+---
+title: Button
+description: A button component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+
+Buttons are used to trigger actions or navigate to other pages.
+
+<CodePreview code="<kemet-button>Button</kemet-button>" language="html" />
+
+
+## Variant
+
+Use the `variant` attribute to change the button's style.
+
+<CodePreview code='<kemet-button variant="outlined">Outlined Button</kemet-button>' language="html" />

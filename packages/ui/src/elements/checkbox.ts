@@ -5,7 +5,7 @@ import { live } from 'lit/directives/live.js';
 import { FormSubmitController } from '../utilities/form-controller';
 import { emitEvent } from '../utilities/events';
 import { stylesBase } from '../styles/elements/checkbox';
-import { TypeStatus, EnumStatuses } from '../utilities/constants';
+import { TypeAppearance, EnumAppearances } from '../utilities/constants';
 
 /**
  * @since 1.0.0
@@ -82,7 +82,7 @@ export default class KemetCheckbox extends LitElement {
   filled: boolean = false;
 
   @property({ type: String, reflect: true })
-  status: TypeStatus = EnumStatuses.Standard;
+  status: TypeAppearance = EnumAppearances.Standard;
 
   @property({ type: String })
   message: string = '';
@@ -153,12 +153,12 @@ export default class KemetCheckbox extends LitElement {
     this.value = this.checked;
 
     if (this.input.checkValidity()) {
-      this.status = EnumStatuses.Standard;
+      this.status = EnumAppearances.Standard;
     }
   }
 
   makeMessage() {
-    if (this.status === EnumStatuses.Error || this.status === EnumStatuses.Warning) {
+    if (this.status === EnumAppearances.Error || this.status === EnumAppearances.Warning) {
       return html`<span part="message">${this.message}</span>`;
     }
 

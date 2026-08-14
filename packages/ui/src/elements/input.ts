@@ -7,7 +7,7 @@ import { emitEvent } from '../utilities/events';
 import KemetField from '../elements/field';
 import KemetCount from './count';
 import { stylesBase } from '../styles/elements/input';
-import { EnumStatuses, TypeRoundedSizes, TypeStatus } from '../utilities/constants';
+import { EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
 
 export const inputTypes = ['text', 'color', 'date', 'datetime-local', 'email', 'password', 'hidden', 'month', 'number', 'reset', 'search', 'tel', 'time', 'url', 'week'] as const;
 export enum EnumInputTypes {
@@ -202,7 +202,7 @@ export default class KemetInput extends LitElement {
   invalid?: boolean;
 
   @property({ type: String, reflect: true })
-  status: TypeStatus = EnumStatuses.Standard;
+  status: TypeAppearance = EnumAppearances.Standard;
 
   @property({ type: Boolean, attribute: 'validate-on-blur' })
   validateOnBlur: boolean = false;
@@ -368,13 +368,13 @@ export default class KemetInput extends LitElement {
   handleChange(event: Event) {
     this.value = this.input.value;
 
-    if (this.input.checkValidity() && this.checkLimitValidity() && this.status !== EnumStatuses.Success) {
+    if (this.input.checkValidity() && this.checkLimitValidity() && this.status !== EnumAppearances.Success) {
       this.invalid = false;
-      this.status = EnumStatuses.Standard;
+      this.status = EnumAppearances.Standard;
       this.validity = this.input.validity;
 
       emitEvent(this, 'kemet-status-change', {
-        status: EnumStatuses.Standard,
+        status: EnumAppearances.Standard,
         validity: this.input.validity,
         element: this,
         value: (event.target as HTMLInputElement).value,
@@ -405,10 +405,10 @@ export default class KemetInput extends LitElement {
 
     if (this.validateOnBlur) {
       this.invalid = true;
-      this.status = EnumStatuses.Error;
+      this.status = EnumAppearances.Error;
 
       emitEvent(this, 'kemet-status-change', {
-        status: EnumStatuses.Error,
+        status: EnumAppearances.Error,
         validity: this.input?.validity,
         element: this,
         value: (event.target as HTMLInputElement).value,

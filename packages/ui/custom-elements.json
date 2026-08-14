@@ -429,7 +429,7 @@
               "kind": "field",
               "name": "status",
               "type": {
-                "text": "TypeStatus"
+                "text": "TypeAppearance"
               },
               "attribute": "status",
               "reflects": true
@@ -541,7 +541,7 @@
             {
               "name": "status",
               "type": {
-                "text": "TypeStatus"
+                "text": "TypeAppearance"
               },
               "fieldName": "status"
             },
@@ -4287,120 +4287,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/icon-lucide.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetIconLucide",
-          "members": [
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'code'",
-              "description": "The name of the icon to display",
-              "attribute": "icon"
-            },
-            {
-              "kind": "field",
-              "name": "version",
-              "type": {
-                "text": "string"
-              },
-              "default": "'latest'",
-              "description": "The version of Lucide to use",
-              "attribute": "version"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "24",
-              "description": "The size of the icon",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "svg",
-              "type": {
-                "text": "SVGElement | null"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_initLucide",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "Promise<void>"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'code'",
-              "description": "The name of the icon to display",
-              "fieldName": "icon"
-            },
-            {
-              "name": "version",
-              "type": {
-                "text": "string"
-              },
-              "default": "'latest'",
-              "description": "The version of Lucide to use",
-              "fieldName": "version"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "24",
-              "description": "The size of the icon",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-icon-lucide",
-          "customElement": true,
-          "summary": "A versatile button that can be used either to submit a form, trigger an action, or link to content."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetIconLucide",
-            "module": "src/elements/icon-lucide.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-icon-lucide",
-          "declaration": {
-            "name": "KemetIconLucide",
-            "module": "src/elements/icon-lucide.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/input.ts",
       "declarations": [
         {
@@ -6469,7 +6355,7 @@
               "kind": "field",
               "name": "status",
               "type": {
-                "text": "TypeStatus"
+                "text": "TypeAppearance"
               }
             },
             {
@@ -12506,26 +12392,57 @@
               "reflects": true
             },
             {
-              "kind": "method",
-              "name": "handleLeftChange"
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "TypeAppearance"
+              },
+              "default": "'neutral'",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "internalButton",
+              "type": {
+                "text": "HTMLButtonElement"
+              }
             },
             {
               "kind": "method",
-              "name": "handleRightChange"
+              "name": "handleLeftChange",
+              "privacy": "private"
             },
             {
               "kind": "method",
-              "name": "handleIconButtonChange"
+              "name": "handleRightChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleIconButtonChange",
+              "privacy": "private"
             },
             {
               "kind": "method",
               "name": "makeLightDOMButton",
-              "description": "Creates a button element in the light DOM for form submission",
               "privacy": "private"
             },
             {
               "kind": "method",
               "name": "handleClick",
+              "privacy": "private",
               "parameters": [
                 {
                   "name": "event",
@@ -12533,9 +12450,14 @@
                     "text": "PointerEvent"
                   }
                 }
-              ],
-              "description": "Handles click behavior",
-              "privacy": "private"
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "click",
+              "description": "Triggers a click event on the button element.",
+              "privacy": "public",
+              "summary": "Triggers a click event on the button element."
             },
             {
               "type": {
@@ -12641,6 +12563,23 @@
               },
               "default": "false",
               "fieldName": "loading"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "TypeAppearance"
+              },
+              "default": "'neutral'",
+              "fieldName": "appearance"
             }
           ],
           "superclass": {
@@ -12667,117 +12606,6 @@
           "declaration": {
             "name": "KemetButton",
             "module": "src/elements/button/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/loader/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetLoader",
-          "cssProperties": [
-            {
-              "description": "The color of the loader.",
-              "name": "--kemet-loader-color"
-            },
-            {
-              "description": "The thickness of the loader.",
-              "name": "--kemet-loader-thickness"
-            },
-            {
-              "description": "The size of the dots in the loader.",
-              "name": "--kemet-loader-dot-size"
-            },
-            {
-              "description": "The size of the loader.",
-              "name": "--kemet-loader-size"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The main loader container",
-              "name": "loader"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "string"
-              },
-              "description": "The style of loader to display",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "48",
-              "description": "How large to make the loader.",
-              "attribute": "size"
-            },
-            {
-              "kind": "method",
-              "name": "makeLoader"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the loader is mounted to the DOM",
-              "name": "kemet-loader-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "string"
-              },
-              "description": "The style of loader to display",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "48",
-              "description": "How large to make the loader.",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-loader",
-          "customElement": true,
-          "summary": "Displays animations for a loading state."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KemetLoader",
-          "declaration": {
-            "name": "KemetLoader",
-            "module": "src/elements/loader/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-loader",
-          "declaration": {
-            "name": "KemetLoader",
-            "module": "src/elements/loader/index.ts"
           }
         }
       ]
@@ -12930,7 +12758,124 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/loader/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetLoader",
+          "cssProperties": [
+            {
+              "description": "The color of the loader.",
+              "name": "--kemet-loader-color"
+            },
+            {
+              "description": "The thickness of the loader.",
+              "name": "--kemet-loader-thickness"
+            },
+            {
+              "description": "The size of the dots in the loader.",
+              "name": "--kemet-loader-dot-size"
+            },
+            {
+              "description": "The size of the loader.",
+              "name": "--kemet-loader-size"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The main loader container",
+              "name": "loader"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "attribute": "size"
+            },
+            {
+              "kind": "method",
+              "name": "makeLoader"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the loader is mounted to the DOM",
+              "name": "kemet-loader-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-loader",
+          "customElement": true,
+          "summary": "Displays animations for a loading state."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KemetLoader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-loader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/button/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/icon/styles.css",
       "declarations": [],
       "exports": []
     },

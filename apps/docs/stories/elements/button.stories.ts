@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import { EnumVariants } from '../../../../packages/ui/src/elements/button';
-import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
+import { EnumAppearances, EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/button';
 
@@ -12,7 +12,6 @@ import '../../../../packages/ui/src/elements/tab-panel';
 
 import '../../../../packages/ui/src/elements/icon';
 import '../../../../packages/ui/src/elements/loader';
-
 
 
 const meta: Meta = {
@@ -28,6 +27,10 @@ const meta: Meta = {
       control: { type: 'select' },
       options: roundedSizes,
     },
+    appearance: {
+      control: { type: 'select' },
+      options: Object.values(EnumAppearances),
+    },
   }
 };
 export default meta;
@@ -35,10 +38,11 @@ export default meta;
 type Story = StoryObj;
 
 const Template = (args: Args) => html`
-  <kemet-button 
-    variant="${ifDefined(args.variant)}" 
-    ?disabled=${args.disabled} 
-    href=${ifDefined(args.href !== '' ? args.href : undefined)} 
+  <kemet-button
+    variant="${ifDefined(args.variant)}"
+    appearance="${ifDefined(args.appearance)}"
+    ?disabled=${args.disabled}
+    href=${ifDefined(args.href !== '' ? args.href : undefined)}
     rounded=${ifDefined(args.rounded)}
     loading=${ifDefined(args.loading)}
   >
@@ -57,12 +61,6 @@ export const Standard: Story = {
   }
 };
 
-export const Text: Story = {
-  args: {
-    variant: EnumVariants.TEXT,
-  },
-};
-
 export const IconButton: Story = {
   render: args => Template(args),
   args: {
@@ -70,24 +68,58 @@ export const IconButton: Story = {
   },
 };
 
-export const Rounded: Story = {
+export const RoundedMedium: Story = {
   render: args => Template(args),
   args: {
     rounded: EnumRoundedSizes.MD,
   },
 };
 
-export const Pill: Story = {
+export const RoundedPill: Story = {
   render: args => Template(args),
   args: {
     rounded: EnumRoundedSizes.PILL,
   },
 };
 
-export const Outlined: Story = {
+export const VariantText: Story = {
+  args: {
+    variant: EnumVariants.TEXT,
+  },
+};
+
+export const VariantOutlined: Story = {
   render: args => Template(args),
   args: {
     variant: EnumVariants.OUTLINED,
+  },
+};
+
+export const VariantEdge: Story = {
+  render: args => Template(args),
+  args: {
+    variant: EnumVariants.EDGE,
+  },
+};
+
+export const VariantPlain: Story = {
+  render: args => Template(args),
+  args: {
+    variant: EnumVariants.PLAIN,
+  },
+};
+
+export const AppearanceBrand: Story = {
+  render: args => Template(args),
+  args: {
+    appearance: EnumAppearances.Brand,
+  },
+};
+
+export const AppearanceInfo: Story = {
+  render: args => Template(args),
+  args: {
+    appearance: EnumAppearances.Info,
   },
 };
 
@@ -104,20 +136,6 @@ export const OutlinedPill: Story = {
   args: {
     variant: EnumVariants.OUTLINED,
     rounded: EnumRoundedSizes.PILL,
-  },
-};
-
-export const Edge: Story = {
-  render: args => Template(args),
-  args: {
-    variant: EnumVariants.EDGE,
-  },
-};
-
-export const Plain: Story = {
-  render: args => Template(args),
-  args: {
-    variant: EnumVariants.PLAIN,
   },
 };
 

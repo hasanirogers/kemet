@@ -4,7 +4,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { FormSubmitController } from '../utilities/form-controller';
 import KemetField from './field';
-import { EnumStatuses, TypeRoundedSizes, TypeStatus } from '../utilities/constants';
+import { EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
 import { stylesTextarea } from '../styles/elements/textarea';
 
 
@@ -94,7 +94,7 @@ export default class KemetTextarea extends LitElement {
   invalid?: boolean;
 
   @property({ type: String, reflect: true })
-  status: TypeStatus = EnumStatuses.Standard;
+  status: TypeAppearance = EnumAppearances.Standard;
 
   @property({ type: Number })
   rows: number = 4;
@@ -219,7 +219,7 @@ export default class KemetTextarea extends LitElement {
 
     if (this.textarea.checkValidity() && this.checkLimitValidity()) {
       this.invalid = false;
-      this.status = EnumStatuses.Standard;
+      this.status = EnumAppearances.Standard;
       this.validity = this.textarea.validity;
 
       /**
@@ -267,7 +267,7 @@ export default class KemetTextarea extends LitElement {
 
     if (this.validateOnBlur) {
       this.invalid = true;
-      this.status = EnumStatuses.Error;
+      this.status = EnumAppearances.Error;
 
       /**
        * Fires when there's a change in status

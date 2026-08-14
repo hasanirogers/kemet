@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { stylesBase } from '../styles/elements/badge';
-import { EnumRoundedSizes, EnumStatuses, TypeRoundedSizes, TypeStatus } from '../utilities/constants';
+import { EnumRoundedSizes, EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
 
 
 /**
@@ -25,7 +25,7 @@ export default class KemetBadge extends LitElement {
   static styles = [stylesBase];
 
   @property({ reflect: true })
-  status: TypeStatus = EnumStatuses.Primary;
+  status: TypeAppearance = EnumAppearances.Primary;
 
   @property({ type: Number, attribute: 'circle-padding' })
   circlePadding: number = 0;

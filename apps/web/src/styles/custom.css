@@ -80,4 +80,20 @@
   .sidebar-content {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
+
+  :root[data-theme="light"] {
+    --sl-color-hairline: rgba(0, 0, 0, 0.1);
+    --sl-color-hairline-shade: rgba(0, 0, 0, 0.1);
+
+    body {
+      &::before {
+        filter: invert(1);
+      }
+
+      &::after {
+        opacity: 0.92;
+        background: white;
+      }
+    }
+  }
 }

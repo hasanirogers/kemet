@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { TypeRoundedSizes } from '../../utilities/constants';
+import type { TypeRoundedSizes, TypeAppearance } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css?inline';
 
@@ -39,29 +39,21 @@ export enum EnumTypes {
  * @prop {TypeTargets} target - The target attribute for a link
  * @prop {TypeTypes} type - The type attribute for a button
  * @prop {TypeRoundedSizes} rounded - The border radius of the button
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {boolean} active - Determines if the button is in an active state
  *
  * @slot left - Allows you to place an icon to the left of the button text.
  * @slot right - Allows you to place an icon to the right of the button text.
  *
  * @csspart button - The button or anchor element.
  *
- * @cssproperty --kemet-button-font-size - The font size.
- * @cssproperty --kemet-button-color - The text color.
- * @cssproperty --kemet-button-width - The width.
- * @cssproperty --kemet-button-height - The height.
- * @cssproperty --kemet-button-border - The border.
- * @cssproperty --kemet-button-border-radius - The border radius.
- * @cssproperty --kemet-button-transition-speed - The transition speed of the hover effect.
- * @cssproperty --kemet-button-background-color - The background color.
- * @cssproperty --kemet-button-hover-brightness - The brightness of the hover effect.
- * @cssproperty --kemet-button-gap - The gap between the button and icons.
- * @cssproperty --kemet-button-padding - The button padding.
- * @cssproperty --kemet-button-hover-decoration - The decoration for a text button's hover.
+ * @cssproperty --kemet-button-hover-brightness - The brightness of the hover state.
+ * @cssproperty --kemet-button-active-brightness - The brightness of the active state.
  * @cssproperty --kemet-button-circle-size - The diameter of a circle button.
- * @cssproperty --kemet-button-rounded-amount - The border radius of the rounded button.
+ * @cssproperty --kemet-button-transition-speed - The transition speed of the hover effect.
+ * @cssproperty --kemet-button-gap - The gap between the button and icons.
  * @cssproperty --kemet-button-border-width - The width of the outline border.
  * @cssproperty --kemet-button-border-style - The style of the outline border.
- * @cssproperty --kemet-button-border-color - The color of the outline border.
  *
  * @fires kemet-button-mounted - Fired when the button is mounted to the DOM
  * @detail {HTMLElement} element - The button element
@@ -104,6 +96,14 @@ export default class KemetButton extends LitElement {
   @property({ type: Boolean, reflect: true })
   loading: boolean = false;
 
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  appearance: TypeAppearance = 'neutral';
+
+  @query('button')
+  internalButton!: HTMLButtonElement;
 
   firstUpdated() {
     emitEvent(this, 'kemet-button-mounted', {
@@ -154,26 +154,22 @@ export default class KemetButton extends LitElement {
     `;
   }
 
-  handleLeftChange() {
+  private handleLeftChange() {
     const left = this.querySelector('[slot="left"]');
     if (left) this.iconLeft = true;
   }
 
-  handleRightChange() {
+  private handleRightChange() {
     const right = this.querySelector('[slot="right"]');
     if (right) this.iconRight = true;
   }
 
-  handleIconButtonChange() {
+  private handleIconButtonChange() {
     const iconButton = this.querySelector('[slot="icon-button"]');
     if (iconButton) this.iconButton = true;
   }
 
-  /**
-   * Creates a button element in the light DOM for form submission
-   * @private
-   */
-  makeLightDOMButton() {
+  private makeLightDOMButton() {
     const button = document.createElement('button');
 
     for (const attribute of this.attributes) {
@@ -192,11 +188,7 @@ export default class KemetButton extends LitElement {
     return button;
   }
 
-  /**
-   * Handles click behavior
-   * @private
-   */
-  handleClick(event: PointerEvent) {
+  private handleClick(event: PointerEvent) {
     if (this.disabled || this.loading) {
       event?.preventDefault();
       return;
@@ -213,6 +205,29 @@ export default class KemetButton extends LitElement {
     form.appendChild(lightDOMButton);
     lightDOMButton.click();
     lightDOMButton.remove();
+  }
+
+
+  /**
+   * Triggers a click event on the button element.
+   * @public
+   */
+  click() {
+    if (!this.internalButton) {
+      return;
+    }
+    this.internalButton.click();
+  }
+
+  /**
+   * Triggers a blur on the button element.
+   * @public
+   */
+  blur() {
+    if (!this.internalButton) {
+      return;
+    }
+    this.internalButton.blur();
   }
 }
 

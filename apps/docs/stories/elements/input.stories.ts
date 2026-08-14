@@ -9,7 +9,7 @@ import '../../../../packages/ui/src/elements/tab';
 import '../../../../packages/ui/src/elements/tab-panel';
 
 import '../../../../packages/ui/src/elements/icon-bootstrap';
-import { EnumRoundedSizes, roundedSizes, statuses } from '../../../../packages/ui/src/utilities/constants';
+import { EnumRoundedSizes, roundedSizes, appearances } from '../../../../packages/ui/src/utilities/constants';
 import { inputModes, inputTypes } from '../../../../packages/ui/src/elements/input';
 
 const meta: Meta = {
@@ -24,7 +24,7 @@ const meta: Meta = {
     },
     status: {
       control: { type: 'radio' },
-      options: statuses,
+      options: appearances,
     },
     autocomplete: {
       control: { type: 'radio' },

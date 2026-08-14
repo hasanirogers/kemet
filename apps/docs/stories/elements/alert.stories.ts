@@ -3,7 +3,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import { userEvent, within, expect } from 'storybook/test';
 import KemetAlert, { EnumOverlayPositions, overlayPositions } from '../../../../packages/ui/src/elements/alert';
-import { directions, EnumStatuses, statuses, EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
+import { directions, EnumAppearances, appearances, EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/alert';
 
@@ -24,7 +24,7 @@ const meta: Meta = {
   argTypes: {
     status: {
       control: { type: 'select' },
-      options: statuses,
+      options: appearances,
     },
     border: {
       control: { type: 'select' },
@@ -137,28 +137,28 @@ export const BorderLeft: Story = {
 export const Primary: Story = {
   args: {
     border: 'left',
-    status: EnumStatuses.Primary,
+    status: EnumAppearances.Primary,
   },
 };
 
 export const Success: Story = {
   args: {
     border: 'left',
-    status: EnumStatuses.Success,
+    status: EnumAppearances.Success,
   },
 };
 
 export const Warning: Story = {
   args: {
     border: 'left',
-    status: EnumStatuses.Warning,
+    status: EnumAppearances.Warning,
   },
 };
 
 export const Error: Story = {
   args: {
     border: 'left',
-    status: EnumStatuses.Error,
+    status: EnumAppearances.Error,
   },
 };
 

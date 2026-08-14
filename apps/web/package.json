@@ -12,6 +12,11 @@
   "dependencies": {
     "@astrojs/starlight": "^0.41.7",
     "astro": "^7.1.6",
+    "highlight.js": "^11.12.0",
+    "js-beautify": "^2.0.3",
     "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@types/js-beautify": "^1.14.3"
   }
 }

@@ -5,7 +5,7 @@ import {
 import { live } from 'lit/directives/live.js';
 import { stylesBase } from '../styles/elements/multi-input';
 import { emitEvent } from '../utilities/events';
-import { EnumKeyCodes as EnumKeys, EnumStatuses, TypeRoundedSizes, TypeStatus } from '../utilities/constants';
+import { EnumKeyCodes as EnumKeys, EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
 import KemetField from './field';
 import KemetCombo from './combo';
 
@@ -85,7 +85,7 @@ export default class KemetMultiInput extends LitElement {
   name: string = 'input';
 
   @property({ reflect: true })
-  status: TypeStatus = EnumStatuses.Standard;
+  status: TypeAppearance = EnumAppearances.Standard;
 
   @property({ type: Boolean })
   required: boolean = false;
@@ -164,7 +164,7 @@ export default class KemetMultiInput extends LitElement {
 
   addComboItem(event: Event) {
     this.value = '';
-    this.status = EnumStatuses.Standard;
+    this.status = EnumAppearances.Standard;
     const isPresent = this.selections.find(selection => selection.id === (event as CustomEvent).detail.id);
     if (!isPresent) this.selections = [...this.selections, (event as CustomEvent).detail];
   }
@@ -207,7 +207,7 @@ export default class KemetMultiInput extends LitElement {
   }
 
   handleInvalid(event: Event) {
-    this.status = EnumStatuses.Error;
+    this.status = EnumAppearances.Error;
     emitEvent(this, 'kemet-invalid', {
       element: this,
       validity: this.input.validity,

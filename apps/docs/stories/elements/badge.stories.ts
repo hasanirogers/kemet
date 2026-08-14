@@ -10,7 +10,7 @@ import '../../../../packages/ui/src/elements/tab';
 import '../../../../packages/ui/src/elements/tab-panel';
 
 import '../../../../packages/ui/src/elements/icon-bootstrap';
-import { EnumRoundedSizes, EnumStatuses, roundedSizes, statuses } from '../../../../packages/ui/src/utilities/constants';
+import { EnumRoundedSizes, EnumAppearances, roundedSizes, appearances } from '../../../../packages/ui/src/utilities/constants';
 
 const meta: Meta = {
   title: 'Feedback & Status / Badge',
@@ -19,7 +19,7 @@ const meta: Meta = {
   argTypes: {
     status: {
       control: { type: 'select' },
-      options: statuses,
+      options: appearances,
     },
     rounded: {
       control: { type: 'select' },
@@ -80,18 +80,18 @@ export const Outlined: Story = {
 
 export const Success: Story = {
   args: {
-    status: EnumStatuses.Success,
+    status: EnumAppearances.Success,
   },
 };
 
 export const Warning: Story = {
   args: {
-    status: EnumStatuses.Warning,
+    status: EnumAppearances.Warning,
   },
 };
 
 export const Error: Story = {
   args: {
-    status: EnumStatuses.Error,
+    status: EnumAppearances.Error,
   },
 };

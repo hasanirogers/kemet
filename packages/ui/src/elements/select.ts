@@ -7,7 +7,7 @@ import { stylesSelect } from '../styles/elements/select';
 import type KemetOption from './option';
 import './icon-bootstrap';
 import KemetField from './field';
-import { EnumStatuses, TypeRoundedSizes } from '../utilities/constants';
+import { EnumAppearances, TypeRoundedSizes } from '../utilities/constants';
 
 /**
  * @since 1.0.0
@@ -214,11 +214,11 @@ export default class KemetSelect extends LitElement {
 
     if (!this.select.checkValidity()) {
       this.invalid = true;
-      this.status = EnumStatuses.Error;
-      this.control.status = EnumStatuses.Error;
+      this.status = EnumAppearances.Error;
+      this.control.status = EnumAppearances.Error;
 
       emitEvent(this, 'kemet-status-change', {
-        status: EnumStatuses.Error,
+        status: EnumAppearances.Error,
         validity: this.select.validity,
         element: this,
       });
@@ -240,10 +240,10 @@ export default class KemetSelect extends LitElement {
 
     if (this.select.checkValidity()) {
       this.invalid = false;
-      this.status = EnumStatuses.Standard;
+      this.status = EnumAppearances.Standard;
 
       emitEvent(this, 'kemet-status-change', {
-        status: EnumStatuses.Standard,
+        status: EnumAppearances.Standard,
         validity: this.select.validity,
         element: this,
         value: (event.target as HTMLSelectElement).value,
@@ -257,10 +257,10 @@ export default class KemetSelect extends LitElement {
    */
   handleInvalid() {
     this.invalid = true;
-    this.status = EnumStatuses.Error;
+    this.status = EnumAppearances.Error;
 
     emitEvent(this, 'kemet-status-change', {
-      status: EnumStatuses.Error,
+      status: EnumAppearances.Error,
       validity: this.select.validity,
       element: this,
     });
