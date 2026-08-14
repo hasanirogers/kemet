@@ -5,24 +5,32 @@ import { emitEvent } from '../../utilities/events';
 import styles from './styles.css?inline';
 
 export enum EnumVariants {
-  STANDARD = 'standard',
-  TEXT = 'text',
-  OUTLINED = 'outlined',
-  PLAIN = 'plain',
-  EDGE = 'edge',
+  Standard = 'standard',
+  Text = 'text',
+  Outlined = 'outlined',
+  Plain = 'plain',
+  Edge = 'edge',
 }
 
 export enum EnumTargets {
-  BLANK = '_blank',
-  SELF = '_self',
-  PARENT = '_parent',
-  TOP = '_top'
+  Blank = '_blank',
+  Self = '_self',
+  Parent = '_parent',
+  Top = '_top'
 }
 
 export enum EnumTypes {
-  BUTTON = 'button',
-  SUBMIT = 'submit',
-  RESET = 'reset'
+  Button = 'button',
+  Submit = 'submit',
+  Reset = 'reset'
+}
+
+export enum EnumSizes {
+  XSmall = 'xs',
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+  XLarge = 'xl'
 }
 
 /**
@@ -41,6 +49,8 @@ export enum EnumTypes {
  * @prop {TypeRoundedSizes} rounded - The border radius of the button
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
  * @prop {boolean} active - Determines if the button is in an active state
+ * @prop {EnumSizes} size - The size of the button
+ * @prop {EnumAppearance} appearance - The appearance of the button's color
  *
  * @slot left - Allows you to place an icon to the left of the button text.
  * @slot right - Allows you to place an icon to the right of the button text.
@@ -70,13 +80,13 @@ export default class KemetButton extends LitElement {
   disabled: boolean = false;
 
   @property({ reflect: true })
-  variant: EnumVariants = EnumVariants.STANDARD;
+  variant: EnumVariants = EnumVariants.Standard;
 
   @property()
-  target: EnumTargets = EnumTargets.SELF;
+  target: EnumTargets = EnumTargets.Self;
 
   @property()
-  type: EnumTypes = EnumTypes.BUTTON;
+  type: EnumTypes = EnumTypes.Button;
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';
@@ -101,6 +111,10 @@ export default class KemetButton extends LitElement {
 
   @property({ type: String, reflect: true })
   appearance!: TypeAppearance;
+
+  @property({ type: String, reflect: true })
+  size!: EnumSizes;
+
 
   @query('button')
   internalButton!: HTMLButtonElement;
@@ -196,7 +210,7 @@ export default class KemetButton extends LitElement {
 
     const form = this.closest('form');
 
-    if (!form || (this.type !== EnumTypes.SUBMIT && this.type !== EnumTypes.RESET)) {
+    if (!form || (this.type !== EnumTypes.Submit && this.type !== EnumTypes.Reset)) {
       return;
     }
 

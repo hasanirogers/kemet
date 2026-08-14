@@ -234,6 +234,26 @@
   --_kemet-button-background-color: transparent;
 }
 
+:host([size=xs]) {
+  --_kemet-button-font-size: 0.8rem;
+  --_kemet-button-padding: 0.5rem 0.75rem;
+}
+
+:host([size=sm]) {
+  --_kemet-button-font-size: 0.9rem;
+  --_kemet-button-padding: 0.75rem 1rem;
+}
+
+:host([size=lg]) {
+  --_kemet-button-font-size: 1.1rem;
+  --_kemet-button-padding: 1.25rem 1.5rem;
+}
+
+:host([size=xl]) {
+  --_kemet-button-font-size: 1.2rem;
+  --_kemet-button-padding: 1.5rem 2rem;
+}
+
 :host([icon-left]) {
   --_kemet-button-padding: 1rem 1.25rem 1rem .75rem;
 }
