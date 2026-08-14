@@ -28,7 +28,7 @@ export class WebCode extends LitElement {
   showCode = false;
 
   @state()
-  polarity: 'light' | 'dark' = 'dark';
+  polarity: 'light' | 'dark' = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 
   private prettifyCode(code: string): string {
     try {

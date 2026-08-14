@@ -2,33 +2,34 @@ import { setCustomElementsManifest, Preview } from '@storybook/web-components-vi
 import prettier from 'prettier/standalone';
 import * as html from 'prettier/plugins/html';
 
-import { handlePolaritySwitching, globalFormatting } from './decorators';
+import {  handleThemeSwitching, globalFormatting } from './decorators';
 import customElements from 'kemet-ui/custom-elements.json';
 
 // import 'kemet-ui/styles/kemet.base.scss';
 // import 'kemet-ui/styles/kemet.core.scss';
 import '../../../packages/tokens/dist/css/_variables.css';
+import './ausar.scss';
 import './storybook.scss';
 
 setCustomElementsManifest(customElements);
 
 const preview: Preview = {
   globalTypes: {
-    polarity: {
-      name: 'Polarity',
-      description: 'Global polarity for components',
-      defaultValue: 'light',
+    theme: {
+      name: 'Theme',
+      description: 'Global theme for components',
+      defaultValue: 'auset',
       toolbar: {
         icon: 'circlehollow',
         // Array of plain string values or MenuItem shape (see below)
-        items: ['light', 'dark'],
+        items: ['auset', 'ausar'],
         // Change title based on selected value
         dynamicTitle: true,
       },
     },
   },
 
-  decorators: [globalFormatting, handlePolaritySwitching],
+  decorators: [globalFormatting, handleThemeSwitching],
 
   parameters: {
     layout: 'centered',
