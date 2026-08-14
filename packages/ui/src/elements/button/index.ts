@@ -100,7 +100,7 @@ export default class KemetButton extends LitElement {
   polarity: 'light' | 'dark' = 'light';
 
   @property({ type: String, reflect: true })
-  appearance: TypeAppearance = 'neutral';
+  appearance!: TypeAppearance;
 
   @query('button')
   internalButton!: HTMLButtonElement;

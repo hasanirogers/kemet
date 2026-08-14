@@ -19,6 +19,10 @@ const meta: Meta = {
   component: 'kemet-button',
   render: args => Template(args),
   argTypes: {
+    polarity: {
+      control: { type: 'radio' },
+      options: ['light', 'dark'],
+    },
     variant: {
       control: { type: 'select' },
       options: Object.values(EnumVariants),
@@ -41,6 +45,7 @@ const Template = (args: Args) => html`
   <kemet-button
     variant="${ifDefined(args.variant)}"
     appearance="${ifDefined(args.appearance)}"
+    polarity="${ifDefined(args.polarity)}"
     ?disabled=${args.disabled}
     href=${ifDefined(args.href !== '' ? args.href : undefined)}
     rounded=${ifDefined(args.rounded)}

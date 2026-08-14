@@ -49,8 +49,11 @@
   --_kemet-button-background-color: var(--kemet-color-background-disabled);
 }
 
+:host([disabled][variant=outlined]) {
+  --_kemet-button-border-color: var(--kemet-color-font-disabled);
+}
+
 :host([polarity=dark]) {
-  --_kemet-button-font-color: var(--kemet-color-font-base);
   --_kemet-button-background-color: var(--kemet-color-background-base);
 }
 
@@ -82,32 +85,66 @@
   text-decoration: var(--_kemet-button-hover-decoration);
 }
 
-:host([appearance]) {
+:host([appearance]:not([disabled]):not([variant])) {
   --_kemet-button-font-color: var(--kemet-color-font-inverse-base);
 }
 
-:host([appearance=brand]) {
+:host([appearance=brand]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
   --_kemet-button-background-color: var(--kemet-color-brand-primary-base);
 }
 
-:host([appearance=success]) {
+:host([appearance=success]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
   --_kemet-button-background-color: var(--kemet-color-background-success);
 }
 
-:host([appearance=warning]) {
+:host([appearance=warning]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
   --_kemet-button-background-color: var(--kemet-color-background-warning);
 }
 
-:host([appearance=error]) {
+:host([appearance=error]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
   --_kemet-button-background-color: var(--kemet-color-background-error);
 }
 
-:host([appearance=info]) {
+:host([appearance=info]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
   --_kemet-button-background-color: var(--kemet-color-background-info);
 }
 
-:host([appearance=link]) {
+:host([appearance=link]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
   --_kemet-button-background-color: var(--kemet-color-background-link);
+}
+
+:host([variant=text][appearance=brand]:not([disabled])),
+:host([variant=plain][appearance=brand]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([variant=text][appearance=success]:not([disabled])),
+:host([variant=plain][appearance=success]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-success);
+}
+
+:host([variant=text][appearance=warning]:not([disabled])),
+:host([variant=plain][appearance=warning]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-warning);
+}
+
+:host([variant=text][appearance=error]:not([disabled])),
+:host([variant=plain][appearance=error]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-error);
+}
+
+:host([variant=text][appearance=info]:not([disabled])),
+:host([variant=plain][appearance=info]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-info);
+}
+
+:host([variant=text][appearance=link]:not([disabled])),
+:host([variant=plain][appearance=link]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-link);
+}
+
+:host([appearance=neutral][polarity=dark]) {
+  --_kemet-button-font-color: var(--kemet-color-font-base);
 }
 
 :host([rounded]) {
@@ -141,6 +178,50 @@
   --_kemet-button-background-color: transparent;
   --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
 }
+
+:host([variant=outlined][appearance=brand]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-brand-primary-base);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border-color: var(--kemet-color-brand-primary-base);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+}
+
+:host([variant=outlined][appearance=success]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-success);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border-color: var(--kemet-color-background-success);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+}
+
+:host([variant=outlined][appearance=warning]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-warning);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border-color: var(--kemet-color-background-warning);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+}
+
+:host([variant=outlined][appearance=error]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-error);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border-color: var(--kemet-color-background-error);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+}
+
+:host([variant=outlined][appearance=info]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-info);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border-color: var(--kemet-color-background-info);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+}
+
+:host([variant=outlined][appearance=link]:not([disabled])) {
+  --_kemet-button-font-color: var(--kemet-color-background-link);
+  --_kemet-button-background-color: transparent;
+  --_kemet-button-border-color: var(--kemet-color-background-link);
+  --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+}
+
+
 
 :host([variant=edge]) {
   --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) rgba(255, 255, 255, 0.25);
