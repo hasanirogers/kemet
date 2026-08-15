@@ -12198,60 +12198,24 @@
           "name": "KemetButton",
           "cssProperties": [
             {
-              "description": "The font size.",
-              "name": "--kemet-button-font-size"
-            },
-            {
-              "description": "The text color.",
-              "name": "--kemet-button-color"
-            },
-            {
-              "description": "The width.",
-              "name": "--kemet-button-width"
-            },
-            {
-              "description": "The height.",
-              "name": "--kemet-button-height"
-            },
-            {
-              "description": "The border.",
-              "name": "--kemet-button-border"
-            },
-            {
-              "description": "The border radius.",
-              "name": "--kemet-button-border-radius"
-            },
-            {
-              "description": "The transition speed of the hover effect.",
-              "name": "--kemet-button-transition-speed"
-            },
-            {
-              "description": "The background color.",
-              "name": "--kemet-button-background-color"
-            },
-            {
-              "description": "The brightness of the hover effect.",
+              "description": "The brightness of the hover state.",
               "name": "--kemet-button-hover-brightness"
             },
             {
-              "description": "The gap between the button and icons.",
-              "name": "--kemet-button-gap"
-            },
-            {
-              "description": "The button padding.",
-              "name": "--kemet-button-padding"
-            },
-            {
-              "description": "The decoration for a text button's hover.",
-              "name": "--kemet-button-hover-decoration"
+              "description": "The brightness of the active state.",
+              "name": "--kemet-button-active-brightness"
             },
             {
               "description": "The diameter of a circle button.",
               "name": "--kemet-button-circle-size"
             },
             {
-              "description": "The border radius of the rounded button.",
-              "name": "--kemet-button-rounded-amount"
+              "description": "The transition speed of the hover effect.",
+              "name": "--kemet-button-transition-speed"
+            },
+            {
+              "description": "The gap between the button and icons.",
+              "name": "--kemet-button-gap"
             },
             {
               "description": "The width of the outline border.",
@@ -12260,10 +12224,6 @@
             {
               "description": "The style of the outline border.",
               "name": "--kemet-button-border-style"
-            },
-            {
-              "description": "The color of the outline border.",
-              "name": "--kemet-button-border-color"
             }
           ],
           "cssParts": [
@@ -12309,7 +12269,7 @@
               "type": {
                 "text": "TypeVariants"
               },
-              "description": "Controls the type of button. standard | text | circle | rounded | pill",
+              "description": "Controls the type of button.",
               "attribute": "variant",
               "reflects": true
             },
@@ -12338,6 +12298,7 @@
                 "text": "string"
               },
               "default": "'initializing'",
+              "description": "The status of dom initalization.",
               "attribute": "dom",
               "reflects": true
             },
@@ -12388,6 +12349,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Determines if the button is in a loading state",
               "attribute": "loading",
               "reflects": true
             },
@@ -12406,10 +12368,20 @@
               "kind": "field",
               "name": "appearance",
               "type": {
-                "text": "TypeAppearance"
+                "text": "EnumAppearance"
               },
-              "default": "'neutral'",
+              "description": "The appearance of the button's color",
               "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "EnumSizes"
+              },
+              "description": "The size of the button",
+              "attribute": "size",
               "reflects": true
             },
             {
@@ -12457,7 +12429,22 @@
               "name": "click",
               "description": "Triggers a click event on the button element.",
               "privacy": "public",
-              "summary": "Triggers a click event on the button element."
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "blur",
+              "description": "Triggers a blur on the button element.",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "type": {
@@ -12497,7 +12484,7 @@
               "type": {
                 "text": "TypeVariants"
               },
-              "description": "Controls the type of button. standard | text | circle | rounded | pill",
+              "description": "Controls the type of button.",
               "fieldName": "variant"
             },
             {
@@ -12522,6 +12509,7 @@
                 "text": "string"
               },
               "default": "'initializing'",
+              "description": "The status of dom initalization.",
               "fieldName": "dom"
             },
             {
@@ -12562,6 +12550,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Determines if the button is in a loading state",
               "fieldName": "loading"
             },
             {
@@ -12576,10 +12565,18 @@
             {
               "name": "appearance",
               "type": {
-                "text": "TypeAppearance"
+                "text": "EnumAppearance"
               },
-              "default": "'neutral'",
+              "description": "The appearance of the button's color",
               "fieldName": "appearance"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "EnumSizes"
+              },
+              "description": "The size of the button",
+              "fieldName": "size"
             }
           ],
           "superclass": {
@@ -12606,6 +12603,117 @@
           "declaration": {
             "name": "KemetButton",
             "module": "src/elements/button/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/loader/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetLoader",
+          "cssProperties": [
+            {
+              "description": "The color of the loader.",
+              "name": "--kemet-loader-color"
+            },
+            {
+              "description": "The thickness of the loader.",
+              "name": "--kemet-loader-thickness"
+            },
+            {
+              "description": "The size of the dots in the loader.",
+              "name": "--kemet-loader-dot-size"
+            },
+            {
+              "description": "The size of the loader.",
+              "name": "--kemet-loader-size"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The main loader container",
+              "name": "loader"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "attribute": "size"
+            },
+            {
+              "kind": "method",
+              "name": "makeLoader"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the loader is mounted to the DOM",
+              "name": "kemet-loader-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-loader",
+          "customElement": true,
+          "summary": "Displays animations for a loading state."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KemetLoader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-loader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
           }
         }
       ]
@@ -12752,117 +12860,6 @@
           "declaration": {
             "name": "KemetIcon",
             "module": "src/elements/icon/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/loader/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetLoader",
-          "cssProperties": [
-            {
-              "description": "The color of the loader.",
-              "name": "--kemet-loader-color"
-            },
-            {
-              "description": "The thickness of the loader.",
-              "name": "--kemet-loader-thickness"
-            },
-            {
-              "description": "The size of the dots in the loader.",
-              "name": "--kemet-loader-dot-size"
-            },
-            {
-              "description": "The size of the loader.",
-              "name": "--kemet-loader-size"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The main loader container",
-              "name": "loader"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "string"
-              },
-              "description": "The style of loader to display",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "48",
-              "description": "How large to make the loader.",
-              "attribute": "size"
-            },
-            {
-              "kind": "method",
-              "name": "makeLoader"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the loader is mounted to the DOM",
-              "name": "kemet-loader-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "string"
-              },
-              "description": "The style of loader to display",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "48",
-              "description": "How large to make the loader.",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-loader",
-          "customElement": true,
-          "summary": "Displays animations for a loading state."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KemetLoader",
-          "declaration": {
-            "name": "KemetLoader",
-            "module": "src/elements/loader/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-loader",
-          "declaration": {
-            "name": "KemetLoader",
-            "module": "src/elements/loader/index.ts"
           }
         }
       ]

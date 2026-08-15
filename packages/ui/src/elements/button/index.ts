@@ -43,14 +43,15 @@ export enum EnumSizes {
  * @prop {string} href - The url a button should link too
  * @prop {boolean} outlined - Outline style for a button
  * @prop {boolean} disabled - Determines whether not a button is disabled
- * @prop {TypeVariants} variant - Controls the type of button. standard | text | circle | rounded | pill
+ * @prop {TypeVariants} variant - Controls the type of button.
  * @prop {TypeTargets} target - The target attribute for a link
  * @prop {TypeTypes} type - The type attribute for a button
  * @prop {TypeRoundedSizes} rounded - The border radius of the button
- * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
- * @prop {boolean} active - Determines if the button is in an active state
  * @prop {EnumSizes} size - The size of the button
  * @prop {EnumAppearance} appearance - The appearance of the button's color
+ * @prop {boolean} loading - Determines if the button is in a loading state
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @slot left - Allows you to place an icon to the left of the button text.
  * @slot right - Allows you to place an icon to the right of the button text.
@@ -88,9 +89,6 @@ export default class KemetButton extends LitElement {
   @property()
   type: EnumTypes = EnumTypes.Button;
 
-  @property({ type: String, reflect: true })
-  dom: string = 'initializing';
-
   @property({ type: Boolean, reflect: true, attribute: 'icon-left' })
   iconLeft: boolean = false;
 
@@ -107,13 +105,16 @@ export default class KemetButton extends LitElement {
   loading: boolean = false;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
-
-  @property({ type: String, reflect: true })
   appearance!: TypeAppearance;
 
   @property({ type: String, reflect: true })
   size!: EnumSizes;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
 
   @query('button')
@@ -224,7 +225,9 @@ export default class KemetButton extends LitElement {
 
   /**
    * Triggers a click event on the button element.
+   * @method click
    * @public
+   * @returns {void}
    */
   click() {
     if (!this.internalButton) {
@@ -235,7 +238,9 @@ export default class KemetButton extends LitElement {
 
   /**
    * Triggers a blur on the button element.
+   * @method blur
    * @public
+   * @returns {void}
    */
   blur() {
     if (!this.internalButton) {

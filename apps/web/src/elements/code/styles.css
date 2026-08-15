@@ -41,3 +41,14 @@ footer {
   border-top: 1px solid var(--sl-color-hairline-shade);
 }
 
+/* display utilities */
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+

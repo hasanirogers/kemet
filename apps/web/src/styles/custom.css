@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
-@layer kemet-reset, starlight, kemet-overrides;
+@layer web-reset, starlight, web-overrides, web-brush;
 
-@layer kemet-overrides {
+@layer web-overrides {
   html, body {
     font-weight: 400;
     /* font-family: "Finger Paint", "Georgia", serif; */
@@ -95,5 +95,16 @@
         background: white;
       }
     }
+  }
+}
+
+@layer web-brush {
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  pre:has(code) {
+    border: none;
+    background-color: var(--sl-color-bg);
   }
 }

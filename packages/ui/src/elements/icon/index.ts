@@ -4,24 +4,6 @@ import { isTemplateResult } from 'lit/directive-helpers.js';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css?inline';
 
-/**
- * @since 5.0.0
- * @status stable
- *
- * @tagname kemet-icon
- * @summary An element that represents an icon from a predefined set of open sourced icons.
- *
- * @prop {string} name - The name of the icon to reference.
- * @prop {string} library - The library of icons to use. Values include: (bootstrap | fontawesome)
- * @prop {string} family - The family of icons to use. The family is relative to the library being used. Font awesome values include: (regular | solid | brand)
- * @prop {string} version - The version of the icon library to use. Use latest to grab the most recent version.
- * @prop {number} size - The width and height of the icon in pixels.
- *
- * @fires kemet-icon-mounted - Fired when the icon is mounted to the DOM
- * @detail {HTMLElement} element - The icon element
- *
- */
-
 const CACHEABLE_ERROR = Symbol();
 const RETRYABLE_ERROR = Symbol();
 type SVGResult = HTMLTemplateResult | SVGSVGElement | typeof RETRYABLE_ERROR | typeof CACHEABLE_ERROR;
@@ -59,6 +41,26 @@ export enum EnumLibrary {
   BOOTSTRAP = 'bootstrap',
 }
 
+/**
+ * @since 5.0.0
+ * @status stable
+ *
+ * @tagname kemet-icon
+ * @summary An element that represents an icon from a predefined set of open sourced icons.
+ *
+ * @prop {string} name - The name of the icon to reference.
+ * @prop {string} library - The library of icons to use. Values include: (bootstrap | fontawesome)
+ * @prop {string} family - The family of icons to use. The family is relative to the library being used. Font awesome values include: (regular | solid | brand)
+ * @prop {string} version - The version of the icon library to use. Use latest to grab the most recent version.
+ * @prop {number} size - The width and height of the icon in pixels.
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
+ *
+ * @fires kemet-icon-mounted - Fired when the icon is mounted to the DOM
+ * @detail {HTMLElement} element - The icon element
+ *
+ */
+
 @customElement('kemet-icon')
 export default class KemetIcon extends LitElement {
   static styles = [unsafeCSS(styles)];
@@ -78,6 +80,12 @@ export default class KemetIcon extends LitElement {
   @property({ type: String })
   version?: string;
 
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   /** @internal */
   @state()
   private svg: SVGElement | HTMLTemplateResult | null = null;
@@ -96,6 +104,7 @@ export default class KemetIcon extends LitElement {
   updated() {
     this.updateUrl();
     this.setupIntersectionObserver();
+    this.updateSize();
   }
 
   disconnectedCallback() {
@@ -143,6 +152,7 @@ export default class KemetIcon extends LitElement {
         element: this,
       },
     });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -247,6 +257,14 @@ export default class KemetIcon extends LitElement {
         }
       });
     });
+  }
+
+  private updateSize() {
+    if (this.svg) {
+      const svg = this.svg as SVGElement;
+      svg.setAttribute('width', `${this.size}px`);
+      svg.setAttribute('height', `${this.size}px`);
+    }
   }
 }
 

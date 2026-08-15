@@ -1,0 +1,45 @@
+---
+import customElements from '../../../../packages/ui/custom-elements.json';
+
+interface Props {
+  element: string;
+  display: string;
+}
+
+let data;
+
+const { element, display } = Astro.props;
+const tagname = `kemet-${element}`;
+
+const { cssProperties, cssParts, slots, events, attributes, members } = customElements.modules.find((elementData) => elementData.declarations?.[0]?.tagName === tagname)?.declarations[0] as any;
+
+const methods = members.filter((member: any) => member.kind === 'method' && member.privacy === 'public');
+
+
+switch (display) {
+  case 'properties':
+    data = cssProperties;
+    break;
+  case 'methods':
+    data = methods;
+    break;
+  case 'parts':
+    data = cssParts;
+    break;
+  case 'slots':
+    data = slots;
+    break;
+  case 'events':
+    data = events;
+    break;
+  case 'attributes':
+    data = attributes;
+    break;
+}
+---
+
+<web-api data={JSON.stringify(data)} type={display}></web-api>
+<script>
+  import '../elements/api/index.js';
+</script>
+

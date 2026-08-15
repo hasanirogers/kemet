@@ -1,0 +1,41 @@
+---
+import hljs from 'highlight.js';
+import customElements from '../../../../packages/ui/custom-elements.json';
+import extractJSDocTags from '../utilities/extractJSDocTags.js';
+import CodePreview from './CodePreview.astro';
+
+import 'highlight.js/styles/github-dark.css';
+
+interface Props {
+  element: string;
+  sample: string;
+}
+
+const { element, sample } = Astro.props;
+
+const tagname = `kemet-${element}`;
+
+const allTags = customElements.modules.map((elementData) => {
+  return extractJSDocTags(elementData.path);
+});
+
+function getElementTags(allTags: any[], tagname: string) {
+  return allTags.find((tag) => tag[0]?.tags?.tagname === tagname);
+}
+
+const tags = getElementTags(allTags, tagname)?.[0]?.tags;
+
+const importCode = `import '@kemet-ui/elements/${element}';`;
+const importHTML = hljs.highlight(importCode, { language: 'javascript' }).value
+---
+
+{tags.summary}
+<br />&nbsp;
+
+<CodePreview code={sample} language="html" />
+
+<h2>Import</h2>
+<hr /><br />
+<pre><code><Fragment set:html={importHTML} /></code></pre>
+
+

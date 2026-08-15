@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+td {
+  padding: 1rem 0 0 0;
+}
+
+tr:first-child td {
+  padding-top: 1.5rem;
+}
+
+td, th {
+
+  text-align: left;
+}
