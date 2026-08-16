@@ -1,7 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { emitEvent } from '../utilities/events';
-import { stylesPanel } from '../styles/elements/accordion';
+import { emitEvent } from '../../utilities/events';
+
+import styles from './styles.css?inline';
 
 /**
  * @since 1.0.0
@@ -21,14 +22,20 @@ import { stylesPanel } from '../styles/elements/accordion';
  * @csspart trigger - Contains the trigger for the panel.
  * @csspart body - Contains the body for the panel.
  *
- * @event kemet-opened - Fires when a panel is opened
- * @event kemet-closed - Fires when a panel is closed
+ * @fires kemet-opened - Fires when a panel is opened
+ * @detail {HTMLElement} element - The accordion panel element
+ *
+ * @fires kemet-closed - Fires when a panel is closed
+ * @detail {HTMLElement} element - The accordion panel element
+ *
+ * @fires kemet-accordion-panel-mounted - Fired when the accordion panel is mounted to the DOM
+ * @detail {HTMLElement} element - The accordion panel element
  *
  */
 
 @customElement('kemet-accordion-panel')
 export default class KemetAccordionPanel extends LitElement {
-  static styles = [stylesPanel];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: Boolean, reflect: true })
   opened: boolean | undefined = undefined;
@@ -41,6 +48,12 @@ export default class KemetAccordionPanel extends LitElement {
 
   @property({ type: Number })
   index!: number;
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
 
   /** @internal */
   @state()
@@ -66,17 +79,26 @@ export default class KemetAccordionPanel extends LitElement {
 
     if (this.bodyElementFirst) this.bodyElementFirst.style.marginTop = '0';
     if (this.bodyElementLast) this.bodyElementLast.style.marginBottom = '0';
+
+    emitEvent(this, 'kemet-accordion-panel-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   updated(prevProps: Map<string, never>) {
     if (!prevProps.get('opened') && this.opened === true) {
       this.maxHeight = `${this.bodyElement?.offsetHeight}px`;
-      emitEvent(this, 'kemet-opened', this);
+      emitEvent(this, 'kemet-opened', { element: this });
     }
 
     if (prevProps.get('opened') && this.opened === false) {
       this.maxHeight = '0px';
-      emitEvent(this, 'kemet-closed', this);
+      emitEvent(this, 'kemet-closed', { element: this });
     }
 
     this.a11y();
@@ -100,6 +122,12 @@ export default class KemetAccordionPanel extends LitElement {
     `;
   }
 
+  /**
+   * Toggles the opened state of the panel.
+   * @method toggle
+   * @public
+   * @returns {void}
+   */
   toggle() {
     this.opened = !this.opened;
   }

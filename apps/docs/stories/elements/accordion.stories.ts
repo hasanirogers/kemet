@@ -1,47 +1,42 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import {
  userEvent, waitFor, within, expect,
 } from 'storybook/test';
 
-import '../../../../packages/ui/src/elements/accordion';
-import '../../../../packages/ui/src/elements/accordion-panel';
+import '../../../../packages/ui/src/elements/accordion/';
+import '../../../../packages/ui/src/elements/accordion-panel/';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
-import '../../../../packages/ui/src/elements/icon-bootstrap';
-import KemetAccordionPanel from '../../../../packages/ui/src/elements/accordion-panel';
-import KemetAccordion from '../../../../packages/ui/src/elements/accordion';
+import type HTMLKemetAccordionPanelElement from '../../../../packages/ui/src/elements/accordion-panel/';
+import type HTMLKemetAccordionElement from '../../../../packages/ui/src/elements/accordion/';
 
 const meta: Meta = {
-  title: 'Organization / Accordion',
+  title: 'Elements / Accordion',
   component: 'kemet-accordion',
 };
 export default meta;
 
 type Story = StoryObj;
 
-const Template = args => html`
+const Template = (args: Args) => html`
   <kemet-accordion ?toggle-panels=${args.togglePanels} kemet-elevation="layer-4">
     <kemet-accordion-panel>
       <h3 slot="trigger">Trigger 1</h3>
-      <kemet-icon-bootstrap slot="icon" icon="chevron-down" size="18"></kemet-icon-bootstrap>
+      <kemet-icon slot="icon" name="chevron-down" size="18"></kemet-icon>
       <div slot="body">
         <p>The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
       </div>
     </kemet-accordion-panel>
     <kemet-accordion-panel>
       <h3 slot="trigger">Trigger 2</h3>
-      <kemet-icon-bootstrap slot="icon" icon="chevron-down" size="18"></kemet-icon-bootstrap>
+      <kemet-icon slot="icon" name="chevron-down" size="18"></kemet-icon>
       <div slot="body">
         <p>The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
       </div>
     </kemet-accordion-panel>
     <kemet-accordion-panel>
       <h3 slot="trigger">Trigger 3</h3>
-      <kemet-icon-bootstrap slot="icon" icon="chevron-down" size="18"></kemet-icon-bootstrap>
+      <kemet-icon slot="icon" name="chevron-down" size="18"></kemet-icon>
       <div slot="body">
         <p>The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
       </div>
@@ -56,10 +51,10 @@ export const Standard: Story = {
     const trigger1 = canvas.getByText('Trigger 1');
     const trigger2 = canvas.getByText('Trigger 2');
     const trigger3 = canvas.getByText('Trigger 3');
-    const panel1 = trigger1.closest('kemet-accordion-panel') as KemetAccordionPanel;
-    const panel2 = trigger2.closest('kemet-accordion-panel') as KemetAccordionPanel;
-    const panel3 = trigger3.closest('kemet-accordion-panel') as KemetAccordionPanel;
-    const accordion = trigger1.closest('kemet-accordion') as KemetAccordion;
+    const panel1 = trigger1.closest('kemet-accordion-panel') as HTMLKemetAccordionPanelElement;
+    const panel2 = trigger2.closest('kemet-accordion-panel') as HTMLKemetAccordionPanelElement;
+    const panel3 = trigger3.closest('kemet-accordion-panel') as HTMLKemetAccordionPanelElement;
+    const accordion = trigger1.closest('kemet-accordion') as HTMLKemetAccordionElement;
 
     await step('Expand Trigger 2', async () => {
       await userEvent.click(trigger2);
@@ -91,7 +86,7 @@ export const TogglePanels: Story = {
     const canvas = within(canvasElement);
     const trigger1 = canvas.getByText('Trigger 1');
     const trigger2 = canvas.getByText('Trigger 2');
-    const panel2 = trigger2.closest('kemet-accordion-panel') as KemetAccordionPanel;
+    const panel2 = trigger2.closest('kemet-accordion-panel') as HTMLKemetAccordionPanelElement;
 
     await step('Expand Trigger 2', async () => {
       await userEvent.click(trigger2);

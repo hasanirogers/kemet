@@ -107,4 +107,8 @@
     border: none;
     background-color: var(--sl-color-bg);
   }
+
+  .sl-markdown-content {
+    position: relative;
+  }
 }

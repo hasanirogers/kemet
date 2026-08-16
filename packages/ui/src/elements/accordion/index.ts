@@ -1,7 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/accordion';
-import KemetAccordionPanel from './accordion-panel';
+import HTMLKemetAccordionPanelElement from '../accordion-panel';
+import styles from './styles.css?inline';
+import { emitEvent } from '../../utilities/events';
 
 /**
  * @since 1.0.0
@@ -13,12 +14,13 @@ import KemetAccordionPanel from './accordion-panel';
  * @prop {number} currentPanel - The index value for the most recently opened panel
  * @prop {boolean} togglePanels - Support for closing all inactive panels when one is opened
  *
- *
+ * @fires kemet-accordion-mounted - Fired when the accordion is mounted to the DOM
+ * @detail {HTMLElement} element - The accordion element
  */
 
 @customElement('kemet-accordion')
 export default class KemetAccordion extends LitElement {
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: Number, attribute: 'current-panel' })
   currentPanel: number = 0;
@@ -26,7 +28,13 @@ export default class KemetAccordion extends LitElement {
   @property({ type: Boolean, attribute: 'toggle-panels' })
   togglePanels: boolean = false;
 
-  panels!: NodeListOf<KemetAccordionPanel>;
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  panels!: NodeListOf<HTMLKemetAccordionPanelElement>;
 
   @state()
   onKeyDown!: (event: KeyboardEvent) => void;
@@ -36,13 +44,19 @@ export default class KemetAccordion extends LitElement {
 
   constructor() {
     super();
-
-    // bindings
     this.addEventListener('kemet-opened', this.handlePanelOpened.bind(this));
   }
 
   firstUpdated() {
     this.onKeyDown = event => this.handleKeyDown(event);
+    emitEvent(this, 'kemet-accordion-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -52,7 +66,7 @@ export default class KemetAccordion extends LitElement {
   handleSlotChange() {
     this.panels = this.querySelectorAll('kemet-accordion-panel');
 
-    this.panels.forEach((panel: KemetAccordionPanel, index) => {
+    this.panels.forEach((panel: HTMLKemetAccordionPanelElement, index) => {
       panel.index = index;
       panel.removeEventListener('keydown', this.onKeyDown);
       panel.addEventListener('keydown', this.onKeyDown);
@@ -61,15 +75,15 @@ export default class KemetAccordion extends LitElement {
 
   handlePanelOpened(event: Event) {
     const customEvent = event as CustomEvent;
-    this.panels?.forEach((panel: KemetAccordionPanel) => {
+    this.panels?.forEach((panel: HTMLKemetAccordionPanelElement) => {
       if (panel === customEvent.detail) {
         this.currentPanel = panel.index;
       }
     });
 
     if (this.togglePanels) {
-      this.panels?.forEach((panel: KemetAccordionPanel) => {
-        if (panel !== customEvent.detail) {
+      this.panels?.forEach((panel: HTMLKemetAccordionPanelElement) => {
+        if (panel !== customEvent.detail.element) {
           panel.opened = false;
         }
       });

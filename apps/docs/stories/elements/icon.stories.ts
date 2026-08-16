@@ -5,18 +5,11 @@ import { EnumLibrary } from '../../../../packages/ui/src/elements/icon';
 
 import '../../../../packages/ui/src/elements/icon';
 import '../../../../packages/ui/src/elements/button';
-
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-import '../../../../packages/ui/src/elements/accordion';
-import '../../../../packages/ui/src/elements/accordion-panel';
-
 import '../../.storybook/elements/docs-icons';
 
 
 const meta: Meta = {
-  title: 'Miscellaneous / Icon',
+  title: 'Elements / Icon',
   component: 'kemet-icon',
   args: {
     name: 'gear',

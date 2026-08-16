@@ -27,8 +27,7 @@ import Fab from '../elements/fab';
 import Field from '../elements/field';
 import Flipcard from '../elements/flipcard';
 import FlipcardTrigger from '../elements/flipcard-trigger';
-import IconBootstrap from '../elements/icon-bootstrap';
-import IconLucide from '../elements/icon-lucide';
+import Icon from '../elements/icon';
 import Input from '../elements/input';
 import Modal from '../elements/modal';
 import ModalClose from '../elements/modal-close';
@@ -269,14 +268,8 @@ export const KemetFlipcard = createComponent({
 });
 
 export const KemetIconBootstrap = createComponent({
-  tagName: 'kemet-icon-bootstrap',
-  elementClass: IconBootstrap,
-  react: React,
-});
-
-export const KemetIconLucide = createComponent({
-  tagName: 'kemet-icon-lucide',
-  elementClass: IconLucide,
+  tagName: 'kemet-icon',
+  elementClass: Icon,
   react: React,
 });
 
@@ -560,8 +553,7 @@ export type KemetFabClass = Fab;
 export type KemetFieldClass = Field;
 export type KemetFlipcardClass = Flipcard;
 export type KemetFlipcardTriggerClass = FlipcardTrigger;
-export type KemetIconBootstrapClass = IconBootstrap;
-export type KemetIconLucideClass = IconLucide;
+export type KemetIcon = Icon;
 export type KemetInputClass = Input;
 export type KemetModalClass = Modal;
 export type KemetModalCloseClass = ModalClose;

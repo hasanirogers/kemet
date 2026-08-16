@@ -13,6 +13,18 @@ th {
 
 td {
   padding: 1rem 0 0 0;
+  vertical-align: top;
+}
+
+td:first-child {
+  white-space: nowrap;
+  font-weight: bold;
+  padding-right: 1rem;
+}
+
+td:last-child {
+  white-space: nowrap;
+  padding-left: 1rem;
 }
 
 tr:first-child td {

@@ -5,17 +5,12 @@ import { EnumSizes, EnumVariants } from '../../../../packages/ui/src/elements/bu
 import { EnumAppearances, EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/button';
-
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 import '../../../../packages/ui/src/elements/icon';
 import '../../../../packages/ui/src/elements/loader';
 
 
 const meta: Meta = {
-  title: 'Actions / Button',
+  title: 'Elements / Button',
   component: 'kemet-button',
   render: args => Template(args),
   argTypes: {

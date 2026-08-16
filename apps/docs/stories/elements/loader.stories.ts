@@ -3,17 +3,12 @@ import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '../../../../packages/ui/src/elements/loader';
-
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 import '../../.storybook/elements/docs-icons';
 import { EnumVariants } from '../../../../packages/ui/src/elements/loader';
 
 
 const meta: Meta = {
-  title: 'Feedback & Status / Loader',
+  title: 'Elements / Loader',
   component: 'kemet-loader',
   args: {
     variant: 'no-border',
