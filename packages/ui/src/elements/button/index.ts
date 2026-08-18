@@ -48,8 +48,8 @@ export enum EnumSizes {
  * @prop {TypeTypes} type - The type attribute for a button
  * @prop {TypeRoundedSizes} rounded - The border radius of the button
  * @prop {EnumSizes} size - The size of the button
- * @prop {EnumAppearance} appearance - The appearance of the button's color
  * @prop {boolean} loading - Determines if the button is in a loading state
+ * @prop {EnumAppearance} appearance - The appearance of the button's color
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
  * @prop {string} dom - The status of dom initalization.
  *

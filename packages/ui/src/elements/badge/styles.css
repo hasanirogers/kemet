@@ -1,0 +1,91 @@
+:host {
+  /* public */
+  --kemet-badge-padding: 10px;
+  --kemet-badge-border-width: 1px;
+  --kemet-badge-border-style: solid;
+
+  /* private */
+  --_kemet-badge-background-color: var(--_kemet-badge-color);
+  --_kemet-badge-border: 0;
+  --_kemet-badge-border-color: var(--_kemet-badge-color);
+  --_kemet-badge-font-color: var(--kemet-color-font-inverse-base);
+  --_kemet-badge-color: var(--kemet-color-background-badge-primary-base);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--kemet-badge-padding);
+  line-height: 1;
+  color: var(--_kemet-badge-font-color);
+  background-color: var(--_kemet-badge-background-color);
+  border: var(--_kemet-badge-border);
+}
+
+:host([polarity=dark]) {
+  --_kemet-badge-font-color: var(--kemet-color-font-base);
+  --_kemet-badge-color: var(--kemet-color-font-inverse-base);
+}
+
+:host([appearance]) {
+  --_kemet-badge-font-color: var(--kemet-color-font-inverse-base);
+}
+
+:host([appearance=brand]) {
+  --_kemet-badge-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=success]) {
+  --_kemet-badge-color: var(--kemet-color-background-success);
+}
+
+:host([appearance=warning]) {
+  --_kemet-badge-color: var(--kemet-color-background-warning);
+}
+
+:host([appearance=error]) {
+  --_kemet-badge-color: var(--kemet-color-background-error);
+}
+
+:host([appearance=info]) {
+  --_kemet-badge-color: var(--kemet-color-background-info);
+}
+
+:host([appearance=link]) {
+  --_kemet-badge-color: var(--kemet-color-background-link);
+}
+
+
+:host([rounded]) {
+  border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm]) {
+  border-radius: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=md]) {
+  border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=lg]) {
+  border-radius: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl]) {
+  border-radius: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) {
+  border-radius: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill]) {
+  border-radius: var(--kemet-border-radius-pill);
+}
+
+:host([outlined]) {
+  --_kemet-badge-font-color: var(--_kemet-badge-color);
+  --_kemet-badge-background-color: transparent;
+  --_kemet-badge-border: var(--kemet-badge-border-width) var(--kemet-badge-border-style) var(--_kemet-badge-color);
+}
+

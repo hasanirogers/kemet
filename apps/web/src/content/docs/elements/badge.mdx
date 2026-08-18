@@ -1,0 +1,80 @@
+---
+title: Badge
+description: A badge component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="badge" sample='<kemet-badge>Badge</kemet-badge>' />
+
+
+## Examples
+
+### Appearance
+
+You can change the appearance with standard colors.
+
+<CodePreview code='<kemet-badge appearance="success">Success</kemet-badge>' />
+
+### Rounded
+
+Standard rounding is supported.
+
+<CodePreview code='<kemet-badge rounded="lg">Large</kemet-badge>' />
+
+### Outlined
+
+Use the `outlined` attribute to create an outlined badge.
+
+<CodePreview code='<kemet-badge outlined>Outlined</kemet-badge>' />
+
+### Icon
+
+Use the `icon` slot to add an icon to the badge.
+
+<CodePreview code='<kemet-badge><kemet-icon slot="left" name="tag-fill" size="15"></kemet-icon>Badge</kemet-badge>' />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="badge" display="attributes" />
+<br />
+
+### Slots
+
+<API element="badge" display="slots" />
+<br />
+
+### Events
+
+<API element="badge" display="events" />
+<br />
+
+### Methods
+
+<API element="badge" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="badge" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="badge" display="parts" />
+<br />
+
+<DocsFooter />
+

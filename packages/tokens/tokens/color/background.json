@@ -66,6 +66,23 @@
         }
       },
 
+      "avatar": {
+        "primary": {
+          "base": { "value": "{color.base.grey.900}", "type": "color" },
+          "disabled": { "value": "{color.base.grey.500}", "type": "color" },
+          "active": { "value": "{color.base.grey.800}", "type": "color" }
+        }
+      },
+
+      "badge": {
+        "primary": {
+          "base": { "value": "{color.base.grey.900}", "type": "color" },
+          "disabled": { "value": "{color.base.grey.500}", "type": "color" },
+          "active": { "value": "{color.base.grey.800}", "type": "color" }
+        }
+      },
+
+
       "overlay": {
         "light": { "value": "#FFFFFFCC", "type": "color" },
         "dark": { "value": "#00000044", "type": "color" }

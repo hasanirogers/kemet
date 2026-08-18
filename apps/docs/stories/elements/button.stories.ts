@@ -80,7 +80,7 @@ export const RoundedMedium: Story = {
 
 export const RoundedPill: Story = {
   args: {
-    rounded: EnumRoundedSizes.PILL,
+    rounded: EnumRoundedSizes.Pill,
   },
 };
 
@@ -130,7 +130,7 @@ export const OutlinedRounded: Story = {
 export const OutlinedPill: Story = {
   args: {
     variant: EnumVariants.Outlined,
-    rounded: EnumRoundedSizes.PILL,
+    rounded: EnumRoundedSizes.Pill,
   },
 };
 

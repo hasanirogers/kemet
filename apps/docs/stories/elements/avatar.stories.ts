@@ -1,14 +1,11 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumRoundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/avatar';
 import '../../../../packages/ui/src/elements/avatars';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 const meta: Meta = {
   title: 'Feedback & Status / Avatar',
@@ -19,7 +16,7 @@ const meta: Meta = {
   },
   argTypes: {
     rounded: {
-      options: roundedSizes,
+      options: Object.values(EnumRoundedSizes),
       control: { type: 'select' },
     }
   }
@@ -28,21 +25,21 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`
+const Template = (args: Args) => html`
   <kemet-avatar
     ?circle=${args.circle}
     rounded=${ifDefined(args.rounded)}
     image="${ifDefined(args.image !== '' ? args.image : null)}"
     initials="${ifDefined(args.initials !== '' ? args.initials : null)}"
   >
-    ${args.icon !== '' && args.icon ? html`<kemet-icon-bootstrap icon=${args.icon} size="48" kemet-margin="xs"></kemet-icon-bootstrap>` : null}
-    ${args.status ? html`<kemet-badge slot="status" status="success" kemet-border="all-2 solid white"></kemet-badge>` : null}
+    ${args.icon !== '' && args.icon ? html`<kemet-icon name=${args.icon} size="48" kemet-margin="xs"></kemet-icon>` : null}
+    ${args.status ? html`<kemet-badge slot="status" appearance="success" style="border:2px solid white;"></kemet-badge>` : null}
   </kemet-avatar>
 `;
 
-const TemplateMultiple = (args) => {
+const TemplateMultiple = (args: Args) => {
   const avatars = Array.from({ length: args.numOfAvatars }, () => {
-    return html`<kemet-avatar rounded="circle" image="https://placehold.co/64x64" kemet-border="all-4 solid gray-50"></kemet-avatar>`
+    return html`<kemet-avatar rounded="circle" image="https://placehold.co/64x64" style="border:4px solid white;"></kemet-avatar>`
   });
 
   return html`
@@ -80,14 +77,14 @@ export const Rounded: Story = {
 
 export const Circle: Story = {
   args: {
-    rounded: EnumRoundedSizes.CIRCLE,
+    rounded: EnumRoundedSizes.Circle,
     image: 'https://placehold.co/64x64',
   }
 };
 
 export const Status: Story = {
   args: {
-    rounded: EnumRoundedSizes.CIRCLE,
+    rounded: EnumRoundedSizes.Circle,
     image: 'https://placehold.co/64x64',
     status: true,
   }

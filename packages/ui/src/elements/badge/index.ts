@@ -1,7 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/badge';
-import { EnumRoundedSizes, EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
+import { EnumRoundedSizes, EnumAppearances } from '../../utilities/constants';
+import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
 
 /**
@@ -15,32 +16,57 @@ import { EnumRoundedSizes, EnumAppearances, TypeRoundedSizes, TypeAppearance } f
  * @prop {number} circlePadding - Padding on the badge as a circle
  * @prop {TypeRoundedSizes} rounded - Rounds the corners on the badge
  * @prop {boolean} outlined - Outlines the badge
+ * @prop {EnumAppearance} appearance - The appearance of the badge's color
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
- * @cssproperty --kemet-badge-padding - The padding of the badge. Default: 10px.
+ * @fires kemet-badge-mounted - Fires when the badge is mounted
+ * @detail {HTMLElement} element - The badge element
+ *
+ * @cssproperty --kemet-badge-padding - The padding of the badge.
+ * @cssproperty --kemet-badge-border-width - The border width of the badge.
+ * @cssproperty --kemet-badge-border-style - The border style of the badge.
  *
  */
 
 @customElement('kemet-badge')
 export default class KemetBadge extends LitElement {
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ reflect: true })
-  status: TypeAppearance = EnumAppearances.Primary;
+  appearance!: EnumAppearances;
 
   @property({ type: Number, attribute: 'circle-padding' })
   circlePadding: number = 0;
 
   @property({ type: String, reflect: true })
-  rounded: TypeRoundedSizes = EnumRoundedSizes.MD;
+  rounded!: EnumRoundedSizes;
 
   @property({ type: Boolean, reflect: true })
   outlined: boolean = false;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
   iconLeft: boolean = false;
 
   @state()
   iconRight: boolean = false;
+
+  firstUpdated() {
+    emitEvent(this, 'kemet-badge-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
+  }
 
   render() {
     return html`
@@ -53,7 +79,7 @@ export default class KemetBadge extends LitElement {
   }
 
   handleSlotChange() {
-    if (this.rounded === EnumRoundedSizes.CIRCLE) {
+    if (this.rounded === EnumRoundedSizes.Circle) {
       this.style.height = `${this.offsetWidth + this.circlePadding}px`;
       this.style.width = `${this.offsetWidth + this.circlePadding}px`;
     }

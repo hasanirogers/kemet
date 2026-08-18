@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  --kemet-avatars-squeeze: -1.5rem;
+
+  display: inline-flex;
+}
+
+::slotted(kemet-avatar:not(:first-of-type)) {
+  margin-left: var(--kemet-avatars-squeeze);
+}

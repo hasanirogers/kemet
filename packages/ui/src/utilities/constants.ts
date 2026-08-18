@@ -44,8 +44,8 @@ export enum EnumRoundedSizes {
   MD = 'md',
   LG = 'lg',
   XL = 'xl',
-  CIRCLE = 'circle',
-  PILL = 'pill'
+  Circle = 'circle',
+  Pill = 'pill'
 }
 export type TypeRoundedSizes = typeof roundedSizes[number];
 

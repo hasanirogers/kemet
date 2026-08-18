@@ -1,0 +1,88 @@
+---
+title: Avatar
+description: An avatar component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="avatar" sample='<kemet-avatar initials="KU"></kemet-avatar>' />
+
+
+## Examples
+<hr />
+
+### Size
+
+Use the `size` attribute to change the size of the avatar.
+
+<CodePreview code='<kemet-avatar initials="KU" size="64"></kemet-avatar>' language="html" />
+
+### Initials
+
+Use the `initials` attribute to display initials of a person.
+
+<CodePreview code='<kemet-avatar initials="KU"></kemet-avatar>' language="html" />
+
+### Image
+
+Use the `image` attribute to display an image in the avatar.
+
+<CodePreview code='<kemet-avatar image="https://placehold.co/64x64"></kemet-avatar>' language="html" />
+
+### Rounded
+
+The avatar supports standarded rounding attributes.
+
+<CodePreview code='<kemet-avatar initials="KU" rounded="lg"></kemet-avatar>' language="html" />
+
+### Icon
+
+You can use can icon to display and avatar.
+
+<CodePreview code='<kemet-avatar><kemet-icon size="48" kemet-margin="xs" name="person"></kemet-icon></kemet-avatar>' language="html" />
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="avatar" display="attributes" />
+<br />
+
+### Slots
+
+<API element="avatar" display="slots" />
+<br />
+
+### Events
+
+<API element="avatar" display="events" />
+<br />
+
+### Methods
+
+<API element="avatar" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="avatar" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="avatar" display="parts" />
+<br />
+
+<DocsFooter />
+

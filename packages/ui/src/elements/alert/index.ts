@@ -118,7 +118,7 @@ export default class KemetAlert extends LitElement {
   }
 
   firstUpdated() {
-    emitEvent(this, 'kemet-button-mounted', {
+    emitEvent(this, 'kemet-alert-mounted', {
       bubbles: true,
       composed: true,
       detail: {

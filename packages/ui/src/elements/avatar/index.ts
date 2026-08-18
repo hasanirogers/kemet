@@ -1,7 +1,9 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/avatar';
-import { TypeRoundedSizes } from '../utilities/constants';
+import { type TypeRoundedSizes } from '../../utilities/constants';
+import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
+
 
 /**
  * @since 1.4.0
@@ -21,16 +23,15 @@ import { TypeRoundedSizes } from '../utilities/constants';
  *
  * @csspart initials - Contains the initials for the avatar.
  *
- * @cssproperty --kemet-avatar-color - The color of the text.
- * @cssproperty --kemet-avatar-background-color - The color of the background.
- * @cssproperty --kemet-avatar-rounded-radius - The border radius of the rounded type.
  * @cssproperty --kemet-avatar-initials-margin - The space around the initials.
  *
+ * @fires kemet-avatar-mounted - Fires when the avatar is mounted.
+ * @detail {element: HTMLElement} - The avatar element.
  */
 
 @customElement('kemet-avatar')
 export default class KemetAvatar extends LitElement {
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   size!: string;
@@ -47,7 +48,21 @@ export default class KemetAvatar extends LitElement {
   @property({ type: String, reflect: true })
   rounded!: TypeRoundedSizes;
 
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   firstUpdated() {
+    emitEvent(this, 'kemet-avatar-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
     this.makeSize();
   }
 
