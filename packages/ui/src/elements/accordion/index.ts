@@ -42,9 +42,20 @@ export default class KemetAccordion extends LitElement {
   @state()
   currentPanelFocus!: number;
 
+  handlePanelOpenedBound!: (event: Event) => void;
+
   constructor() {
     super();
-    this.addEventListener('kemet-opened', this.handlePanelOpened.bind(this));
+    this.handlePanelOpenedBound = this.handlePanelOpened.bind(this);
+    this.addEventListener('kemet-opened', this.handlePanelOpenedBound);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('kemet-opened', this.handlePanelOpenedBound);
+    this.panels?.forEach((panel) => {
+      panel.removeEventListener('keydown', this.onKeyDown);
+    });
   }
 
   firstUpdated() {
@@ -64,11 +75,21 @@ export default class KemetAccordion extends LitElement {
   }
 
   handleSlotChange() {
-    this.panels = this.querySelectorAll('kemet-accordion-panel');
+    const newPanels = this.querySelectorAll('kemet-accordion-panel');
+
+    // Remove listeners from panels that are no longer in the DOM
+    if (this.panels) {
+      this.panels.forEach((oldPanel) => {
+        if (!Array.from(newPanels).includes(oldPanel)) {
+          oldPanel.removeEventListener('keydown', this.onKeyDown);
+        }
+      });
+    }
+
+    this.panels = newPanels;
 
     this.panels.forEach((panel: HTMLKemetAccordionPanelElement, index) => {
       panel.index = index;
-      panel.removeEventListener('keydown', this.onKeyDown);
       panel.addEventListener('keydown', this.onKeyDown);
     });
   }

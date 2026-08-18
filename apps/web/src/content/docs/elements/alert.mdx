@@ -1,0 +1,97 @@
+---
+title: Alert
+description: An alert component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<ElementDetails element="alert" sample='<kemet-alert opened>Your message here.</kemet-alert>' />
+
+
+
+## Examples
+<hr />
+
+<br />
+<Callout>
+  By default, the alert is closed because it's expected to be triggered by demand. Set the `opened` attribute to display the alert.
+</Callout>
+
+
+### Closable
+
+Use the `closable` attribute to make the alert closable.
+
+<CodePreview code='<kemet-alert opened closable>Your message here.</kemet-alert>' language="html" />
+
+### Appearance
+
+You can change the color of the alert to any of the appearance colors.
+
+<CodePreview code='<kemet-alert opened appearance="brand">Your message here.</kemet-alert>' language="html" />
+
+### Border Appearance
+
+You can add a border to any side of the alert.
+
+<CodePreview code='<kemet-alert opened border-appearance="left">Your message here.</kemet-alert>' language="html" />
+
+### Rounded
+
+Alert supports the standard rounded sizes.
+
+<CodePreview code='<kemet-alert opened rounded="lg">Your message here.</kemet-alert>' language="html" />
+
+### Filled
+
+You can invert the colors of the alert by setting the `filled` attribute.
+
+<CodePreview code='<kemet-alert opened filled>Your message here.</kemet-alert>' language="html" />
+
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="alert" display="attributes" />
+<br />
+
+### Slots
+
+<API element="alert" display="slots" />
+<br />
+
+### Events
+
+<API element="alert" display="events" />
+<br />
+
+### Methods
+
+<API element="alert" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="alert" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="alert" display="parts" />
+<br />
+
+<DocsFooter />
+

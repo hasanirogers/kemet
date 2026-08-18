@@ -2,16 +2,11 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import { userEvent, within, expect } from 'storybook/test';
-import KemetAlert, { EnumOverlayPositions, overlayPositions } from '../../../../packages/ui/src/elements/alert';
+import KemetAlert, { EnumOverlayPositions } from '../../../../packages/ui/src/elements/alert';
 import { directions, EnumAppearances, appearances, EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/alert';
-
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
-import '../../../../packages/ui/src/elements/icon-bootstrap';
+import '../../../../packages/ui/src/elements/icon';
 
 const meta: Meta = {
   title: 'Feedback & Status / Alert',
@@ -22,7 +17,7 @@ const meta: Meta = {
     opened: true,
   },
   argTypes: {
-    status: {
+    appearance: {
       control: { type: 'select' },
       options: appearances,
     },
@@ -32,7 +27,7 @@ const meta: Meta = {
     },
     overlay: {
       control: { type: 'select' },
-      options: overlayPositions,
+      options: Object.values(EnumOverlayPositions),
     },
     rounded: {
       control: { type: 'select' },
@@ -47,11 +42,11 @@ type Story = StoryObj;
 const Template = (args: Args) => {
   return html`
     <kemet-alert
-      status=${ifDefined(args.status)}
+      appearance=${ifDefined(args.appearance)}
       ?closable=${args.closable}
       ?opened=${args.opened}
       ?filled=${args.filled}
-      border-status=${ifDefined(args.border)}
+      border-appearance=${ifDefined(args.border)}
       rounded=${ifDefined(args.rounded)}
       overlay=${ifDefined(args.overlay !== 'none' ? args.overlay : null)}>
       ${args.icon}
@@ -65,13 +60,13 @@ export const Standard: Story = {};
 
 export const Heading: Story = {
   args: {
-    heading: html`<h3 kemet-margin-bottom="none" kemet-margin-top="none">This is a heading.</h3>`,
+    heading: html`<h3 style="margin:0;">This is a heading.</h3>`,
   },
 };
 
 export const Icon: Story = {
   args: {
-    icon: html`<kemet-icon-bootstrap slot="icon" icon="info-circle" size="24"></kemet-icon-bootstrap>`,
+    icon: html`<kemet-icon slot="icon" name="info-circle" size="24"></kemet-icon>`,
   },
 };
 
@@ -84,14 +79,14 @@ export const Rounded: Story = {
 export const Filled: Story = {
   args: {
     filled: true,
-    icon: html`<kemet-icon-bootstrap slot="icon" icon="info-circle" size="24"></kemet-icon-bootstrap>`,
+    icon: html`<kemet-icon slot="icon" name="info-circle" size="24"></kemet-icon>`,
   }
 }
 
 export const Closable: Story = {
   args: {
     closable: true,
-    heading: html`<h3 kemet-margin-bottom="none" kemet-margin-top="none">This is a heading.</h3>`,
+    heading: html`<h3 style="margin:0;">This is a heading.</h3>`,
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -134,31 +129,31 @@ export const BorderLeft: Story = {
   },
 };
 
-export const Primary: Story = {
+export const Brand: Story = {
   args: {
     border: 'left',
-    status: EnumAppearances.Primary,
+    appearance: EnumAppearances.Brand,
   },
 };
 
 export const Success: Story = {
   args: {
     border: 'left',
-    status: EnumAppearances.Success,
+    appearance: EnumAppearances.Success,
   },
 };
 
 export const Warning: Story = {
   args: {
     border: 'left',
-    status: EnumAppearances.Warning,
+    appearance: EnumAppearances.Warning,
   },
 };
 
 export const Error: Story = {
   args: {
     border: 'left',
-    status: EnumAppearances.Error,
+    appearance: EnumAppearances.Error,
   },
 };
 
