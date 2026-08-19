@@ -1,0 +1,120 @@
+---
+title: Card
+description: A card component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="card" sample='<kemet-card>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' />
+
+
+## Examples
+<hr />
+
+### Centered
+
+Use the `center` attribute to center the elements in the card.
+
+<CodePreview code='<kemet-card center>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Rounded
+
+Use the `rounded` attribute to add rounded corners to the card. Pill and Circle are ignored.
+
+<CodePreview code='<kemet-card rounded="xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Filled
+
+You can add background color by using the `filled` attribute.
+
+<CodePreview code='<kemet-card filled>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Elevation
+
+Add a shadow with the `elevation` attribute. Goes from leves 1-6 and `inner`.
+
+<CodePreview code='<kemet-card elevation="level6" filled>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### CSS Customization
+
+There are many css custom properties that can be used to change the appearance of the card. Use `--kemet-card-filled-color` for example to change the background color of the card when the `filled` attribute is used.
+
+<CodePreview code='<kemet-card filled style="--kemet-card-filled-color:#006e00; --kemet-card-font-color:#ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+## Working with slots
+
+The hard has multiple slots that allow you to add content to specific parts of the card.
+
+### Header slot
+
+Use the `header` slot to add content to the header of the card.
+
+<CodePreview code='<kemet-card><div slot="header">Header</div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Footer slot
+
+Use the `footer` slot to add content to the footer of the card.
+
+<CodePreview code='<kemet-card><div slot="footer">Footer</div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Media slot
+
+You can add images, videos, or even iframe embeds to the media slot.
+
+<CodePreview code='<kemet-card><iframe slot="media" width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/embed/5gBqTXctxO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Caption slot
+
+You can add captions to the media slot.
+
+<CodePreview code='<kemet-card><img slot="media" src="https://placehold.co/1920x1080" alt="a placeholder" /><div slot="caption">My awesome caption!</div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</kemet-card>' language="html" />
+
+### Going all out
+
+Use a combination of attributes and slots to create a custom card.
+
+<CodePreview code='<kemet-card center filled borderless elevation="level6" rounded="xl"><h3 slot="header">This is the header.</h3><kemet-avatar circle slot="media"><kemet-icon size="196" name="person"></kemet-icon></kemet-avatar>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<div slot="footer">This is the footer.</div></kemet-card>' language="html" />
+
+## API
+<hr />
+
+### Attributes
+
+<API element="card" display="attributes" />
+<br />
+
+### Slots
+
+<API element="card" display="slots" />
+<br />
+
+### Events
+
+<API element="card" display="events" />
+<br />
+
+### Methods
+
+<API element="card" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="card" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="card" display="parts" />
+<br />
+
+<DocsFooter />
+
