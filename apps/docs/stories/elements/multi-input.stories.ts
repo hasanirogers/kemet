@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 
-import '../../../../packages/ui/src/elements/multi-input';
+import '../../../../packages/ui/src/elements/input-multi';
 import '../../../../packages/ui/src/elements/field';
 import '../../../../packages/ui/src/elements/combo';
 

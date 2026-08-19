@@ -31,7 +31,7 @@ import Icon from '../elements/icon';
 import Input from '../elements/input';
 import Modal from '../elements/modal';
 import ModalClose from '../elements/modal-close';
-import MultiInput from '../elements/multi-input';
+import MultiInput from '../elements/input-multi';
 import Password, { InterfacePasswordStatusChangeDetails } from '../elements/password';
 import Popper from '../elements/popper';
 import PopperClose from '../elements/popper-close';
