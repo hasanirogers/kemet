@@ -1,8 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { emitEvent } from '../utilities/events';
-import { stylesBase } from '../styles/elements/combo';
-import type HTMLKemetFieldElement from './field';
+import { emitEvent } from '../../utilities/events';
+import type HTMLKemetFieldElement from '../field';
+import styles from './styles.css?inline';
 
 export interface InterfaceKemetSelectionEvent {
   element: KemetCombo;
@@ -34,16 +34,17 @@ export interface InterfaceKemetSelectionEvent {
  * @cssproperty --kemet-combo-hover-color - The hover item's text color.
  * @cssproperty --kemet-combo-hover-background-color - The hover item's background color.
  *
- * @event kemet-selection - Fires when a selection has been made
+ * @event kemet-combo-selection - Fires when a selection has been made
  *
  */
 
+
 @customElement('kemet-combo')
 export default class KemetCombo extends LitElement {
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
-  slug!: string;
+  slug?: string;
 
   @property({ type: Array })
   options: string[] = [];
@@ -69,8 +70,8 @@ export default class KemetCombo extends LitElement {
     this.slug = this.field.slug || 'slug';
 
     // events listeners
-    this.input.addEventListener('kemet-input', this.handleInput.bind(this));
-    this.input.addEventListener('kemet-focus', this.handleFocus.bind(this));
+    this.input.addEventListener('kemet-input-input', this.handleInput.bind(this));
+    this.input.addEventListener('kemet-input-focus', this.handleFocus.bind(this));
     this.input.addEventListener('keydown', event => this.handleInputKeyDown(event));
   }
 
@@ -135,7 +136,7 @@ export default class KemetCombo extends LitElement {
     this.input.value = target.innerText;
     this.show = false;
 
-    emitEvent(this, 'kemet-selection', {
+    emitEvent(this, 'kemet-combo-selection', {
       element: target,
       text: target.innerText,
       id: target.getAttribute('id'),

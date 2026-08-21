@@ -3,7 +3,8 @@
   --kemet-input-height: 50px;
   --kemet-input-color: var(--kemet-color-font-base);
   --kemet-input-border: 1px solid var(--kemet-input-color);
-  --kemet-input-padding: 0.5rem 1rem;
+  --kemet-input-padding-y: 0.5rem;
+  --kemet-input-padding-x: 1rem;
   --kemet-input-icon-gap: 3rem;
   --kemet-input-font-color: var(--kemet-input-color);
 
@@ -11,8 +12,8 @@
   /* private */
   --_kemet-input-border-radius: 0;
   --_kemet-input-background-color: transparent;
-  --_kemet-input-icon-left-padding: var(--kemet-input-icon-gap);
-  --_kemet-input-icon-right-padding: var(--kemet-input-icon-gap);
+  --_kemet-input-icon-left-padding: var(--kemet-input-padding-x);
+  --_kemet-input-icon-right-padding: var(--kemet-input-padding-x);
 
   position: relative;
   display: block;
@@ -24,7 +25,6 @@ input {
   font-size: 1rem;
   width: 100%;
   height: var(--kemet-input-height);
-  padding: var(--kemet-input-padding);
   border: var(--kemet-input-border);
   appearance: none;
   box-sizing: border-box;
@@ -32,6 +32,8 @@ input {
   border-radius: var(--_kemet-input-border-radius);
   padding-left: var(--_kemet-input-icon-left-padding);
   padding-right: var(--_kemet-input-icon-right-padding);
+  padding-top: var(--kemet-input-padding-y);
+  padding-bottom: var(--kemet-input-padding-y);
 }
 
 :host([polarity=dark]) {
@@ -39,9 +41,13 @@ input {
   --kemet-input-font-color: var(--kemet-color-font-inverse-base);
 }
 
-/* :host([polarity=dark][filled]) {
-  --kemet-input-border: 1px solid rgba(255, 255, 255, 0.1);
-} */
+:host([icon-left]) {
+  --_kemet-input-icon-left-padding: var(--kemet-input-icon-gap);
+}
+
+:host([icon-right]) {
+  --_kemet-input-icon-right-padding: var(--kemet-input-icon-gap);
+}
 
 input[type=color] {
   min-width: 10rem;
