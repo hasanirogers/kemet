@@ -1,0 +1,89 @@
+---
+title: Input
+description: An input component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="input" sample='<kemet-input></kemet-input>' />
+
+The input element supports attributes of a standard input element with a few additions.
+
+
+## Examples
+<hr />
+
+### Rounded
+
+The input element supports `rounded` as a boolean attribute.
+
+<CodePreview code='<kemet-input rounded></kemet-input>' language="html" />
+
+### Filled
+
+Fill the input with the `filled` attribute.
+
+<CodePreview code='<kemet-input filled></kemet-input>' language="html" />
+
+### Search
+
+The search `type` supports clearing the search input with a special icon.
+
+<CodePreview code='<kemet-input type="search" placeholder="Input a value to see the clear icon appear"><kemet-icon name="search" slot="left"></kemet-icon></kemet-input>' language="html" />
+
+### Icons
+
+Use the icon slots of `left` or `right` to display icons.
+
+<CodePreview code='<kemet-input><kemet-icon name="search" slot="right"></kemet-icon></kemet-input>' language="html" />
+
+### Validate on blur
+
+The input element supports validation on blur with the `validate-on-blur` attribute.
+
+<CodePreview code='<kemet-input pattern="^(?:\+?1\p{White_Space}?)?(?:\([2-9]\d{2}\)|[2-9]\d{2})[\p{White_Space}.\-]?[2-9]\d{2}[\p{White_Space}.\-]?\d{4}$" required validate-on-blur placeholder="Enter an invalid us phone number to see the input trigger an error on blur" inputmode="tel"><kemet-icon name="phone" slot="left"></kemet-icon></kemet-input>' language="html" />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="input" display="attributes" />
+<br />
+
+### Slots
+
+<API element="input" display="slots" />
+<br />
+
+### Events
+
+<API element="input" display="events" />
+<br />
+
+### Methods
+
+<API element="input" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="input" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="input" display="parts" />
+<br />
+
+<DocsFooter />
+

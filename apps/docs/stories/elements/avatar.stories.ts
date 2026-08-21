@@ -8,7 +8,7 @@ import '../../../../packages/ui/src/elements/avatars';
 
 
 const meta: Meta = {
-  title: 'Feedback & Status / Avatar',
+  title: 'Elements / Avatar',
   component: 'kemet-avatar',
   render: (args: any) => Template(args),
   args: {

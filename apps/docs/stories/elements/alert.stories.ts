@@ -9,7 +9,7 @@ import '../../../../packages/ui/src/elements/alert';
 import '../../../../packages/ui/src/elements/icon';
 
 const meta: Meta = {
-  title: 'Feedback & Status / Alert',
+  title: 'Elements / Alert',
   component: 'kemet-alert',
   render: (args: Args) => Template(args),
   args: {

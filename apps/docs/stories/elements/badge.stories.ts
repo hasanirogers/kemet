@@ -9,7 +9,7 @@ import '../../../../packages/ui/src/elements/icon';
 import { EnumRoundedSizes, EnumAppearances, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 const meta: Meta = {
-  title: 'Feedback & Status / Badge',
+  title: 'Elements / Badge',
   component: 'kemet-badge',
   render: args => Template(args),
   argTypes: {

@@ -1,12 +1,12 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { FormSubmitController } from '../utilities/form-controller';
-import KemetField from './field';
-import { EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
-import { stylesTextarea } from '../styles/elements/textarea';
-
+import { FormSubmitController } from '../../utilities/form-controller';
+import HTMLKemetFieldElement from '../field';
+import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
+import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
 /**
  * @since 1.0.0
@@ -26,12 +26,14 @@ import { stylesTextarea } from '../styles/elements/textarea';
  * @prop {boolean}  required
  * @prop {string}  value
  * @prop {boolean}  invalid
- * @prop {TypeStatus}  status
+ * @prop {EnumAppearances}  appearance
  * @prop {boolean}  validateOnBlur
- * @prop {TypeRoundedSizes}  rounded
+ * @prop {EnumRoundedSizes}  rounded
  * @prop {boolean}  filled
  * @prop {number}  rows
  * @prop {boolean} autocorrect
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  *
  * @csspart textarea
@@ -49,13 +51,25 @@ import { stylesTextarea } from '../styles/elements/textarea';
  * @cssproperty --kemet-textarea-background-color-success - The success state background color.
  * @cssproperty --kemet-textarea-background-color-warning - The warning state background color.
  *
+ * @fires kemet-textarea-focused - Fired when the textarea is focused or blurred
+ * @detail {boolean} focused - Whether the textarea is focused
+ *
+ * @fires kemet-textarea-input - Fired when the textarea receives input
+ * @detail {string} value - The value of the textarea
+ *
+ * @fires kemet-textarea-appearance-change - Fired when the textarea appearance changes
+ * @detail {EnumAppearances} appearance - The appearance of the textarea
+ *
+ * @fires kemet-textarea-mounted - Fired when the textarea is mounted to the DOM
+ * @detail {HTMLElement} element - The textarea element
+ *
  */
 
 @customElement('kemet-textarea')
 export default class KemetTextarea extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [stylesTextarea];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   slug: string = 'textarea';
@@ -94,7 +108,7 @@ export default class KemetTextarea extends LitElement {
   invalid?: boolean;
 
   @property({ type: String, reflect: true })
-  status: TypeAppearance = EnumAppearances.Standard;
+  appearance?: EnumAppearances;
 
   @property({ type: Number })
   rows: number = 4;
@@ -106,7 +120,7 @@ export default class KemetTextarea extends LitElement {
   filled?: boolean;
 
   @property({ reflect: true })
-  rounded?: TypeRoundedSizes;
+  rounded?: EnumRoundedSizes;
 
   @property({ type: Boolean })
   autocorrect: boolean = false;
@@ -115,7 +129,7 @@ export default class KemetTextarea extends LitElement {
   form!: HTMLFormElement;
 
   @state()
-  control!: KemetField;
+  control!: HTMLKemetFieldElement;
 
   @state()
   textarea!: HTMLTextAreaElement;
@@ -125,6 +139,12 @@ export default class KemetTextarea extends LitElement {
 
   @state()
   validity!: ValidityState;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   constructor() {
     super();
@@ -136,8 +156,17 @@ export default class KemetTextarea extends LitElement {
   firstUpdated() {
     // elements
     this.form = this.closest('form') as HTMLFormElement;
-    this.control = this.closest('kemet-field') as KemetField;
+    this.control = this.closest('kemet-field') as HTMLKemetFieldElement;
     this.textarea = this.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+
+    emitEvent(this, 'kemet-textarea-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -178,10 +207,10 @@ export default class KemetTextarea extends LitElement {
      * Fires when the input receives and loses focus
      */
     this.dispatchEvent(
-      new CustomEvent('kemet-input-focused', {
+      new CustomEvent('kemet-textarea-focused', {
         bubbles: true,
         composed: true,
-        detail: true,
+        detail: { focused: true, element: this },
       }),
     );
   }
@@ -197,10 +226,10 @@ export default class KemetTextarea extends LitElement {
      * Fires when the input receives and loses focus
      */
     this.dispatchEvent(
-      new CustomEvent('kemet-input-focused', {
+      new CustomEvent('kemet-textarea-focused', {
         bubbles: true,
         composed: true,
-        detail: false,
+        detail: { focused: false, element: this },
       }),
     );
 
@@ -219,18 +248,17 @@ export default class KemetTextarea extends LitElement {
 
     if (this.textarea.checkValidity() && this.checkLimitValidity()) {
       this.invalid = false;
-      this.status = EnumAppearances.Standard;
       this.validity = this.textarea.validity;
 
       /**
        * Fires when there's a change in status
        */
       this.dispatchEvent(
-        new CustomEvent('kemet-input-status', {
+        new CustomEvent('kemet-textarea-appearance-change', {
           bubbles: true,
           composed: true,
           detail: {
-            status: 'standard',
+            appearance: EnumAppearances.Neutral,
             validity: this.textarea.validity,
             element: this,
           },
@@ -250,10 +278,10 @@ export default class KemetTextarea extends LitElement {
      * Fires when the input receives input
      */
     this.dispatchEvent(
-      new CustomEvent('kemet-input-input', {
+      new CustomEvent('kemet-textarea-input', {
         bubbles: true,
         composed: true,
-        detail: this.value,
+        detail: { value: this.value, element: this },
       }),
     );
   }
@@ -267,17 +295,17 @@ export default class KemetTextarea extends LitElement {
 
     if (this.validateOnBlur) {
       this.invalid = true;
-      this.status = EnumAppearances.Error;
+      this.appearance = EnumAppearances.Error;
 
       /**
        * Fires when there's a change in status
        */
       this.dispatchEvent(
-        new CustomEvent('kemet-input-status', {
+        new CustomEvent('kemet-textarea-appearance-change', {
           bubbles: true,
           composed: true,
           detail: {
-            status: 'error',
+            appearance: EnumAppearances.Error,
             validity: this.textarea.validity,
             element: this,
           },

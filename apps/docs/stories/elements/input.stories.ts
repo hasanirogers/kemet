@@ -1,30 +1,26 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumRoundedSizes, EnumAppearances } from '../../../../packages/ui/src/utilities/constants';
+import { EnumInputModes, EnumInputTypes } from '../../../../packages/ui/src/elements/input';
 
-import '../../../../packages/ui/src/elements/input';
+import '../../../../packages/ui/src/elements/input/';
+import '../../../../packages/ui/src/elements/icon/';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
-import '../../../../packages/ui/src/elements/icon-bootstrap';
-import { EnumRoundedSizes, roundedSizes, appearances } from '../../../../packages/ui/src/utilities/constants';
-import { inputModes, inputTypes } from '../../../../packages/ui/src/elements/input';
 
 const meta: Meta = {
-  title: 'Form Controls / Input',
+  title: 'Elements / Input',
   component: 'kemet-input',
   render: args => Template(args),
   argTypes: {
     type: {
       name: 'Type',
       control: { type: 'select' },
-      options: inputTypes,
+      options: Object.values(EnumInputTypes),
     },
-    status: {
-      control: { type: 'radio' },
-      options: appearances,
+    appearance: {
+      control: { type: 'select' },
+      options: Object.values(EnumAppearances),
     },
     autocomplete: {
       control: { type: 'radio' },
@@ -32,11 +28,11 @@ const meta: Meta = {
     },
     inputmode: {
       control: { type: 'select' },
-      options: inputModes,
+      options: Object.values(EnumInputModes),
     },
     rounded: {
       control: { type: 'select' },
-      options: roundedSizes,
+      options: Object.values(EnumRoundedSizes),
     }
   }
 };
@@ -44,9 +40,9 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`<kemet-input
+const Template = (args: Args) => html`<kemet-input
   type="${ifDefined(args.type)}"
-  status="${ifDefined(args.status)}"
+  appearance="${ifDefined(args.appearance)}"
   pattern=${ifDefined(args.pattern)}
   ?required=${args.required}
   ?validate-on-blur=${args.validateOnBlur}
@@ -85,20 +81,20 @@ export const Filled: Story = {
 export const search: Story = {
   args: {
     type: 'search',
-    left: html`<kemet-icon-bootstrap icon="search" slot="left"></kemet-icon-bootstrap>`,
+    left: html`<kemet-icon name="search" slot="left"></kemet-icon>`,
     placeholder: 'Input a value to see the clear icon appear'
   },
 }
 
 export const LeftIcon: Story = {
   args: {
-    left: html`<kemet-icon-bootstrap icon="phone" slot="left"></kemet-icon-bootstrap>`,
+    left: html`<kemet-icon name="phone" slot="left"></kemet-icon>`,
   },
 };
 
 export const RightIcon: Story = {
   args: {
-    right: html`<kemet-icon-bootstrap icon="search" slot="right"></kemet-icon-bootstrap>`,
+    right: html`<kemet-icon name="search" slot="right"></kemet-icon>`,
   },
 };
 
@@ -109,6 +105,6 @@ export const ValidateOnBlur: Story = {
     inputmode: 'tel',
     pattern: "^(?:\\+?1\\p{White_Space}?)?(?:\\([2-9]\\d{2}\\)|[2-9]\\d{2})[\\p{White_Space}.\\-]?[2-9]\\d{2}[\\p{White_Space}.\\-]?\\d{4}$",
     placeholder: "Enter an invalid us phone number to see the input trigger an error on blur",
-    left: html`<kemet-icon-bootstrap icon="phone" slot="left"></kemet-icon-bootstrap>`
+    left: html`<kemet-icon name="phone" slot="left"></kemet-icon>`
   },
 };

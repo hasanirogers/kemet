@@ -1,26 +1,28 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumAppearances, EnumRoundedSizes } from '../../../../packages/ui/src/utilities/constants';
+import { EnumInputModes } from '../../../../packages/ui/src/elements/input';
 
 import '../../../../packages/ui/src/elements/textarea';
 
+
 const meta: Meta = {
-  title: 'Form Controls / Textarea',
+  title: 'Elements / Textarea',
   component: 'kemet-textarea',
   render: args => Template(args),
   argTypes: {
-    status: {
-      control: { type: 'radio' },
-      options: ['standard', 'error', 'success', 'warning'],
+    appearance: {
+      control: { type: 'select' },
+      options: Object.values(EnumAppearances),
     },
     inputmode: {
       control: { type: 'select' },
-      options: ['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url'],
+      options: Object.values(EnumInputModes),
     },
     rounded: {
       control: { type: 'select' },
-      options: roundedSizes,
+      options: Object.values(EnumRoundedSizes),
     },
   }
 };
@@ -28,8 +30,8 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`<kemet-textarea
-  status=${ifDefined(args.status)}
+const Template = (args: Args) => html`<kemet-textarea
+  appearance=${ifDefined(args.appearance)}
   ?required=${args.required}
   ?validate-on-blur=${args.validateOnBlur}
   placeholder=${ifDefined(args.placeholder || null)}
@@ -61,5 +63,11 @@ export const Filled: Story = {
 export const Rounded: Story = {
   args: {
     rounded: EnumRoundedSizes.MD
+  }
+};
+
+export const Appearance: Story = {
+  args: {
+    appearance: 'brand'
   }
 };

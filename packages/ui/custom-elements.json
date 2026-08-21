@@ -4,380 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/elements/checkbox.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetCheckbox",
-          "cssProperties": [
-            {
-              "description": "The width and height of the checkbox.",
-              "name": "--kemet-checkbox-size"
-            },
-            {
-              "description": "The color of the checkbox mark.",
-              "name": "--kemet-checkbox-color"
-            },
-            {
-              "description": "The border of the checkbox.",
-              "name": "--kemet-checkbox-border"
-            },
-            {
-              "description": "The border radius of the checkbox.",
-              "name": "--kemet-checkbox-border-radius"
-            },
-            {
-              "description": "The filled color of the checkbox mark.",
-              "name": "--kemet-checkbox-filled-color"
-            },
-            {
-              "description": "The filled background color.",
-              "name": "--kemet-checkbox-filled-background-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The label element.",
-              "name": "label"
-            },
-            {
-              "description": "The label's text.",
-              "name": "text"
-            },
-            {
-              "description": "The icon of the check mark.",
-              "name": "mark"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Label text for the checkbox",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the checkbox is selected",
-              "attribute": "checked",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "An indeterminate selection status",
-              "attribute": "indeterminate",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'checkbox'",
-              "description": "Name of the checkbox",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "false",
-              "description": "Value of the checkbox",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if a checkbox is disabled",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if a checkbox is required",
-              "attribute": "required",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Is true when the checkbox is focused",
-              "attribute": "focused",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Gives the checkbox rounded edges",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Fills the checkbox with color",
-              "attribute": "filled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The status of the checkbox",
-              "attribute": "status",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Message associated with checkbox status",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "HTMLInputElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "click",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Simulates a click on the input element.",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "handleClick"
-            },
-            {
-              "kind": "method",
-              "name": "handleBlur"
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus"
-            },
-            {
-              "kind": "method",
-              "name": "handleChange"
-            },
-            {
-              "kind": "method",
-              "name": "makeMessage"
-            },
-            {
-              "kind": "method",
-              "name": "makeCheckMark"
-            },
-            {
-              "kind": "method",
-              "name": "checkValidity"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the state of the checkbox changes",
-              "name": "kemet-change"
-            },
-            {
-              "description": "Fires when the checkbox receives focus",
-              "name": "kemet-focus"
-            },
-            {
-              "description": "Fires when the checkbox loses focus",
-              "name": "kemet-blur"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Label text for the checkbox",
-              "fieldName": "label"
-            },
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the checkbox is selected",
-              "fieldName": "checked"
-            },
-            {
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "An indeterminate selection status",
-              "fieldName": "indeterminate"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'checkbox'",
-              "description": "Name of the checkbox",
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "false",
-              "description": "Value of the checkbox",
-              "fieldName": "value"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if a checkbox is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if a checkbox is required",
-              "fieldName": "required"
-            },
-            {
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Is true when the checkbox is focused",
-              "fieldName": "focused"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Gives the checkbox rounded edges",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Fills the checkbox with color",
-              "fieldName": "filled"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The status of the checkbox",
-              "fieldName": "status"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Message associated with checkbox status",
-              "fieldName": "message"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-checkbox",
-          "customElement": true,
-          "summary": "An enhanced checkbox."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetCheckbox",
-            "module": "src/elements/checkbox.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-checkbox",
-          "declaration": {
-            "name": "KemetCheckbox",
-            "module": "src/elements/checkbox.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/combo.ts",
       "declarations": [
         {
@@ -474,7 +100,7 @@
               "kind": "field",
               "name": "field",
               "type": {
-                "text": "KemetField"
+                "text": "HTMLKemetFieldElement"
               }
             },
             {
@@ -656,7 +282,7 @@
               "kind": "field",
               "name": "field",
               "type": {
-                "text": "KemetField"
+                "text": "HTMLKemetFieldElement"
               }
             },
             {
@@ -1148,316 +774,6 @@
           "declaration": {
             "name": "KemetFAB",
             "module": "src/elements/fab.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/field.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetField",
-          "cssParts": [
-            {
-              "description": "The label of the field.",
-              "name": "label"
-            },
-            {
-              "description": "The validation message of the field.",
-              "name": "message"
-            },
-            {
-              "description": "The text in the label.",
-              "name": "text"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Allows subcomponents of the field to display.",
-              "name": "component"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "description": "Uniquely identifies the control. Use the same slug for slotted subcomponents.",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "The label text",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "The validation message for error or success",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the containing input is focused",
-              "attribute": "focused",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The validation status of standard, error, or success",
-              "attribute": "status",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true when the containing input has a value",
-              "attribute": "filled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "length",
-              "type": {
-                "text": "number"
-              },
-              "description": "The length of the containing input",
-              "attribute": "length"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines the disabled state of the control",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "errorIcon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'exclamation-triangle-fill'",
-              "description": "The icon while in an error or warning state",
-              "attribute": "error-icon"
-            },
-            {
-              "kind": "field",
-              "name": "successIcon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'check-lg'",
-              "description": "The icon while in a success state",
-              "attribute": "success-icon"
-            },
-            {
-              "kind": "field",
-              "name": "slotInput",
-              "type": {
-                "text": "KemetInput | KemetTextarea"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "slotCombo",
-              "type": {
-                "text": "KemetCombo"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "makeStatusMessage"
-            },
-            {
-              "kind": "method",
-              "name": "handleFocused",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleStatus",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSelection",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when input fires on the input slot",
-              "name": "kemet-input"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "description": "Uniquely identifies the control. Use the same slug for slotted subcomponents.",
-              "fieldName": "slug"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "The label text",
-              "fieldName": "label"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "The validation message for error or success",
-              "fieldName": "message"
-            },
-            {
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the containing input is focused",
-              "fieldName": "focused"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The validation status of standard, error, or success",
-              "fieldName": "status"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true when the containing input has a value",
-              "fieldName": "filled"
-            },
-            {
-              "name": "length",
-              "type": {
-                "text": "number"
-              },
-              "description": "The length of the containing input",
-              "fieldName": "length"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines the disabled state of the control",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "error-icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'exclamation-triangle-fill'",
-              "description": "The icon while in an error or warning state",
-              "fieldName": "errorIcon"
-            },
-            {
-              "name": "success-icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'check-lg'",
-              "description": "The icon while in a success state",
-              "fieldName": "successIcon"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-field",
-          "customElement": true,
-          "summary": "Used in combination with Input, Select, and Textarea, to make a Field."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetField",
-            "module": "src/elements/field.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-field",
-          "declaration": {
-            "name": "KemetField",
-            "module": "src/elements/field.ts"
           }
         }
       ]
@@ -2597,897 +1913,6 @@
           "declaration": {
             "name": "KemetOtpInput",
             "module": "src/elements/input-otp.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/input.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "inputTypes",
-          "type": {
-            "text": "['text', 'color', 'date', 'datetime-local', 'email', 'password', 'hidden', 'month', 'number', 'reset', 'search', 'tel', 'time', 'url', 'week']"
-          },
-          "default": "['text', 'color', 'date', 'datetime-local', 'email', 'password', 'hidden', 'month', 'number', 'reset', 'search', 'tel', 'time', 'url', 'week']"
-        },
-        {
-          "kind": "variable",
-          "name": "ariaAutoComplete",
-          "type": {
-            "text": "['inline', 'list', 'both', 'none']"
-          },
-          "default": "['inline', 'list', 'both', 'none']"
-        },
-        {
-          "kind": "variable",
-          "name": "autoComplete",
-          "type": {
-            "text": "['on', 'off', 'additional-name', 'address-level1', 'address-level2', 'address-level3', 'address-level4', 'address-line1', 'address-line2', 'address-line3', 'bday', 'bday-year', 'bday-day', 'bday-month', 'billing', 'cc-additional-name']"
-          },
-          "default": "['on', 'off', 'additional-name', 'address-level1', 'address-level2', 'address-level3', 'address-level4', 'address-line1', 'address-line2', 'address-line3', 'bday', 'bday-year', 'bday-day', 'bday-month', 'billing', 'cc-additional-name']"
-        },
-        {
-          "kind": "variable",
-          "name": "inputModes",
-          "type": {
-            "text": "['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url']"
-          },
-          "default": "['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url']"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetInput",
-          "cssProperties": [
-            {
-              "description": "The height of the input.",
-              "name": "--kemet-input-height"
-            },
-            {
-              "description": "The padding on the input.",
-              "name": "--kemet-input-padding"
-            },
-            {
-              "description": "The border of the input.",
-              "name": "--kemet-input-border"
-            },
-            {
-              "description": " The border of the error state.",
-              "name": "--kemet-input-border-color-error"
-            },
-            {
-              "description": "The border of the success state.",
-              "name": "--kemet-input-border-color-success"
-            },
-            {
-              "description": "The border of the warning state.",
-              "name": "--kemet-input-border-color-warning"
-            },
-            {
-              "description": "The icon-left padding.",
-              "name": "--kemet-input-icon-left-padding"
-            },
-            {
-              "description": "The icon-right padding.",
-              "name": "--kemet-input-icon-right-padding"
-            },
-            {
-              "description": "The border radius on rounded.",
-              "name": "--kemet-input-border-radius-rounded"
-            },
-            {
-              "description": "The border on filled.",
-              "name": "--kemet-input-border-filled"
-            },
-            {
-              "description": "The color on filled.",
-              "name": "--kemet-input-color-filled"
-            },
-            {
-              "description": "The background-color on filled.",
-              "name": "--kemet-input-background-color-filled"
-            },
-            {
-              "description": "The error state background color.",
-              "name": "--kemet-input-background-color-error"
-            },
-            {
-              "description": "The success state background color.",
-              "name": "--kemet-input-background-color-success"
-            },
-            {
-              "description": "The warning state background color.",
-              "name": "--kemet-input-background-color-warning"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "input"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "description": "Used for the id of the input. Should match the slug used in a control if applicable.",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'input'",
-              "description": "The name of the input",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "description": "The placeholder attribute",
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "minlength",
-              "type": {
-                "text": "string"
-              },
-              "description": "The minlength attribute",
-              "attribute": "minlength"
-            },
-            {
-              "kind": "field",
-              "name": "maxlength",
-              "type": {
-                "text": "string"
-              },
-              "description": "The maxlength attribute",
-              "attribute": "maxlength"
-            },
-            {
-              "kind": "field",
-              "name": "min",
-              "type": {
-                "text": "string"
-              },
-              "description": "The min attribute",
-              "attribute": "min"
-            },
-            {
-              "kind": "field",
-              "name": "max",
-              "type": {
-                "text": "string"
-              },
-              "description": "The max attribute",
-              "attribute": "max"
-            },
-            {
-              "kind": "field",
-              "name": "step",
-              "type": {
-                "text": "string"
-              },
-              "description": "The step attribute",
-              "attribute": "step"
-            },
-            {
-              "kind": "field",
-              "name": "autocomplete",
-              "type": {
-                "text": "TypeAutoComplete"
-              },
-              "description": "The autocomplete attribute",
-              "attribute": "autocomplete"
-            },
-            {
-              "kind": "field",
-              "name": "pattern",
-              "type": {
-                "text": "string"
-              },
-              "description": "The pattern attribute",
-              "attribute": "pattern"
-            },
-            {
-              "kind": "field",
-              "name": "inputmode",
-              "type": {
-                "text": "TypeInputModes"
-              },
-              "description": "The input mode attribute",
-              "attribute": "inputmode"
-            },
-            {
-              "kind": "field",
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "The autofocus attribute",
-              "attribute": "autofocus"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The disable attribute",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The readonly attribute",
-              "attribute": "readonly"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The required attribute",
-              "attribute": "required",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "string"
-              },
-              "description": "The type of input",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The input's value",
-              "attribute": "value",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "invalid",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "States whether the input is invalid",
-              "attribute": "invalid",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "string"
-              },
-              "description": "The status of the input",
-              "attribute": "status",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "validateOnBlur",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Activates validation on blur",
-              "attribute": "validate-on-blur"
-            },
-            {
-              "kind": "field",
-              "name": "ariaAutoComplete",
-              "type": {
-                "text": "TypeAriaAutoComplete"
-              },
-              "default": "null",
-              "description": "Aria Autocomplete",
-              "attribute": "aria-autocomplete"
-            },
-            {
-              "kind": "field",
-              "name": "ariaControls",
-              "type": {
-                "text": "string"
-              },
-              "description": "Aria Controls",
-              "attribute": "aria-controls"
-            },
-            {
-              "kind": "field",
-              "name": "ariaActiveDescendant",
-              "type": {
-                "text": "string"
-              },
-              "description": "Aria Active Descendant",
-              "attribute": "aria-activedescendant"
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays a filled input box",
-              "attribute": "filled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "iconRight",
-              "type": {
-                "text": "string"
-              },
-              "default": "false",
-              "description": "Custom Icon to the right of the input",
-              "attribute": "icon-right",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "iconLeft",
-              "type": {
-                "text": "string"
-              },
-              "default": "false",
-              "description": "Custom Icon to the left of the input",
-              "attribute": "icon-left",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "validity",
-              "type": {
-                "text": "object"
-              },
-              "description": "The HTML5 validity object.",
-              "attribute": "validity"
-            },
-            {
-              "kind": "field",
-              "name": "isPasswordVisible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Manages password visibility",
-              "attribute": "isPasswordVisible"
-            },
-            {
-              "kind": "field",
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the input is focused",
-              "attribute": "focused",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays rounded corners",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "type": {
-                "text": "KemetField"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "form",
-              "type": {
-                "text": "HTMLFormElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "HTMLInputElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleLeftChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleRightChange"
-            },
-            {
-              "kind": "method",
-              "name": "makeIconClear"
-            },
-            {
-              "kind": "method",
-              "name": "makeVisibilityToggle"
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus",
-              "description": "Handles when the input receives focus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleBlur",
-              "description": "Handles when the input loses focus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleChange",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ],
-              "description": "Handles when the input changes value",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ],
-              "description": "Handles when the input receives input",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInvalid",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ],
-              "description": "Handles when the input has an error",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleStatus",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "togglePasswordVisibility",
-              "description": "Toggles password visibility",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleClear",
-              "description": "Handles the clear button for search",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "checkLimitValidity",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Checks the validity of the character limit for the count component",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "checkValidity",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Checks the validity of the standard input",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Focuses the standard input",
-              "privacy": "public"
-            },
-            {
-              "type": {
-                "text": "number"
-              },
-              "description": "Size of the icons",
-              "name": "iconSize",
-              "kind": "field"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Input Type of keypress handled through handleInput(e)",
-              "name": "inputType",
-              "kind": "field"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the input receives focus",
-              "name": "kemet-focus"
-            },
-            {
-              "description": "Fires when the input loses focus",
-              "name": "kemet-blur"
-            },
-            {
-              "description": "Fires when there's a change in status. This event includes an object that reports: 1) the status. 2) HTML5 validity object. 3) the component element. Use the validity object to support custom validation messages.",
-              "name": "kemet-status-change"
-            },
-            {
-              "description": "Fires when the input receives input",
-              "name": "kemet-input"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "description": "Used for the id of the input. Should match the slug used in a control if applicable.",
-              "fieldName": "slug"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'input'",
-              "description": "The name of the input",
-              "fieldName": "name"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "description": "The placeholder attribute",
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "minlength",
-              "type": {
-                "text": "string"
-              },
-              "description": "The minlength attribute",
-              "fieldName": "minlength"
-            },
-            {
-              "name": "maxlength",
-              "type": {
-                "text": "string"
-              },
-              "description": "The maxlength attribute",
-              "fieldName": "maxlength"
-            },
-            {
-              "name": "min",
-              "type": {
-                "text": "string"
-              },
-              "description": "The min attribute",
-              "fieldName": "min"
-            },
-            {
-              "name": "max",
-              "type": {
-                "text": "string"
-              },
-              "description": "The max attribute",
-              "fieldName": "max"
-            },
-            {
-              "name": "step",
-              "type": {
-                "text": "string"
-              },
-              "description": "The step attribute",
-              "fieldName": "step"
-            },
-            {
-              "name": "autocomplete",
-              "type": {
-                "text": "TypeAutoComplete"
-              },
-              "description": "The autocomplete attribute",
-              "fieldName": "autocomplete"
-            },
-            {
-              "name": "pattern",
-              "type": {
-                "text": "string"
-              },
-              "description": "The pattern attribute",
-              "fieldName": "pattern"
-            },
-            {
-              "name": "inputmode",
-              "type": {
-                "text": "TypeInputModes"
-              },
-              "description": "The input mode attribute",
-              "fieldName": "inputmode"
-            },
-            {
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "The autofocus attribute",
-              "fieldName": "autofocus"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The disable attribute",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The readonly attribute",
-              "fieldName": "readonly"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The required attribute",
-              "fieldName": "required"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "string"
-              },
-              "description": "The type of input",
-              "fieldName": "type"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The input's value",
-              "fieldName": "value"
-            },
-            {
-              "name": "invalid",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "States whether the input is invalid",
-              "fieldName": "invalid"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "string"
-              },
-              "description": "The status of the input",
-              "fieldName": "status"
-            },
-            {
-              "name": "validate-on-blur",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Activates validation on blur",
-              "fieldName": "validateOnBlur"
-            },
-            {
-              "name": "aria-autocomplete",
-              "type": {
-                "text": "TypeAriaAutoComplete"
-              },
-              "default": "null",
-              "description": "Aria Autocomplete",
-              "fieldName": "ariaAutoComplete"
-            },
-            {
-              "name": "aria-controls",
-              "type": {
-                "text": "string"
-              },
-              "description": "Aria Controls",
-              "fieldName": "ariaControls"
-            },
-            {
-              "name": "aria-activedescendant",
-              "type": {
-                "text": "string"
-              },
-              "description": "Aria Active Descendant",
-              "fieldName": "ariaActiveDescendant"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays a filled input box",
-              "fieldName": "filled"
-            },
-            {
-              "name": "icon-right",
-              "type": {
-                "text": "string"
-              },
-              "default": "false",
-              "description": "Custom Icon to the right of the input",
-              "fieldName": "iconRight"
-            },
-            {
-              "name": "icon-left",
-              "type": {
-                "text": "string"
-              },
-              "default": "false",
-              "description": "Custom Icon to the left of the input",
-              "fieldName": "iconLeft"
-            },
-            {
-              "name": "validity",
-              "type": {
-                "text": "object"
-              },
-              "description": "The HTML5 validity object.",
-              "fieldName": "validity"
-            },
-            {
-              "name": "isPasswordVisible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Manages password visibility",
-              "fieldName": "isPasswordVisible"
-            },
-            {
-              "name": "focused",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the input is focused",
-              "fieldName": "focused"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays rounded corners",
-              "fieldName": "rounded"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-input",
-          "customElement": true,
-          "summary": "An enhanced input element."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "inputTypes",
-          "declaration": {
-            "name": "inputTypes",
-            "module": "src/elements/input.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "ariaAutoComplete",
-          "declaration": {
-            "name": "ariaAutoComplete",
-            "module": "src/elements/input.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "autoComplete",
-          "declaration": {
-            "name": "autoComplete",
-            "module": "src/elements/input.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "inputModes",
-          "declaration": {
-            "name": "inputModes",
-            "module": "src/elements/input.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetInput",
-            "module": "src/elements/input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-input",
-          "declaration": {
-            "name": "KemetInput",
-            "module": "src/elements/input.ts"
           }
         }
       ]
@@ -6469,505 +4894,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/textarea.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetTextarea",
-          "cssProperties": [
-            {
-              "description": "The padding on the textarea.",
-              "name": "--kemet-textarea-padding"
-            },
-            {
-              "description": "The border of the textarea.",
-              "name": "--kemet-textarea-border"
-            },
-            {
-              "description": "The border of the error state.",
-              "name": "--kemet-textarea-border-color-error"
-            },
-            {
-              "description": "The border of the success state.",
-              "name": "--kemet-textarea-border-color-success"
-            },
-            {
-              "description": "The border of the warning state.",
-              "name": "--kemet-textarea-border-color-warning"
-            },
-            {
-              "description": "The border radius on rounded.",
-              "name": "--kemet-textarea-border-radius-rounded"
-            },
-            {
-              "description": "The border on filled.",
-              "name": "--kemet-textarea-border-filled"
-            },
-            {
-              "description": "The color on filled.",
-              "name": "--kemet-textarea-color-filled"
-            },
-            {
-              "description": "The background-color on filled.",
-              "name": "--kemet-textarea-background-color-filled"
-            },
-            {
-              "description": "The error state background color.",
-              "name": "--kemet-textarea-background-color-error"
-            },
-            {
-              "description": "The success state background color.",
-              "name": "--kemet-textarea-background-color-success"
-            },
-            {
-              "description": "The warning state background color.",
-              "name": "--kemet-textarea-background-color-warning"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "textarea"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "minlength",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "minlength"
-            },
-            {
-              "kind": "field",
-              "name": "maxlength",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "maxlength"
-            },
-            {
-              "kind": "field",
-              "name": "inputmode",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "inputmode"
-            },
-            {
-              "kind": "field",
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "autofocus"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "readonly"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "required",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "invalid",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "invalid",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "TypeStatus"
-              },
-              "attribute": "status",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rows",
-              "type": {
-                "text": "number"
-              },
-              "default": "4",
-              "attribute": "rows"
-            },
-            {
-              "kind": "field",
-              "name": "validateOnBlur",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "validate-on-blur"
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "filled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "autocorrect",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "autocorrect"
-            },
-            {
-              "kind": "field",
-              "name": "form",
-              "type": {
-                "text": "HTMLFormElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "control",
-              "type": {
-                "text": "KemetField"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "textarea",
-              "type": {
-                "text": "HTMLTextAreaElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hasFocus",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "validity",
-              "type": {
-                "text": "ValidityState"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus",
-              "description": "Handles when the textarea receives focus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleBlur",
-              "description": "Handles when the textarea loses focus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleChange",
-              "description": "Handles when the textarea changes value",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "description": "Handles when the textarea receives input",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInvalid",
-              "description": "Handles when the textarea has an error",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "checkLimitValidity",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Checks the validity of the character limit for the count component",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "checkValidity",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Checks the validity of the standard input",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "description": "Focuses the standard input",
-              "privacy": "public"
-            }
-          ],
-          "events": [
-            {
-              "name": "kemet-input-focused",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fires when the input receives and loses focus"
-            },
-            {
-              "name": "kemet-input-status",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fires when there's a change in status"
-            },
-            {
-              "name": "kemet-input-input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fires when the input receives input"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "fieldName": "slug"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "fieldName": "name"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "minlength",
-              "type": {
-                "text": "number"
-              },
-              "fieldName": "minlength"
-            },
-            {
-              "name": "maxlength",
-              "type": {
-                "text": "number"
-              },
-              "fieldName": "maxlength"
-            },
-            {
-              "name": "inputmode",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "inputmode"
-            },
-            {
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "autofocus"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "disabled"
-            },
-            {
-              "name": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "readonly"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "required"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "invalid",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "invalid"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "TypeStatus"
-              },
-              "fieldName": "status"
-            },
-            {
-              "name": "rows",
-              "type": {
-                "text": "number"
-              },
-              "default": "4",
-              "fieldName": "rows"
-            },
-            {
-              "name": "validate-on-blur",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "validateOnBlur"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "filled"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "fieldName": "rounded"
-            },
-            {
-              "name": "autocorrect",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "autocorrect"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-textarea",
-          "customElement": true,
-          "summary": "An enhanced textarea element."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetTextarea",
-            "module": "src/elements/textarea.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-textarea",
-          "declaration": {
-            "name": "KemetTextarea",
-            "module": "src/elements/textarea.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/timer-display.ts",
       "declarations": [
         {
@@ -9114,6 +7040,514 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/accordion-panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetAccordionPanel",
+          "cssParts": [
+            {
+              "description": "Contains the trigger for the panel.",
+              "name": "trigger"
+            },
+            {
+              "description": "Contains the body for the panel.",
+              "name": "body"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The trigger button that opens and closes the panel.",
+              "name": "trigger"
+            },
+            {
+              "description": "The body content of the panel.",
+              "name": "body"
+            },
+            {
+              "description": "The icon for the panel.",
+              "name": "icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "undefined",
+              "description": "Determines the opened state of the panel",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "maxHeight",
+              "type": {
+                "text": "string"
+              },
+              "default": "'0px'",
+              "description": "Sets the max height of the panel's body",
+              "attribute": "max-height"
+            },
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'panel'",
+              "description": "Uniquely identifies a panel for accessibility purposes",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "index",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "index"
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "description": "Toggles the opened state of the panel.",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focusableBodyElements"
+            },
+            {
+              "kind": "method",
+              "name": "a11y"
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when a panel is opened",
+              "name": "kemet-opened"
+            },
+            {
+              "description": "Fires when a panel is closed",
+              "name": "kemet-closed"
+            },
+            {
+              "description": "Fired when the accordion panel is mounted to the DOM",
+              "name": "kemet-accordion-panel-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "undefined",
+              "description": "Determines the opened state of the panel",
+              "fieldName": "opened"
+            },
+            {
+              "name": "max-height",
+              "type": {
+                "text": "string"
+              },
+              "default": "'0px'",
+              "description": "Sets the max height of the panel's body",
+              "fieldName": "maxHeight"
+            },
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'panel'",
+              "description": "Uniquely identifies a panel for accessibility purposes",
+              "fieldName": "slug"
+            },
+            {
+              "name": "index",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "index"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-accordion-panel",
+          "customElement": true,
+          "summary": "A blade for an accordion."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAccordionPanel",
+            "module": "src/elements/accordion-panel/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-accordion-panel",
+          "declaration": {
+            "name": "KemetAccordionPanel",
+            "module": "src/elements/accordion-panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/avatars/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetAvatars",
+          "cssProperties": [
+            {
+              "description": "The space between avatars. Default: -1.5rem.",
+              "name": "--kemet-avatars-squeeze"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the avatars are mounted.",
+              "name": "kemet-avatars-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-avatars",
+          "customElement": true,
+          "summary": "Groups multiple avatar elements."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAvatars",
+            "module": "src/elements/avatars/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-avatars",
+          "declaration": {
+            "name": "KemetAvatars",
+            "module": "src/elements/avatars/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/avatar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetAvatar",
+          "cssProperties": [
+            {
+              "description": "The space around the initials.",
+              "name": "--kemet-avatar-initials-margin"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Contains the initials for the avatar.",
+              "name": "initials"
+            }
+          ],
+          "slots": [
+            {
+              "description": "A slot for an icon or element that indicates the status of the avatar.",
+              "name": "status"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "The size in pixels.",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Url to an image.",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Labels the avatar.",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initials of the user.",
+              "attribute": "initials"
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Displays with rounded corners",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "makeSize"
+            },
+            {
+              "kind": "method",
+              "name": "makeContent"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays in a circle.",
+              "name": "circle",
+              "kind": "field"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the avatar is mounted.",
+              "name": "kemet-avatar-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "The size in pixels.",
+              "fieldName": "size"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Url to an image.",
+              "fieldName": "image"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Labels the avatar.",
+              "fieldName": "label"
+            },
+            {
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initials of the user.",
+              "fieldName": "initials"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Displays with rounded corners",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-avatar",
+          "customElement": true,
+          "summary": "A representation of a person or thing."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAvatar",
+            "module": "src/elements/avatar/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-avatar",
+          "declaration": {
+            "name": "KemetAvatar",
+            "module": "src/elements/avatar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/alert/index.ts",
       "declarations": [
         {
@@ -9434,725 +7868,6 @@
           "declaration": {
             "name": "KemetAlert",
             "module": "src/elements/alert/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/avatar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetAvatar",
-          "cssProperties": [
-            {
-              "description": "The space around the initials.",
-              "name": "--kemet-avatar-initials-margin"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Contains the initials for the avatar.",
-              "name": "initials"
-            }
-          ],
-          "slots": [
-            {
-              "description": "A slot for an icon or element that indicates the status of the avatar.",
-              "name": "status"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "string"
-              },
-              "description": "The size in pixels.",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Url to an image.",
-              "attribute": "image"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Labels the avatar.",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initials of the user.",
-              "attribute": "initials"
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays with rounded corners",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "makeSize"
-            },
-            {
-              "kind": "method",
-              "name": "makeContent"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays in a circle.",
-              "name": "circle",
-              "kind": "field"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the avatar is mounted.",
-              "name": "kemet-avatar-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "string"
-              },
-              "description": "The size in pixels.",
-              "fieldName": "size"
-            },
-            {
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Url to an image.",
-              "fieldName": "image"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Labels the avatar.",
-              "fieldName": "label"
-            },
-            {
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initials of the user.",
-              "fieldName": "initials"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays with rounded corners",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-avatar",
-          "customElement": true,
-          "summary": "A representation of a person or thing."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAvatar",
-            "module": "src/elements/avatar/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-avatar",
-          "declaration": {
-            "name": "KemetAvatar",
-            "module": "src/elements/avatar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/avatars/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetAvatars",
-          "cssProperties": [
-            {
-              "description": "The space between avatars. Default: -1.5rem.",
-              "name": "--kemet-avatars-squeeze"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the avatars are mounted.",
-              "name": "kemet-avatars-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-avatars",
-          "customElement": true,
-          "summary": "Groups multiple avatar elements."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAvatars",
-            "module": "src/elements/avatars/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-avatars",
-          "declaration": {
-            "name": "KemetAvatars",
-            "module": "src/elements/avatars/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/badge/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetBadge",
-          "cssProperties": [
-            {
-              "description": "The padding of the badge.",
-              "name": "--kemet-badge-padding"
-            },
-            {
-              "description": "The border width of the badge.",
-              "name": "--kemet-badge-border-width"
-            },
-            {
-              "description": "The border style of the badge.",
-              "name": "--kemet-badge-border-style"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearance"
-              },
-              "description": "The appearance of the badge's color",
-              "attribute": "appearance",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "circlePadding",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Padding on the badge as a circle",
-              "attribute": "circle-padding"
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Rounds the corners on the badge",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "outlined",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Outlines the badge",
-              "attribute": "outlined",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "iconLeft",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "iconRight",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleLeftChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleRightChange"
-            },
-            {
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The status of the badge",
-              "name": "status",
-              "kind": "field"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the badge is mounted",
-              "name": "kemet-badge-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearance"
-              },
-              "description": "The appearance of the badge's color",
-              "fieldName": "appearance"
-            },
-            {
-              "name": "circle-padding",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Padding on the badge as a circle",
-              "fieldName": "circlePadding"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Rounds the corners on the badge",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "outlined",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Outlines the badge",
-              "fieldName": "outlined"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-badge",
-          "customElement": true,
-          "summary": "Badges display the status of information."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetBadge",
-            "module": "src/elements/badge/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-badge",
-          "declaration": {
-            "name": "KemetBadge",
-            "module": "src/elements/badge/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/accordion-panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetAccordionPanel",
-          "cssParts": [
-            {
-              "description": "Contains the trigger for the panel.",
-              "name": "trigger"
-            },
-            {
-              "description": "Contains the body for the panel.",
-              "name": "body"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The trigger button that opens and closes the panel.",
-              "name": "trigger"
-            },
-            {
-              "description": "The body content of the panel.",
-              "name": "body"
-            },
-            {
-              "description": "The icon for the panel.",
-              "name": "icon"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "undefined",
-              "description": "Determines the opened state of the panel",
-              "attribute": "opened",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "maxHeight",
-              "type": {
-                "text": "string"
-              },
-              "default": "'0px'",
-              "description": "Sets the max height of the panel's body",
-              "attribute": "max-height"
-            },
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'panel'",
-              "description": "Uniquely identifies a panel for accessibility purposes",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "index"
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "toggle",
-              "description": "Toggles the opened state of the panel.",
-              "privacy": "public",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "focusableBodyElements"
-            },
-            {
-              "kind": "method",
-              "name": "a11y"
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when a panel is opened",
-              "name": "kemet-opened"
-            },
-            {
-              "description": "Fires when a panel is closed",
-              "name": "kemet-closed"
-            },
-            {
-              "description": "Fired when the accordion panel is mounted to the DOM",
-              "name": "kemet-accordion-panel-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "undefined",
-              "description": "Determines the opened state of the panel",
-              "fieldName": "opened"
-            },
-            {
-              "name": "max-height",
-              "type": {
-                "text": "string"
-              },
-              "default": "'0px'",
-              "description": "Sets the max height of the panel's body",
-              "fieldName": "maxHeight"
-            },
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'panel'",
-              "description": "Uniquely identifies a panel for accessibility purposes",
-              "fieldName": "slug"
-            },
-            {
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "fieldName": "index"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-accordion-panel",
-          "customElement": true,
-          "summary": "A blade for an accordion."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAccordionPanel",
-            "module": "src/elements/accordion-panel/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-accordion-panel",
-          "declaration": {
-            "name": "KemetAccordionPanel",
-            "module": "src/elements/accordion-panel/index.ts"
           }
         }
       ]
@@ -10578,6 +8293,217 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/badge/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetBadge",
+          "cssProperties": [
+            {
+              "description": "The padding of the badge.",
+              "name": "--kemet-badge-padding"
+            },
+            {
+              "description": "The border width of the badge.",
+              "name": "--kemet-badge-border-width"
+            },
+            {
+              "description": "The border style of the badge.",
+              "name": "--kemet-badge-border-style"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearance"
+              },
+              "description": "The appearance of the badge's color",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "circlePadding",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Padding on the badge as a circle",
+              "attribute": "circle-padding"
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Rounds the corners on the badge",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "outlined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Outlines the badge",
+              "attribute": "outlined",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconLeft",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "iconRight",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleLeftChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleRightChange"
+            },
+            {
+              "type": {
+                "text": "TypeStatus"
+              },
+              "description": "The status of the badge",
+              "name": "status",
+              "kind": "field"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the badge is mounted",
+              "name": "kemet-badge-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearance"
+              },
+              "description": "The appearance of the badge's color",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "circle-padding",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Padding on the badge as a circle",
+              "fieldName": "circlePadding"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Rounds the corners on the badge",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "outlined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Outlines the badge",
+              "fieldName": "outlined"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-badge",
+          "customElement": true,
+          "summary": "Badges display the status of information."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetBadge",
+            "module": "src/elements/badge/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-badge",
+          "declaration": {
+            "name": "KemetBadge",
+            "module": "src/elements/badge/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/card/index.ts",
       "declarations": [
         {
@@ -10604,14 +8530,6 @@
             {
               "description": "The border around the card.",
               "name": "--kemet-card-border"
-            },
-            {
-              "description": "The border radius of the card.",
-              "name": "--kemet-card-border-radius"
-            },
-            {
-              "description": "The background color.",
-              "name": "--kemet-card-background-color"
             },
             {
               "description": "The body spacing.",
@@ -10644,6 +8562,10 @@
             {
               "description": "The footer border.",
               "name": "--kemet-card-footer-border-top"
+            },
+            {
+              "description": "The filled background color.",
+              "name": "--kemet-card-filled-color"
             }
           ],
           "cssParts": [
@@ -10846,6 +8768,770 @@
           "declaration": {
             "name": "KemetCard",
             "module": "src/elements/card/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/checkbox/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetCheckbox",
+          "cssProperties": [
+            {
+              "description": "The width and height of the checkbox.",
+              "name": "--kemet-checkbox-size"
+            },
+            {
+              "description": "The color of the checkbox mark.",
+              "name": "--kemet-checkbox-color"
+            },
+            {
+              "description": "The border of the checkbox.",
+              "name": "--kemet-checkbox-border"
+            },
+            {
+              "description": "The border radius of the checkbox.",
+              "name": "--kemet-checkbox-border-radius"
+            },
+            {
+              "description": "The filled color of the checkbox mark.",
+              "name": "--kemet-checkbox-filled-color"
+            },
+            {
+              "description": "The filled background color.",
+              "name": "--kemet-checkbox-filled-background-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The label element.",
+              "name": "label"
+            },
+            {
+              "description": "The label's text.",
+              "name": "text"
+            },
+            {
+              "description": "The icon of the check mark.",
+              "name": "mark"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Label text for the checkbox",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the checkbox is selected",
+              "attribute": "checked",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "An indeterminate selection status",
+              "attribute": "indeterminate",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'checkbox'",
+              "description": "Name of the checkbox",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "false",
+              "description": "Value of the checkbox",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if a checkbox is disabled",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if a checkbox is required",
+              "attribute": "required",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Is true when the checkbox is focused",
+              "attribute": "focused",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Gives the checkbox rounded edges",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Fills the checkbox with color",
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "description": "The status of the checkbox",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Message associated with checkbox status",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "HTMLInputElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "click",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Simulates a click on the input element.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "handleClick"
+            },
+            {
+              "kind": "method",
+              "name": "handleBlur"
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus"
+            },
+            {
+              "kind": "method",
+              "name": "handleChange"
+            },
+            {
+              "kind": "method",
+              "name": "makeMessage"
+            },
+            {
+              "kind": "method",
+              "name": "makeCheckMark"
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the state of the checkbox changes",
+              "name": "kemet-change"
+            },
+            {
+              "description": "Fires when the checkbox receives focus",
+              "name": "kemet-focus"
+            },
+            {
+              "description": "Fires when the checkbox loses focus",
+              "name": "kemet-blur"
+            },
+            {
+              "description": "Fires when the checkbox is mounted to the dom",
+              "name": "kemet-checkbox-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Label text for the checkbox",
+              "fieldName": "label"
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the checkbox is selected",
+              "fieldName": "checked"
+            },
+            {
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "An indeterminate selection status",
+              "fieldName": "indeterminate"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'checkbox'",
+              "description": "Name of the checkbox",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "false",
+              "description": "Value of the checkbox",
+              "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if a checkbox is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if a checkbox is required",
+              "fieldName": "required"
+            },
+            {
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Is true when the checkbox is focused",
+              "fieldName": "focused"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Gives the checkbox rounded edges",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Fills the checkbox with color",
+              "fieldName": "filled"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "description": "The status of the checkbox",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Message associated with checkbox status",
+              "fieldName": "message"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-checkbox",
+          "customElement": true,
+          "summary": "An enhanced checkbox."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetCheckbox",
+            "module": "src/elements/checkbox/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-checkbox",
+          "declaration": {
+            "name": "KemetCheckbox",
+            "module": "src/elements/checkbox/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/field/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLKemetFieldElement",
+          "cssParts": [
+            {
+              "description": "The label of the field.",
+              "name": "label"
+            },
+            {
+              "description": "The validation message of the field.",
+              "name": "message"
+            },
+            {
+              "description": "The text in the label.",
+              "name": "text"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Allows subcomponents of the field to display.",
+              "name": "component"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "description": "Uniquely identifies the control. Use the same slug for slotted subcomponents.",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The label text",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "The validation message for error or success",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Determines if the containing input is focused",
+              "attribute": "focused",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "description": "The appearance of the input",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is true when the containing input has a value",
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "length",
+              "type": {
+                "text": "number"
+              },
+              "description": "The length of the containing input",
+              "attribute": "length"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Determines the disabled state of the control",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "errorIcon",
+              "type": {
+                "text": "string"
+              },
+              "default": "'exclamation-triangle-fill'",
+              "description": "The icon while in an error or warning state",
+              "attribute": "error-icon"
+            },
+            {
+              "kind": "field",
+              "name": "successIcon",
+              "type": {
+                "text": "string"
+              },
+              "default": "'check-lg'",
+              "description": "The icon while in a success state",
+              "attribute": "success-icon"
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "slotInput",
+              "type": {
+                "text": "HTMLKemetInputElement | HTMLKemetTextareaElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "slotCombo",
+              "type": {
+                "text": "HTMLKemetComboElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeStatusMessage"
+            },
+            {
+              "kind": "method",
+              "name": "handleFocused",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleStatus",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSelection",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when input fires on the input slot",
+              "name": "kemet-input"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "description": "Uniquely identifies the control. Use the same slug for slotted subcomponents.",
+              "fieldName": "slug"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The label text",
+              "fieldName": "label"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "The validation message for error or success",
+              "fieldName": "message"
+            },
+            {
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Determines if the containing input is focused",
+              "fieldName": "focused"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "description": "The appearance of the input",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is true when the containing input has a value",
+              "fieldName": "filled"
+            },
+            {
+              "name": "length",
+              "type": {
+                "text": "number"
+              },
+              "description": "The length of the containing input",
+              "fieldName": "length"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Determines the disabled state of the control",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "error-icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "'exclamation-triangle-fill'",
+              "description": "The icon while in an error or warning state",
+              "fieldName": "errorIcon"
+            },
+            {
+              "name": "success-icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "'check-lg'",
+              "description": "The icon while in a success state",
+              "fieldName": "successIcon"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-field",
+          "customElement": true,
+          "summary": "Used in combination with Input, Select, and Textarea, to make a Field."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLKemetFieldElement",
+            "module": "src/elements/field/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-field",
+          "declaration": {
+            "name": "HTMLKemetFieldElement",
+            "module": "src/elements/field/index.ts"
           }
         }
       ]
@@ -11060,6 +9746,885 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/input/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetInput",
+          "cssProperties": [
+            {
+              "description": "The height of the input.",
+              "name": "--kemet-input-height"
+            },
+            {
+              "description": "The padding on the input.",
+              "name": "--kemet-input-padding"
+            },
+            {
+              "description": "The border of the input.",
+              "name": "--kemet-input-border"
+            },
+            {
+              "description": " The border of the error state.",
+              "name": "--kemet-input-border-color-error"
+            },
+            {
+              "description": "The border of the success state.",
+              "name": "--kemet-input-border-color-success"
+            },
+            {
+              "description": "The border of the warning state.",
+              "name": "--kemet-input-border-color-warning"
+            },
+            {
+              "description": "The icon-left padding.",
+              "name": "--kemet-input-icon-left-padding"
+            },
+            {
+              "description": "The icon-right padding.",
+              "name": "--kemet-input-icon-right-padding"
+            },
+            {
+              "description": "The border radius on rounded.",
+              "name": "--kemet-input-border-radius-rounded"
+            },
+            {
+              "description": "The border on filled.",
+              "name": "--kemet-input-border-filled"
+            },
+            {
+              "description": "The color on filled.",
+              "name": "--kemet-input-color-filled"
+            },
+            {
+              "description": "The background-color on filled.",
+              "name": "--kemet-input-background-color-filled"
+            },
+            {
+              "description": "The error state background color.",
+              "name": "--kemet-input-background-color-error"
+            },
+            {
+              "description": "The success state background color.",
+              "name": "--kemet-input-background-color-success"
+            },
+            {
+              "description": "The warning state background color.",
+              "name": "--kemet-input-background-color-warning"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "input"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Allows you to place an icon to the left of the input.",
+              "name": "left"
+            },
+            {
+              "description": "Allows you to place an icon to the right of the input.",
+              "name": "right"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "description": "Used for the id of the input. Should match the slug used in a control if applicable.",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'input'",
+              "description": "The name of the input",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "The placeholder attribute",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "minlength",
+              "type": {
+                "text": "string"
+              },
+              "description": "The minlength attribute",
+              "attribute": "minlength"
+            },
+            {
+              "kind": "field",
+              "name": "maxlength",
+              "type": {
+                "text": "string"
+              },
+              "description": "The maxlength attribute",
+              "attribute": "maxlength"
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "type": {
+                "text": "string"
+              },
+              "description": "The min attribute",
+              "attribute": "min"
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "string"
+              },
+              "description": "The max attribute",
+              "attribute": "max"
+            },
+            {
+              "kind": "field",
+              "name": "step",
+              "type": {
+                "text": "string"
+              },
+              "description": "The step attribute",
+              "attribute": "step"
+            },
+            {
+              "kind": "field",
+              "name": "autocomplete",
+              "type": {
+                "text": "EnumAutoComplete"
+              },
+              "description": "The autocomplete attribute",
+              "attribute": "autocomplete"
+            },
+            {
+              "kind": "field",
+              "name": "pattern",
+              "type": {
+                "text": "string"
+              },
+              "description": "The pattern attribute",
+              "attribute": "pattern"
+            },
+            {
+              "kind": "field",
+              "name": "inputmode",
+              "type": {
+                "text": "EnumInputModes"
+              },
+              "description": "The input mode attribute",
+              "attribute": "inputmode"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "The autofocus attribute",
+              "attribute": "autofocus"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The disable attribute",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The readonly attribute",
+              "attribute": "readonly"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The required attribute",
+              "attribute": "required",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of input",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The input's value",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "States whether the input is invalid",
+              "attribute": "invalid",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "validateOnBlur",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Activates validation on blur",
+              "attribute": "validate-on-blur"
+            },
+            {
+              "kind": "field",
+              "name": "ariaAutoComplete",
+              "type": {
+                "text": "EnumAriaAutoComplete"
+              },
+              "default": "null",
+              "description": "Aria Autocomplete",
+              "attribute": "aria-autocomplete"
+            },
+            {
+              "kind": "field",
+              "name": "ariaControls",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria Controls",
+              "attribute": "aria-controls"
+            },
+            {
+              "kind": "field",
+              "name": "ariaActiveDescendant",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria Active Descendant",
+              "attribute": "aria-activedescendant"
+            },
+            {
+              "kind": "field",
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays a filled input box",
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconRight",
+              "type": {
+                "text": "string"
+              },
+              "default": "false",
+              "description": "Custom Icon to the right of the input",
+              "attribute": "icon-right",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconLeft",
+              "type": {
+                "text": "string"
+              },
+              "default": "false",
+              "description": "Custom Icon to the left of the input",
+              "attribute": "icon-left",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "object"
+              },
+              "description": "The HTML5 validity object.",
+              "attribute": "validity"
+            },
+            {
+              "kind": "field",
+              "name": "isPasswordVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Manages password visibility",
+              "attribute": "isPasswordVisible"
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the input is focused",
+              "attribute": "focused",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "description": "Displays rounded corners",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "field",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "HTMLInputElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleLeftChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleRightChange"
+            },
+            {
+              "kind": "method",
+              "name": "makeIconClear"
+            },
+            {
+              "kind": "method",
+              "name": "makeVisibilityToggle"
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "description": "Handles when the input receives focus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleBlur",
+              "description": "Handles when the input loses focus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleChange",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "Handles when the input changes value",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "description": "Handles when the input receives input",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInvalid",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "Handles when the input has an error",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleStatus",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "togglePasswordVisibility",
+              "description": "Toggles password visibility",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleClear",
+              "description": "Handles the clear button for search",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "checkLimitValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the character limit for the count component",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the standard input",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Focuses the standard input",
+              "privacy": "public"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The status of the input",
+              "name": "status",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "number"
+              },
+              "description": "Size of the icons",
+              "name": "iconSize",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Input Type of keypress handled through handleInput(e)",
+              "name": "inputType",
+              "kind": "field"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the input receives focus",
+              "name": "kemet-input-focus"
+            },
+            {
+              "description": "Fires when the input loses focus",
+              "name": "kemet-input-blur"
+            },
+            {
+              "description": "Fires when there's a change in status. This event includes an object that reports: 1) the status. 2) HTML5 validity object. 3) the component element. Use the validity object to support custom validation messages.",
+              "name": "kemet-input-appearance-change"
+            },
+            {
+              "description": "Fires when the input receives input",
+              "name": "kemet-input-input"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "description": "Used for the id of the input. Should match the slug used in a control if applicable.",
+              "fieldName": "slug"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'input'",
+              "description": "The name of the input",
+              "fieldName": "name"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "The placeholder attribute",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "minlength",
+              "type": {
+                "text": "string"
+              },
+              "description": "The minlength attribute",
+              "fieldName": "minlength"
+            },
+            {
+              "name": "maxlength",
+              "type": {
+                "text": "string"
+              },
+              "description": "The maxlength attribute",
+              "fieldName": "maxlength"
+            },
+            {
+              "name": "min",
+              "type": {
+                "text": "string"
+              },
+              "description": "The min attribute",
+              "fieldName": "min"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "string"
+              },
+              "description": "The max attribute",
+              "fieldName": "max"
+            },
+            {
+              "name": "step",
+              "type": {
+                "text": "string"
+              },
+              "description": "The step attribute",
+              "fieldName": "step"
+            },
+            {
+              "name": "autocomplete",
+              "type": {
+                "text": "EnumAutoComplete"
+              },
+              "description": "The autocomplete attribute",
+              "fieldName": "autocomplete"
+            },
+            {
+              "name": "pattern",
+              "type": {
+                "text": "string"
+              },
+              "description": "The pattern attribute",
+              "fieldName": "pattern"
+            },
+            {
+              "name": "inputmode",
+              "type": {
+                "text": "EnumInputModes"
+              },
+              "description": "The input mode attribute",
+              "fieldName": "inputmode"
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "The autofocus attribute",
+              "fieldName": "autofocus"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The disable attribute",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The readonly attribute",
+              "fieldName": "readonly"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The required attribute",
+              "fieldName": "required"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of input",
+              "fieldName": "type"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The input's value",
+              "fieldName": "value"
+            },
+            {
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "States whether the input is invalid",
+              "fieldName": "invalid"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "fieldName": "appearance"
+            },
+            {
+              "name": "validate-on-blur",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Activates validation on blur",
+              "fieldName": "validateOnBlur"
+            },
+            {
+              "name": "aria-autocomplete",
+              "type": {
+                "text": "EnumAriaAutoComplete"
+              },
+              "default": "null",
+              "description": "Aria Autocomplete",
+              "fieldName": "ariaAutoComplete"
+            },
+            {
+              "name": "aria-controls",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria Controls",
+              "fieldName": "ariaControls"
+            },
+            {
+              "name": "aria-activedescendant",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria Active Descendant",
+              "fieldName": "ariaActiveDescendant"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays a filled input box",
+              "fieldName": "filled"
+            },
+            {
+              "name": "icon-right",
+              "type": {
+                "text": "string"
+              },
+              "default": "false",
+              "description": "Custom Icon to the right of the input",
+              "fieldName": "iconRight"
+            },
+            {
+              "name": "icon-left",
+              "type": {
+                "text": "string"
+              },
+              "default": "false",
+              "description": "Custom Icon to the left of the input",
+              "fieldName": "iconLeft"
+            },
+            {
+              "name": "validity",
+              "type": {
+                "text": "object"
+              },
+              "description": "The HTML5 validity object.",
+              "fieldName": "validity"
+            },
+            {
+              "name": "isPasswordVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Manages password visibility",
+              "fieldName": "isPasswordVisible"
+            },
+            {
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the input is focused",
+              "fieldName": "focused"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "description": "Displays rounded corners",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-input",
+          "customElement": true,
+          "summary": "An enhanced input element."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetInput",
+            "module": "src/elements/input/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-input",
+          "declaration": {
+            "name": "KemetInput",
+            "module": "src/elements/input/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/loader/index.ts",
       "declarations": [
         {
@@ -11171,6 +10736,545 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/textarea/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetTextarea",
+          "cssProperties": [
+            {
+              "description": "The padding on the textarea.",
+              "name": "--kemet-textarea-padding"
+            },
+            {
+              "description": "The border of the textarea.",
+              "name": "--kemet-textarea-border"
+            },
+            {
+              "description": "The border of the error state.",
+              "name": "--kemet-textarea-border-color-error"
+            },
+            {
+              "description": "The border of the success state.",
+              "name": "--kemet-textarea-border-color-success"
+            },
+            {
+              "description": "The border of the warning state.",
+              "name": "--kemet-textarea-border-color-warning"
+            },
+            {
+              "description": "The border radius on rounded.",
+              "name": "--kemet-textarea-border-radius-rounded"
+            },
+            {
+              "description": "The border on filled.",
+              "name": "--kemet-textarea-border-filled"
+            },
+            {
+              "description": "The color on filled.",
+              "name": "--kemet-textarea-color-filled"
+            },
+            {
+              "description": "The background-color on filled.",
+              "name": "--kemet-textarea-background-color-filled"
+            },
+            {
+              "description": "The error state background color.",
+              "name": "--kemet-textarea-background-color-error"
+            },
+            {
+              "description": "The success state background color.",
+              "name": "--kemet-textarea-background-color-success"
+            },
+            {
+              "description": "The warning state background color.",
+              "name": "--kemet-textarea-background-color-warning"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "textarea"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "minlength",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "minlength"
+            },
+            {
+              "kind": "field",
+              "name": "maxlength",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "maxlength"
+            },
+            {
+              "kind": "field",
+              "name": "inputmode",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "inputmode"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "autofocus"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "readonly"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "required",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "invalid",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "attribute": "rows"
+            },
+            {
+              "kind": "field",
+              "name": "validateOnBlur",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "validate-on-blur"
+            },
+            {
+              "kind": "field",
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "autocorrect",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "autocorrect"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "control",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "textarea",
+              "type": {
+                "text": "HTMLTextAreaElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasFocus",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "description": "Handles when the textarea receives focus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleBlur",
+              "description": "Handles when the textarea loses focus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleChange",
+              "description": "Handles when the textarea changes value",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "description": "Handles when the textarea receives input",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInvalid",
+              "description": "Handles when the textarea has an error",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "checkLimitValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the character limit for the count component",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the standard input",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Focuses the standard input",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "kemet-input-focused",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when the input receives and loses focus"
+            },
+            {
+              "name": "kemet-input-status",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when there's a change in status"
+            },
+            {
+              "name": "kemet-input-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when the input receives input"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "fieldName": "slug"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "fieldName": "name"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "minlength",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "minlength"
+            },
+            {
+              "name": "maxlength",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "maxlength"
+            },
+            {
+              "name": "inputmode",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "inputmode"
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autofocus"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "disabled"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "readonly"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "required"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "invalid"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "fieldName": "appearance"
+            },
+            {
+              "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "fieldName": "rows"
+            },
+            {
+              "name": "validate-on-blur",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "validateOnBlur"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "filled"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "fieldName": "rounded"
+            },
+            {
+              "name": "autocorrect",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autocorrect"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-textarea",
+          "customElement": true,
+          "summary": "An enhanced textarea element."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetTextarea",
+            "module": "src/elements/textarea/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-textarea",
+          "declaration": {
+            "name": "KemetTextarea",
+            "module": "src/elements/textarea/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/accordion/styles.css",
       "declarations": [],
       "exports": []
@@ -11201,13 +11305,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/badge/styles.css",
+      "path": "src/elements/button/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/button/styles.css",
+      "path": "src/elements/badge/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11219,13 +11323,37 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/checkbox/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/field/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/icon/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/input/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/loader/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/textarea/styles.css",
       "declarations": [],
       "exports": []
     }

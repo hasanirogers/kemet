@@ -1,15 +1,14 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { FormSubmitController } from '../utilities/form-controller';
-import { emitEvent } from '../utilities/events';
-import KemetField from '../elements/field';
-import KemetCount from './count';
-import { stylesBase } from '../styles/elements/input';
-import { EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
+import { FormSubmitController } from '../../utilities/form-controller';
+import { emitEvent } from '../../utilities/events';
+import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
+import HTMLKemetFieldElement from '../field';
+import HTMLKemetCountElement from '../count';
+import styles from './styles.css?inline';
 
-export const inputTypes = ['text', 'color', 'date', 'datetime-local', 'email', 'password', 'hidden', 'month', 'number', 'reset', 'search', 'tel', 'time', 'url', 'week'] as const;
 export enum EnumInputTypes {
   Text = 'text',
   Color = 'color',
@@ -27,18 +26,14 @@ export enum EnumInputTypes {
   Url = 'url',
   Week = 'week'
 }
-export type TypeInputTypes = typeof inputTypes[number];
 
-export const ariaAutoComplete = ['inline', 'list', 'both', 'none'] as const;
 export enum EnumAriaAutoComplete {
   Inline = 'inline',
   List = 'list',
   Both = 'both',
   None = 'none'
 }
-export type TypeAriaAutoComplete = typeof ariaAutoComplete[number];
 
-export const autoComplete = ['on', 'off', 'additional-name', 'address-level1', 'address-level2', 'address-level3', 'address-level4', 'address-line1', 'address-line2', 'address-line3', 'bday', 'bday-year', 'bday-day', 'bday-month', 'billing', 'cc-additional-name'] as const;
 export enum EnumAutoComplete {
   On = 'on',
   Off = 'off',
@@ -57,9 +52,7 @@ export enum EnumAutoComplete {
   Billing = 'billing',
   CcAdditionalName = 'cc-additional-name'
 }
-export type TypeAutoComplete = typeof autoComplete[number];
 
-export const inputModes = ['none', 'text', 'decimal', 'numeric', 'tel', 'search', 'email', 'url'] as const;
 export enum EnumInputModes {
   None = 'none',
   Text = 'text',
@@ -70,8 +63,6 @@ export enum EnumInputModes {
   Email = 'email',
   Url = 'url'
 }
-export type TypeInputModes = typeof inputModes[number];
-
 
 
 /**
@@ -89,9 +80,9 @@ export type TypeInputModes = typeof inputModes[number];
  * @prop {string} min - The min attribute
  * @prop {string} max - The max attribute
  * @prop {string} step - The step attribute
- * @prop {TypeAutoComplete} autocomplete - The autocomplete attribute
+ * @prop {EnumAutoComplete} autocomplete - The autocomplete attribute
  * @prop {string} pattern - The pattern attribute
- * @prop {TypeInputModes} inputmode - The input mode attribute
+ * @prop {EnumInputModes} inputmode - The input mode attribute
  * @prop {boolean} autofocus - The autofocus attribute
  * @prop {boolean} disabled - The disable attribute
  * @prop {boolean} readonly - The readonly attribute
@@ -101,10 +92,10 @@ export type TypeInputModes = typeof inputModes[number];
  * @prop {boolean} invalid - States whether the input is invalid
  * @prop {string} status - The status of the input
  * @prop {boolean} validateOnBlur - Activates validation on blur
- * @prop {TypeAriaAutoComplete} ariaAutoComplete - Aria Autocomplete
+ * @prop {EnumAriaAutoComplete} ariaAutoComplete - Aria Autocomplete
  * @prop {string} ariaControls - Aria Controls
  * @prop {string} ariaActiveDescendant - Aria Active Descendant
- * @prop {TypeRoundedSizes} rounded - Displays rounded corners
+ * @prop {EnumRoundedSizes} rounded - Displays rounded corners
  * @prop {boolean} filled - Displays a filled input box
  * @prop {string} iconRight - Custom Icon to the right of the input
  * @prop {string} iconLeft - Custom Icon to the left of the input
@@ -113,6 +104,9 @@ export type TypeInputModes = typeof inputModes[number];
  * @prop {boolean} isPasswordVisible - Manages password visibility
  * @prop {string} inputType - Input Type of keypress handled through handleInput(e)
  * @prop {boolean} focused - Determines if the input is focused
+ *
+ * @slot left - Allows you to place an icon to the left of the input.
+ * @slot right - Allows you to place an icon to the right of the input.
  *
  * @csspart input
  *
@@ -132,11 +126,10 @@ export type TypeInputModes = typeof inputModes[number];
  * @cssproperty --kemet-input-background-color-success - The success state background color.
  * @cssproperty --kemet-input-background-color-warning - The warning state background color.
  *
- * @event kemet-focus - Fires when the input receives focus
- * @event kemet-blur - Fires when the input loses focus
- * @event kemet-status-change Fires when there's a change in status. This event includes an object that reports: 1) the status. 2) HTML5 validity object. 3) the component element.
- * Use the validity object to support custom validation messages.
- * @event kemet-input - Fires when the input receives input
+ * @event kemet-input-focus - Fires when the input receives focus
+ * @event kemet-input-blur - Fires when the input loses focus
+ * @event kemet-input-appearance-change Fires when there's a change in status. This event includes an object that reports: 1) the status. 2) HTML5 validity object. 3) the component element. Use the validity object to support custom validation messages.
+ * @event kemet-input-input - Fires when the input receives input
  *
  */
 
@@ -145,7 +138,7 @@ export default class KemetInput extends LitElement {
   /** @internal */
   formSubmitController: FormSubmitController;
 
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   slug!: string;
@@ -172,13 +165,13 @@ export default class KemetInput extends LitElement {
   step?: number;
 
   @property({ type: String })
-  autocomplete?: TypeAutoComplete;
+  autocomplete?: EnumAutoComplete;
 
   @property({ type: String })
   pattern?: string;
 
   @property({ type: String })
-  inputmode?: TypeInputModes;
+  inputmode?: EnumInputModes;
 
   @property({ type: Boolean })
   autofocus: boolean = false;
@@ -193,7 +186,7 @@ export default class KemetInput extends LitElement {
   required?: boolean;
 
   @property({ type: String })
-  type: TypeInputTypes = EnumInputTypes.Text;
+  type: EnumInputTypes = EnumInputTypes.Text;
 
   @property({ type: String, reflect: true })
   value: string = '';
@@ -202,13 +195,13 @@ export default class KemetInput extends LitElement {
   invalid?: boolean;
 
   @property({ type: String, reflect: true })
-  status: TypeAppearance = EnumAppearances.Standard;
+  appearance: EnumAppearances = EnumAppearances.Neutral;
 
   @property({ type: Boolean, attribute: 'validate-on-blur' })
   validateOnBlur: boolean = false;
 
   @property({ type: String, attribute: 'aria-autocomplete' })
-  ariaAutoComplete: TypeAriaAutoComplete = null as any;
+  ariaAutoComplete: EnumAriaAutoComplete = null as any;
 
   @property({ type: String, attribute: 'aria-controls' })
   ariaControls?: string;
@@ -231,15 +224,20 @@ export default class KemetInput extends LitElement {
   @property({ type: Boolean })
   isPasswordVisible: boolean = false;
 
-
   @property({ type: Boolean, reflect: true })
   focused: boolean = false;
 
   @property({ type: String, reflect: true })
-  rounded?: TypeRoundedSizes;
+  rounded?: EnumRoundedSizes;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
-  field!: KemetField;
+  field!: HTMLKemetFieldElement;
 
   @state()
   form!: HTMLFormElement;
@@ -257,13 +255,22 @@ export default class KemetInput extends LitElement {
   firstUpdated() {
     // elements
     this.input = this.shadowRoot?.querySelector('input') as HTMLInputElement;
-    this.field = this.closest('kemet-field') as KemetField;
+    this.field = this.closest('kemet-field') as HTMLKemetFieldElement;
     this.form = this.closest('form') as HTMLFormElement;
     this.slug = this.field ? this.field.slug : 'input';
 
     if (this.field) {
-      this.field.addEventListener('kemet-status-change', (event: Event) => this.handleStatus(event));
+      this.field.addEventListener('kemet-appearance-change', (event: Event) => this.handleStatus(event));
     }
+
+    emitEvent(this, 'kemet-input-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -318,7 +325,7 @@ export default class KemetInput extends LitElement {
   makeIconClear() {
     if (this.type === 'search' && this.value !== '') {
       return html`
-        <kemet-icon-bootstrap class="search right" icon="x-lg" @click=${() => this.handleClear()}></kemet-icon-bootstrap>
+        <kemet-icon class="search right" name="x-lg" @click=${() => this.handleClear()}></kemet-icon>
       `;
     }
 
@@ -328,11 +335,11 @@ export default class KemetInput extends LitElement {
   makeVisibilityToggle() {
     if (this.type === EnumInputTypes.Password) {
       this.iconRight = true;
-      return html`<kemet-icon-bootstrap
+      return html`<kemet-icon
         class="eye right"
-        icon="${this.isPasswordVisible ? 'eye' : 'eye-slash'}"
+        name="${this.isPasswordVisible ? 'eye' : 'eye-slash'}"
         @click=${() => this.togglePasswordVisibility()}
-      ></kemet-icon-bootstrap>`;
+      ></kemet-icon>`;
     }
 
     return null;
@@ -344,7 +351,7 @@ export default class KemetInput extends LitElement {
    */
   handleFocus() {
     this.focused = true;
-    emitEvent(this, 'kemet-focus', this);
+    emitEvent(this, 'kemet-input-focus', { focused: true, element: this });
   }
 
   /**
@@ -358,7 +365,7 @@ export default class KemetInput extends LitElement {
     }
 
     this.focused = false;
-    emitEvent(this, 'kemet-blur', this);
+    emitEvent(this, 'kemet-input-blur', { focused: false, element: this });
   }
 
   /**
@@ -368,13 +375,12 @@ export default class KemetInput extends LitElement {
   handleChange(event: Event) {
     this.value = this.input.value;
 
-    if (this.input.checkValidity() && this.checkLimitValidity() && this.status !== EnumAppearances.Success) {
+    if (this.input.checkValidity() && this.checkLimitValidity() && this.appearance !== EnumAppearances.Success) {
       this.invalid = false;
-      this.status = EnumAppearances.Standard;
       this.validity = this.input.validity;
 
-      emitEvent(this, 'kemet-status-change', {
-        status: EnumAppearances.Standard,
+      emitEvent(this, 'kemet-input-appearance-change', {
+        appearance: EnumAppearances.Neutral,
         validity: this.input.validity,
         element: this,
         value: (event.target as HTMLInputElement).value,
@@ -388,8 +394,8 @@ export default class KemetInput extends LitElement {
    */
   handleInput(event: InputEvent) {
     this.value = this.input.value;
-    emitEvent(this, 'kemet-input', {
-      status: this.status,
+    emitEvent(this, 'kemet-input-input', {
+      appearance: this.appearance,
       validity: this.input.validity,
       element: event.target as HTMLInputElement,
       value: (event.target as HTMLInputElement).value,
@@ -405,9 +411,9 @@ export default class KemetInput extends LitElement {
 
     if (this.validateOnBlur) {
       this.invalid = true;
-      this.status = EnumAppearances.Error;
+      this.appearance = EnumAppearances.Error;
 
-      emitEvent(this, 'kemet-status-change', {
+      emitEvent(this, 'kemet-input-appearance-change', {
         status: EnumAppearances.Error,
         validity: this.input?.validity,
         element: this,
@@ -417,7 +423,7 @@ export default class KemetInput extends LitElement {
   }
 
   handleStatus(event: Event) {
-    this.status = (event as CustomEvent).detail.status;
+    this.appearance = (event as CustomEvent).detail.status;
   }
 
   /**
@@ -434,8 +440,8 @@ export default class KemetInput extends LitElement {
    */
   handleClear() {
     this.value = '';
-    emitEvent(this, 'kemet-input', {
-      status: this.status,
+    emitEvent(this, 'kemet-input-input', {
+      status: this.appearance,
       validity: this.input.validity,
       element: this,
       value: '',
@@ -450,7 +456,7 @@ export default class KemetInput extends LitElement {
    */
   checkLimitValidity(): boolean {
     if (this.field) {
-      const count = this.field.querySelector('kemet-count') as KemetCount;
+      const count = this.field.querySelector('kemet-count') as HTMLKemetCountElement;
       if (count) {
         return this.value.length < count.limit;
       }

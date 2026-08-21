@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { emitEvent } from '../utilities/events';
 import { stylesBase } from '../styles/elements/combo';
-import type KemetField from './field';
+import type HTMLKemetFieldElement from './field';
 
 export interface InterfaceKemetSelectionEvent {
   element: KemetCombo;
@@ -55,14 +55,14 @@ export default class KemetCombo extends LitElement {
   filteredOptions: string[] = [];
 
   @state()
-  field!: KemetField;
+  field!: HTMLKemetFieldElement;
 
   @state()
   input!: HTMLInputElement;
 
   firstUpdated() {
     // standard properties
-    this.field = this.closest('kemet-field') as KemetField;
+    this.field = this.closest('kemet-field') as HTMLKemetFieldElement;
     this.input = this.field.querySelector('[slot="input"]') as HTMLInputElement;
 
     // managed properties

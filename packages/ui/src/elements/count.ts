@@ -1,15 +1,15 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { emitEvent } from '../utilities/events';
-import KemetField from '../elements/field';
-import KemetInput from '../elements/input';
-import KemetTextarea from '../elements/textarea';
+import HTMLKemetFieldElement from '../elements/field';
+import KemetInput from './input';
+import KemetTextarea from './textarea';
 import { EnumAppearances, TypeAppearance } from '../utilities/constants';
 
 export interface InterfaceKemetStatusChangeEvent {
   status: TypeAppearance;
   validity: ValidityState;
-  element: KemetField;
+  element: HTMLKemetFieldElement;
 }
 
 /**
@@ -55,7 +55,7 @@ export default class KemetCount extends LitElement {
   remaining!: number;
 
   @state()
-  field!: KemetField;
+  field!: HTMLKemetFieldElement;
 
   @state()
   inputSlot!: KemetInput | KemetTextarea;
@@ -67,7 +67,7 @@ export default class KemetCount extends LitElement {
   textarea!: HTMLTextAreaElement | null;
 
   firstUpdated() {
-    this.field = this.closest('kemet-field') as KemetField;
+    this.field = this.closest('kemet-field') as HTMLKemetFieldElement;
     this.inputSlot = this.field.querySelector('[slot="input"]') as KemetInput | KemetTextarea;
     this.remaining = this.limit - this.field.length;
 
@@ -79,7 +79,7 @@ export default class KemetCount extends LitElement {
       if (nativeElement) {
         if (this.remaining < 0) {
           if (this.validateImmediately) {
-            this.inputSlot.status = EnumAppearances.Error;
+            this.inputSlot.appearance = EnumAppearances.Error;
             this.inputSlot.invalid = true;
 
             emitEvent(this, 'kemet-status-change', {
@@ -89,7 +89,7 @@ export default class KemetCount extends LitElement {
             });
           }
         } else {
-          this.inputSlot.status = EnumAppearances.Standard;
+          this.inputSlot.appearance = EnumAppearances.Standard;
           nativeElement.checkValidity();
 
           emitEvent(this, 'kemet-status-change', {

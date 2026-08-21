@@ -1,0 +1,47 @@
+:host {
+  /* private */
+  --_kemet-field-message-color: inherit;
+
+  display: block;
+}
+
+:host([disabled]) {
+  opacity: 0.5;
+}
+
+label {
+  position: relative;
+  display: block;
+}
+
+label span {
+  color: inherit;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.message {
+  color: var(--_kemet-field-message-color);
+  font-size: 0.9rem;
+  line-height: 1;
+  display: block;
+  margin-top: 0.8rem;
+}
+
+:host([appearance=error]) .message {
+  --_kemet-field-message-color: var(--kemet-color-font-error);
+}
+
+:host([appearance=success]) .message {
+  --_kemet-field-message-color: var(--kemet-color-font-success);
+}
+
+:host([appearance=warning]) .message {
+  --_kemet-field-message-color: var(--kemet-color-font-warning);
+}
+
+:host([appearance=link]) .message {
+  --_kemet-field-message-color: var(--kemet-color-font-link);
+}

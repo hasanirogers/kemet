@@ -1,0 +1,116 @@
+:host {
+  /* public */
+  --kemet-textarea-padding: 1rem;
+  --kemet-textarea-color: var(--kemet-color-font-base);
+  --kemet-textarea-font-color: var(--kemet-color-font-base);
+  --kemet-textarea-border: 1px solid var(--kemet-textarea-color);
+  --kemet-textarea-border-radius: 0;
+
+  /* private */
+  --_kemet-textarea-background-color: transparent;
+
+  position: relative;
+  display: block;
+}
+
+textarea {
+  color: var(--kemet-textarea-font-color);
+  display: block;
+  width: 100%;
+  padding: var(--kemet-textarea-padding);
+  border: var(--kemet-textarea-border);
+  appearance: none;
+  box-sizing: border-box;
+  background: var(--_kemet-textarea-background-color);
+  border-radius: var(--kemet-textarea-border-radius);
+}
+
+:host([polarity=dark]) {
+  --kemet-textarea-color: var(--kemet-color-font-inverse-base);
+  --kemet-textarea-font-color: var(--kemet-color-font-inverse-base);
+}
+
+:host([disabled]) {
+  --kemet-textarea-font-color: var(--kemet-color-font-disabled);
+  --kemet-textarea-color: var(--kemet-color-background-disabled);
+}
+
+:host([rounded]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=md]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=lg]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill]) {
+  --kemet-textarea-border-radius: var(--kemet-border-radius-pill);
+}
+
+:host([filled]) {
+  --kemet-textarea-font-color: var(--kemet-color-font-inverse-base);
+  --_kemet-textarea-background-color: var(--kemet-color-background-inverse);
+  --kemet-textarea-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+:host([appearance=brand][filled]) {
+  --_kemet-textarea-background-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error][filled]) {
+  --_kemet-textarea-background-color: var(--kemet-color-font-error);
+}
+
+:host([appearance=success][fiiled]) {
+  --_kemet-textarea-background-color: var(--kemet-color-font-success);
+}
+
+:host([appearance=warning][filled]) {
+  --_kemet-textarea-background-color: var(--kemet-color-font-warning);
+}
+
+:host([appearance=link][filled]) {
+  --_kemet-textarea-background-color: var(--kemet-color-font-link);
+}
+
+
+:host([appearance=brand]) {
+  --kemet-textarea-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error]) {
+  --kemet-textarea-color: var(--kemet-color-background-error);
+}
+
+:host([appearance=success]) {
+  --kemet-textarea-color: var(--kemet-color-background-success);
+}
+
+:host([appearance=warning]) {
+  --kemet-textarea-color: var(--kemet-color-background-warning);
+}
+
+:host([appearance=info]) {
+  --kemet-textarea-color: var(--kemet-color-background-info);
+}
+
+:host([appearance=link]) {
+  --kemet-textarea-color: var(--kemet-color-background-link);
+}

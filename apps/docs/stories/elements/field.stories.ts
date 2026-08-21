@@ -1,27 +1,26 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumAppearances } from '../../../../packages/ui/src/utilities/constants';
 
-import '../../../../packages/ui/src/elements/field';
+import '../../../../packages/ui/src/elements/field/';
 import '../../../../packages/ui/src/elements/input';
 import '../../../../packages/ui/src/elements/textarea';
 import '../../../../packages/ui/src/elements/select';
 import '../../../../packages/ui/src/elements/option';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
 
 const meta: Meta = {
-  title: 'Form Controls / Field',
+  title: 'Elements / Field',
   component: 'kemet-accordion',
   args: {
     label: 'Label',
+    message: 'This is a message.',
   },
   argTypes: {
-    status: {
+    appearance: {
       name: 'Status',
-      control: { type: 'radio' },
-      options: ['standard', 'error', 'success', 'warning'],
+      control: { type: 'select' },
+      options: Object.values(EnumAppearances),
     },
   }
 };
@@ -29,14 +28,14 @@ export default meta;
 
 type Story = StoryObj;
 
-const TemplateInput = (args) => html`
-  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" status="${args.status}">
+const TemplateInput = (args: Args) => html`
+  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" appearance="${args.appearance}">
     <kemet-input required slot="input" name="input-field" status="${args.status}" validate-on-blur></kemet-input>
   </kemet-field>
 `;
 
-const TemplateSelect = (args) => html`
-  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" status="${args.status}">
+const TemplateSelect = (args: Args) => html`
+  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" appearance="${args.appearance}">
     <kemet-select slot="input" name="select-field" status="${status}" required>
       <kemet-option label="Choose an Item" value=""></kemet-option>
       <kemet-option label="Item 1" value="1"></kemet-option>
@@ -47,8 +46,8 @@ const TemplateSelect = (args) => html`
   </kemet-field>
 `;
 
-const TemplateTextarea = (args) => html`
-  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" status="${args.status}">
+const TemplateTextarea = (args: Args) => html`
+  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" appearance="${args.appearance}">
     <kemet-textarea required slot="input" name="textarea-field" status="${args.status}"></kemet-textarea>
   </kemet-field>
 `;

@@ -1,11 +1,11 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { FormSubmitController } from '../utilities/form-controller';
-import { emitEvent } from '../utilities/events';
-import { stylesBase } from '../styles/elements/checkbox';
-import { TypeAppearance, EnumAppearances } from '../utilities/constants';
+import { FormSubmitController } from '../../utilities/form-controller';
+import { emitEvent } from '../../utilities/events';
+import { EnumAppearances } from '../../utilities/constants';
+import styles from './styles.css?inline';
 
 /**
  * @since 1.0.0
@@ -24,8 +24,10 @@ import { TypeAppearance, EnumAppearances } from '../utilities/constants';
  * @prop {boolean} focused - Is true when the checkbox is focused
  * @prop {boolean} rounded - Gives the checkbox rounded edges
  * @prop {boolean} filled - Fills the checkbox with color
- * @prop {TypeStatus} status - The status of the checkbox
+ * @prop {EnumAppearances} appearance - The status of the checkbox
  * @prop {string} message - Message associated with checkbox status
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @csspart label - The label element.
  * @csspart text - The label's text.
@@ -38,9 +40,17 @@ import { TypeAppearance, EnumAppearances } from '../utilities/constants';
  * @cssproperty --kemet-checkbox-filled-color - The filled color of the checkbox mark.
  * @cssproperty --kemet-checkbox-filled-background-color - The filled background color.
  *
- * @event kemet-change - Fires when the state of the checkbox changes
- * @event kemet-focus - Fires when the checkbox receives focus
- * @event kemet-blur - Fires when the checkbox loses focus
+ * @fires kemet-change - Fires when the state of the checkbox changes
+ * @details {KemetCheckbox} element - The checkbox element
+ *
+ * @fires kemet-focus - Fires when the checkbox receives focus
+ * @details {KemetCheckbox} element - The checkbox element
+ *
+ * @fires kemet-blur - Fires when the checkbox loses focus
+ * @details {KemetCheckbox} element - The checkbox element
+ *
+ * @fires kemet-checkbox-mounted - Fires when the checkbox is mounted to the dom
+ * @details {KemetCheckbox} element -The checkbox element
  *
  */
 
@@ -49,7 +59,7 @@ export default class KemetCheckbox extends LitElement {
   /** @internal */
   formSubmitController: FormSubmitController;
 
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   label: string = '';
@@ -82,17 +92,33 @@ export default class KemetCheckbox extends LitElement {
   filled: boolean = false;
 
   @property({ type: String, reflect: true })
-  status: TypeAppearance = EnumAppearances.Standard;
+  appearance!: EnumAppearances;
 
   @property({ type: String })
   message: string = '';
 
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @query('input')
   input!: HTMLInputElement;
 
+  firstUpdated() {
+    emitEvent(this, 'kemet-checkbox-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
+  }
+
   constructor() {
     super();
-
     /** @internal */
     this.formSubmitController = new FormSubmitController(this);
   }
@@ -136,29 +162,25 @@ export default class KemetCheckbox extends LitElement {
   handleClick() {
     this.checked = !this.checked;
     this.indeterminate = false;
-    emitEvent(this, 'kemet-change', this);
+    emitEvent(this, 'kemet-change', { element: this });
   }
 
   handleBlur() {
     this.focused = false;
-    emitEvent(this, 'kemet-blur', true);
+    emitEvent(this, 'kemet-blur', { element: this });
   }
 
   handleFocus() {
     this.focused = true;
-    emitEvent(this, 'kemet-focus', true);
+    emitEvent(this, 'kemet-focus', { element: this });
   }
 
   handleChange() {
     this.value = this.checked;
-
-    if (this.input.checkValidity()) {
-      this.status = EnumAppearances.Standard;
-    }
   }
 
   makeMessage() {
-    if (this.status === EnumAppearances.Error || this.status === EnumAppearances.Warning) {
+    if (this.appearance === EnumAppearances.Error || this.appearance === EnumAppearances.Warning) {
       return html`<span part="message">${this.message}</span>`;
     }
 

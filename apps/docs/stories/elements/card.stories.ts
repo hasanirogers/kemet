@@ -10,7 +10,7 @@ import '../../../../packages/ui/src/elements/icon';
 
 
 const meta: Meta = {
-  title: 'Organization / Card',
+  title: 'Elements / Card',
   component: 'kemet-card',
   render: (args: any) => Template(args),
   args: {

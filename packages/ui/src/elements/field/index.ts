@@ -1,11 +1,11 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/field';
-
-import KemetCombo from './combo';
-import KemetInput from './input';
-import KemetTextarea from './textarea';
-import { EnumAppearances, TypeAppearance } from '../utilities/constants';
+import { EnumAppearances } from '../../utilities/constants';
+import HTMLKemetComboElement from '../combo';
+import HTMLKemetInputElement from '../input';
+import HTMLKemetTextareaElement from '../textarea';
+import styles from './styles.css?inline';
+import { emitEvent } from '../../utilities/events';
 
 /**
  * @since 1.0.0
@@ -18,7 +18,7 @@ import { EnumAppearances, TypeAppearance } from '../utilities/constants';
  * @prop {string} label - The label text
  * @prop {string} message - The validation message for error or success
  * @prop {boolean} focused - Determines if the containing input is focused
- * @prop {TypeStatus} status - The validation status of standard, error, or success
+ * @prop {EnumAppearances} appearance - The appearance of the input
  * @prop {boolean} filled - Is true when the containing input has a value
  * @prop {number} length - The length of the containing input
  * @prop {boolean} disabled - Determines the disabled state of the control
@@ -36,8 +36,8 @@ import { EnumAppearances, TypeAppearance } from '../utilities/constants';
  */
 
 @customElement('kemet-field')
-export default class KemetField extends LitElement {
-  static styles = [stylesBase];
+export default class HTMLKemetFieldElement extends LitElement {
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   slug!: string;
@@ -52,7 +52,7 @@ export default class KemetField extends LitElement {
   focused!: boolean;
 
   @property({ type: String, reflect: true })
-  status: TypeAppearance = EnumAppearances.Standard;
+  appearance: EnumAppearances = EnumAppearances.Neutral;
 
   @property({ type: Boolean, reflect: true })
   filled!: boolean;
@@ -69,15 +69,21 @@ export default class KemetField extends LitElement {
   @property({ type: String, attribute: 'success-icon' })
   successIcon: string = 'check-lg';
 
-  @state()
-  slotInput!: KemetInput | KemetTextarea;
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
-  slotCombo!: KemetCombo;
+  slotInput!: HTMLKemetInputElement | HTMLKemetTextareaElement;
+
+  @state()
+  slotCombo!: HTMLKemetComboElement;
 
   firstUpdated() {
-    this.slotInput = this.querySelector('[slot="input"]') as KemetInput | KemetTextarea;
-    this.slotCombo = this.querySelector('[slot="combo"]') as KemetCombo;
+    this.slotInput = this.querySelector('[slot="input"]') as HTMLKemetInputElement | HTMLKemetTextareaElement;
+    this.slotCombo = this.querySelector('[slot="combo"]') as HTMLKemetComboElement;
 
     this.slotInput.addEventListener('kemet-focus', (event: Event) => this.handleFocused(event));
     this.slotInput.addEventListener('kemet-status-change', (event: Event) => this.handleStatus(event));
@@ -89,6 +95,15 @@ export default class KemetField extends LitElement {
     } else {
       this.length = 0;
     }
+
+    emitEvent(this, 'kemet-field-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -103,7 +118,7 @@ export default class KemetField extends LitElement {
   }
 
   makeStatusMessage() {
-    if (this.status !== 'standard') {
+    if (this.appearance !== 'neutral') {
       return html`<span class="message" part="message">${this.message}</span>`;
     }
 
@@ -119,7 +134,7 @@ export default class KemetField extends LitElement {
   }
 
   handleStatus(event: Event) {
-    this.status = (event as CustomEvent).detail.status;
+    this.appearance = (event as CustomEvent).detail.status;
   }
 
   handleInput(event: Event) {
@@ -135,6 +150,6 @@ export default class KemetField extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-field': KemetField
+    'kemet-field': HTMLKemetFieldElement
   }
 }
