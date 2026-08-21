@@ -1,13 +1,19 @@
-import { html, LitElement, TemplateResult } from 'lit';
+import { html, LitElement, unsafeCSS, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { FormSubmitController } from '../utilities/form-controller';
-import { emitEvent } from '../utilities/events';
-import { stylesSelect } from '../styles/elements/select';
+import { FormSubmitController } from '../../utilities/form-controller';
+import { emitEvent } from '../../utilities/events';
+import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
+import HTMLKemetFieldElement from '../field';
+import type HTMLKemetOptionElement from '../select-option';
+import '../icon';
+import styles from './styles.css?inline';
 
-import type KemetOption from './option';
-import './icon-bootstrap';
-import KemetField from './field';
-import { EnumAppearances, TypeRoundedSizes } from '../utilities/constants';
+interface IOptions {
+  label: string;
+  value: string;
+  disabled: boolean;
+  selected: boolean;
+}
 
 /**
  * @since 1.0.0
@@ -20,16 +26,19 @@ import { EnumAppearances, TypeRoundedSizes } from '../utilities/constants';
  * @prop {string} name - The name of the select
  * @prop {string} value - The value of the select
  * @prop {array} options - The options the select contains
- * @prop {string} status - The status of the select
+ * @prop {EnumAppearances} appearance - The status of the select
  * @prop {boolean} required - Determines whether the field is required
  * @prop {boolean} disabled - Determines whether the field is disabled
  * @prop {boolean} multiple - Support of multiple choice selections
  * @prop {string} icon - The dropdown icon
  * @prop {number} iconSize - The dropdown icon size
  * @prop {boolean} filled - Displays a filled select
- * @prop {TypeRoundedSizes} rounded - Displays rounded corners
+ * @prop {EnumRoundedSizes} rounded - Displays rounded corners
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @csspart select
+ * @csspart option
  *
  * @cssproperty --kemet-select-padding - The padding on the textarea.
  * @cssproperty --kemet-select-border - The border of the textarea.
@@ -45,25 +54,19 @@ import { EnumAppearances, TypeRoundedSizes } from '../utilities/constants';
  * @cssproperty --kemet-select-background-color-warning - The warning state background color.
  * @cssproperty --kemet-select-icon-right - The space on the right of the icon.
  *
- * @event kemet-focus - Fires when the input receives focus
- * @event kemet-blur - Fires when the input loses focus
- * @event kemet-status-change - Fires when there's a change in status
- * @event kemet-change - Fires when the select input changes
+ * @fires kemet-select-mounted - Fires when the select is mounted
+ * @fires kemet-select-focus - Fires when the input receives focus
+ * @fires kemet-select-blur - Fires when the input loses focus
+ * @fires kemet-select-appearance-change - Fires when there's a change in appearance
+ * @fires kemet-select-change - Fires when the select input changes
  *
  */
-
-interface IOptions {
-  label: string;
-  value: string;
-  disabled: boolean;
-  selected: boolean;
-}
 
 @customElement('kemet-select')
 export default class KemetSelect extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [stylesSelect];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   slug: string = '';
@@ -78,7 +81,7 @@ export default class KemetSelect extends LitElement {
   options: IOptions[] = [];
 
   @property({ type: String, reflect: true })
-  status: string = '';
+  appearance: string = '';
 
   @property({ type: Boolean, reflect: true })
   required: boolean = false;
@@ -99,13 +102,19 @@ export default class KemetSelect extends LitElement {
   filled: boolean = false;
 
   @property({ reflect: true })
-  rounded!: TypeRoundedSizes;
+  rounded?: EnumRoundedSizes;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
   invalid: boolean = false;
 
   @state()
-  control!: KemetField;
+  control!: HTMLKemetFieldElement;
 
   @state()
   select!: HTMLSelectElement;
@@ -114,7 +123,7 @@ export default class KemetSelect extends LitElement {
   selectedOption!: HTMLOptionElement;
 
   @state()
-  optionElements!: NodeListOf<KemetOption>;
+  optionElements!: NodeListOf<HTMLKemetOptionElement>;
 
   @state()
   hasFocus: boolean = false;
@@ -126,13 +135,22 @@ export default class KemetSelect extends LitElement {
     this.formSubmitController = new FormSubmitController(this);
 
     /** @internal */
-    this.control = this.closest('kemet-field') as KemetField;
+    this.control = this.closest('kemet-field') as HTMLKemetFieldElement;
   }
 
   firstUpdated() {
     this.select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
     this.selectedOption = this.querySelector('[selected]') as HTMLOptionElement;
     this.value = this.selectedOption ? this.selectedOption.value : '';
+
+    emitEvent(this, 'kemet-select-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -163,9 +181,9 @@ export default class KemetSelect extends LitElement {
    */
   makeOptions(): TemplateResult<1>[] {
     this.options = [];
-    this.optionElements = this.querySelectorAll('kemet-option');
+    this.optionElements = this.querySelectorAll('kemet-select-option');
 
-    this.optionElements.forEach((option: KemetOption) => {
+    this.optionElements.forEach((option: HTMLKemetOptionElement) => {
       this.options = this.options.concat({
         label: option.label,
         value: option.value,
@@ -175,7 +193,7 @@ export default class KemetSelect extends LitElement {
     });
 
     return this.options.map(
-      option => html`<option value=${option.value} ?disabled=${option.disabled} ?selected=${option.selected}>
+      option => html`<option part="option" value=${option.value} ?disabled=${option.disabled} ?selected=${option.selected}>
         ${option.label}
       </option>`,
     );
@@ -187,7 +205,7 @@ export default class KemetSelect extends LitElement {
    */
   makeIcon() {
     if (this.icon || this.icon !== '') {
-      return html`<kemet-icon-bootstrap icon=${this.icon} size=${this.iconSize}></kemet-icon-bootstrap>`;
+      return html`<kemet-icon name=${this.icon} size=${this.iconSize}></kemet-icon>`;
     }
 
     return null;
@@ -199,7 +217,7 @@ export default class KemetSelect extends LitElement {
    */
   handleFocus() {
     this.hasFocus = true;
-    emitEvent(this, 'kemet-focus', this);
+    emitEvent(this, 'kemet-select-focus', { focused: true, element: this });
   }
 
   /**
@@ -208,16 +226,16 @@ export default class KemetSelect extends LitElement {
    */
   handleBlur() {
     this.hasFocus = false;
-    emitEvent(this, 'kemet-blur', this);
+    emitEvent(this, 'kemet-select-blur', { focused: false, element: this });
 
     this.select.checkValidity();
 
     if (!this.select.checkValidity()) {
       this.invalid = true;
-      this.status = EnumAppearances.Error;
-      this.control.status = EnumAppearances.Error;
+      this.appearance = EnumAppearances.Error;
+      this.control.appearance = EnumAppearances.Error;
 
-      emitEvent(this, 'kemet-status-change', {
+      emitEvent(this, 'kemet-select-appearance-change', {
         status: EnumAppearances.Error,
         validity: this.select.validity,
         element: this,
@@ -231,8 +249,8 @@ export default class KemetSelect extends LitElement {
    */
   handleChange(event: Event) {
     this.value = this.select.value;
-    emitEvent(this, 'kemet-change', {
-      status: this.status,
+    emitEvent(this, 'kemet-select-change', {
+      appearance: this.appearance,
       validity: this.select.validity,
       element: this,
       value: (event.target as HTMLSelectElement).value,
@@ -240,10 +258,10 @@ export default class KemetSelect extends LitElement {
 
     if (this.select.checkValidity()) {
       this.invalid = false;
-      this.status = EnumAppearances.Standard;
+      // this.appearance = EnumAppearances.Neutral;
 
-      emitEvent(this, 'kemet-status-change', {
-        status: EnumAppearances.Standard,
+      emitEvent(this, 'kemet-select-appearancce-change', {
+        appearance: EnumAppearances.Neutral,
         validity: this.select.validity,
         element: this,
         value: (event.target as HTMLSelectElement).value,
@@ -257,10 +275,10 @@ export default class KemetSelect extends LitElement {
    */
   handleInvalid() {
     this.invalid = true;
-    this.status = EnumAppearances.Error;
+    this.appearance = EnumAppearances.Error;
 
-    emitEvent(this, 'kemet-status-change', {
-      status: EnumAppearances.Error,
+    emitEvent(this, 'kemet-select-appearance-change', {
+      appearance: EnumAppearances.Error,
       validity: this.select.validity,
       element: this,
     });

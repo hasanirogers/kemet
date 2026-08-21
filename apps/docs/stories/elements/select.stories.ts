@@ -1,26 +1,23 @@
 import { html } from 'lit';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
-import { roundedSizes } from '../../../../packages/ui/src/utilities/constants';
+import { EnumAppearances, EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/select';
-import '../../../../packages/ui/src/elements/option';
-
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
+import '../../../../packages/ui/src/elements/select-option';
 
 
 const meta: Meta = {
-  title: 'Form Controls / Select',
+  title: 'Elements / Select',
   component: 'kemet-select',
+  render: args => Template(args),
   argTypes: {
-    status: {
-      control: { type: 'radio' },
-      options: ['standard', 'error', 'success', 'warning'],
+    appearance: {
+      control: { type: 'select' },
+      options: Object.values(EnumAppearances),
     },
     rounded: {
       control: { type: 'select' },
-      options: roundedSizes,
+      options: Object.values(EnumRoundedSizes),
     },
   }
 };
@@ -30,36 +27,38 @@ type Story = StoryObj;
 
 
 const Template = (args: Args) => html`
-<kemet-select .status=${args.status} ?required=${args.required} ?disabled=${args.disabled}  ?filled=${args.filled} .rounded=${args.rounded}>
-  <kemet-option label="Choose an Item" value=""></kemet-option>
-  <kemet-option label="Item 1" value="1"></kemet-option>
-  <kemet-option label="Item 2" value="2" selected></kemet-option>
-  <kemet-option label="Item 3" value="3"></kemet-option>
-  <kemet-option label="Item 4" value="4" disabled></kemet-option>
+<kemet-select .appearance=${args.appearance} ?required=${args.required} ?disabled=${args.disabled}  ?filled=${args.filled} .rounded=${args.rounded}>
+  <kemet-select-option label="Choose an Item" value=""></kemet-select-option>
+  <kemet-select-option label="Item 1" value="1"></kemet-select-option>
+  <kemet-select-option label="Item 2" value="2" selected></kemet-select-option>
+  <kemet-select-option label="Item 3" value="3"></kemet-select-option>
+  <kemet-select-option label="Item 4" value="4" disabled></kemet-select-option>
 </kemet-select>
 `;
 
-export const Standard: Story = {
-  render: args => Template(args),
-};
+export const Standard: Story = {};
 
 export const Disabled: Story = {
-  render: args => Template(args),
   args: {
     disabled: true,
   },
 };
 
 export const Filled: Story = {
-  render: args => Template(args),
   args: {
     filled: true,
   },
 };
 
 export const Rounded: Story = {
-  render: args => Template(args),
   args: {
     rounded: true,
   },
 };
+
+export const Appearance: Story = {
+  args: {
+    appearance: 'brand',
+  },
+};
+

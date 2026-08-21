@@ -9,7 +9,7 @@
 
 
   /* private */
-  --_kemet-input-border-radius-rounded: 0;
+  --_kemet-input-border-radius: 0;
   --_kemet-input-background-color: transparent;
   --_kemet-input-icon-left-padding: var(--kemet-input-icon-gap);
   --_kemet-input-icon-right-padding: var(--kemet-input-icon-gap);
@@ -29,7 +29,9 @@ input {
   appearance: none;
   box-sizing: border-box;
   background-color: var(--_kemet-input-background-color);
-  border-radius: var(--_kemet-input-border-radius-rounded);
+  border-radius: var(--_kemet-input-border-radius);
+  padding-left: var(--_kemet-input-icon-left-padding);
+  padding-right: var(--_kemet-input-icon-right-padding);
 }
 
 :host([polarity=dark]) {
@@ -99,36 +101,28 @@ input[type=search]::-webkit-search-results-decoration {
   --kemet-input-color: var(--kemet-color-font-disabled);
 }
 
-:host([icon-left]) input {
-  padding-left: var(--_kemet-input-icon-left-padding);
+:host([rounded]) {
+  --_kemet-input-border-radius: var(--kemet-border-radius-md);
 }
 
-:host([icon-right]) input {
-  padding-right: var(--_kemet-input-icon-right-padding);
+:host([rounded=sm])  {
+  --_kemet-input-border-radius: var(--kemet-border-radius-sm);
 }
 
-:host([rounded]) input {
-  --_kemet-input-border-radius-rounded: var(--kemet-border-radius-md);
+:host([rounded=lg]) {
+  --_kemet-input-border-radius: var(--kemet-border-radius-lg);
 }
 
-:host([rounded=sm]) input {
-  --_kemet-input-border-radius-rounded: var(--kemet-border-radius-sm);
+:host([rounded=xl])  {
+  --_kemet-input-border-radius: var(--kemet-border-radius-xl);
 }
 
-:host([rounded=lg]) input {
-  --_kemet-input-border-radius-rounded: var(--kemet-border-radius-lg);
+:host([rounded=circle]) {
+  --_kemet-input-border-radius: var(--kemet-border-radius-circle);
 }
 
-:host([rounded=xl]) input {
-  --_kemet-input-border-radius-rounded: var(--kemet-border-radius-xl);
-}
-
-:host([rounded=circle]) input {
-  --_kemet-input-border-radius-rounded: var(--kemet-border-radius-circle);
-}
-
-:host([rounded=pill]) input {
-  --_kemet-input-border-radius-rounded: var(--kemet-border-radius-pill);
+:host([rounded=pill])  {
+  --_kemet-input-border-radius: var(--kemet-border-radius-pill);
 }
 
 :host([filled]) {

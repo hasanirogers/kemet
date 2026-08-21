@@ -6,7 +6,7 @@ import '../../../../packages/ui/src/elements/field';
 import '../../../../packages/ui/src/elements/input';
 import '../../../../packages/ui/src/elements/toggle';
 import '../../../../packages/ui/src/elements/select';
-import '../../../../packages/ui/src/elements/option';
+import '../../../../packages/ui/src/elements/select-option';
 import '../../../../packages/ui/src/elements/radio';
 import '../../../../packages/ui/src/elements/radios';
 import '../../../../packages/ui/src/elements/badge';

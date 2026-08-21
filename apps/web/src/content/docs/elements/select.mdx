@@ -1,0 +1,76 @@
+---
+title: Select
+description: A select component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="select" sample='<kemet-select><kemet-select-option value="1" label="Option 1"></kemet-select-option><kemet-select-option value="2" label="Option 2"></kemet-select-option></kemet-select>' />
+
+The select element supports attributes of a standard select element with a few additions.
+
+
+## Examples
+<hr />
+
+### Rounded
+
+The select element supports standard `rounded` attribute sizes.
+
+<CodePreview code='<kemet-select rounded><kemet-select-option value="1" label="Option 1"></kemet-select-option><kemet-select-option value="2" label="Option 2"></kemet-select-option></kemet-select>' language="html" />
+
+### Filled
+
+Fill the select with the `filled` attribute.
+
+<CodePreview code='<kemet-select filled><kemet-select-option value="1" label="Option 1"></kemet-select-option><kemet-select-option value="2" label="Option 2"></kemet-select-option></kemet-select>' language="html" />
+
+### Appearance
+
+Change the appearance of the select with the `appearance` attribute.
+
+<CodePreview code='<kemet-select appearance="success"><kemet-select-option value="1" label="Option 1"></kemet-select-option><kemet-select-option value="2" label="Option 2"></kemet-select-option></kemet-select>' language="html" />
+
+## API
+<hr />
+
+### Attributes
+
+<API element="select" display="attributes" />
+<br />
+
+### Slots
+
+<API element="select" display="slots" />
+<br />
+
+### Events
+
+<API element="select" display="events" />
+<br />
+
+### Methods
+
+<API element="select" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="select" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="select" display="parts" />
+<br />
+
+<DocsFooter />
+

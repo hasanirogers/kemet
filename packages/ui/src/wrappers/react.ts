@@ -43,7 +43,7 @@ import ScrollSnap from '../elements/scroll-snap';
 import ScrollSnapPaginator from '../elements/scroll-snap-paginator';
 import ScrollSnapSlide from '../elements/scroll-snap-slide';
 import Select from '../elements/select';
-import SelectOption from '../elements/option';
+import SelectOption from '../elements/select-option';
 import Sortable, { InterfaceSortableDragDetails } from '../elements/sortable';
 import SortableItem from '../elements/sortable-item';
 import Svg from '../elements/svg';

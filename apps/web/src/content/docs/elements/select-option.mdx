@@ -1,0 +1,56 @@
+---
+title: Select Option
+description: An option component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>You must use the `select-option` element within the `select` element.</Callout>
+
+<ElementDetails element="select-option" sample='<kemet-select><kemet-select-option value="1" label="Option 1"></kemet-select-option><kemet-select-option value="2" label="Option 2"></kemet-select-option></kemet-select>' />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="select-option" display="attributes" />
+<br />
+
+### Slots
+
+<API element="select-option" display="slots" />
+<br />
+
+### Events
+
+<API element="select-option" display="events" />
+<br />
+
+### Methods
+
+<API element="select-option" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="select-option" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="select-option" display="parts" />
+<br />
+
+<DocsFooter />
+

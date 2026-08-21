@@ -5,7 +5,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @since 1.0.0
  * @status stable
  *
- * @tagname kemet-option
+ * @tagname kemet-select-option
  * @summary An option in a select.
  *
  * @prop {string} label - The label of the option
@@ -15,8 +15,8 @@ import { customElement, property } from 'lit/decorators.js';
  *
  */
 
-@customElement('kemet-option')
-export default class KemetOption extends LitElement {
+@customElement('kemet-select-option')
+export default class KemetSelectOption extends LitElement {
   @property({ type: String })
   label!: string;
 
@@ -36,6 +36,6 @@ export default class KemetOption extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-option': KemetOption
+    'kemet-select-option': KemetSelectOption
   }
 }
