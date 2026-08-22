@@ -1,8 +1,8 @@
-import { html, LitElement } from 'lit';
-import {
-  customElement, property, state, query,
-} from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/flipcard';
+import { html, LitElement, unsafeCSS } from 'lit';
+import { customElement, property, state, query } from 'lit/decorators.js';
+import styles from './styles.css?inline';
+import { emitEvent } from '../../utilities/events';
+import { EnumRoundedSizes } from '../../utilities/constants';
 
 /**
  * @since 1.0.0
@@ -16,6 +16,9 @@ import { stylesBase } from '../styles/elements/flipcard';
  * @prop {boolean} flipOnHover
  * @prop {string} height
  * @prop {boolean} measure
+ * @prop {EnumRoundedSizes} rounded - The border radius of the card
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @slot front - The front of the card.
  * @slot back - The back of the card.
@@ -24,19 +27,20 @@ import { stylesBase } from '../styles/elements/flipcard';
  * @csspart back - The back of the card.
  * @csspart wrapper - A container for both front and back of the card.
  *
- * @cssproperty --kemet-flipcard-front-color - The text color for the front of the card.
- * @cssproperty --kemet-flipcard-back-color - The text color for the back of the card.
- * @cssproperty --kemet-flipcard-front-background-color - The background color for the front of the card.
- * @cssproperty --kemet-flipcard-back-background-color - The background color for the back of the card.
- * @cssproperty --kemet-flipcard-border - The border on the front and back of the card.
- * @cssproperty --kemet-flipcard-border-radius - The border radius on the front and back of the card.
+ * @cssproperty --kemet-flipcard-width - The width of the card.
+ * @cssproperty --kemet-flipcard-height - The height of the card.
  * @cssproperty --kemet-flipcard-ratio - The aspect ratio of the card.
+ * @cssproperty --kemet-flipcard-border-radius - The border radius of the card.
+ * @cssproperty --kemet-flipcard-border - The border of the card.
+ *
+ * @fires kemet-flipcard-mounted - Fired when the flipcard is mounted to the DOM
+ * @detail {HTMLElement} element - The flipcard element
  *
  */
 
 @customElement('kemet-flipcard')
 export default class KemetFlipcard extends LitElement {
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String, reflect: true })
   axis: string = 'horizontal';
@@ -53,6 +57,15 @@ export default class KemetFlipcard extends LitElement {
   @property({ type: Boolean })
   measure: boolean = false;
 
+  @property({ type: String, reflect: true })
+  rounded?: EnumRoundedSizes;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @query('[name="front"]')
   frontChildren!: HTMLSlotElement;
 
@@ -68,7 +81,7 @@ export default class KemetFlipcard extends LitElement {
   constructor() {
     super();
 
-    this.addEventListener('kemet-flipped', () => {
+    this.addEventListener('kemet-flipcard-trigger-flipped', () => {
       this.flipped = !this.flipped;
     });
   }
@@ -77,6 +90,15 @@ export default class KemetFlipcard extends LitElement {
     this.frontElement = this.querySelector('[slot=front]') as HTMLElement;
     this.backElement = this.querySelector('[slot=back]') as HTMLElement;
     window.addEventListener('resize', this.determineHeight.bind(this));
+
+    emitEvent(this, 'kemet-flipcard-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   updated() {

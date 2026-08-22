@@ -3,7 +3,6 @@ import hljs from 'highlight.js';
 import customElements from '../../../../packages/ui/custom-elements.json';
 import extractJSDocTags from '../utilities/extractJSDocTags.js';
 import CodePreview from './CodePreview.astro';
-
 import 'highlight.js/styles/github-dark.css';
 
 interface Props {
@@ -12,6 +11,11 @@ interface Props {
 }
 
 const { element, sample } = Astro.props;
+let codeContent = sample;
+
+if (!codeContent) {
+  codeContent = await Astro.slots.render('default');
+}
 
 const tagname = `kemet-${element}`;
 
@@ -43,7 +47,7 @@ const importHTML = hljs.highlight(importCode, { language: 'javascript' }).value
 
 <p>{!tags?.summary ? 'No summary available' : tags?.summary}</p>
 
-<CodePreview code={sample} language="html" />
+<CodePreview code={codeContent} language="html" />
 
 <h2>Import</h2>
 <hr /><br />

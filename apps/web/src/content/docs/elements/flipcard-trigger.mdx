@@ -1,0 +1,69 @@
+---
+title: Flipcard Trigger
+description: Triggers a flipcard to flip
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="flipcard-trigger">
+  <kemet-flipcard>
+    <div slot="front" style="padding:1rem;">
+      <p>This is the front of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the back</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+    <div slot="back" style="padding:1rem;">
+      <p>This is the back of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the front</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+  </kemet-flipcard>
+</ElementDetails>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="flipcard-trigger" display="attributes" />
+<br />
+
+### Slots
+
+<API element="flipcard-trigger" display="slots" />
+<br />
+
+### Events
+
+<API element="flipcard-trigger" display="events" />
+<br />
+
+### Methods
+
+<API element="flipcard-trigger" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="flipcard-trigger" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="flipcard-trigger" display="parts" />
+<br />
+
+<DocsFooter />

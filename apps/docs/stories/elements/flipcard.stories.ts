@@ -1,19 +1,18 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumRoundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/flipcard';
 import '../../../../packages/ui/src/elements/flipcard-trigger';
-
 import '../../../../packages/ui/src/elements/button';
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-import KemetFlipcard from '../../../../packages/ui/src/elements/flipcard';
+
+
 
 const meta: Meta = {
-  title: 'Organization / Flipcard',
+  title: 'Elements / Flipcard',
   component: 'kemet-flipcard',
+  render: (args) => Template(args),
   parameters: {
     layout: 'padded'
   },
@@ -22,52 +21,56 @@ const meta: Meta = {
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],
     },
+    rounded: {
+      control: { type: 'select' },
+      options: Object.values(EnumRoundedSizes),
+    }
   },
   args: {
     flipped: false
   }
-} satisfies Meta<KemetFlipcard>;
+}
 export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`
-  <kemet-flipcard ?flipped="${args.flipped}" ?measure="${args.measure}" axis="${ifDefined(args.axis)}" ?flip-on-hover="${args.flipOnHover}" ?rounded=${args.rounded}>
-    <div slot="front" kemet-elevation="layer-5" kemet-padding="2xl">
+const Template = (args: Args) => html`
+  <kemet-flipcard
+    ?flipped="${args.flipped}"
+    ?measure="${args.measure}"
+    axis="${ifDefined(args.axis)}"
+    ?flip-on-hover="${args.flipOnHover}"
+    rounded="${ifDefined(args.rounded)}">
+    <div slot="front" style="padding:0.5rem 1rem;">
       <p>This is the front of the card.</p>
       <kemet-flipcard-trigger>
-        <kemet-button>Flip Me</kemet-button>
+        <kemet-button>Flip to the back</kemet-button>
       </kemet-flipcard-trigger>
     </div>
-    <div slot="back" kemet-elevation="layer-5" kemet-padding="2xl">
+    <div slot="back" style="padding:0.5rem 1rem;">
       <p>This is the back of the card.</p>
       <kemet-flipcard-trigger>
-        <kemet-button>Flip Me</kemet-button>
+        <kemet-button>Flip to the front</kemet-button>
       </kemet-flipcard-trigger>
     </div>
   </kemet-flipcard>
 `;
 
-export const Standard: Story = {
-  render: (args) => Template(args),
-};
+export const Standard: Story = {};
 
 export const Vertical: Story = {
-  render: (args) => Template(args),
   args: {
     axis: 'vertical',
   },
 };
 
 export const Rounded: Story = {
-  render: (args) => Template(args),
   args: {
-    rounded: true,
+    rounded: EnumRoundedSizes.MD,
   },
 };
 
 export const Hover: Story = {
-  render: (args) => Template(args),
   args: {
     flipOnHover: true,
   },

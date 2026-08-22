@@ -5,9 +5,14 @@ interface Props {
 }
 
 const { code, language = 'html' } = Astro.props;
+let slotContent = code;
+
+if (!code) {
+  slotContent = await Astro.slots.render('default');
+}
 ---
 
-<web-code language={language} code={code}></web-code>
+<web-code language={language} code={slotContent}></web-code>
 
 <script type="module">
   import '../elements/code';
@@ -32,4 +37,7 @@ const { code, language = 'html' } = Astro.props;
   import '../../../../packages/ui/src/elements/combo/index.js';
   import '../../../../packages/ui/src/elements/count/index.js';
   import '../../../../packages/ui/src/elements/drawer/index.js';
+  import '../../../../packages/ui/src/elements/fab/index.js';
+  import '../../../../packages/ui/src/elements/flipcard/index.js';
+  import '../../../../packages/ui/src/elements/flipcard-trigger/index.js';
 </script>

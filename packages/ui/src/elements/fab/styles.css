@@ -1,0 +1,135 @@
+:host {
+  /* public */
+  --kemet-fab-size: 50px;
+  --kemet-fab-color: var(--kemet-color-background-inverse);
+  --kemet-fab-icon-color: var(--kemet-color-font-inverse-base);
+  --kemet-fab-label-color: var(--kemet-color-font-inverse-base);
+  --kemet-fab-padding: 0 1.35rem 0 0.25rem;
+  --kemet-fab-border: 1px solid var(--kemet-fab-color);
+
+  /* private */
+  --_kemet-fab-border-radius: 0;
+  --_kemet-fab-background-color: var(--kemet-fab-color);
+
+  display: inline-block;
+  position: relative;
+}
+
+button {
+  color: var(--kemet-fab-icon-color);
+  font-size: inherit;
+  display: inline-flex;
+  padding: 0;
+  position: relative;
+  min-height: var(--kemet-fab-size);
+  min-width: var(--kemet-fab-size);
+  max-width: var(--kemet-fab-size);
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.4s ease;
+  border: var(--kemet-fab-border);
+  border-radius: var(--_kemet-button-border-radius);
+  background-color: var(--_kemet-fab-background-color);
+}
+
+:host([outlined]) {
+  --kemet-fab-icon-color: var(--kemet-fab-color);
+  --kemet-fab-label-color: var(--kemet-fab-color);
+  --_kemet-fab-background-color: transparent;
+}
+
+:host([rounded]) {
+  --_kemet-button-border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm]) {
+  --_kemet-button-border-radius: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=lg]) {
+  --_kemet-button-border-radius: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl]) {
+  --_kemet-button-border-radius: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) {
+  --_kemet-button-border-radius: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill]) {
+  --_kemet-button-border-radius: var(--kemet-border-radius-pill);
+}
+
+:host([appearance=brand]:not([disabled])) {
+  --kemet-fab-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error]:not([disabled])) {
+  --kemet-fab-color: var(--kemet-color-background-error);
+}
+
+:host([appearance=success]:not([disabled])) {
+  --kemet-fab-color: var(--kemet-color-background-success);
+}
+
+:host([appearance=warning]:not([disabled])) {
+  --kemet-fab-color: var(--kemet-color-background-warning);
+}
+
+:host([appearance=info]:not([disabled])) {
+  --kemet-fab-color: var(--kemet-color-background-info);
+}
+
+:host([appearance=link]:not([disabled])) {
+  --kemet-fab-color: var(--kemet-color-background-link);
+}
+
+
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--_kemet-button-border-radius);
+  transition: background-color 0.3s ease-in-out;
+  background-color: var(--_kemet-fab-background-color);
+}
+
+:host([expanded]) button {
+  max-width: 99rem;
+  padding: 0 1.35rem 0 0.25rem;
+}
+
+:host([disabled]) {
+  --kemet-fab-color: var(--kemet-color-background-disabled);
+}
+
+[part=icon] {
+  width: var(--kemet-fab-size);
+  height: var(--kemet-fab-size);
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+[part=label] {
+  color: var(--kemet-fab-label-color);
+  z-index: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+:host([expanded]) [part=label] {
+  opacity: 1;
+}

@@ -32,9 +32,28 @@ export class WebCode extends LitElement {
 
   private prettifyCode(code: string): string {
     try {
-      return js_beautify.html(code, {
+      if (typeof code !== 'string') {
+        console.error('Code is not a string:', typeof code);
+        return String(code);
+      }
+
+      // First, manually add line breaks to the minified HTML
+      let formatted = code
+        .replace(/></g, '>\n<')
+        .replace(/(\n\s*)+/g, '\n'); // Remove extra whitespace
+
+      // Then use js-beautify for proper indentation
+      const beautified = js_beautify.html(formatted, {
         indent_size: 2,
+        preserve_newlines: true,
+        max_preserve_newlines: 2,
+        end_with_newline: true,
+        wrap_line_length: 0,
+        unformatted: [],
+        content_unformatted: [],
+        extra_liners: [],
       });
+      return beautified;
     } catch (error) {
       console.error('Error prettifying code:', error);
       return code;
@@ -63,6 +82,20 @@ export class WebCode extends LitElement {
           } catch (error) {
             console.error('Script execution error:', error);
           }
+        });
+      });
+    }
+
+    const styles = this.code.match(/<style[^>]*>[\s\S]*?<\/style>/g);
+    if (styles) {
+      requestAnimationFrame(() => {
+        const shadowRoot = this.shadowRoot;
+        if (!shadowRoot) return;
+        styles.forEach((style) => {
+          const styleContent = style.replace(/<style[^>]*>/g, '').replace(/<\/style>/g, '');
+          const styleElement = document.createElement('style');
+          styleElement.textContent = styleContent;
+          shadowRoot.appendChild(styleElement);
         });
       });
     }
@@ -119,6 +152,9 @@ export class WebCode extends LitElement {
         (element as HTMLElement).setAttribute('polarity', this.polarity);
       }
     });
+
+    // Remove style tags from rendered HTML (they'll be added to shadow root separately)
+    doc.querySelectorAll('style').forEach(style => style.remove());
 
     return doc.body.innerHTML;
   }

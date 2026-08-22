@@ -1,0 +1,132 @@
+---
+title: FAB
+description: A floating action button component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="fab">
+  <kemet-fab>
+    <kemet-icon slot="icon" name="envelope" size="24"></kemet-icon>
+    <span>Email</span>
+  </kemet-fab>
+</ElementDetails>
+
+## Examples
+
+### Outlined
+
+Use the `outlined` attribute to create an outlined FAB.
+
+<CodePreview>
+  <kemet-fab outlined>
+    <kemet-icon slot="icon" name="envelope" size="24"></kemet-icon>
+    <span>Email</span>
+  </kemet-fab>
+</CodePreview>
+
+### Rounded
+
+The fab support standard rounded sizes.
+
+<CodePreview>
+  <kemet-fab rounded="pill">
+    <kemet-icon slot="icon" name="envelope" size="24"></kemet-icon>
+    <span>Email</span>
+  </kemet-fab>
+</CodePreview>
+
+
+### Appearance
+
+Change the color of the FAB using the `appearance` attribute.
+
+<CodePreview>
+  <kemet-fab appearance="brand">
+    <kemet-icon slot="icon" name="envelope" size="24"></kemet-icon>
+    <span>Email</span>
+  </kemet-fab>
+</CodePreview>
+
+
+### Multiple fabs
+
+You can stack multiple FABs together to create a more complex interface.
+
+<CodePreview code={`<style>
+  .fabs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+</style>
+<ul class="fabs">
+  <li>
+    <kemet-fab rounded="pill">
+      <kemet-icon slot="icon" name="envelope" size="24"></kemet-icon> Email
+    </kemet-fab>
+  </li>
+  <li>
+    <kemet-fab rounded="pill">
+      <kemet-icon slot="icon" name="calendar" size="24"></kemet-icon> Calendar
+    </kemet-fab>
+  </li>
+  <li>
+    <kemet-fab rounded="pill">
+      <kemet-icon slot="icon" name="pencil-square" size="24"></kemet-icon> Edit
+    </kemet-fab>
+  </li>
+</ul>`} />
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="combo" display="attributes" />
+<br />
+
+### Slots
+
+<API element="combo" display="slots" />
+<br />
+
+### Events
+
+<API element="combo" display="events" />
+<br />
+
+### Methods
+
+<API element="combo" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="combo" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="combo" display="parts" />
+<br />
+
+<DocsFooter />
+
