@@ -1,13 +1,13 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { emitEvent } from '../utilities/events';
-import HTMLKemetFieldElement from '../elements/field';
-import KemetInput from './input';
-import KemetTextarea from './textarea';
-import { EnumAppearances, TypeAppearance } from '../utilities/constants';
+import { emitEvent } from '../../utilities/events';
+import HTMLKemetFieldElement from '../field';
+import HTMLKemetInputElement from '../input';
+import HTMLKemetTextareaElement from '../textarea';
+import { EnumAppearances } from '../../utilities/constants';
 
-export interface InterfaceKemetStatusChangeEvent {
-  status: TypeAppearance;
+export interface InterfaceAppearanceChangeEvent {
+  appearance: EnumAppearances;
   validity: ValidityState;
   element: HTMLKemetFieldElement;
 }
@@ -26,7 +26,7 @@ export interface InterfaceKemetStatusChangeEvent {
  *
  * @cssproperty --kemet-count-font-size - The font size. Default: 90%.
  *
- * @event kemet-status-change - Fires when there's a change in status.
+ * @fires kemet-count-appearance-change - Fires when there's a change in status.
  *
  */
 
@@ -58,7 +58,7 @@ export default class KemetCount extends LitElement {
   field!: HTMLKemetFieldElement;
 
   @state()
-  inputSlot!: KemetInput | KemetTextarea;
+  inputSlot!: HTMLKemetInputElement | HTMLKemetTextareaElement;
 
   @state()
   input!: HTMLInputElement | null;
@@ -68,38 +68,11 @@ export default class KemetCount extends LitElement {
 
   firstUpdated() {
     this.field = this.closest('kemet-field') as HTMLKemetFieldElement;
-    this.inputSlot = this.field.querySelector('[slot="input"]') as KemetInput | KemetTextarea;
+    this.inputSlot = this.field.querySelector('[slot="input"]') as HTMLKemetInputElement | HTMLKemetTextareaElement;
     this.remaining = this.limit - this.field.length;
 
-    this.field.addEventListener('kemet-input', (event: Event) => {
-      this.remaining = this.limit - (event as CustomEvent).detail.value.length;
-
-      const nativeElement = this.input || this.textarea;
-
-      if (nativeElement) {
-        if (this.remaining < 0) {
-          if (this.validateImmediately) {
-            this.inputSlot.appearance = EnumAppearances.Error;
-            this.inputSlot.invalid = true;
-
-            emitEvent(this, 'kemet-status-change', {
-              status: EnumAppearances.Error,
-              validity: nativeElement.validity,
-              element: this.inputSlot,
-            });
-          }
-        } else {
-          this.inputSlot.appearance = EnumAppearances.Standard;
-          nativeElement.checkValidity();
-
-          emitEvent(this, 'kemet-status-change', {
-            status: EnumAppearances.Standard,
-            validity: nativeElement.validity,
-            element: this.inputSlot,
-          });
-        }
-      }
-    });
+    this.field.addEventListener('kemet-input-input', (event: Event) => this.handleInput(event));
+    this.field.addEventListener('kemet-textarea-input', (event: Event) => this.handleInput(event));
 
     this.input = this.inputSlot?.shadowRoot?.querySelector('input') || null;
     this.textarea = this.inputSlot?.shadowRoot?.querySelector('textarea') || null;
@@ -107,6 +80,36 @@ export default class KemetCount extends LitElement {
 
   render() {
     return html`${this.remaining} ${this.message}`;
+  }
+
+  handleInput(event: Event) {
+    this.remaining = this.limit - (event as CustomEvent).detail.value.length;
+
+    const nativeElement = this.input || this.textarea;
+
+    if (nativeElement) {
+      if (this.remaining < 0) {
+        if (this.validateImmediately) {
+          this.inputSlot.appearance = EnumAppearances.Error;
+          this.inputSlot.invalid = true;
+
+          emitEvent(this, 'kemet-count-appearance-change', {
+            status: EnumAppearances.Error,
+            validity: nativeElement.validity,
+            element: this.inputSlot,
+          });
+        }
+      } else {
+        this.inputSlot.appearance = EnumAppearances.Neutral;
+        nativeElement.checkValidity();
+
+        emitEvent(this, 'kemet-count-appearance-change', {
+          appearance: EnumAppearances.Neutral,
+          validity: nativeElement.validity,
+          element: this.inputSlot,
+        });
+      }
+    }
   }
 }
 

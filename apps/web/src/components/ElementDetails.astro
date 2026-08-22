@@ -41,7 +41,7 @@ const importHTML = hljs.highlight(importCode, { language: 'javascript' }).value
   </span>
 </div>
 
-<p>{!tags.summary ? 'No summary available' : tags.summary}</p>
+<p>{!tags?.summary ? 'No summary available' : tags?.summary}</p>
 
 <CodePreview code={sample} language="html" />
 

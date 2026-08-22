@@ -4,145 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/elements/count.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetCount",
-          "cssProperties": [
-            {
-              "description": "The font size. Default: 90%.",
-              "name": "--kemet-count-font-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "The text label shown to users",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "limit",
-              "type": {
-                "text": "number"
-              },
-              "description": "The maximum number of characters allowed",
-              "attribute": "limit"
-            },
-            {
-              "kind": "field",
-              "name": "validateImmediately",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Set to true if the field should validate as soon as the character limit is reached",
-              "attribute": "validate-immediately"
-            },
-            {
-              "kind": "field",
-              "name": "remaining",
-              "type": {
-                "text": "number"
-              },
-              "description": "The number of characters remaining"
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "type": {
-                "text": "HTMLKemetFieldElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "inputSlot",
-              "type": {
-                "text": "KemetInput | KemetTextarea"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "HTMLInputElement | null"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "textarea",
-              "type": {
-                "text": "HTMLTextAreaElement | null"
-              }
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when there's a change in status.",
-              "name": "kemet-status-change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "The text label shown to users",
-              "fieldName": "message"
-            },
-            {
-              "name": "limit",
-              "type": {
-                "text": "number"
-              },
-              "description": "The maximum number of characters allowed",
-              "fieldName": "limit"
-            },
-            {
-              "name": "validate-immediately",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Set to true if the field should validate as soon as the character limit is reached",
-              "fieldName": "validateImmediately"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-count",
-          "customElement": true,
-          "summary": "Maintains a character count for an input field. Is to be used only in the component slot of a Field component."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetCount",
-            "module": "src/elements/count.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-count",
-          "declaration": {
-            "name": "KemetCount",
-            "module": "src/elements/count.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/drawer.ts",
       "declarations": [
         {
@@ -6363,116 +6224,66 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/alert/index.ts",
+      "path": "src/elements/avatar/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KemetAlert",
+          "name": "KemetAvatar",
           "cssProperties": [
             {
-              "description": "The padding on the alert.",
-              "name": "--kemet-alert-padding"
-            },
-            {
-              "description": "The thickness of the border.",
-              "name": "--kemet-alert-border-thickness"
-            },
-            {
-              "description": "The alert's alignment.",
-              "name": "--kemet-alert-align-items"
+              "description": "The space around the initials.",
+              "name": "--kemet-avatar-initials-margin"
             }
           ],
           "cssParts": [
             {
-              "description": "Container for the close button.",
-              "name": "close"
-            },
-            {
-              "description": "Container for the alert message.",
-              "name": "message"
+              "description": "Contains the initials for the avatar.",
+              "name": "initials"
             }
           ],
           "slots": [
             {
-              "description": "The icon of the alert.",
-              "name": "icon"
-            },
-            {
-              "description": "The contents of the alert.",
-              "name": "default"
+              "description": "A slot for an icon or element that indicates the status of the avatar.",
+              "name": "status"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the alert is opened or not.",
-              "attribute": "opened",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "reveal",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Fades in the alert when opened.",
-              "attribute": "reveal",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "closable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds a close button to the alert.",
-              "attribute": "closable",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "appearance",
-              "type": {
-                "text": "constants.TypeAppearance"
-              },
-              "attribute": "appearance",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "borderAppearance",
+              "name": "size",
               "type": {
                 "text": "string"
               },
-              "attribute": "border-appearance",
-              "reflects": true
+              "description": "The size in pixels.",
+              "attribute": "size"
             },
             {
               "kind": "field",
-              "name": "hidden",
+              "name": "image",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Hides the element from document flow.",
-              "attribute": "hidden",
-              "reflects": true
+              "description": "Url to an image.",
+              "attribute": "image"
             },
             {
               "kind": "field",
-              "name": "overlay",
+              "name": "label",
               "type": {
-                "text": "TypeOverlayPositions"
+                "text": "string"
               },
-              "description": "Fixes the alert over content in specified position.",
-              "attribute": "overlay",
-              "reflects": true
+              "description": "Labels the avatar.",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initials of the user.",
+              "attribute": "initials"
             },
             {
               "kind": "field",
@@ -6480,18 +6291,8 @@
               "type": {
                 "text": "TypeRoundedSizes"
               },
-              "description": "The rounded size of the alert.",
+              "description": "Displays with rounded corners",
               "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the alert uses the filled style.",
-              "attribute": "filled",
               "reflects": true
             },
             {
@@ -6501,7 +6302,6 @@
                 "text": "'light' | 'dark'"
               },
               "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
               "attribute": "polarity",
               "reflects": true
             },
@@ -6512,133 +6312,72 @@
                 "text": "string"
               },
               "default": "'initializing'",
-              "description": "The status of dom initalization.",
               "attribute": "dom",
               "reflects": true
             },
             {
-              "kind": "field",
-              "name": "handleTransitionEnd",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "handleAnimationEnd",
-              "privacy": "private"
+              "kind": "method",
+              "name": "makeSize"
             },
             {
               "kind": "method",
-              "name": "makeCloseBtn",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleMotion",
-              "privacy": "private"
+              "name": "makeContent"
             },
             {
               "type": {
-                "text": "EnumBorderAppearances"
+                "text": "boolean"
               },
-              "description": "Adds a border that indicates the status.",
-              "name": "borderStatus",
-              "kind": "field"
-            },
-            {
-              "type": {
-                "text": "TypeVariants"
-              },
-              "description": "The style of the alert.",
-              "name": "variant",
+              "description": "Displays in a circle.",
+              "name": "circle",
               "kind": "field"
             }
           ],
           "events": [
             {
-              "description": "Fires when alert is opened.",
-              "name": "kemet-opened"
-            },
-            {
-              "description": "Fires when alert is closed.",
-              "name": "kemet-closed"
-            },
-            {
-              "description": "Fired when the alert is mounted to the DOM",
-              "name": "kemet-alert-mounted"
+              "description": "Fires when the avatar is mounted.",
+              "name": "kemet-avatar-mounted"
             }
           ],
           "attributes": [
             {
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the alert is opened or not.",
-              "fieldName": "opened"
-            },
-            {
-              "name": "reveal",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Fades in the alert when opened.",
-              "fieldName": "reveal"
-            },
-            {
-              "name": "closable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds a close button to the alert.",
-              "fieldName": "closable"
-            },
-            {
-              "name": "appearance",
-              "type": {
-                "text": "constants.TypeAppearance"
-              },
-              "fieldName": "appearance"
-            },
-            {
-              "name": "border-appearance",
+              "name": "size",
               "type": {
                 "text": "string"
               },
-              "fieldName": "borderAppearance"
+              "description": "The size in pixels.",
+              "fieldName": "size"
             },
             {
-              "name": "hidden",
+              "name": "image",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "description": "Hides the element from document flow.",
-              "fieldName": "hidden"
+              "description": "Url to an image.",
+              "fieldName": "image"
             },
             {
-              "name": "overlay",
+              "name": "label",
               "type": {
-                "text": "TypeOverlayPositions"
+                "text": "string"
               },
-              "description": "Fixes the alert over content in specified position.",
-              "fieldName": "overlay"
+              "description": "Labels the avatar.",
+              "fieldName": "label"
+            },
+            {
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initials of the user.",
+              "fieldName": "initials"
             },
             {
               "name": "rounded",
               "type": {
                 "text": "TypeRoundedSizes"
               },
-              "description": "The rounded size of the alert.",
+              "description": "Displays with rounded corners",
               "fieldName": "rounded"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines if the alert uses the filled style.",
-              "fieldName": "filled"
             },
             {
               "name": "polarity",
@@ -6646,7 +6385,6 @@
                 "text": "'light' | 'dark'"
               },
               "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
               "fieldName": "polarity"
             },
             {
@@ -6655,7 +6393,6 @@
                 "text": "string"
               },
               "default": "'initializing'",
-              "description": "The status of dom initalization.",
               "fieldName": "dom"
             }
           ],
@@ -6663,9 +6400,9 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kemet-alert",
+          "tagName": "kemet-avatar",
           "customElement": true,
-          "summary": "Calls out important messages and notifications."
+          "summary": "A representation of a person or thing."
         }
       ],
       "exports": [
@@ -6673,16 +6410,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "KemetAlert",
-            "module": "src/elements/alert/index.ts"
+            "name": "KemetAvatar",
+            "module": "src/elements/avatar/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "kemet-alert",
+          "name": "kemet-avatar",
           "declaration": {
-            "name": "KemetAlert",
-            "module": "src/elements/alert/index.ts"
+            "name": "KemetAvatar",
+            "module": "src/elements/avatar/index.ts"
           }
         }
       ]
@@ -6771,217 +6508,6 @@
           "declaration": {
             "name": "KemetAvatars",
             "module": "src/elements/avatars/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/badge/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetBadge",
-          "cssProperties": [
-            {
-              "description": "The padding of the badge.",
-              "name": "--kemet-badge-padding"
-            },
-            {
-              "description": "The border width of the badge.",
-              "name": "--kemet-badge-border-width"
-            },
-            {
-              "description": "The border style of the badge.",
-              "name": "--kemet-badge-border-style"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearance"
-              },
-              "description": "The appearance of the badge's color",
-              "attribute": "appearance",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "circlePadding",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Padding on the badge as a circle",
-              "attribute": "circle-padding"
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Rounds the corners on the badge",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "outlined",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Outlines the badge",
-              "attribute": "outlined",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "iconLeft",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "iconRight",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleLeftChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleRightChange"
-            },
-            {
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The status of the badge",
-              "name": "status",
-              "kind": "field"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the badge is mounted",
-              "name": "kemet-badge-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearance"
-              },
-              "description": "The appearance of the badge's color",
-              "fieldName": "appearance"
-            },
-            {
-              "name": "circle-padding",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Padding on the badge as a circle",
-              "fieldName": "circlePadding"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Rounds the corners on the badge",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "outlined",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Outlines the badge",
-              "fieldName": "outlined"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-badge",
-          "customElement": true,
-          "summary": "Badges display the status of information."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetBadge",
-            "module": "src/elements/badge/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-badge",
-          "declaration": {
-            "name": "KemetBadge",
-            "module": "src/elements/badge/index.ts"
           }
         }
       ]
@@ -7200,6 +6726,487 @@
           "declaration": {
             "name": "KemetAccordionPanel",
             "module": "src/elements/accordion-panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/badge/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetBadge",
+          "cssProperties": [
+            {
+              "description": "The padding of the badge.",
+              "name": "--kemet-badge-padding"
+            },
+            {
+              "description": "The border width of the badge.",
+              "name": "--kemet-badge-border-width"
+            },
+            {
+              "description": "The border style of the badge.",
+              "name": "--kemet-badge-border-style"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearance"
+              },
+              "description": "The appearance of the badge's color",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "circlePadding",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Padding on the badge as a circle",
+              "attribute": "circle-padding"
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Rounds the corners on the badge",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "outlined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Outlines the badge",
+              "attribute": "outlined",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconLeft",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "iconRight",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleLeftChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleRightChange"
+            },
+            {
+              "type": {
+                "text": "TypeStatus"
+              },
+              "description": "The status of the badge",
+              "name": "status",
+              "kind": "field"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the badge is mounted",
+              "name": "kemet-badge-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearance"
+              },
+              "description": "The appearance of the badge's color",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "circle-padding",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Padding on the badge as a circle",
+              "fieldName": "circlePadding"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Rounds the corners on the badge",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "outlined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Outlines the badge",
+              "fieldName": "outlined"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-badge",
+          "customElement": true,
+          "summary": "Badges display the status of information."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetBadge",
+            "module": "src/elements/badge/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-badge",
+          "declaration": {
+            "name": "KemetBadge",
+            "module": "src/elements/badge/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/card/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetCard",
+          "cssProperties": [
+            {
+              "description": "The space around elements.",
+              "name": "--kemet-card-padding"
+            },
+            {
+              "description": "The color of the borders.",
+              "name": "--kemet-card-border-color"
+            },
+            {
+              "description": "The color of the text. Default:",
+              "name": "--kemet-card-color"
+            },
+            {
+              "description": "The max width of the card.",
+              "name": "--kemet-card-max-width"
+            },
+            {
+              "description": "The border around the card.",
+              "name": "--kemet-card-border"
+            },
+            {
+              "description": "The body spacing.",
+              "name": "--kemet-card-body-padding"
+            },
+            {
+              "description": "The header spacing.",
+              "name": "--kemet-card-header-padding"
+            },
+            {
+              "description": "The header border.",
+              "name": "--kemet-card-header-border-bottom"
+            },
+            {
+              "description": "The caption text color.",
+              "name": "--kemet-card-caption-color"
+            },
+            {
+              "description": "The caption spacing.",
+              "name": "--kemet-card-caption-padding"
+            },
+            {
+              "description": "The caption background color.",
+              "name": "--kemet-card-caption-background-color"
+            },
+            {
+              "description": "The footer spacing.",
+              "name": "--kemet-card-footer-padding"
+            },
+            {
+              "description": "The footer border.",
+              "name": "--kemet-card-footer-border-top"
+            },
+            {
+              "description": "The filled background color.",
+              "name": "--kemet-card-filled-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The media area of the card.",
+              "name": "media"
+            },
+            {
+              "description": "The main contents of the card.",
+              "name": "body"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The contents of the alert.",
+              "name": "default"
+            },
+            {
+              "description": "The card's header.",
+              "name": "header"
+            },
+            {
+              "description": "A slot for images, videos, or embeds.",
+              "name": "media"
+            },
+            {
+              "description": "Text for the media slot.",
+              "name": "caption"
+            },
+            {
+              "description": "The card's footer.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "center",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Centers the elements in the card.",
+              "attribute": "center",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Fills the card with a background color.",
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the border from the card.",
+              "attribute": "borderless",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "elevation",
+              "type": {
+                "text": "EnumElevation"
+              },
+              "description": "The elevation level of the card.",
+              "attribute": "elevation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the card is mounted to the DOM",
+              "name": "kemet-card-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "center",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Centers the elements in the card.",
+              "fieldName": "center"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "fieldName": "rounded"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Fills the card with a background color.",
+              "fieldName": "filled"
+            },
+            {
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the border from the card.",
+              "fieldName": "borderless"
+            },
+            {
+              "name": "elevation",
+              "type": {
+                "text": "EnumElevation"
+              },
+              "description": "The elevation level of the card.",
+              "fieldName": "elevation"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-card",
+          "customElement": true,
+          "summary": "A highly configurable panel design to display media and information."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetCard",
+            "module": "src/elements/card/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-card",
+          "declaration": {
+            "name": "KemetCard",
+            "module": "src/elements/card/index.ts"
           }
         }
       ]
@@ -7625,322 +7632,124 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/avatar/index.ts",
+      "path": "src/elements/alert/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KemetAvatar",
+          "name": "KemetAlert",
           "cssProperties": [
             {
-              "description": "The space around the initials.",
-              "name": "--kemet-avatar-initials-margin"
+              "description": "The padding on the alert.",
+              "name": "--kemet-alert-padding"
+            },
+            {
+              "description": "The thickness of the border.",
+              "name": "--kemet-alert-border-thickness"
+            },
+            {
+              "description": "The alert's alignment.",
+              "name": "--kemet-alert-align-items"
             }
           ],
           "cssParts": [
             {
-              "description": "Contains the initials for the avatar.",
-              "name": "initials"
+              "description": "Container for the close button.",
+              "name": "close"
+            },
+            {
+              "description": "Container for the alert message.",
+              "name": "message"
             }
           ],
           "slots": [
             {
-              "description": "A slot for an icon or element that indicates the status of the avatar.",
-              "name": "status"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "string"
-              },
-              "description": "The size in pixels.",
-              "attribute": "size"
+              "description": "The icon of the alert.",
+              "name": "icon"
             },
-            {
-              "kind": "field",
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Url to an image.",
-              "attribute": "image"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Labels the avatar.",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initials of the user.",
-              "attribute": "initials"
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays with rounded corners",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "makeSize"
-            },
-            {
-              "kind": "method",
-              "name": "makeContent"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays in a circle.",
-              "name": "circle",
-              "kind": "field"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the avatar is mounted.",
-              "name": "kemet-avatar-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "string"
-              },
-              "description": "The size in pixels.",
-              "fieldName": "size"
-            },
-            {
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Url to an image.",
-              "fieldName": "image"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Labels the avatar.",
-              "fieldName": "label"
-            },
-            {
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initials of the user.",
-              "fieldName": "initials"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays with rounded corners",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-avatar",
-          "customElement": true,
-          "summary": "A representation of a person or thing."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAvatar",
-            "module": "src/elements/avatar/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-avatar",
-          "declaration": {
-            "name": "KemetAvatar",
-            "module": "src/elements/avatar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/card/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetCard",
-          "cssProperties": [
-            {
-              "description": "The space around elements.",
-              "name": "--kemet-card-padding"
-            },
-            {
-              "description": "The color of the borders.",
-              "name": "--kemet-card-border-color"
-            },
-            {
-              "description": "The color of the text. Default:",
-              "name": "--kemet-card-color"
-            },
-            {
-              "description": "The max width of the card.",
-              "name": "--kemet-card-max-width"
-            },
-            {
-              "description": "The border around the card.",
-              "name": "--kemet-card-border"
-            },
-            {
-              "description": "The body spacing.",
-              "name": "--kemet-card-body-padding"
-            },
-            {
-              "description": "The header spacing.",
-              "name": "--kemet-card-header-padding"
-            },
-            {
-              "description": "The header border.",
-              "name": "--kemet-card-header-border-bottom"
-            },
-            {
-              "description": "The caption text color.",
-              "name": "--kemet-card-caption-color"
-            },
-            {
-              "description": "The caption spacing.",
-              "name": "--kemet-card-caption-padding"
-            },
-            {
-              "description": "The caption background color.",
-              "name": "--kemet-card-caption-background-color"
-            },
-            {
-              "description": "The footer spacing.",
-              "name": "--kemet-card-footer-padding"
-            },
-            {
-              "description": "The footer border.",
-              "name": "--kemet-card-footer-border-top"
-            },
-            {
-              "description": "The filled background color.",
-              "name": "--kemet-card-filled-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The media area of the card.",
-              "name": "media"
-            },
-            {
-              "description": "The main contents of the card.",
-              "name": "body"
-            }
-          ],
-          "slots": [
             {
               "description": "The contents of the alert.",
               "name": "default"
-            },
-            {
-              "description": "The card's header.",
-              "name": "header"
-            },
-            {
-              "description": "A slot for images, videos, or embeds.",
-              "name": "media"
-            },
-            {
-              "description": "Text for the media slot.",
-              "name": "caption"
-            },
-            {
-              "description": "The card's footer.",
-              "name": "footer"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "center",
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Determines if the alert is opened or not.",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "reveal",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Centers the elements in the card.",
-              "attribute": "center",
+              "description": "Fades in the alert when opened.",
+              "attribute": "reveal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "closable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds a close button to the alert.",
+              "attribute": "closable",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "constants.TypeAppearance"
+              },
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "borderAppearance",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "border-appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the element from document flow.",
+              "attribute": "hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "overlay",
+              "type": {
+                "text": "TypeOverlayPositions"
+              },
+              "description": "Fixes the alert over content in specified position.",
+              "attribute": "overlay",
               "reflects": true
             },
             {
               "kind": "field",
               "name": "rounded",
               "type": {
-                "text": "EnumRoundedSizes"
+                "text": "TypeRoundedSizes"
               },
+              "description": "The rounded size of the alert.",
               "attribute": "rounded",
               "reflects": true
             },
@@ -7950,34 +7759,12 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "description": "Fills the card with a background color.",
+              "description": "Determines if the alert uses the filled style.",
               "attribute": "filled",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "borderless",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes the border from the card.",
-              "attribute": "borderless",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "elevation",
-              "type": {
-                "text": "EnumElevation"
-              },
-              "description": "The elevation level of the card.",
-              "attribute": "elevation",
-              "reflects": true
-            },
-            {
-              "kind": "field",
               "name": "polarity",
               "type": {
                 "text": "'light' | 'dark'"
@@ -7997,29 +7784,121 @@
               "description": "The status of dom initalization.",
               "attribute": "dom",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "handleTransitionEnd",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "handleAnimationEnd",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "makeCloseBtn",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleMotion",
+              "privacy": "private"
+            },
+            {
+              "type": {
+                "text": "EnumBorderAppearances"
+              },
+              "description": "Adds a border that indicates the status.",
+              "name": "borderStatus",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "TypeVariants"
+              },
+              "description": "The style of the alert.",
+              "name": "variant",
+              "kind": "field"
             }
           ],
           "events": [
             {
-              "description": "Fired when the card is mounted to the DOM",
-              "name": "kemet-card-mounted"
+              "description": "Fires when alert is opened.",
+              "name": "kemet-opened"
+            },
+            {
+              "description": "Fires when alert is closed.",
+              "name": "kemet-closed"
+            },
+            {
+              "description": "Fired when the alert is mounted to the DOM",
+              "name": "kemet-alert-mounted"
             }
           ],
           "attributes": [
             {
-              "name": "center",
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Determines if the alert is opened or not.",
+              "fieldName": "opened"
+            },
+            {
+              "name": "reveal",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Centers the elements in the card.",
-              "fieldName": "center"
+              "description": "Fades in the alert when opened.",
+              "fieldName": "reveal"
+            },
+            {
+              "name": "closable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds a close button to the alert.",
+              "fieldName": "closable"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "constants.TypeAppearance"
+              },
+              "fieldName": "appearance"
+            },
+            {
+              "name": "border-appearance",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "borderAppearance"
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the element from document flow.",
+              "fieldName": "hidden"
+            },
+            {
+              "name": "overlay",
+              "type": {
+                "text": "TypeOverlayPositions"
+              },
+              "description": "Fixes the alert over content in specified position.",
+              "fieldName": "overlay"
             },
             {
               "name": "rounded",
               "type": {
-                "text": "EnumRoundedSizes"
+                "text": "TypeRoundedSizes"
               },
+              "description": "The rounded size of the alert.",
               "fieldName": "rounded"
             },
             {
@@ -8027,26 +7906,8 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "description": "Fills the card with a background color.",
+              "description": "Determines if the alert uses the filled style.",
               "fieldName": "filled"
-            },
-            {
-              "name": "borderless",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes the border from the card.",
-              "fieldName": "borderless"
-            },
-            {
-              "name": "elevation",
-              "type": {
-                "text": "EnumElevation"
-              },
-              "description": "The elevation level of the card.",
-              "fieldName": "elevation"
             },
             {
               "name": "polarity",
@@ -8071,9 +7932,9 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kemet-card",
+          "tagName": "kemet-alert",
           "customElement": true,
-          "summary": "A highly configurable panel design to display media and information."
+          "summary": "Calls out important messages and notifications."
         }
       ],
       "exports": [
@@ -8081,242 +7942,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "KemetCard",
-            "module": "src/elements/card/index.ts"
+            "name": "KemetAlert",
+            "module": "src/elements/alert/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "kemet-card",
+          "name": "kemet-alert",
           "declaration": {
-            "name": "KemetCard",
-            "module": "src/elements/card/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/combo/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetCombo",
-          "cssProperties": [
-            {
-              "description": "The width of the combo box.",
-              "name": "--kemet-combo-width"
-            },
-            {
-              "description": "The margins on the combo box.",
-              "name": "--kemet-combo-margin"
-            },
-            {
-              "description": "The max height of the combo box.",
-              "name": "--kemet-combo-max-height"
-            },
-            {
-              "description": "The border of the combo box.",
-              "name": "--kemet-combo-border"
-            },
-            {
-              "description": "The border radius of the combo box.",
-              "name": "--kemet-combo-border-radius"
-            },
-            {
-              "description": "The background color of the combo box.",
-              "name": "--kemet-combo-background-color"
-            },
-            {
-              "description": "The shadow of the combo box.",
-              "name": "--kemet-combo-shadow"
-            },
-            {
-              "description": "The hover item's text color.",
-              "name": "--kemet-combo-hover-color"
-            },
-            {
-              "description": "The hover item's background color.",
-              "name": "--kemet-combo-hover-background-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The combo's container element.",
-              "name": "combobox"
-            },
-            {
-              "description": "The list element in the combo.",
-              "name": "listbox"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "description": "Uniquely identifies the component. Should match the slug used in a control.",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "options",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]",
-              "description": "An array of items listed for the combo box",
-              "attribute": "options"
-            },
-            {
-              "kind": "field",
-              "name": "show",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Controls the display of the combo box",
-              "attribute": "show",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "filteredOptions",
-              "type": {
-                "text": "string[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "type": {
-                "text": "HTMLKemetFieldElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "HTMLInputElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "makeOptions"
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus"
-            },
-            {
-              "kind": "method",
-              "name": "handleSelection",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleOptionKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleInputKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when a selection has been made",
-              "name": "kemet-combo-selection"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "description": "Uniquely identifies the component. Should match the slug used in a control.",
-              "fieldName": "slug"
-            },
-            {
-              "name": "options",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]",
-              "description": "An array of items listed for the combo box",
-              "fieldName": "options"
-            },
-            {
-              "name": "show",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Controls the display of the combo box",
-              "fieldName": "show"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-combo",
-          "customElement": true,
-          "summary": "Allows the user to select a choice filtered through an Input. May only be used as a component of Field."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetCombo",
-            "module": "src/elements/combo/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-combo",
-          "declaration": {
-            "name": "KemetCombo",
-            "module": "src/elements/combo/index.ts"
+            "name": "KemetAlert",
+            "module": "src/elements/alert/index.ts"
           }
         }
       ]
@@ -8735,6 +8370,383 @@
           "declaration": {
             "name": "KemetCheckbox",
             "module": "src/elements/checkbox/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/combo/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetCombo",
+          "cssProperties": [
+            {
+              "description": "The width of the combo box.",
+              "name": "--kemet-combo-width"
+            },
+            {
+              "description": "The margins on the combo box.",
+              "name": "--kemet-combo-margin"
+            },
+            {
+              "description": "The max height of the combo box.",
+              "name": "--kemet-combo-max-height"
+            },
+            {
+              "description": "The border of the combo box.",
+              "name": "--kemet-combo-border"
+            },
+            {
+              "description": "The border radius of the combo box.",
+              "name": "--kemet-combo-border-radius"
+            },
+            {
+              "description": "The background color of the combo box.",
+              "name": "--kemet-combo-background-color"
+            },
+            {
+              "description": "The shadow of the combo box.",
+              "name": "--kemet-combo-shadow"
+            },
+            {
+              "description": "The hover item's text color.",
+              "name": "--kemet-combo-hover-color"
+            },
+            {
+              "description": "The hover item's background color.",
+              "name": "--kemet-combo-hover-background-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The combo's container element.",
+              "name": "combobox"
+            },
+            {
+              "description": "The list element in the combo.",
+              "name": "listbox"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "description": "Uniquely identifies the component. Should match the slug used in a control.",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "description": "An array of items listed for the combo box",
+              "attribute": "options"
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Controls the display of the combo box",
+              "attribute": "show",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "filteredOptions",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "field",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "HTMLInputElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeOptions"
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus"
+            },
+            {
+              "kind": "method",
+              "name": "handleSelection",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleOptionKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleInputKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when a selection has been made",
+              "name": "kemet-combo-selection"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "description": "Uniquely identifies the component. Should match the slug used in a control.",
+              "fieldName": "slug"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "description": "An array of items listed for the combo box",
+              "fieldName": "options"
+            },
+            {
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Controls the display of the combo box",
+              "fieldName": "show"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-combo",
+          "customElement": true,
+          "summary": "Allows the user to select a choice filtered through an Input. May only be used as a component of Field."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetCombo",
+            "module": "src/elements/combo/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-combo",
+          "declaration": {
+            "name": "KemetCombo",
+            "module": "src/elements/combo/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/count/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetCount",
+          "cssProperties": [
+            {
+              "description": "The font size. Default: 90%.",
+              "name": "--kemet-count-font-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text label shown to users",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "limit",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum number of characters allowed",
+              "attribute": "limit"
+            },
+            {
+              "kind": "field",
+              "name": "validateImmediately",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to true if the field should validate as soon as the character limit is reached",
+              "attribute": "validate-immediately"
+            },
+            {
+              "kind": "field",
+              "name": "remaining",
+              "type": {
+                "text": "number"
+              },
+              "description": "The number of characters remaining"
+            },
+            {
+              "kind": "field",
+              "name": "field",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inputSlot",
+              "type": {
+                "text": "HTMLKemetInputElement | HTMLKemetTextareaElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "HTMLInputElement | null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "textarea",
+              "type": {
+                "text": "HTMLTextAreaElement | null"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when there's a change in status.",
+              "name": "kemet-count-appearance-change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text label shown to users",
+              "fieldName": "message"
+            },
+            {
+              "name": "limit",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum number of characters allowed",
+              "fieldName": "limit"
+            },
+            {
+              "name": "validate-immediately",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to true if the field should validate as soon as the character limit is reached",
+              "fieldName": "validateImmediately"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-count",
+          "customElement": true,
+          "summary": "Maintains a character count for an input field. Is to be used only in the component slot of a Field component."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetCount",
+            "module": "src/elements/count/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-count",
+          "declaration": {
+            "name": "KemetCount",
+            "module": "src/elements/count/index.ts"
           }
         }
       ]
@@ -10174,117 +10186,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/loader/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetLoader",
-          "cssProperties": [
-            {
-              "description": "The color of the loader.",
-              "name": "--kemet-loader-color"
-            },
-            {
-              "description": "The thickness of the loader.",
-              "name": "--kemet-loader-thickness"
-            },
-            {
-              "description": "The size of the dots in the loader.",
-              "name": "--kemet-loader-dot-size"
-            },
-            {
-              "description": "The size of the loader.",
-              "name": "--kemet-loader-size"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The main loader container",
-              "name": "loader"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "string"
-              },
-              "description": "The style of loader to display",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "48",
-              "description": "How large to make the loader.",
-              "attribute": "size"
-            },
-            {
-              "kind": "method",
-              "name": "makeLoader"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the loader is mounted to the DOM",
-              "name": "kemet-loader-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "string"
-              },
-              "description": "The style of loader to display",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "48",
-              "description": "How large to make the loader.",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-loader",
-          "customElement": true,
-          "summary": "Displays animations for a loading state."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KemetLoader",
-          "declaration": {
-            "name": "KemetLoader",
-            "module": "src/elements/loader/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-loader",
-          "declaration": {
-            "name": "KemetLoader",
-            "module": "src/elements/loader/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/select/index.ts",
       "declarations": [
         {
@@ -10771,6 +10672,117 @@
           "declaration": {
             "name": "KemetSelect",
             "module": "src/elements/select/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/loader/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetLoader",
+          "cssProperties": [
+            {
+              "description": "The color of the loader.",
+              "name": "--kemet-loader-color"
+            },
+            {
+              "description": "The thickness of the loader.",
+              "name": "--kemet-loader-thickness"
+            },
+            {
+              "description": "The size of the dots in the loader.",
+              "name": "--kemet-loader-dot-size"
+            },
+            {
+              "description": "The size of the loader.",
+              "name": "--kemet-loader-size"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The main loader container",
+              "name": "loader"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "attribute": "size"
+            },
+            {
+              "kind": "method",
+              "name": "makeLoader"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the loader is mounted to the DOM",
+              "name": "kemet-loader-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "description": "The style of loader to display",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "48",
+              "description": "How large to make the loader.",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-loader",
+          "customElement": true,
+          "summary": "Displays animations for a loading state."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KemetLoader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-loader",
+          "declaration": {
+            "name": "KemetLoader",
+            "module": "src/elements/loader/index.ts"
           }
         }
       ]
@@ -11434,13 +11446,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/alert/styles.css",
+      "path": "src/elements/accordion-panel/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/avatar/styles.css",
+      "path": "src/elements/alert/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11464,13 +11476,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/accordion-panel/styles.css",
+      "path": "src/elements/card/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/card/styles.css",
+      "path": "src/elements/avatar/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11494,6 +11506,12 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/icon/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/input/styles.css",
       "declarations": [],
       "exports": []
@@ -11507,12 +11525,6 @@
     {
       "kind": "javascript-module",
       "path": "src/elements/select/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/icon/styles.css",
       "declarations": [],
       "exports": []
     },

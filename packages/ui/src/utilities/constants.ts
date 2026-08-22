@@ -1,5 +1,5 @@
 import KemetCount from "../elements/count";
-import KemetInput from "../elements/input";
+import HTMLKemetInputElement from "../elements/input";
 
 export enum EnumKeyCodes {
   ESCAPE = 'Escape',
@@ -52,6 +52,6 @@ export type TypeRoundedSizes = typeof roundedSizes[number];
 export interface InterfaceInputDetails {
   status: TypeAppearance;
   validity: ValidityState;
-  element: HTMLElement | KemetCount | KemetInput;
+  element: HTMLElement | KemetCount | HTMLKemetInputElement;
   value?: string;
 }

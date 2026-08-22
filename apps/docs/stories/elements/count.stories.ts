@@ -1,16 +1,14 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumAppearances } from '../../../../packages/ui//src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/count';
+import '../../../../packages/ui/src/elements/input/';
+import '../../../../packages/ui/src/elements/field/';
 
-import '../../../../packages/ui/src/elements/input';
-import '../../../../packages/ui/src/elements/field';
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
 
 const meta: Meta = {
-  title: 'Form Controls / Count',
+  title: 'Elements / Count',
   component: 'kemet-count',
   args: {
     label: 'Label',
@@ -21,9 +19,9 @@ const meta: Meta = {
     limit: 8,
   },
   argTypes: {
-    status: {
-      control: { type: 'radio' },
-      options: ['standard', 'error', 'warning'],
+    appearance: {
+      control: { type: 'select' },
+      options: Object.values(EnumAppearances),
     },
   }
 };
@@ -31,9 +29,9 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`
-  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" status="${args.status}">
-    <kemet-input slot="input" name="input-field" status="${args.status}" validate-on-blur></kemet-input>
+const Template = (args: Args) => html`
+  <kemet-field slug="unique-identifier" label="${args.label}" message="${args.message}" appearance="${args.appearance}">
+    <kemet-input slot="input" name="input-field" appearance="${args.appearance}" validate-on-blur></kemet-input>
     <kemet-count slot="component" message="${args.remaining}" limit="${args.limit}" ?validate-immediately=${args.validateImmediately}></kemet-count>
   </kemet-field>
 `;
