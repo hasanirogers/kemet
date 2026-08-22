@@ -82,7 +82,6 @@
         }
       },
 
-
       "overlay": {
         "light": { "value": "#FFFFFFCC", "type": "color" },
         "dark": { "value": "#00000044", "type": "color" }

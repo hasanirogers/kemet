@@ -85,10 +85,12 @@ export default class HTMLKemetFieldElement extends LitElement {
     this.slotInput = this.querySelector('[slot="input"]') as HTMLKemetInputElement | HTMLKemetTextareaElement;
     this.slotCombo = this.querySelector('[slot="combo"]') as HTMLKemetComboElement;
 
-    this.slotInput.addEventListener('kemet-focus', (event: Event) => this.handleFocused(event));
-    this.slotInput.addEventListener('kemet-status-change', (event: Event) => this.handleStatus(event));
-    this.slotInput.addEventListener('kemet-input', (event: Event) => this.handleInput(event));
-    this.slotCombo?.addEventListener('kemet-selection', (event: Event) => this.handleSelection(event));
+    // TODO: trace what components should be listened to
+    // this.slotInput.addEventListener('kemet-focus', (event: Event) => this.handleFocused(event));
+    // this.slotInput.addEventListener('kemet-status-change', (event: Event) => this.handleAppearance(event));
+    // this.slotInput.addEventListener('kemet-input', (event: Event) => this.handleInput(event));
+    this.slotCombo?.addEventListener('kemet-input-combo-selection', (event: Event) => this.handleSelection(event));
+
 
     if (this.slotInput.value) {
       this.length = this.slotInput.value.length;
@@ -133,8 +135,8 @@ export default class HTMLKemetFieldElement extends LitElement {
     }
   }
 
-  handleStatus(event: Event) {
-    this.appearance = (event as CustomEvent).detail.status;
+  handleAppearance(event: Event) {
+    this.appearance = (event as CustomEvent).detail.appearance;
   }
 
   handleInput(event: Event) {
@@ -143,7 +145,6 @@ export default class HTMLKemetFieldElement extends LitElement {
   }
 
   handleSelection(event: Event) {
-    console.log((event as CustomEvent).detail);
     this.slotInput.setAttribute('aria-activedescendant', (event as CustomEvent).detail);
   }
 }

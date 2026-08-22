@@ -1,13 +1,11 @@
-import { html, LitElement } from 'lit';
-import {
- customElement, property, query, state,
-} from 'lit/decorators.js';
+import { html, LitElement, unsafeCSS } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
-import { stylesBase } from '../styles/elements/multi-input';
-import { emitEvent } from '../utilities/events';
-import { EnumKeyCodes as EnumKeys, EnumAppearances, TypeRoundedSizes, TypeAppearance } from '../utilities/constants';
-import KemetField from './field';
-import KemetCombo from './combo';
+import { emitEvent } from '../../utilities/events';
+import { EnumKeyCodes, EnumAppearances, TypeRoundedSizes, TypeAppearance, EnumRoundedSizes } from '../../utilities/constants';
+import HTMLKemetFieldElement from '../field';
+import HTMLKemetComboElement from '../combo';
+import styles from './styles.css?inline';
 
 export interface InterfaceSelections {
   element: HTMLUListElement;
@@ -31,40 +29,34 @@ export interface InterfaceSelections {
  * @prop {boolean} invalid - States whether the input is invalid
  * @prop {string} status - The status of the input
  * @prop {boolean} validateOnBlur - Activates validation on blur
- * @prop {TypeRoundedSizes} rounded - Displays rounded corners
+ * @prop {EnumRoundedSizes} rounded - Displays rounded corners
  * @prop {boolean} filled - Displays a filled input box
  * @prop {ValidityState} validity - The HTML5 validity object.
 
  *
  * @csspart input
  *
- * @cssproperty --kemet-input-height - The height of the input.
- * @cssproperty --kemet-input-padding - The padding on the input.
- * @cssproperty --kemet-input-border - The border of the input.
- * @cssproperty --kemet-input-border-color-error -  The border of the error state.
- * @cssproperty --kemet-input-border-color-success - The border of the success state.
- * @cssproperty --kemet-input-border-color-warning - The border of the warning state.
- * @cssproperty --kemet-input-icon-left-padding - The icon-left padding.
- * @cssproperty --kemet-input-icon-right-padding - The icon-right padding.
- * @cssproperty --kemet-input-border-radius-rounded - The border radius on rounded.
- * @cssproperty --kemet-input-border-filled - The border on filled.
- * @cssproperty --kemet-input-color-filled - The color on filled.
- * @cssproperty --kemet-input-background-color-filled - The background-color on filled.
- * @cssproperty --kemet-input-background-color-error - The error state background color.
- * @cssproperty --kemet-input-background-color-success - The success state background color.
- * @cssproperty --kemet-input-background-color-warning - The warning state background color.
+ * @cssproperty --kemet-input-combo-height - The height of the input.
+ * @cssproperty --kemet-input-combo-color - The color of the input.
+ * @cssproperty --kemet-input-combo-border - The border of the input.
+ * @cssproperty --kemet-input-combo-padding-y - The padding on the input.
+ * @cssproperty --kemet-input-combo-padding-x - The padding on the input.
+ * @cssproperty --kemet-input-combo-icon-gap - The icon gap of the input.
+ * @cssproperty --kemet-input-combo-font-color - The font color of the input.
+ * @cssproperty --kemet-input-combo-chip-font-color - The font color of the chip.
+ * @cssproperty --kemet-input-combo-chip-background-color - The background color of the chip.
  *
- * @event kemet-focus - Fires when the input receives focus
- * @event kemet-blur - Fires when the input loses focus
- * @event kemet-input - Fires when the input receives input
- * @event kemet-change - Fires when the input changes
- * @event kemet-invalid - Fires when the input is invalid
+ * @event kemet-input-combo-focus - Fires when the input receives focus
+ * @event kemet-input-combo-blur - Fires when the input loses focus
+ * @event kemet-input-combo-input - Fires when the input receives input
+ * @event kemet-input-combo-change - Fires when the input changes
+ * @event kemet-input-combo-invalid - Fires when the input is invalid
  *
  */
 
-@customElement('kemet-multi-input')
-export default class KemetMultiInput extends LitElement {
-  static styles = [stylesBase];
+@customElement('kemet-input-combo')
+export default class KemetInputCombo extends LitElement {
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   slug: string = 'input';
@@ -78,14 +70,14 @@ export default class KemetMultiInput extends LitElement {
   @property({ type: Boolean })
   filled: boolean = false;
 
-  @property({ reflect: true })
-  rounded!: TypeRoundedSizes;
+  @property({ type: String,reflect: true })
+  rounded?: EnumRoundedSizes;
 
   @property({ type: String })
   name: string = 'input';
 
   @property({ reflect: true })
-  status: TypeAppearance = EnumAppearances.Standard;
+  appearance?: EnumAppearances;
 
   @property({ type: Boolean })
   required: boolean = false;
@@ -106,10 +98,10 @@ export default class KemetMultiInput extends LitElement {
   paddingLeft!: number;
 
   @state()
-  field!: KemetField;
+  field!: HTMLKemetFieldElement;
 
   @state()
-  combo!: KemetCombo;
+  combo!: HTMLKemetComboElement;
 
   @query('[part=chips]')
   chips!: { offsetWidth: number; };
@@ -119,13 +111,13 @@ export default class KemetMultiInput extends LitElement {
 
   firstUpdated() {
     // elements
-    this.field = this.closest('kemet-field') as KemetField;
-    this.combo = this.field.querySelector('kemet-combo') as KemetCombo;
+    this.field = this.closest('kemet-field') as HTMLKemetFieldElement;
+    this.combo = this.field.querySelector('kemet-combo') as HTMLKemetComboElement;
 
     document.addEventListener('click', this.handleComboClose.bind(this));
 
     if (this.combo) {
-      this.combo.addEventListener('kemet-selection', (event: Event) => this.addComboItem(event));
+      this.combo.addEventListener('kemet-combo-selection', (event: Event) => this.addComboItem(event));
     }
   }
 
@@ -164,7 +156,7 @@ export default class KemetMultiInput extends LitElement {
 
   addComboItem(event: Event) {
     this.value = '';
-    this.status = EnumAppearances.Standard;
+    this.appearance = EnumAppearances.Neutral;
     const isPresent = this.selections.find(selection => selection.id === (event as CustomEvent).detail.id);
     if (!isPresent) this.selections = [...this.selections, (event as CustomEvent).detail];
   }
@@ -175,10 +167,10 @@ export default class KemetMultiInput extends LitElement {
    */
   handleInput(event: Event) {
     this.value = (event.target as HTMLInputElement).value;
-    emitEvent(this, 'kemet-input', {
+    emitEvent(this, 'kemet-input-combo-input', {
       element: this,
       validity: this.input.validity,
-      status: this.status,
+      status: this.appearance,
       value: (event.target as HTMLInputElement).value
     });
   }
@@ -187,31 +179,31 @@ export default class KemetMultiInput extends LitElement {
    * Handles when the input is focused
    */
   handleFocus() {
-    emitEvent(this, 'kemet-focus', this);
+    emitEvent(this, 'kemet-input-combo-focus', { element: this });
   }
 
   handleBlur() {
-    emitEvent(this, 'kemet-blur', this);
+    emitEvent(this, 'kemet-input-combo-blur', { element: this });
     if (this.validateOnBlur) {
       this.input.checkValidity();
     }
   }
 
   handleChange(event: Event) {
-    emitEvent(this, 'kemet-change', {
+    emitEvent(this, 'kemet-input-combo-change', {
       element: this,
       validity: this.input.validity,
-      status: this.status,
+      status: this.appearance,
       value: (event.target as HTMLInputElement).value
     });
   }
 
   handleInvalid(event: Event) {
-    this.status = EnumAppearances.Error;
-    emitEvent(this, 'kemet-invalid', {
+    this.appearance = EnumAppearances.Error;
+    emitEvent(this, 'kemet-input-combo-invalid', {
       element: this,
       validity: this.input.validity,
-      status: this.status,
+      status: this.appearance,
       value: (event.target as HTMLInputElement).value
     });
   }
@@ -265,7 +257,7 @@ export default class KemetMultiInput extends LitElement {
   }
 
   handleKeydown(event: KeyboardEvent) {
-    if (event.key === EnumKeys.ESCAPE) {
+    if (event.key === EnumKeyCodes.ESCAPE) {
       this.combo.show = false;
     }
   }
@@ -273,6 +265,6 @@ export default class KemetMultiInput extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-multi-input': KemetMultiInput
+    'kemet-input-combo': KemetInputCombo
   }
 }

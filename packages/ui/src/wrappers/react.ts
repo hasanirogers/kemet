@@ -207,7 +207,7 @@ export const KemetCombo = createComponent({
   elementClass: Combo,
   react: React,
   events: {
-    onSelection: 'kemet-selection' as EventName<CustomEvent<InterfaceSelectionDetails>>,
+    onSelection: 'kemet-input-combo-selection' as EventName<CustomEvent<InterfaceSelectionDetails>>,
   }
 });
 

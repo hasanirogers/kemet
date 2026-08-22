@@ -1,18 +1,14 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumRoundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
-import '../../../../packages/ui/src/elements/input-multi';
+import '../../../../packages/ui/src/elements/input-combo';
 import '../../../../packages/ui/src/elements/field';
 import '../../../../packages/ui/src/elements/combo';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
-
 const meta: Meta = {
-  title: 'Form Controls / Multi Input',
-  component: 'kemet-multi-input',
+  title: 'Elements / Input Combo',
+  component: 'kemet-input-combo',
   render: args => Template(args),
   args: {
     options: [
@@ -31,7 +27,7 @@ const meta: Meta = {
   argTypes: {
     rounded: {
       control: "select",
-      options: roundedSizes
+      options: Object.values(EnumRoundedSizes)
     }
   }
 };
@@ -39,9 +35,17 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = args => html`
+const Template = (args: Args) => html`
   <kemet-field slug="categories" label="Categories">
-    <kemet-multi-input slot="input" name="categories" .rounded=${args.rounded} ?disabled=${args.disabled} ?filled=${args.filled} ?required=${args.required} ?validate-on-blur=${args.validateOnBlur}></kemet-multi-input>
+    <kemet-input-combo
+      slot="input"
+      name="categories"
+      .rounded=${args.rounded}
+      ?disabled=${args.disabled}
+      ?filled=${args.filled}
+      ?required=${args.required}
+      ?validate-on-blur=${args.validateOnBlur}
+    ></kemet-input-combo>
     <kemet-combo slot="component" .options=${args.options}></kemet-combo>
   </kemet-field>
 `;
