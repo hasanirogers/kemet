@@ -1,0 +1,68 @@
+---
+title: Drawer
+description: A drawer component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="drawer" sample={`<script>const drawer = shadowRoot.querySelector('kemet-drawer'); const buttons = shadowRoot.querySelectorAll('kemet-button'); buttons.forEach(button => { button.addEventListener('click', () => { drawer.opened = !drawer.opened; }); });</script><kemet-drawer><aside slot="sidebar" style="padding:1rem;"><p>Your navigation goes here.</p><kemet-button>Toggle the Drawer</kemet-button></aside><main slot="body"><div style="padding:1rem;"><h2>Your content goes here.</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br /><kemet-button>Toggle the Drawer</kemet-button></div></main></kemet-drawer>`} />
+
+
+## Examples
+
+### Effects
+
+Use the `effect` attribute to change the animation effect of the drawer.
+
+<CodePreview code={`<script>const drawer = shadowRoot.querySelector('kemet-drawer'); const buttons = shadowRoot.querySelectorAll('kemet-button'); buttons.forEach(button => { button.addEventListener('click', () => { drawer.opened = !drawer.opened; }); });</script><kemet-drawer effect="push"><aside slot="sidebar" style="padding:1rem;"><p>Your navigation goes here.</p><kemet-button>Toggle the Drawer</kemet-button></aside><main slot="body"><div style="padding:1rem;"><h2>Your content goes here.</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br /><kemet-button>Toggle the Drawer</kemet-button></div></main></kemet-drawer>`} />
+
+<br />
+<Callout>
+  While not shown here, you'll likely want to use the `fill-viewport` attribute to make the drawer's height stretch to the viewport.
+</Callout>
+
+## API
+<hr />
+
+### Attributes
+
+<API element="drawer" display="attributes" />
+<br />
+
+### Slots
+
+<API element="drawer" display="slots" />
+<br />
+
+### Events
+
+<API element="drawer" display="events" />
+<br />
+
+### Methods
+
+<API element="drawer" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="drawer" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="drawer" display="parts" />
+<br />
+
+<DocsFooter />
+

@@ -1,0 +1,92 @@
+:host {
+  --kemet-drawer-overlay-color: rgb(0 0 0 / 20%);
+  --kemet-drawer-width: 300px;
+  --kemet-drawer-height: 100%;
+  --kemet-drawer-font-color: var(--kemet-color-font-inverse-base);
+  --kemet-drawer-background-color: var(--kemet-color-background-inverse);
+
+  width: 100%;
+  display: block;
+}
+
+[part=container] {
+  position: relative;
+  overflow: hidden;
+}
+
+[part=drawer] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  visibility: hidden;
+  height: 100%;
+  overflow: auto;
+  transition: all 0.5s;
+}
+
+[part=drawer]::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+:host([opened]) [part=drawer]::after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+[part=pusher] {
+  position: relative;
+  left: 0;
+  z-index: 99;
+  height: 100%;
+  transition: transform 0.5s;
+}
+
+:host([overlay]) [part=pusher]::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: var(--kemet-drawer-overlay-color);
+  content: '';
+  opacity: 0;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+:host([opened]) [part=pusher]::after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.5s;
+  transform: scale(2);
+}
+
+:host([fill-viewport]) [part=content] {
+  min-height: 100vh;
+}
+
+[part=wrapper]{
+  position: relative;
+}
+
+::slotted([slot=content]) {
+  min-height: 100vh;
+}
+
+[part=drawer] {
+  width: var(--kemet-drawer-width);
+  height: var(--kemet-drawer-height);
+  color: var(--kemet-drawer-font-color);
+  background: var(--kemet-drawer-background-color);
+}

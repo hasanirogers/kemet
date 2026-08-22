@@ -90,8 +90,8 @@ export default class KemetCount extends LitElement {
     if (nativeElement) {
       if (this.remaining < 0) {
         if (this.validateImmediately) {
-          this.inputSlot.appearance = EnumAppearances.Error;
-          this.inputSlot.invalid = true;
+          (this.inputSlot as any).appearance = EnumAppearances.Error;
+          (this.inputSlot as any).invalid = true;
 
           emitEvent(this, 'kemet-count-appearance-change', {
             status: EnumAppearances.Error,
@@ -100,7 +100,7 @@ export default class KemetCount extends LitElement {
           });
         }
       } else {
-        this.inputSlot.appearance = EnumAppearances.Neutral;
+        (this.inputSlot as any).appearance = EnumAppearances.Neutral;
         nativeElement.checkValidity();
 
         emitEvent(this, 'kemet-count-appearance-change', {

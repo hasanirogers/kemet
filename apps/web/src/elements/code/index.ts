@@ -48,6 +48,26 @@ export class WebCode extends LitElement {
     }
   }
 
+  updated() {
+    const scripts = this.code.match(/<script[^>]*>[\s\S]*?<\/script>/g);
+    if (scripts) {
+      // Use requestAnimationFrame to ensure DOM is rendered
+      requestAnimationFrame(() => {
+        const shadowRoot = this.shadowRoot;
+        scripts.forEach((script) => {
+          const scriptContent = script.replace(/<script[^>]*>/g, '').replace(/<\/script>/g, '');
+          // Execute with shadow root context for element queries
+          try {
+            const scriptFunction = new Function('shadowRoot', 'document', scriptContent);
+            scriptFunction(shadowRoot, document);
+          } catch (error) {
+            console.error('Script execution error:', error);
+          }
+        });
+      });
+    }
+  }
+
   render() {
     const dynamicallyRenderedHTML = this.addDynamicProperties(this.code);
     return html`
