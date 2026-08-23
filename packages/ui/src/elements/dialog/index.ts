@@ -1,12 +1,10 @@
-import { html, LitElement } from 'lit';
-import {
-  customElement, property, query, state,
-} from 'lit/decorators.js';
-import { stylesBase, stylesEffects } from '../styles/elements/modal';
-import { emitEvent } from '../utilities/events';
-import { TypeRoundedSizes } from '../utilities/constants';
+import { html, LitElement, unsafeCSS } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
+import { emitEvent } from '../../utilities/events';
+import { EnumRoundedSizes } from '../../utilities/constants';
+import styles from './styles.css?inline';
+import effects from './effects.css?inline';
 
-export const effects = ['fadein-scaleup', 'slide-right', 'slide-bottom', 'newspaper', 'fall', 'side-fall', 'flip-horizontal', 'flip-vertical', 'sign-3d', 'super-scaled', 'slit', 'rotate-bottom', 'rotate-left'] as const;
 export enum EnumEffects {
   FadeinScaleup = 'fadein-scaleup',
   SlideRight = 'slide-right',
@@ -22,14 +20,13 @@ export enum EnumEffects {
   RotateBottom = 'rotate-bottom',
   RotateLeft = 'rotate-left'
 }
-export type TypeEffect = typeof effects[number];
 
 
 /**
  * @since 1.0.0
  * @status stable
  *
- * @tagname kemet-modal
+ * @tagname kemet-dialog
  * @summary A dialog that has many built-in effects and flexible styles.
  *
  * @prop {boolean} opened
@@ -37,10 +34,12 @@ export type TypeEffect = typeof effects[number];
  * @prop {boolean} closeOnClick
  * @prop {string} breakpoint
  * @prop {boolean} mobile
- * @prop {TypeRoundedSizes} rounded
+ * @prop {EnumRoundedSizes} rounded
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
- * @csspart dialog - The main contents of the modal.
- * @csspart overlay - The surrounding scrim of the modal.
+ * @csspart dialog - The main contents of the dialog.
+ * @csspart overlay - The surrounding scrim of the dialog.
  *
  * @cssproperty --kemet-modal-radius - The mount of rounding for rounded corners
  * @cssproperty --kemet-modal-dialog-min-width - The minimum width of the dialog.
@@ -52,20 +51,20 @@ export type TypeEffect = typeof effects[number];
  * @cssproperty --kemet-modal-overlay-background-color - The color of the backdrop overlay.
  * @cssproperty --kemet-modal-radius - The mount of rounding for rounded corners
  *
- * @event kemet-opened - Fires when the modal opens
- * @event kemet-closed - Fires when the modal closes
+ * @event kemet-dialog-opened - Fires when the dialog opens
+ * @event kemet-dialog-closed - Fires when the dialog closes
  *
  */
 
-@customElement('kemet-modal')
-export default class KemetModal extends LitElement {
-  static styles = [stylesBase, stylesEffects];
+@customElement('kemet-dialog')
+export default class KemetDialog extends LitElement {
+  static styles = [unsafeCSS(styles), unsafeCSS(effects)];
 
   @property({ type: Boolean, reflect: true })
   opened: boolean = false;
 
   @property({ type: String, reflect: true })
-  effect!: TypeEffect;
+  effect?: EnumEffects;
 
   @property({ type: Boolean, attribute: 'close-on-click' })
   closeOnClick: boolean = false;
@@ -77,7 +76,13 @@ export default class KemetModal extends LitElement {
   mobile!: boolean;
 
   @property({ reflect: true })
-  rounded!: TypeRoundedSizes;
+  rounded?: EnumRoundedSizes;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   /** @internal */
   @query('dialog')
@@ -95,7 +100,7 @@ export default class KemetModal extends LitElement {
     super();
 
     // bindings
-    this.addEventListener('kemet-closed-pressed', () => { this.handleClose(); });
+    this.addEventListener('kemet-dialog-close-pressed', () => { this.handleClose(); });
   }
 
   firstUpdated() {
@@ -113,7 +118,7 @@ export default class KemetModal extends LitElement {
 
     this.addEventListener('click', (event) => {
       const targetElement = event.target as HTMLElement;
-      if (this.opened && this.closeOnClick && targetElement.tagName.toLowerCase() === 'kemet-modal') {
+      if (this.opened && this.closeOnClick && targetElement.tagName.toLowerCase() === 'kemet-dialog') {
         this.handleClose();
       }
     });
@@ -125,6 +130,15 @@ export default class KemetModal extends LitElement {
     this.focusableElements.forEach((element) => {
       (element as HTMLElement).addEventListener('keydown', (event: KeyboardEvent) => this.handleFocusableDown(event));
     });
+
+    emitEvent(this, 'kemet-dialog-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   updated(prevProps: Map<string, never>) {
@@ -156,13 +170,13 @@ export default class KemetModal extends LitElement {
   handleOpen() {
     this.opened = true;
     if (this.dialogElement?.showModal) this.dialogElement.showModal();
-    emitEvent(this, 'kemet-opened', this);
+    emitEvent(this, 'kemet-dialog-opened', { element: this });
   }
 
   handleClose() {
     this.opened = false;
     if (this.dialogElement?.close) this.dialogElement.close();
-    emitEvent(this, 'kemet-closed', this);
+    emitEvent(this, 'kemet-dialog-closed', { element: this });
   }
 
   handleFocusableDown(event: KeyboardEvent) {
@@ -183,6 +197,6 @@ export default class KemetModal extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-modal': KemetModal
+    'kemet-dialog': KemetDialog
   }
 }

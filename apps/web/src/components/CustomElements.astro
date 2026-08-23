@@ -14,23 +14,25 @@ import extractJSDocTags from '../utilities/extractJSDocTags.js';
   </div>
   <ul id="elements-list">
     {
-      customElements.modules.map((element) => {
-        const tagsData = extractJSDocTags(element.path);
-        const title = (tagsData[0]?.className || '').replace(/([A-Z])/g, ' $1').replace('Kemet', '').trim();
-        const tags = tagsData[0]?.tags || {};
+      customElements.modules
+        .map((element) => ({
+          element,
+          tagsData: extractJSDocTags(element.path),
+        }))
+        .filter(({ tagsData }) => tagsData[0]?.tags?.tagname)
+        .sort((a, b) => a.tagsData[0].tags.tagname.localeCompare(b.tagsData[0].tags.tagname))
+        .map(({ element, tagsData }) => {
+          const title = (tagsData[0]?.className || '').replace(/([A-Z])/g, ' $1').replace('Kemet', '').trim();
+          const tags = tagsData[0]?.tags || {};
 
-        if (!tags.tagname) {
-          return null;
-        }
-
-        return (
-          <li data-search={`${title} ${tags.tagname} ${tags.summary} ${tags.status}`.toLowerCase()}>
-            <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary}>
-              <!-- TODO: Add pre-render placeholder -->
-            </web-element-card>
-          </li>
-        )
-      })
+          return (
+            <li data-search={`${title} ${tags.tagname} ${tags.summary} ${tags.status}`.toLowerCase()}>
+              <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary}>
+                <!-- TODO: Add pre-render placeholder -->
+              </web-element-card>
+            </li>
+          )
+        })
     }
   </ul>
 </section>

@@ -1,0 +1,101 @@
+:host {
+  /* public */
+  --kemet-dialog-transition-speed: 0.3s;
+  --kemet-dialog-min-width: 0;
+  --kemet-dialog-max-width: none;
+  --kemet-dialog-mobile-width: calc(100% - 2rem);
+  --kemet-dialog-mobile-margin: 0 auto;
+  --kemet-dialog-mobile-padding: 1rem;
+  --kemet-dialog-font-color: var(--kemet-color-font-base);
+  --kemet-dialog-background-color: var(--kemet-color-background-base);
+  --kemet-dialog-overlay-color: rgb(0 0 0 / 80%);
+
+  /* private */
+  --kemet-dialog-radius: 0;
+
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100vh;
+  visibility: hidden;
+  backface-visibility: hidden;
+}
+
+:host([opened]) {
+  visibility: visible;
+}
+
+dialog {
+  color: var(--kemet-dialog-font-color);
+  display: block;
+  z-index: 3;
+  margin: auto;
+  min-width: var(--kemet-dialog-min-width);
+  max-width: var(--kemet-dialog-max-width);
+  border: 0;
+  border-radius: var(--kemet-dialog-radius);
+  background: var(--kemet-dialog-background-color);
+}
+
+dialog::backdrop {
+  background: none;
+}
+
+:host([mobile]) dialog {
+  margin: var(--kemet-dialog-mobile-margin);
+  width: var(--kemet-dialog-mobile-width);
+  padding: var(--kemet-dialog-mobile-padding);
+  inset-block-start: auto;
+}
+
+:host([rounded]) dialog {
+  --kemet-dialog-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm]) dialog {
+  --kemet-dialog-radius: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=lg]) dialog {
+  --kemet-dialog-radius: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl]) dialog {
+  --kemet-dialog-radius: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) dialog {
+  --kemet-dialog-radius: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill]) dialog {
+  --kemet-dialog-radius: var(--kemet-border-radius-pill);
+}
+
+:host([rounded][mobile]) dialog {
+  border-top-left-radius: var(--kemet-dialog-radius);
+  border-top-right-radius: var(--kemet-dialog-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+[part=overlay] {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  background: var(--kemet-dialog-overlay-color);
+  transition: all var(--kemet-dialog-transition-speed);
+}
+
+:host([opened]) [part=overlay] {
+  opacity: 1;
+  visibility: visible;
+}

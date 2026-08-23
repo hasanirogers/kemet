@@ -1,0 +1,78 @@
+---
+title: Dialog Close
+description: Closes a dialog component
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>
+  You can only use this element inside a <code>&lt;kemet-dialog&gt;</code> element.
+</Callout>
+
+
+<ElementDetails element="dialog-close" sample={`
+  <script>
+    const button = shadowRoot.querySelector('kemet-button');
+    const dialog = shadowRoot.querySelector('kemet-dialog');
+    button.addEventListener('click', function() {
+      dialog.opened = true;
+    });
+  </script>
+  <kemet-button>Open Modal</kemet-button>
+  <kemet-dialog>
+    <div style="padding:1rem;">
+      <kemet-dialog-close tabindex="0" role="button" aria-label="Close Button" style="display:flex;">
+        <kemet-icon name="x-circle" size="24"></kemet-icon>
+      </kemet-dialog-close>
+      <h2 style="margin:0;">Modal Title</h2>
+      <p>
+        Your modal contents
+        <a href="http://google.com" kemet-color="primary"><strong>here</strong></a>
+      </p>
+    </div>
+  </kemet-dialog>`} />
+
+## API
+<hr />
+
+### Attributes
+
+<API element="dialog-close" display="attributes" />
+<br />
+
+### Slots
+
+<API element="dialog-close" display="slots" />
+<br />
+
+### Events
+
+<API element="dialog-close" display="events" />
+<br />
+
+### Methods
+
+<API element="dialog-close" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="dialog-close" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="dialog-close" display="parts" />
+<br />
+
+<DocsFooter />
+

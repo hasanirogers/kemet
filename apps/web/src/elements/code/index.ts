@@ -30,6 +30,9 @@ export class WebCode extends LitElement {
   @state()
   polarity: 'light' | 'dark' = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 
+  /** @internal */
+  private intersectionObserver: IntersectionObserver | null = null;
+
   private prettifyCode(code: string): string {
     try {
       if (typeof code !== 'string') {
@@ -99,6 +102,23 @@ export class WebCode extends LitElement {
         });
       });
     }
+
+    // Load icons after HTML is rendered
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const shadowRoot = this.shadowRoot;
+        if (!shadowRoot) return;
+        const icons = shadowRoot.querySelectorAll('kemet-icon');
+        icons.forEach((icon) => {
+          // Force custom element upgrade if needed
+          customElements.upgrade(icon);
+          // Then trigger loading
+          if ((icon as any).loadIcon) {
+            (icon as any).loadIcon();
+          }
+        });
+      });
+    });
   }
 
   render() {

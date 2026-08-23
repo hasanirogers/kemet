@@ -1,0 +1,76 @@
+---
+title: Input OTP
+description: An input for an otp code
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="input-otp">
+  <kemet-input-otp></kemet-input-otp>
+</ElementDetails>
+
+## Examples
+
+### Digits
+
+Use the `digits` attribute to specify the number of digits in the OTP.
+
+<CodePreview>
+  <kemet-input-otp digits="6"></kemet-input-otp>
+</CodePreview>
+
+### Pattern
+
+Use the `pattern` attribute to specify the pattern of the OTP.
+
+<CodePreview>
+  <kemet-input-otp pattern="[^A-Za-z0-9]"></kemet-input-otp>
+</CodePreview>
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="input-otp" display="attributes" />
+<br />
+
+### Slots
+
+<API element="input-otp" display="slots" />
+<br />
+
+### Events
+
+<API element="input-otp" display="events" />
+<br />
+
+### Methods
+
+<API element="input-otp" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="input-otp" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="input-otp" display="parts" />
+<br />
+
+<DocsFooter />
+

@@ -13,7 +13,9 @@ import ElementDetails from '../../../components/ElementDetails.astro';
 import API from '../../../components/API.astro';
 import DocsFooter from '../../../components/DocsFooter.astro';
 
-<ElementDetails element="icon" sample='<kemet-icon name="gear"></kemet-icon>' />
+<ElementDetails element="icon">
+  <kemet-icon name="gear"></kemet-icon>
+</ElementDetails>
 
 
 ## Examples
@@ -42,7 +44,6 @@ Some libraries, like Font Awesome, support families. Use it to determine which s
 By setting the color of the parent element, the icon will automatically inherit that color.
 
 <CodePreview code='<div style="color:green;"><kemet-icon name="gear" size="64"></kemet-icon></div>' language="html" />
-
 
 ## API
 <hr />

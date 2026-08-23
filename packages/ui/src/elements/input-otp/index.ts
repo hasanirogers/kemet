@@ -1,22 +1,23 @@
-import { html, LitElement } from 'lit';
-import {
- customElement, property, queryAll, state
-} from 'lit/decorators.js';
-import { stylesBase } from '../styles/elements/otp-input';
-import { EnumKeyCodes } from '../utilities/constants';
-import { emitEvent } from '../utilities/events';
+import { html, LitElement, unsafeCSS } from 'lit';
+import { customElement, property, queryAll, state } from 'lit/decorators.js';
+import { EnumKeyCodes } from '../../utilities/constants';
+import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
 
 /**
  * @since 4.1.0
  * @status stable
  *
- * @tagname kemet-otp-input
+ * @tagname kemet-input-otp
  * @summary An input element that accepts multiple items from a combo.
  *
  * @prop {number} digits - The number of inputs.
  * @prop {string} pattern - The pattern to match against for stripping characters
  * @prop {string} value - All digits entered by the user combined in one string.
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
+ *
  *
  * @csspart input - The input elements.
  *
@@ -26,13 +27,14 @@ import { emitEvent } from '../utilities/events';
  * @cssproperty --kemet-otp-input-border - The border of the otp inputs.
  * @cssproperty --kemet-otp-input-border-radius - The border radius of the otp inputs.
  *
- * @event kemet-completed - Fires when otp is filled out completely
+ * @event kemet-input-otp-completed - Fires when otp is filled out completely
+ * @event kemet-input-otp-mounted - Fires when the component is mounted
  *
  */
 
-@customElement('kemet-otp-input')
-export default class KemetOtpInput extends LitElement {
-  static styles = [stylesBase];
+@customElement('kemet-input-otp')
+export default class KemetInputOtp extends LitElement {
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: Number })
   digits: number = 6;
@@ -42,6 +44,12 @@ export default class KemetOtpInput extends LitElement {
 
   @property()
   pattern!: string;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
   autoFocus: boolean = true;
@@ -58,6 +66,17 @@ export default class KemetOtpInput extends LitElement {
   @queryAll('input')
   inputElements!: NodeListOf<HTMLInputElement>;
 
+  firstUpdated() {
+    emitEvent(this, 'kemet-input-otp-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
+  }
+
   updated() {
     this.determineCompleted();
   }
@@ -69,8 +88,8 @@ export default class KemetOtpInput extends LitElement {
   determineCompleted() {
     const hasBlankValues = this.values.includes('');
     if (this.values.length === this.digits && !hasBlankValues && !this.completed) {
-      emitEvent(this, 'kemet-completed', {
-        detail: { value: this.value },
+      emitEvent(this, 'kemet-input-otp-completed', {
+        detail: { value: this.value, element: this },
         bubbles: true,
         composed: true,
       });
@@ -156,6 +175,6 @@ export default class KemetOtpInput extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-otp-input': KemetOtpInput
+    'kemet-input-otp': KemetInputOtp
   }
 }

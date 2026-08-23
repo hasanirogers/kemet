@@ -2,16 +2,11 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
-import '../../../../packages/ui/src/elements/otp-input';
-
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
+import '../../../../packages/ui/src/elements/input-otp';
 
 const meta: Meta = {
-  title: 'Form Controls / OTP Input',
-  component: 'kemet-otp-input',
+  title: 'Elements / Input OTP',
+  component: 'kemet-input-otp',
   render: (args: Args) => Template(args),
   parameters: {
     layout: 'padded',
@@ -23,7 +18,7 @@ type Story = StoryObj;
 
 const Template = (args: Args) => {
   return html`
-    <kemet-otp-input digits=${ifDefined(args.digits)} pattern=${ifDefined(args.pattern)}></kemet-otp-input>
+    <kemet-input-otp digits=${ifDefined(args.digits)} pattern=${ifDefined(args.pattern)}></kemet-input-otp>
   `;
 };
 

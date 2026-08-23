@@ -95,53 +95,21 @@ export default class KemetIcon extends LitElement {
   private url: string = 'https://unpkg.com/bootstrap-icons@latest/icons';
 
   /** @internal */
-  @state()
   private isVisible: boolean = false;
 
-  /** @internal */
-  private intersectionObserver: IntersectionObserver | null = null;
-
-  updated() {
+  connectedCallback() {
+    super.connectedCallback();
+    // Load icon when connected to DOM
     this.updateUrl();
-    this.setupIntersectionObserver();
-    this.updateSize();
-  }
-
-  disconnectedCallback() {
-    if (this.intersectionObserver) {
-      this.intersectionObserver.disconnect();
-      this.intersectionObserver = null;
-    }
-  }
-
-  private setupIntersectionObserver() {
-    if (this.intersectionObserver) {
-      this.intersectionObserver.disconnect();
-    }
-
-    if ('IntersectionObserver' in window) {
-      this.intersectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.isVisible = true;
-              this.setIcon();
-              this.intersectionObserver?.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          rootMargin: '50px',
-          threshold: 0.1,
-        }
-      );
-
-      this.intersectionObserver.observe(this);
-    } else {
-      // Fallback for browsers without IntersectionObserver
+    if (!this.svg) {
       this.isVisible = true;
       this.setIcon();
     }
+  }
+
+  updated() {
+    this.updateUrl();
+    this.updateSize();
   }
 
   firstUpdated() {
@@ -156,10 +124,24 @@ export default class KemetIcon extends LitElement {
   }
 
   render() {
-    if (this.hasUpdated) {
+    // Return the svg if it's loaded, otherwise show placeholder
+    if (this.svg) {
       return this.svg;
     }
-    return html`<svg part="svg" width="16" height="16" viewBox="0 0 16 16"></svg>`;
+
+    // If not loaded, trigger loading
+    if (!this.isVisible) {
+      this.isVisible = true;
+      this.setIcon();
+    }
+
+    return html`<svg part="svg" width="${this.size}" height="${this.size}" viewBox="0 0 16 16"></svg>`;
+  }
+
+  /** Public method to force icon loading */
+  public loadIcon() {
+    this.isVisible = true;
+    this.setIcon();
   }
 
   async setIcon() {
@@ -178,8 +160,11 @@ export default class KemetIcon extends LitElement {
       iconCache.delete(`${this.family}/${this.name}`);
     }
 
-    if (isTemplateResult(svg) || svg instanceof SVGSVGElement) {
-      this.svg = svg as HTMLTemplateResult;
+    if (isTemplateResult(svg)) {
+      this.svg = svg;
+    } else if (svg instanceof SVGSVGElement) {
+      // Clone the SVG so each icon instance gets its own copy
+      this.svg = svg.cloneNode(true) as SVGSVGElement;
     }
   }
 
