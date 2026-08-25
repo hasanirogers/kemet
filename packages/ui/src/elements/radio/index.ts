@@ -1,10 +1,10 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { emitEvent } from '../utilities/events';
-import { stylesRadio } from '../styles/elements/radio';
-import KemetRadios from './radios';
+import { emitEvent } from '../../utilities/events';
+import HTMLKemetRadiosElements from '../radios';
+import styles from './styles.css?inline'
 
 /**
  * @since 1.0.0
@@ -20,6 +20,8 @@ import KemetRadios from './radios';
  * @prop {boolean} disabled - Determines if the button should be disabled
  * @prop {boolean} focused - Is true when the button is focused on
  * @prop {boolean} filled - Displayed the button as a filled button
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @csspart label - The label that contains the radio button.
  * @csspart button - The radio button.
@@ -34,14 +36,17 @@ import KemetRadios from './radios';
  * @cssproperty --kemet-radio-dot-color-filled - The filled color of the radio button.
  * @cssproperty --kemet-radio-dot-ring-color - The ring color of the radio button's dot.
  *
- * @event kemet-focus -  Fires when the checkbox receives focus
- * @event kemet-blur - Fires when the checkbox loses focus
+ * @event kemet-radio-focus -  Fires when the checkbox receives focus
+ * @event kemet-radio-blur - Fires when the checkbox loses focus
+ *
+ * @fires kemet-radio-mounted - Fired when the radio is mounted to the DOM
+ * @detail {HTMLElement} element - The radio element
  *
  */
 
 @customElement('kemet-radio')
 export default class KemetRadio extends LitElement {
-  static styles = [stylesRadio];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   label: string = '';
@@ -64,11 +69,17 @@ export default class KemetRadio extends LitElement {
   @property({ type: Boolean, reflect: true })
   filled: boolean = false;
 
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @state()
   input: HTMLInputElement = undefined as any;
 
   firstUpdated() {
-    const radiosElement = this.closest('kemet-radios') as KemetRadios;
+    const radiosElement = this.closest('kemet-radios') as HTMLKemetRadiosElements;
 
     this.name = radiosElement.name || 'radio-button';
     this.input = this.shadowRoot?.querySelector('input') as HTMLInputElement;
@@ -79,6 +90,15 @@ export default class KemetRadio extends LitElement {
     } else {
       this.setAttribute('aria-checked', 'false');
     }
+
+    emitEvent(this, 'kemet-radio-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -131,12 +151,12 @@ export default class KemetRadio extends LitElement {
 
   handleBlur() {
     this.focused = false;
-    emitEvent(this, 'kemet-blur', this);
+    emitEvent(this, 'kemet-radio-blur', { element: this });
   }
 
   handleFocus() {
     this.focused = true;
-    emitEvent(this, 'kemet-focus', this);
+    emitEvent(this, 'kemet-radio-focus', { element: this });
   }
 
   makeDot() {

@@ -1,11 +1,11 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { FormSubmitController } from '../utilities/form-controller';
-import { emitEvent } from '../utilities/events';
-import { EnumAxis, EnumAppearances, TypeAxis, TypeAppearance } from '../utilities/constants';
-import type KemetRadio from './radio';
+import { FormSubmitController } from '../../utilities/form-controller';
+import { emitEvent } from '../../utilities/events';
+import { EnumAxis, EnumAppearances, TypeAxis, TypeAppearance } from '../../utilities/constants';
+import type HTMLKemetRadioElement from '../radio';
+import styles from './styles.css?inline'
 
-import { stylesRadios } from '../styles/elements/radio';
 
 /**
  * @since 1.0.0
@@ -18,14 +18,19 @@ import { stylesRadios } from '../styles/elements/radio';
  * @prop {TypeAxis} axis - The direction of the button's layout
  * @prop {string} value - The value of the selected radio button
  * @prop {string} name - The name of the radio button set
- * @prop {TypeStatus} status - The status of the radio button set
+ * @prop {EnumAppearances} appearance - The appearance of the radio button set
  * @prop {string} message - Validation message for the user
  * @prop {boolean} required - Determines whether the radio button set is required
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @csspart fieldset - The fieldset element.
  * @csspart legend - The legend element.
  *
- * @event kemet-change - Fires when the state of the checkbox changes
+ * @event kemet-radios-change - Fires when the state of the checkbox changes
+ *
+ * @fires kemet-radios-mounted - Fired when the radios is mounted to the DOM
+ * @detail {HTMLElement} element - The radios element
  *
  */
 
@@ -33,13 +38,13 @@ import { stylesRadios } from '../styles/elements/radio';
 export default class KemetRadios extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [stylesRadios];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   legend: string = '';
 
   @property({ type: String, reflect: true })
-  axis: TypeAxis = EnumAxis.Horizontal;
+  axis: EnumAxis = EnumAxis.Horizontal;
 
   @property({ type: String })
   value!: string;
@@ -48,7 +53,7 @@ export default class KemetRadios extends LitElement {
   name: string = 'radios';
 
   @property({ type: String, reflect: true })
-  status: TypeAppearance = EnumAppearances.Standard;
+  appearance: EnumAppearances = EnumAppearances.Neutral;
 
   @property({ type: String })
   message!: string;
@@ -56,8 +61,14 @@ export default class KemetRadios extends LitElement {
   @property({ type: Boolean })
   required!: boolean;
 
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @state()
-  radios!: NodeListOf<KemetRadio>;
+  radios!: NodeListOf<HTMLKemetRadioElement>;
 
   constructor() {
     super();
@@ -69,6 +80,15 @@ export default class KemetRadios extends LitElement {
   firstUpdated() {
     this.radios = this.querySelectorAll('kemet-radio');
     this.setAttribute('role', 'radiogroup');
+
+    emitEvent(this, 'kemet-radios-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -82,7 +102,7 @@ export default class KemetRadios extends LitElement {
   }
 
   handleClick(event: MouseEvent) {
-    const target = event.target as KemetRadio;
+    const target = event.target as HTMLKemetRadioElement;
 
     this.radios.forEach((radio) => {
       radio.checked = false;
@@ -94,9 +114,9 @@ export default class KemetRadios extends LitElement {
       target.checked = true;
       target.setAttribute('aria-checked', 'true');
       this.value = target.value;
-      this.status = EnumAppearances.Standard;
+      this.appearance = EnumAppearances.Neutral;
 
-      emitEvent(this, 'kemet-change', this);
+      emitEvent(this, 'kemet-radios-change', this);
     }
   }
 
@@ -105,7 +125,7 @@ export default class KemetRadios extends LitElement {
     const arrowKeys = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'];
     const forwardKeys = ['ArrowRight', 'ArrowDown'];
     const shift: number = forwardKeys.includes(event.key) ? 1 : -1;
-    const checkedIndex: number | KemetRadio = radios.findIndex((radio: KemetRadio) => radio.checked) ?? radios[0];
+    const checkedIndex: number | HTMLKemetRadioElement = radios.findIndex((radio: HTMLKemetRadioElement) => radio.checked) ?? radios[0];
 
     let index: number;
 
@@ -140,9 +160,9 @@ export default class KemetRadios extends LitElement {
 
   handleSlotChange() {
     const radios = Array.from(this.radios);
-    const checkedRadio = radios.find((radio: KemetRadio) => radio.checked) as KemetRadio;
+    const checkedRadio = radios.find((radio: HTMLKemetRadioElement) => radio.checked) as HTMLKemetRadioElement;
 
-    this.radios.forEach((radio: KemetRadio) => {
+    this.radios.forEach((radio: HTMLKemetRadioElement) => {
       radio.tabIndex = -1;
       radio.input.tabIndex = -1;
     });
@@ -153,7 +173,7 @@ export default class KemetRadios extends LitElement {
   }
 
   makeMessage() {
-    if (this.status === 'error' || this.status === 'warning') {
+    if (this.appearance === 'error' || this.appearance === 'warning') {
       return html`<span part="message">${this.message}</span>`;
     }
 

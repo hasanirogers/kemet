@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+legend {
+  margin-bottom: 1rem;
+}
+
+:host([axis=vertical]) fieldset {
+  flex-direction: column;
+}
+
+[part=message] {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+:host([appearance=error]) [part=message] {
+  color: var(--kemet-color-font-error);
+}
+
+:host([appearance=warning]) [part=message] {
+  color: var(--kemet-color-font-warning);
+}

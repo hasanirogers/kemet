@@ -1,15 +1,11 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
 import '../../../../packages/ui/src/elements/radio';
 import '../../../../packages/ui/src/elements/radios';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 const meta: Meta = {
-  title: 'Form Controls / Radio',
+  title: 'Elements / Radio',
   component: 'kemet-radio',
   args: {
     legend: 'Legend',
@@ -25,7 +21,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`
+const Template = (args: Args) => html`
   <kemet-radios legend=${args.legend} axis=${args.axis}>
     <kemet-radio value="1" name="kemet-radio-button" label="Item 1" ?filled=${args.filled}></kemet-radio>
     <kemet-radio value="2" name="kemet-radio-button" label="Item 2" ?filled=${args.filled}></kemet-radio>

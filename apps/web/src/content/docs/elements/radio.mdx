@@ -1,0 +1,94 @@
+---
+title: Radio
+description: A radio button component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>
+  `radio` and `radios` are designed to be used together.
+</Callout>
+
+<ElementDetails element="radio">
+  <kemet-radios legend="Legend" axis>
+    <kemet-radio value="1" name="kemet-radio-button" label="Item 1"></kemet-radio>
+    <kemet-radio value="2" name="kemet-radio-button" label="Item 2"></kemet-radio>
+    <kemet-radio value="3" name="kemet-radio-button" label="Item 3"></kemet-radio>
+    <kemet-radio value="4" name="kemet-radio-button" label="Item 4"></kemet-radio>
+  </kemet-radios>
+</ElementDetails>
+
+
+## Examples
+
+### Axis
+
+You can use the `axis` attribute to align the radio buttons vertically.
+
+<CodePreview>
+  <kemet-radios legend="Legend" axis="vertical">
+    <kemet-radio value="1" name="kemet-radio-button" label="Item 1"></kemet-radio>
+    <kemet-radio value="2" name="kemet-radio-button" label="Item 2"></kemet-radio>
+    <kemet-radio value="3" name="kemet-radio-button" label="Item 3"></kemet-radio>
+    <kemet-radio value="4" name="kemet-radio-button" label="Item 4"></kemet-radio>
+  </kemet-radios>
+</CodePreview>
+
+### Filled
+
+You can use the `filled` attribute to make the radio buttons filled.
+
+<CodePreview>
+  <kemet-radios legend="Legend">
+    <kemet-radio value="1" name="kemet-radio-button" label="Item 1" filled></kemet-radio>
+    <kemet-radio value="2" name="kemet-radio-button" label="Item 2" filled></kemet-radio>
+    <kemet-radio value="3" name="kemet-radio-button" label="Item 3" filled></kemet-radio>
+    <kemet-radio value="4" name="kemet-radio-button" label="Item 4" filled></kemet-radio>
+  </kemet-radios>
+</CodePreview>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="radio" display="attributes" />
+<br />
+
+### Slots
+
+<API element="radio" display="slots" />
+<br />
+
+### Events
+
+<API element="radio" display="events" />
+<br />
+
+### Methods
+
+<API element="radio" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="radio" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="radio" display="parts" />
+<br />
+
+<DocsFooter />
+

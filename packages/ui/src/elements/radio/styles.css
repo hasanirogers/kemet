@@ -1,0 +1,62 @@
+:host {
+  --kemet-radio-size: 18px;
+  --kemet-radio-border: 1px solid var(--kemet-color-font-active);
+  --kemet-radio-dot-color: var(--kemet-color-font-active);
+  --kemet-radio-dot-border: none;
+  --kemet-radio-dot-border-width: 3px;
+  --kemet-radio-dot-ring-color: var(--kemet-color-font-inverse-base);
+  --kemet-radio-dot-color-filled: var(--kemet-color-font-inverse-base);
+  --kemet-radio-dot-border-width: 4px;
+  --kemet-radio-dot-border-color: var(--kemet-color-font-active);
+
+  display: inline-block;
+}
+
+:host([disabled]) {
+  opacity: 0.5;
+}
+
+label {
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+input {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: var(--kemet-radio-size);
+  height: var(--kemet-radio-size);
+  position: absolute;
+  opacity: 0;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--kemet-radio-size);
+  height: var(--kemet-radio-size);
+  padding: 0;
+  border-radius: var(--kemet-border-radius-circle);
+  background: none;
+  border: var(--kemet-radio-border);
+}
+
+[part=dot] {
+  display: inline-flex;
+  border-radius: var(--kemet-border-radius-circle);
+  width: calc(var(--kemet-radio-size) - 2px);
+  height: calc(var(--kemet-radio-size) - 2px);
+  background: var(--kemet-radio-dot-color);
+  border: var(--kemet-radio-dot-border);
+  box-shadow: inset 0px 0px 0px var(--kemet-radio-dot-border-width) var(--kemet-radio-dot-ring-color);
+}
+
+:host([filled]) [part=dot] {
+  background: var(--kemet-radio-dot-color-filled);
+  box-shadow: inset 0px 0px 0px var(--kemet-radio-dot-border-width) var(--kemet-radio-dot-border-color);
+}
