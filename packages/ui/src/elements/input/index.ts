@@ -134,7 +134,7 @@ export enum EnumInputModes {
  */
 
 @customElement('kemet-input')
-export default class KemetInput extends LitElement {
+export default class HTMLKemetInputElement extends LitElement {
   /** @internal */
   formSubmitController: FormSubmitController;
 
@@ -489,6 +489,6 @@ export default class KemetInput extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-input': KemetInput
+    'kemet-input': HTMLKemetInputElement
   }
 }

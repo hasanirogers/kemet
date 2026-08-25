@@ -1,15 +1,12 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
-import '../../../../packages/ui/src/elements/password';
-
+import '../../../../packages/ui/src/elements/password/';
 import '../../../../packages/ui/src/elements/input';
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
+import '../../../../packages/ui/src/elements/field';
 
 const meta: Meta = {
-  title: 'Form Controls / Password',
+  title: 'Elements / Password',
   component: 'kemet-password',
   args: {
     rules: [
@@ -24,7 +21,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`
+const Template = (args: Args) => html`
   <kemet-field slug="new-password" label="New Password">
     <kemet-input slot="input" type="password" name="new-password"></kemet-input>
     <kemet-password slot="component" message=${args.message} .rules=${args.rules}></kemet-password>

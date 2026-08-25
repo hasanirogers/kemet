@@ -12,11 +12,13 @@ figure {
   padding: 2rem;
 
   &.light {
-    background: rgba(246, 248, 250, 0.25);
+    color: var(--kemet-color-font-base);
+    background: rgba(255, 255, 255, 0.95);
   }
 
   &.dark {
-    background: rgba(13, 17, 23, 0.25);
+    color: var(--kemet-color-font-inverse-base);
+    background: rgba(0, 0, 0, 0.5);
   }
 }
 

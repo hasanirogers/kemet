@@ -66,7 +66,7 @@ import styles from './styles.css?inline';
  */
 
 @customElement('kemet-textarea')
-export default class KemetTextarea extends LitElement {
+export default class HTMLKemetTextareaElement extends LitElement {
   formSubmitController: FormSubmitController;
 
   static styles = [unsafeCSS(styles)];
@@ -350,6 +350,6 @@ export default class KemetTextarea extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-textarea': KemetTextarea
+    'kemet-textarea': HTMLKemetTextareaElement
   }
 }

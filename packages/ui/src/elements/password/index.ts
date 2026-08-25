@@ -1,13 +1,24 @@
-import { html, LitElement, TemplateResult } from 'lit';
+import { html, LitElement, unsafeCSS, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { emitEvent } from '../utilities/events';
-import KemetField from './field';
-import KemetInput from './input';
-import { EnumAppearances, TypeAppearance } from '../utilities/constants';
-import KemetTextarea from './textarea';
-import { stylesBase } from '../styles/elements/password';
-import './icon-bootstrap';
+import { emitEvent } from '../../utilities/events';
+import { EnumAppearances } from '../../utilities/constants';
+import HTMLKemetFieldElement from '../field';
+import HTMLKemetInputElement from '../input';
+import HTMLKemetTextareaElement from '../textarea';
+import '../icon';
+import styles from './styles.css?inline';
 
+interface InterfaceOptions {
+  pattern: string;
+  message: string;
+  meetsCriteria?: boolean;
+}
+
+export interface InterfacePasswordStrengthChangeDetails {
+  appearance: EnumAppearances;
+  meetsPasswordCriteria: boolean;
+  element: KemetPassword;
+}
 
 /**
  * @since 1.2.0
@@ -24,30 +35,18 @@ import './icon-bootstrap';
  * @prop {string} icon
  * @prop {number} iconSize
  *
- * @event kemet-status-change - Fires when there's a change in status.
+ * @event kemet-password-strength-change - Fires when there's a change in strength.
  *
- * @csspart status - The status message.
+ * @csspart strength - Indicates password strength.
  * @csspart indicator - The strength indicator bars.
  * @csspart message - A message to display to the user.
  * @csspart rules - A description of rules to follow.
  *
  */
 
-interface InterfaceOptions {
-  pattern: string;
-  message: string;
-  meetsCriteria?: boolean;
-}
-
-export interface InterfacePasswordStatusChangeDetails {
-  status: TypeAppearance;
-  meetsPasswordCriteria: boolean;
-  element: KemetPassword;
-}
-
 @customElement('kemet-password')
 export default class KemetPassword extends LitElement {
-  static styles = [stylesBase];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: Array })
   rules: InterfaceOptions[] = [
@@ -75,36 +74,36 @@ export default class KemetPassword extends LitElement {
   iconSize: number = 18;
 
   @state()
-  status!: TypeAppearance;
+  appearance?: EnumAppearances;
 
   @state()
-  field!: KemetField;
+  field!: HTMLKemetFieldElement;
 
   @state()
-  input!: KemetInput | KemetTextarea;
+  input!: HTMLKemetInputElement | HTMLKemetTextareaElement;
 
   firstUpdated() {
     // elements
-    this.field = this.closest('kemet-field') as KemetField;
-    this.input = this.field.querySelector('[slot="input"]') as KemetInput | KemetTextarea;
+    this.field = this.closest('kemet-field') as HTMLKemetFieldElement;
+    this.input = this.field.querySelector('[slot="input"]') as HTMLKemetInputElement | HTMLKemetTextareaElement;
 
     // events listeners
-    this.input?.addEventListener('kemet-input', this.handleInput.bind(this));
+    this.input?.addEventListener('kemet-input-input', this.handleInput.bind(this));
   }
 
   render() {
     return html`
       <div role="alert" aria-live="assertive">
-        <div class="status status--${this.strength}" part="status">
+        <div class="${this.strength}" part="strength">
           <span>${this.strength}</span>
-          <ul class="indicator" part="indicator">
+          <ul part="indicator">
             <li></li>
             <li></li>
             <li></li>
           </ul>
         </div>
-        <p class="message" part="message">${this.message}</p>
-        <ul class="rules" part="rules">
+        <p part="message">${this.message}</p>
+        <ul part="rules">
           ${this.makeRules()}
         </ul>
       </div>
@@ -137,7 +136,7 @@ export default class KemetPassword extends LitElement {
    */
   makeCheckIcon(meetsCriteria: boolean): TemplateResult {
     if (meetsCriteria) {
-      return html`<kemet-icon-bootstrap icon=${this.icon} size=${this.iconSize}></kemet-icon-bootstrap>`;
+      return html`<kemet-icon name=${this.icon} size=${this.iconSize}></kemet-icon>`;
     }
 
     return html``;
@@ -169,22 +168,22 @@ export default class KemetPassword extends LitElement {
 
       if (metRulesPercentage <= 0.33) {
         this.strength = 'weak';
-        this.status = EnumAppearances.Error;
+        this.appearance = EnumAppearances.Error;
       }
 
       if (metRulesPercentage > 0.33 && metRulesPercentage <= 0.67) {
         this.strength = 'better';
-        this.status = EnumAppearances.Error;
+        this.appearance = EnumAppearances.Error;
       }
 
       if (metRulesPercentage > 0.67) {
         this.strength = 'strong';
-        this.status = EnumAppearances.Success;
+        this.appearance = EnumAppearances.Success;
       }
 
-      emitEvent(this, 'kemet-status-change', {
-        status: this.status,
-        meetsPasswordCriteria: this.status === EnumAppearances.Success,
+      emitEvent(this, 'kemet-password-strength-change', {
+        appearance: this.appearance,
+        meetsPasswordCriteria: this.appearance === EnumAppearances.Success,
         element: this,
       });
     }, 1);
