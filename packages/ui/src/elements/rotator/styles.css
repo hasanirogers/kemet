@@ -1,0 +1,69 @@
+:host {
+  --kemet-rotator-transition-speed: 500ms;
+
+  display: flex;
+}
+
+[part=slide] {
+  pointer-events: none;
+}
+
+.rotator__slide--active {
+  pointer-events: auto;
+}
+
+/* fade effect */
+:host([effect=fade]) [part=rotator] {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+:host([effect=fade]) [part=slide] {
+  width: 100%;
+  flex: none;
+  opacity: 0;
+  box-sizing: border-box;
+  transition: all var(--kemet-rotator-transition-speed) ease;
+}
+
+:host([effect=fade]) [part=slide]:not(:first-child) {
+  margin-left: -100%; /* this is the bulk of the overlay trick */
+}
+
+:host([effect=fade]) .active {
+  opacity: 1;
+}
+
+/* flip effect */
+:host([effect=flip]) [part=rotator] {
+  display: flex;
+  position: relative;
+  perspective: 500px;
+}
+
+:host([effect=flip]) [part=slide] {
+  display: block;
+  width: auto;
+  position: absolute;
+  top: -20px;
+  left: 0;
+
+  opacity: 0;
+
+  transform: rotateX(90deg);
+  transform-origin: 0% 0%;
+  transition: all var(--kemet-rotator-transition-speed) ease;
+}
+
+:host([effect=flip]) .active {
+  top: 0;
+  opacity: 1;
+
+  transform: rotateX(0deg);
+}
+
+:host([effect=flip]) .previous {
+  top: 40px;;
+  transform: rotateX(-90deg);
+}

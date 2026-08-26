@@ -1,14 +1,13 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { stylesRotator } from '../styles/elements/rotator';
+import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
-export const effects = ['fade', 'flip'] as const;
 export enum EnumEffects {
   Fade = 'fade',
   Flip = 'flip',
 }
-export type TypeEffects = typeof effects[number];
 
 /**
  * @since 1.0.0
@@ -18,37 +17,46 @@ export type TypeEffects = typeof effects[number];
  * @summary A component that rotates through an array of text.
  *
  * @prop {number} activeSlide - The index number for the current slide.
- * @prop {string} width - The width of the rotator block.
- * @prop {string} height - The height of the rotator block.
  * @prop {array} messages - Text in the rotator. Supports HTML.
  * @prop {TypeEffects} effect - The transition effect type.
- * @prop {number} rotationSpeed - How fast, in seconds, each slide lasts. Stop the rotator with 0.
+ * @prop {number} speed - How fast, in seconds, each slide lasts. Stop the rotator with 0.
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background.
+ * @prop {string} dom - The status of dom initalization.
  *
  * @cssproperty --kemet-rotator-transition-speed - How long, in css time units, the transition effect lasts.
+ *
+ * @fires kemet-rotator-mounted - Fired when the rotator is mounted to the DOM
+ * @detail {HTMLElement} element - The rotator element
  *
  */
 
 @customElement('kemet-rotator')
 export default class KemetRotator extends LitElement {
-  static styles = [stylesRotator];
+  static styles = [unsafeCSS(styles)];
 
-  @property({ type: Number })
+  @property({ type: Number, attribute: 'active-slide' })
   activeSlide: number = 0;
-
-  @property({ type: String })
-  width: string = 'auto';
-
-  @property({ type: String })
-  height: string = 'auto';
 
   @property({ type: Array })
   messages: string[] = [];
 
   @property({ type: String, reflect: true })
-  effect: TypeEffects = EnumEffects.Fade;
+  effect: EnumEffects = EnumEffects.Fade;
 
-  @property({ type: Number, attribute: 'rotation-speed' })
-  rotationSpeed: number = 3;
+  @property({ type: Number })
+  speed: number = 3;
+
+  @property({ type: String, reflect: true })
+  polarity: 'light' | 'dark' = 'light';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
+  @state()
+  width: string = 'auto';
+
+  @state()
+  height: string = 'auto';
 
   @state()
   prevSlide!: number | null;
@@ -58,6 +66,15 @@ export default class KemetRotator extends LitElement {
     this.prevSlide = null;
 
     window.addEventListener('resize', this.setDimensions.bind(this));
+
+    emitEvent(this, 'kemet-rotator-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   updated(changed: Map<string, never>) {
@@ -69,10 +86,10 @@ export default class KemetRotator extends LitElement {
     // only trigger slide updates when width and height has not changed
     if (!widthHasChanged && !heightHasChanged) {
       setTimeout(() => {
-        if (this.rotationSpeed > 0) {
+        if (this.speed > 0) {
           this.nextSlide();
         }
-      }, this.rotationSpeed * 1000);
+      }, this.speed * 1000);
     }
   }
 
@@ -80,8 +97,10 @@ export default class KemetRotator extends LitElement {
     const setWidth = this.effect === 'flip' ? `width:${this.width};` : '';
     const setHeight = this.effect === 'flip' ? `height:${this.height};` : '';
 
+    console.log(this.height);
+
     return html`
-      <span class="rotator" style="${setWidth} ${setHeight}">
+      <span part="rotator" style="${setWidth} ${setHeight}">
         ${this.makeMessages()}
       </span>
     `;
@@ -89,11 +108,11 @@ export default class KemetRotator extends LitElement {
 
   makeMessages() {
     return this.messages.map((message, index) => {
-      const setActiveClass = this.activeSlide === index ? 'rotator__slide--active' : '';
-      const setPrevClass = this.prevSlide === index ? 'rotator__slide--prev' : '';
+      const setActiveClass = this.activeSlide === index ? 'active' : '';
+      const setPrevClass = this.prevSlide === index ? 'previous' : '';
 
       return html`
-        <span class="rotator__slide ${setActiveClass} ${setPrevClass}">
+        <span part="slide" class="${setActiveClass} ${setPrevClass}">
           ${unsafeHTML(message)}
         </span>
       `;
@@ -104,7 +123,7 @@ export default class KemetRotator extends LitElement {
     if (this.effect === 'flip') {
       this.width = `${this.offsetWidth}px`;
 
-      const slides = this.shadowRoot?.querySelectorAll('.rotator__slide');
+      const slides = this.shadowRoot?.querySelectorAll('[part="slide"]');
       let tallest = 0;
 
       slides?.forEach((slide: Element) => {
