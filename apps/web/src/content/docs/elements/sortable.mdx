@@ -1,0 +1,62 @@
+---
+title: Sortable
+description: Sorts items in a draggable order.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>Both `sortable` and `sortable-item` are designed to work together to create a sortable list.</Callout>
+
+<ElementDetails element="sortable">
+  <kemet-sortable>
+    <kemet-sortable-item>Item 1</kemet-sortable-item>
+    <kemet-sortable-item>Item 2</kemet-sortable-item>
+    <kemet-sortable-item>Item 3</kemet-sortable-item>
+  </kemet-sortable>
+</ElementDetails>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="sortable" display="attributes" />
+<br />
+
+### Slots
+
+<API element="sortable" display="slots" />
+<br />
+
+### Events
+
+<API element="sortable" display="events" />
+<br />
+
+### Methods
+
+<API element="sortable" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="sortable" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="sortable" display="parts" />
+<br />
+
+<DocsFooter />
+

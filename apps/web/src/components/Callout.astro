@@ -17,11 +17,12 @@ const { appearance = "warning" } = Astro.props;
 
     code {
       position: relative;
-      top: -2px;
+      top: 2px;
       margin: 0 0.25rem;
       padding: 0.25rem 0.5rem;
-      background: rgba(0, 0, 0, 0.1);
-      backdrop-filter: invert(1) opacity(0.66);
+      background: transparent;
+      border: 1px dotted;
+      /* backdrop-filter: invert(1) opacity(0.66); */
     }
 
     &[data-appearance="warning"] {

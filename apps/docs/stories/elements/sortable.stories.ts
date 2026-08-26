@@ -1,15 +1,11 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
 import '../../../../packages/ui/src/elements/sortable';
 import '../../../../packages/ui/src/elements/sortable-item';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 const meta: Meta = {
-  title: 'Actions / Sortable',
+  title: 'Elements / Sortable',
   component: 'kemet-sortable',
   args: {
     numItems: 3,
@@ -19,7 +15,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => {
+const Template = (args: Args) => {
   const items = [];
 
   for (let i = 0; i < args.numItems; i += 1) {
