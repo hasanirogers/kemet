@@ -56,7 +56,6 @@ input {
   flex-direction: column;
   padding: 0 1rem;
   overflow: auto;
-  background-color: var(--kemet-color-background-base);
 }
 
 :host([mobile]) .files {

@@ -22,8 +22,8 @@ const preventDefaults = (event: Event) => {
  * @since 1.3.0
  * @status stable
  *
- * @tagname kemet-upload
- * @summary An interface for uploading files.
+ * @tagname kemet-input-files
+ * @summary An interface for inputing files.
  *
  * @prop {string} slug - A unique identifier for the component
  * @prop {string} accept - Determines what file types are accepted

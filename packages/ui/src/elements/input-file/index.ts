@@ -21,8 +21,8 @@ const formatBytes = (bytes: number, decimals = 2) => {
  * @since 1.3.0
  * @status stable
  *
- * @tagname kemet-upload-file
- * @summary A file in the upload.
+ * @tagname kemet-input-file
+ * @summary Displays a file to be uploaded.
  *
  * @prop {string} name - The name of the file
  * @prop {number} loaded - The number of bytes loaded
