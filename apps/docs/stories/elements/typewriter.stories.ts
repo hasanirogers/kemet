@@ -1,16 +1,11 @@
 import { html } from 'lit';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '../../../../packages/ui/src/elements/typewriter';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-import { ifDefined } from 'lit/directives/if-defined.js';
-
-
 const meta: Meta = {
-  title: 'Miscellaneous / Typewriter',
+  title: 'Elements / Typewriter',
   component: 'kemet-typewriter',
   render: (args: Args) => Template(args),
   parameters: {
@@ -70,7 +65,7 @@ export const CompleteEvent: Story = {
         delay=${ifDefined(args.delay)}
         cursor=${ifDefined(args.cursor)}
         loop=${ifDefined(args.loop)}
-        @kemet-completed=${() => alert('The type writer has completed!')}>
+        @kemet-typewriter-completed=${() => alert('The type writer has completed!')}>
       </kemet-typewriter>
     `;
   }

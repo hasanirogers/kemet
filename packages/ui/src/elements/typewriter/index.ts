@@ -1,7 +1,7 @@
 import { html, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import Typewriter from 'typewriter-effect/dist/core';
-import { emitEvent } from '../utilities/events';
+import { emitEvent } from '../../utilities/events';
 
 /**
  * @since 4.1.0
@@ -15,8 +15,13 @@ import { emitEvent } from '../utilities/events';
  * @prop {string} cursor - The cursor to be displayed.
  * @prop {boolean} loop - Whether to loop the content.
  * @prop {number} restartDelay - The delay before restarting the typewriter.
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
- * @event kemet-completed - Fires when typewriter is completed
+ * @event kemet-typewriter-completed - Fires when typewriter is completed
+ *
+ * @fires kemet-typewriter-mounted - Fired when the typewriter is mounted to the DOM
+ * @detail {HTMLElement} element - The typewriter element
  *
  */
 
@@ -37,6 +42,12 @@ export default class KemetTypewriter extends LitElement {
   @property({ type: Number, attribute: 'restart-delay' })
   restartDelay: number = 1000;
 
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   private typewriter!: Typewriter;
   private timeoutId: ReturnType<typeof setTimeout> | null = null;
 
@@ -54,6 +65,15 @@ export default class KemetTypewriter extends LitElement {
     });
 
     this.restartTypewriter();
+
+    emitEvent(this, 'kemet-typewriter-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   updated(changedProperties: PropertyValues<this>) {
@@ -110,7 +130,7 @@ export default class KemetTypewriter extends LitElement {
         .deleteAll(1)
         .typeString(this.content)
         .callFunction(() => {
-          emitEvent(this, 'kemet-completed', { element: this });
+          emitEvent(this, 'kemet-typewriter-completed', { element: this });
         })
         .start();
     }, this.restartDelay);
