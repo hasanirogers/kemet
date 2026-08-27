@@ -1,0 +1,65 @@
+---
+title: Timer
+description: A timer component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>
+  `timer` and `timer-display` are designed to be used together.
+</Callout>
+
+<ElementDetails element="timer">
+  <kemet-timer amount="2" format="minutes">
+    <kemet-timer-display format="seconds"></kemet-timer-display>&nbsp;Seconds&nbsp;:
+    <kemet-timer-display format="minutes"></kemet-timer-display>&nbsp;Minutes&nbsp;:
+    <kemet-timer-display format="hours"></kemet-timer-display>&nbsp;Hours&nbsp;:
+    <kemet-timer-display format="days"></kemet-timer-display>&nbsp;Days
+  </kemet-timer>
+</ElementDetails>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="timer" display="attributes" />
+<br />
+
+### Slots
+
+<API element="timer" display="slots" />
+<br />
+
+### Events
+
+<API element="timer" display="events" />
+<br />
+
+### Methods
+
+<API element="timer" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="timer" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="timer" display="parts" />
+<br />
+
+<DocsFooter />
+

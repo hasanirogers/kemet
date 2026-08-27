@@ -1,16 +1,12 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '../../../../packages/ui/src/elements/timer';
 import '../../../../packages/ui/src/elements/timer-display';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 const meta: Meta = {
-  title: 'Feedback & Status / Timer',
+  title: 'Elements / Timer',
   component: 'kemet-timer',
   argTypes: {
     format: {
@@ -29,7 +25,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = args => html`
+const Template = (args: Args) => html`
   <kemet-timer amount=${args.amount} format=${args.format} expires=${ifDefined(args.expires)}>
     <kemet-timer-display format="seconds"></kemet-timer-display>&nbsp;Seconds&nbsp;:
     <kemet-timer-display format="minutes"></kemet-timer-display>&nbsp;Minutes&nbsp;:

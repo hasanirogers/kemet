@@ -1,7 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { stylesDisplay } from '../styles/elements/timer';
-import { TypeFormats } from './timer';
+import { EnumFormats } from '../timer';
+import styles from './styles.css?inline';
+import { emitEvent } from '../../utilities/events';
 
 /**
  * @since 3.1.0
@@ -10,22 +11,44 @@ import { TypeFormats } from './timer';
  * @tagname kemet-timer-display
  * @summary Displays remaining time
  *
- * @prop {TypeFormats} format - The format to display the remaining time in
+ * @prop {EnumFormats} format - The format to display the remaining time in
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
+ *
+ * @fires kemet-timer-display-mounted - Fired when the timer display is mounted to the DOM
+ * @detail {HTMLElement} element - The timer display element
  */
 
 @customElement('kemet-timer-display')
 export default class KemetTimerDisplay extends LitElement {
-  static styles = [stylesDisplay];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
-  format: TypeFormats = 'seconds';
+  format: EnumFormats = EnumFormats.Seconds;
 
   @state()
   displayTime!: string;
 
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   constructor() {
     super();
     this.getTime();
+  }
+
+  firstUpdated() {
+    emitEvent(this, 'kemet-timer-display-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -33,8 +56,8 @@ export default class KemetTimerDisplay extends LitElement {
   }
 
   getTime() {
-    this.closest('kemet-timer')?.addEventListener('kemet-increment', (event: Event) => {
-      const secondsLeft = (event as CustomEvent).detail;
+    this.closest('kemet-timer')?.addEventListener('kemet-timer-increment', (event: Event) => {
+      const secondsLeft = (event as CustomEvent).detail.timeleft;
       switch (this.format) {
         case 'seconds':
           this.displayTime = (secondsLeft % 60 < 10 ? `0${secondsLeft % 60}` : secondsLeft % 60).toString();
