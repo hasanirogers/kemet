@@ -1,15 +1,16 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { emitEvent } from '../utilities/events';
-import { stylesUpload } from '../styles/elements/upload';
-import './icon-bootstrap';
-import KemetUploadFile from './upload-file';
+import { emitEvent } from '../../utilities/events';
+import HTMLKemetInputFileElement from '../input-file';
+import '../icon';
+import styles from './styles.css?inline';
+
 
 export interface InterfaceUploadChangeDetails {
   event: Event | DragEvent;
   files: FileList;
-  fileElement: KemetUploadFile;
+  fileElement: HTMLKemetInputFileElement;
 }
 
 const preventDefaults = (event: Event) => {
@@ -35,7 +36,7 @@ const preventDefaults = (event: Event) => {
  * @prop {number} maxSize - The maximum file size for uploads
  * @prop {string} buttonLabel - The browse files button text
  *
- * @event kemet-change - Fires when files have been added
+ * @event kemet-input-files-change - Fires when files have been added
  *
  * @csspart upload - The area where files are dropped.
  * @csspart heading - The description in the upload area.
@@ -49,9 +50,9 @@ const preventDefaults = (event: Event) => {
  *
  */
 
-@customElement('kemet-upload')
-export default class KemetUpload extends LitElement {
-  static styles = [stylesUpload];
+@customElement('kemet-input-files')
+export default class KemetInputFiles extends LitElement {
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   slug: string = 'upload';
@@ -115,7 +116,7 @@ export default class KemetUpload extends LitElement {
   render() {
     return html`
       <div class="upload" part="upload">
-        <kemet-icon-bootstrap icon="cloud-arrow-up" size="128"></kemet-icon-bootstrap>
+        <kemet-icon name="cloud-arrow-up" size="128"></kemet-icon>
         <input
           type="file"
           id=${this.slug}
@@ -133,7 +134,7 @@ export default class KemetUpload extends LitElement {
   }
 
   handleChange(event: Event) {
-    emitEvent(this, 'kemet-change', {
+    emitEvent(this, 'kemet-input-files-change', {
       event,
       files: this.fileInputElement.files,
       fileElement: this.fileInputElement,
@@ -141,7 +142,7 @@ export default class KemetUpload extends LitElement {
   }
 
   handleDrop(event: DragEvent) {
-    emitEvent(this, 'kemet-change', {
+    emitEvent(this, 'kemet-input-files-change', {
       event,
       files: event?.dataTransfer?.files || [],
       fileElement: this.fileInputElement,
@@ -160,6 +161,6 @@ export default class KemetUpload extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-upload': KemetUpload
+    'kemet-input-files': KemetInputFiles
   }
 }

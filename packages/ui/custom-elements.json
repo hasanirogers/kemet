@@ -4,898 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/elements/typewriter.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetTypewriter",
-          "members": [
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The content to be typed.",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "delay",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "description": "The delay between each character.",
-              "attribute": "delay"
-            },
-            {
-              "kind": "field",
-              "name": "cursor",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The cursor to be displayed.",
-              "attribute": "cursor"
-            },
-            {
-              "kind": "field",
-              "name": "loop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether to loop the content.",
-              "attribute": "loop"
-            },
-            {
-              "kind": "field",
-              "name": "restartDelay",
-              "type": {
-                "text": "number"
-              },
-              "default": "1000",
-              "description": "The delay before restarting the typewriter.",
-              "attribute": "restart-delay"
-            },
-            {
-              "kind": "field",
-              "name": "typewriter",
-              "type": {
-                "text": "Typewriter"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "timeoutId",
-              "type": {
-                "text": "ReturnType<typeof setTimeout> | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "restartTypewriter"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when typewriter is completed",
-              "name": "kemet-completed"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The content to be typed.",
-              "fieldName": "content"
-            },
-            {
-              "name": "delay",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "description": "The delay between each character.",
-              "fieldName": "delay"
-            },
-            {
-              "name": "cursor",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The cursor to be displayed.",
-              "fieldName": "cursor"
-            },
-            {
-              "name": "loop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether to loop the content.",
-              "fieldName": "loop"
-            },
-            {
-              "name": "restart-delay",
-              "type": {
-                "text": "number"
-              },
-              "default": "1000",
-              "description": "The delay before restarting the typewriter.",
-              "fieldName": "restartDelay"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-typewriter",
-          "customElement": true,
-          "summary": "An element that types out content."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetTypewriter",
-            "module": "src/elements/typewriter.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-typewriter",
-          "declaration": {
-            "name": "KemetTypewriter",
-            "module": "src/elements/typewriter.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/upload-file.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetUploadFile",
-          "cssProperties": [
-            {
-              "description": "The default text color.",
-              "name": "--kemet-upload-file-color"
-            },
-            {
-              "description": "The padding around the file.",
-              "name": "--kemet-upload-file-padding"
-            },
-            {
-              "description": "The border around the file.",
-              "name": "--kemet-upload-file-border"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Area that displays the percentage.",
-              "name": "percentage"
-            },
-            {
-              "description": "Area that displays file name.",
-              "name": "filename"
-            },
-            {
-              "description": "Area that displays how much has uploaded.",
-              "name": "loaded"
-            },
-            {
-              "description": "Area for the error message.",
-              "name": "message"
-            },
-            {
-              "description": "Area for status icon.",
-              "name": "indicator"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "The name of the file",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "loaded",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The number of bytes loaded",
-              "attribute": "loaded"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The file size in bytes",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "string"
-              },
-              "description": "The file type",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "string"
-              },
-              "description": "The status of the file. Values are complete | uploading | error.",
-              "attribute": "status",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "percent",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Percentage of file completion that's calculated by the loaded property.",
-              "attribute": "percent"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "An error message to give to users",
-              "attribute": "message"
-            },
-            {
-              "kind": "method",
-              "name": "calculatePercent"
-            },
-            {
-              "kind": "method",
-              "name": "getStatusIcon"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "The name of the file",
-              "fieldName": "name"
-            },
-            {
-              "name": "loaded",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The number of bytes loaded",
-              "fieldName": "loaded"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The file size in bytes",
-              "fieldName": "size"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "string"
-              },
-              "description": "The file type",
-              "fieldName": "type"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "string"
-              },
-              "description": "The status of the file. Values are complete | uploading | error.",
-              "fieldName": "status"
-            },
-            {
-              "name": "percent",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Percentage of file completion that's calculated by the loaded property.",
-              "fieldName": "percent"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "An error message to give to users",
-              "fieldName": "message"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-upload-file",
-          "customElement": true,
-          "summary": "A file in the upload."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetUploadFile",
-            "module": "src/elements/upload-file.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-upload-file",
-          "declaration": {
-            "name": "KemetUploadFile",
-            "module": "src/elements/upload-file.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/upload.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetUpload",
-          "cssProperties": [
-            {
-              "description": "The default text color.",
-              "name": "--kemet-upload-color"
-            },
-            {
-              "description": "The height.",
-              "name": "--kemet-upload-height"
-            },
-            {
-              "description": "The border.",
-              "name": "--kemet-upload-border"
-            },
-            {
-              "description": "The background color.",
-              "name": "--kemet-upload-background-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The area where files are dropped.",
-              "name": "upload"
-            },
-            {
-              "description": "The description in the upload area.",
-              "name": "heading"
-            },
-            {
-              "description": "The button in the upload area.",
-              "name": "button"
-            },
-            {
-              "description": "The area where uploaded files are listed.",
-              "name": "files"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'upload'",
-              "description": "A unique identifier for the component",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "accept",
-              "type": {
-                "text": "string"
-              },
-              "description": "Determines what file types are accepted",
-              "attribute": "accept"
-            },
-            {
-              "kind": "field",
-              "name": "multiple",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Allows for multiple files",
-              "attribute": "multiple"
-            },
-            {
-              "kind": "field",
-              "name": "over",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Automatically is true when a file is being dragged over the upload area",
-              "attribute": "over",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Drag & Drop Files'",
-              "description": "Descriptive text for the upload area",
-              "attribute": "heading"
-            },
-            {
-              "kind": "field",
-              "name": "mobile",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays the component in a mobile context",
-              "attribute": "mobile",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "breakpoint",
-              "type": {
-                "text": "string"
-              },
-              "default": "'600px'",
-              "description": "Controls the point at which the component is considered mobile",
-              "attribute": "breakpoint",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "noDragDrop",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true if drag and drop support is not detected",
-              "attribute": "no-drag-drop",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "maxSize",
-              "type": {
-                "text": "number"
-              },
-              "description": "The maximum file size for uploads",
-              "attribute": "max-size"
-            },
-            {
-              "kind": "field",
-              "name": "buttonLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Browse Files'",
-              "description": "The browse files button text",
-              "attribute": "button-label"
-            },
-            {
-              "kind": "field",
-              "name": "fileInputElement",
-              "type": {
-                "text": "HTMLInputElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "upload",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleChange",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleDrop",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "DragEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "isMobile"
-            },
-            {
-              "kind": "method",
-              "name": "hasDragDrop"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when files have been added",
-              "name": "kemet-change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'upload'",
-              "description": "A unique identifier for the component",
-              "fieldName": "slug"
-            },
-            {
-              "name": "accept",
-              "type": {
-                "text": "string"
-              },
-              "description": "Determines what file types are accepted",
-              "fieldName": "accept"
-            },
-            {
-              "name": "multiple",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Allows for multiple files",
-              "fieldName": "multiple"
-            },
-            {
-              "name": "over",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Automatically is true when a file is being dragged over the upload area",
-              "fieldName": "over"
-            },
-            {
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Drag & Drop Files'",
-              "description": "Descriptive text for the upload area",
-              "fieldName": "heading"
-            },
-            {
-              "name": "mobile",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Displays the component in a mobile context",
-              "fieldName": "mobile"
-            },
-            {
-              "name": "breakpoint",
-              "type": {
-                "text": "string"
-              },
-              "default": "'600px'",
-              "description": "Controls the point at which the component is considered mobile",
-              "fieldName": "breakpoint"
-            },
-            {
-              "name": "no-drag-drop",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Is true if drag and drop support is not detected",
-              "fieldName": "noDragDrop"
-            },
-            {
-              "name": "max-size",
-              "type": {
-                "text": "number"
-              },
-              "description": "The maximum file size for uploads",
-              "fieldName": "maxSize"
-            },
-            {
-              "name": "button-label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Browse Files'",
-              "description": "The browse files button text",
-              "fieldName": "buttonLabel"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-upload",
-          "customElement": true,
-          "summary": "An interface for uploading files."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetUpload",
-            "module": "src/elements/upload.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-upload",
-          "declaration": {
-            "name": "KemetUpload",
-            "module": "src/elements/upload.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/accordion/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetAccordion",
-          "members": [
-            {
-              "kind": "field",
-              "name": "currentPanel",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The index value for the most recently opened panel",
-              "attribute": "current-panel"
-            },
-            {
-              "kind": "field",
-              "name": "togglePanels",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Support for closing all inactive panels when one is opened",
-              "attribute": "toggle-panels"
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "panels",
-              "type": {
-                "text": "NodeListOf<HTMLKemetAccordionPanelElement>"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "onKeyDown",
-              "type": {
-                "text": "(event: KeyboardEvent) => void"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "currentPanelFocus",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "handlePanelOpenedBound",
-              "type": {
-                "text": "(event: Event) => void"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange"
-            },
-            {
-              "kind": "method",
-              "name": "handlePanelOpened",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "navigatePanels",
-              "parameters": [
-                {
-                  "name": "direction",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "expandAll",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Expands all panels in the accordion",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "collapseAll",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Collapses all panels in the accordion",
-              "privacy": "public"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the accordion is mounted to the DOM",
-              "name": "kemet-accordion-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "current-panel",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The index value for the most recently opened panel",
-              "fieldName": "currentPanel"
-            },
-            {
-              "name": "toggle-panels",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Support for closing all inactive panels when one is opened",
-              "fieldName": "togglePanels"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-accordion",
-          "customElement": true,
-          "summary": "A component that acts like a standard accordion."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAccordion",
-            "module": "src/elements/accordion/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-accordion",
-          "declaration": {
-            "name": "KemetAccordion",
-            "module": "src/elements/accordion/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/alert/index.ts",
       "declarations": [
         {
@@ -1222,75 +330,32 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/accordion-panel/index.ts",
+      "path": "src/elements/accordion/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KemetAccordionPanel",
-          "cssParts": [
-            {
-              "description": "Contains the trigger for the panel.",
-              "name": "trigger"
-            },
-            {
-              "description": "Contains the body for the panel.",
-              "name": "body"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The trigger button that opens and closes the panel.",
-              "name": "trigger"
-            },
-            {
-              "description": "The body content of the panel.",
-              "name": "body"
-            },
-            {
-              "description": "The icon for the panel.",
-              "name": "icon"
-            }
-          ],
+          "name": "KemetAccordion",
           "members": [
             {
               "kind": "field",
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "undefined",
-              "description": "Determines the opened state of the panel",
-              "attribute": "opened",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "maxHeight",
-              "type": {
-                "text": "string"
-              },
-              "default": "'0px'",
-              "description": "Sets the max height of the panel's body",
-              "attribute": "max-height"
-            },
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'panel'",
-              "description": "Uniquely identifies a panel for accessibility purposes",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "index",
+              "name": "currentPanel",
               "type": {
                 "text": "number"
               },
-              "attribute": "index"
+              "default": "0",
+              "description": "The index value for the most recently opened panel",
+              "attribute": "current-panel"
+            },
+            {
+              "kind": "field",
+              "name": "togglePanels",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Support for closing all inactive panels when one is opened",
+              "attribute": "toggle-panels"
             },
             {
               "kind": "field",
@@ -1313,23 +378,60 @@
               "reflects": true
             },
             {
-              "kind": "method",
-              "name": "toggle",
-              "description": "Toggles the opened state of the panel.",
-              "privacy": "public",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
+              "kind": "field",
+              "name": "panels",
+              "type": {
+                "text": "NodeListOf<HTMLKemetAccordionPanelElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "onKeyDown",
+              "type": {
+                "text": "(event: KeyboardEvent) => void"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentPanelFocus",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "handlePanelOpenedBound",
+              "type": {
+                "text": "(event: Event) => void"
               }
             },
             {
               "kind": "method",
-              "name": "focusableBodyElements"
+              "name": "handleSlotChange"
             },
             {
               "kind": "method",
-              "name": "a11y"
+              "name": "handlePanelOpened",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "navigatePanels",
+              "parameters": [
+                {
+                  "name": "direction",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -1342,266 +444,54 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "expandAll",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Expands all panels in the accordion",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "collapseAll",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Collapses all panels in the accordion",
+              "privacy": "public"
             }
           ],
           "events": [
             {
-              "description": "Fires when a panel is opened",
-              "name": "kemet-opened"
-            },
-            {
-              "description": "Fires when a panel is closed",
-              "name": "kemet-closed"
-            },
-            {
-              "description": "Fired when the accordion panel is mounted to the DOM",
-              "name": "kemet-accordion-panel-mounted"
+              "description": "Fired when the accordion is mounted to the DOM",
+              "name": "kemet-accordion-mounted"
             }
           ],
           "attributes": [
             {
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "undefined",
-              "description": "Determines the opened state of the panel",
-              "fieldName": "opened"
-            },
-            {
-              "name": "max-height",
-              "type": {
-                "text": "string"
-              },
-              "default": "'0px'",
-              "description": "Sets the max height of the panel's body",
-              "fieldName": "maxHeight"
-            },
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'panel'",
-              "description": "Uniquely identifies a panel for accessibility purposes",
-              "fieldName": "slug"
-            },
-            {
-              "name": "index",
+              "name": "current-panel",
               "type": {
                 "text": "number"
               },
-              "fieldName": "index"
+              "default": "0",
+              "description": "The index value for the most recently opened panel",
+              "fieldName": "currentPanel"
             },
             {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-accordion-panel",
-          "customElement": true,
-          "summary": "A blade for an accordion."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAccordionPanel",
-            "module": "src/elements/accordion-panel/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-accordion-panel",
-          "declaration": {
-            "name": "KemetAccordionPanel",
-            "module": "src/elements/accordion-panel/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/avatar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetAvatar",
-          "cssProperties": [
-            {
-              "description": "The space around the initials.",
-              "name": "--kemet-avatar-initials-margin"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Contains the initials for the avatar.",
-              "name": "initials"
-            }
-          ],
-          "slots": [
-            {
-              "description": "A slot for an icon or element that indicates the status of the avatar.",
-              "name": "status"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "string"
-              },
-              "description": "The size in pixels.",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Url to an image.",
-              "attribute": "image"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Labels the avatar.",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initials of the user.",
-              "attribute": "initials"
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays with rounded corners",
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "makeSize"
-            },
-            {
-              "kind": "method",
-              "name": "makeContent"
-            },
-            {
+              "name": "toggle-panels",
               "type": {
                 "text": "boolean"
               },
-              "description": "Displays in a circle.",
-              "name": "circle",
-              "kind": "field"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the avatar is mounted.",
-              "name": "kemet-avatar-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "string"
-              },
-              "description": "The size in pixels.",
-              "fieldName": "size"
-            },
-            {
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Url to an image.",
-              "fieldName": "image"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Labels the avatar.",
-              "fieldName": "label"
-            },
-            {
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initials of the user.",
-              "fieldName": "initials"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Displays with rounded corners",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "fieldName": "polarity"
+              "default": "false",
+              "description": "Support for closing all inactive panels when one is opened",
+              "fieldName": "togglePanels"
             },
             {
               "name": "dom",
@@ -1610,15 +500,23 @@
               },
               "default": "'initializing'",
               "fieldName": "dom"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kemet-avatar",
+          "tagName": "kemet-accordion",
           "customElement": true,
-          "summary": "A representation of a person or thing."
+          "summary": "A component that acts like a standard accordion."
         }
       ],
       "exports": [
@@ -1626,16 +524,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "KemetAvatar",
-            "module": "src/elements/avatar/index.ts"
+            "name": "KemetAccordion",
+            "module": "src/elements/accordion/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "kemet-avatar",
+          "name": "kemet-accordion",
           "declaration": {
-            "name": "KemetAvatar",
-            "module": "src/elements/avatar/index.ts"
+            "name": "KemetAccordion",
+            "module": "src/elements/accordion/index.ts"
           }
         }
       ]
@@ -2358,6 +1256,426 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/accordion-panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetAccordionPanel",
+          "cssParts": [
+            {
+              "description": "Contains the trigger for the panel.",
+              "name": "trigger"
+            },
+            {
+              "description": "Contains the body for the panel.",
+              "name": "body"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The trigger button that opens and closes the panel.",
+              "name": "trigger"
+            },
+            {
+              "description": "The body content of the panel.",
+              "name": "body"
+            },
+            {
+              "description": "The icon for the panel.",
+              "name": "icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "undefined",
+              "description": "Determines the opened state of the panel",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "maxHeight",
+              "type": {
+                "text": "string"
+              },
+              "default": "'0px'",
+              "description": "Sets the max height of the panel's body",
+              "attribute": "max-height"
+            },
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'panel'",
+              "description": "Uniquely identifies a panel for accessibility purposes",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "index",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "index"
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "description": "Toggles the opened state of the panel.",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focusableBodyElements"
+            },
+            {
+              "kind": "method",
+              "name": "a11y"
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when a panel is opened",
+              "name": "kemet-opened"
+            },
+            {
+              "description": "Fires when a panel is closed",
+              "name": "kemet-closed"
+            },
+            {
+              "description": "Fired when the accordion panel is mounted to the DOM",
+              "name": "kemet-accordion-panel-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "undefined",
+              "description": "Determines the opened state of the panel",
+              "fieldName": "opened"
+            },
+            {
+              "name": "max-height",
+              "type": {
+                "text": "string"
+              },
+              "default": "'0px'",
+              "description": "Sets the max height of the panel's body",
+              "fieldName": "maxHeight"
+            },
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'panel'",
+              "description": "Uniquely identifies a panel for accessibility purposes",
+              "fieldName": "slug"
+            },
+            {
+              "name": "index",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "index"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-accordion-panel",
+          "customElement": true,
+          "summary": "A blade for an accordion."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAccordionPanel",
+            "module": "src/elements/accordion-panel/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-accordion-panel",
+          "declaration": {
+            "name": "KemetAccordionPanel",
+            "module": "src/elements/accordion-panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/avatar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetAvatar",
+          "cssProperties": [
+            {
+              "description": "The space around the initials.",
+              "name": "--kemet-avatar-initials-margin"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Contains the initials for the avatar.",
+              "name": "initials"
+            }
+          ],
+          "slots": [
+            {
+              "description": "A slot for an icon or element that indicates the status of the avatar.",
+              "name": "status"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "The size in pixels.",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Url to an image.",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Labels the avatar.",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initials of the user.",
+              "attribute": "initials"
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Displays with rounded corners",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "makeSize"
+            },
+            {
+              "kind": "method",
+              "name": "makeContent"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays in a circle.",
+              "name": "circle",
+              "kind": "field"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the avatar is mounted.",
+              "name": "kemet-avatar-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "The size in pixels.",
+              "fieldName": "size"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Url to an image.",
+              "fieldName": "image"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Labels the avatar.",
+              "fieldName": "label"
+            },
+            {
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initials of the user.",
+              "fieldName": "initials"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Displays with rounded corners",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-avatar",
+          "customElement": true,
+          "summary": "A representation of a person or thing."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAvatar",
+            "module": "src/elements/avatar/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-avatar",
+          "declaration": {
+            "name": "KemetAvatar",
+            "module": "src/elements/avatar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/card/index.ts",
       "declarations": [
         {
@@ -3046,157 +2364,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/count/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetCount",
-          "cssProperties": [
-            {
-              "description": "The font size. Default: 90%.",
-              "name": "--kemet-count-font-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "The text label shown to users",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "limit",
-              "type": {
-                "text": "number"
-              },
-              "description": "The maximum number of characters allowed",
-              "attribute": "limit"
-            },
-            {
-              "kind": "field",
-              "name": "validateImmediately",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Set to true if the field should validate as soon as the character limit is reached",
-              "attribute": "validate-immediately"
-            },
-            {
-              "kind": "field",
-              "name": "remaining",
-              "type": {
-                "text": "number"
-              },
-              "description": "The number of characters remaining"
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "type": {
-                "text": "HTMLKemetFieldElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "inputSlot",
-              "type": {
-                "text": "HTMLKemetInputElement | HTMLKemetTextareaElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "HTMLInputElement | null"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "textarea",
-              "type": {
-                "text": "HTMLTextAreaElement | null"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when there's a change in status.",
-              "name": "kemet-count-appearance-change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "description": "The text label shown to users",
-              "fieldName": "message"
-            },
-            {
-              "name": "limit",
-              "type": {
-                "text": "number"
-              },
-              "description": "The maximum number of characters allowed",
-              "fieldName": "limit"
-            },
-            {
-              "name": "validate-immediately",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Set to true if the field should validate as soon as the character limit is reached",
-              "fieldName": "validateImmediately"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-count",
-          "customElement": true,
-          "summary": "Maintains a character count for an input field. Is to be used only in the component slot of a Field component."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetCount",
-            "module": "src/elements/count/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-count",
-          "declaration": {
-            "name": "KemetCount",
-            "module": "src/elements/count/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/combo/index.ts",
       "declarations": [
         {
@@ -3417,6 +2584,157 @@
           "declaration": {
             "name": "KemetCombo",
             "module": "src/elements/combo/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/count/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetCount",
+          "cssProperties": [
+            {
+              "description": "The font size. Default: 90%.",
+              "name": "--kemet-count-font-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text label shown to users",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "limit",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum number of characters allowed",
+              "attribute": "limit"
+            },
+            {
+              "kind": "field",
+              "name": "validateImmediately",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to true if the field should validate as soon as the character limit is reached",
+              "attribute": "validate-immediately"
+            },
+            {
+              "kind": "field",
+              "name": "remaining",
+              "type": {
+                "text": "number"
+              },
+              "description": "The number of characters remaining"
+            },
+            {
+              "kind": "field",
+              "name": "field",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inputSlot",
+              "type": {
+                "text": "HTMLKemetInputElement | HTMLKemetTextareaElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "HTMLInputElement | null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "textarea",
+              "type": {
+                "text": "HTMLTextAreaElement | null"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when there's a change in status.",
+              "name": "kemet-count-appearance-change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "The text label shown to users",
+              "fieldName": "message"
+            },
+            {
+              "name": "limit",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum number of characters allowed",
+              "fieldName": "limit"
+            },
+            {
+              "name": "validate-immediately",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set to true if the field should validate as soon as the character limit is reached",
+              "fieldName": "validateImmediately"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-count",
+          "customElement": true,
+          "summary": "Maintains a character count for an input field. Is to be used only in the component slot of a Field component."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetCount",
+            "module": "src/elements/count/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-count",
+          "declaration": {
+            "name": "KemetCount",
+            "module": "src/elements/count/index.ts"
           }
         }
       ]
@@ -3779,6 +3097,266 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/drawer/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetDrawer",
+          "cssProperties": [
+            {
+              "description": "The width of the drawer.",
+              "name": "--kemet-drawer-width"
+            },
+            {
+              "description": "The height of the drawer.",
+              "name": "--kemet-drawer-height"
+            },
+            {
+              "description": "The text color of the drawer.",
+              "name": "--kemet-drawer-color"
+            },
+            {
+              "description": "The background color of the drawer.",
+              "name": "--kemet-drawer-background-color"
+            },
+            {
+              "description": "The color of the overlay.",
+              "name": "--kemet-drawer-overlay-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "container"
+            },
+            {
+              "name": "drawer"
+            },
+            {
+              "name": "pusher"
+            },
+            {
+              "name": "content"
+            },
+            {
+              "name": "wrapper"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The off-screen nav area of your app or site",
+              "name": "sidebar"
+            },
+            {
+              "description": "The main content area of your app or site.",
+              "name": "body"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the drawer is opened or not.",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "effect",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
+              "attribute": "effect",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "side",
+              "type": {
+                "text": "EnumDirection"
+              },
+              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
+              "attribute": "side",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "overlay",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds an overlay over the content section of the Drawer when opened",
+              "attribute": "overlay",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fillViewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer fill the viewport height",
+              "attribute": "fill-viewport",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the drawer opens.",
+              "name": "kemet-drawer-opened"
+            },
+            {
+              "description": "Fires when the drawer closes.",
+              "name": "kemet-drawer-closed"
+            },
+            {
+              "description": "Fired when the button is mounted to the DOM",
+              "name": "kemet-drawer-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the drawer is opened or not.",
+              "fieldName": "opened"
+            },
+            {
+              "name": "effect",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
+              "fieldName": "effect"
+            },
+            {
+              "name": "side",
+              "type": {
+                "text": "EnumDirection"
+              },
+              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
+              "fieldName": "side"
+            },
+            {
+              "name": "overlay",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds an overlay over the content section of the Drawer when opened",
+              "fieldName": "overlay"
+            },
+            {
+              "name": "fill-viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer fill the viewport height",
+              "fieldName": "fillViewport"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-drawer",
+          "customElement": true,
+          "summary": "A component that adds an off-canvas menu with different effects."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetDrawer",
+            "module": "src/elements/drawer/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-drawer",
+          "declaration": {
+            "name": "KemetDrawer",
+            "module": "src/elements/drawer/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/drawer/styles.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "stylesEffects",
+          "default": "css` /* slide */ :host([effect='slide']) [part=drawer] { visibility: visible; transform: translate3d(-100%, 0, 0); } :host([effect='slide'][opened]) [part=drawer] { visibility: visible; transform: translate3d(0, 0, 0); } :host([effect='slide']) [part=drawer]:after { display: none; } :host([effect='slide'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='slide'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='slide'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='slide'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='slide'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='slide'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } /* reveal */ :host([effect='reveal'][opened]) [part=pusher] { transform: translate3d(var(--kemet-drawer-width), 0, 0); } :host([effect='reveal']) [part=drawer] { z-index: 1; } :host([effect='reveal'][opened]) [part=drawer] { visibility: visible; transition: transform 0.5s; } :host([effect='reveal']) [part=drawer]::after { display: none; } :host([effect='reveal'][side='right'][opened]) [part=pusher] { transform: translate3d(0, 0, 0); } :host([effect='reveal'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='reveal'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='reveal'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='reveal'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='reveal'][side='top'][opened]) [part=pusher] { transform: translate3d(0, var(--kemet-drawer-height), 0); } :host([effect='reveal'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='reveal'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } :host([effect='reveal'][side='bottom'][opened]) [part=pusher] { transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } /* push */ :host([effect='push'][opened]) [part=pusher] { transform: translate3d(var(--kemet-drawer-width), 0, 0); } :host([effect='push']) [part=drawer] { transform: translate3d(-100%, 0, 0); } :host([effect='push'][opened]) [part=drawer] { visibility: visible; transition: transform 0.5s; transform: translate3d(0, 0, 0); } :host([effect='push']) [part=drawer]::after { display: none; } :host([effect='push'][side='right'][opened]) [part=pusher] { transform: translate3d(calc(var(--kemet-drawer-width) * -1), 0, 0); } :host([effect='push'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='push'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='push'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='push'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='push'][side='top'][opened]) [part=pusher] { transform: translate3d(0, var(--kemet-drawer-height), 0); } :host([effect='push'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='push'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } :host([effect='push'][side='bottom'][opened]) [part=pusher] { transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } /* scale */ :host([effect='scale']) [part=pusher] { transform-style: preserve-3d; } :host([effect='scale'][opened]) [part=pusher] { transform: translate3d(0, 0, 0) scale(0.75); } :host([effect='scale']) [part=drawer] { opacity: 1; transform: translate3d(-100%, 0, 0); } :host([effect='scale'][opened]) [part=drawer] { visibility: visible; transition: transform 0.5s; transform: translate3d(0, 0, 0); } :host([effect='scale']) [part=drawer]::after { display: none; } :host([effect='scale'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='scale'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='scale'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='scale'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='scale'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='scale'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } `"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "stylesEffects",
+          "declaration": {
+            "name": "stylesEffects",
+            "module": "src/elements/drawer/styles.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/fab/index.ts",
       "declarations": [
         {
@@ -4049,266 +3627,6 @@
           "declaration": {
             "name": "KemetFAB",
             "module": "src/elements/fab/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/drawer/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetDrawer",
-          "cssProperties": [
-            {
-              "description": "The width of the drawer.",
-              "name": "--kemet-drawer-width"
-            },
-            {
-              "description": "The height of the drawer.",
-              "name": "--kemet-drawer-height"
-            },
-            {
-              "description": "The text color of the drawer.",
-              "name": "--kemet-drawer-color"
-            },
-            {
-              "description": "The background color of the drawer.",
-              "name": "--kemet-drawer-background-color"
-            },
-            {
-              "description": "The color of the overlay.",
-              "name": "--kemet-drawer-overlay-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "container"
-            },
-            {
-              "name": "drawer"
-            },
-            {
-              "name": "pusher"
-            },
-            {
-              "name": "content"
-            },
-            {
-              "name": "wrapper"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The off-screen nav area of your app or site",
-              "name": "sidebar"
-            },
-            {
-              "description": "The main content area of your app or site.",
-              "name": "body"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the drawer is opened or not.",
-              "attribute": "opened",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "effect",
-              "type": {
-                "text": "string"
-              },
-              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
-              "attribute": "effect",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "side",
-              "type": {
-                "text": "EnumDirection"
-              },
-              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
-              "attribute": "side",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "overlay",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds an overlay over the content section of the Drawer when opened",
-              "attribute": "overlay",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "fillViewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Makes the drawer fill the viewport height",
-              "attribute": "fill-viewport",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the drawer opens.",
-              "name": "kemet-drawer-opened"
-            },
-            {
-              "description": "Fires when the drawer closes.",
-              "name": "kemet-drawer-closed"
-            },
-            {
-              "description": "Fired when the button is mounted to the DOM",
-              "name": "kemet-drawer-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the drawer is opened or not.",
-              "fieldName": "opened"
-            },
-            {
-              "name": "effect",
-              "type": {
-                "text": "string"
-              },
-              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
-              "fieldName": "effect"
-            },
-            {
-              "name": "side",
-              "type": {
-                "text": "EnumDirection"
-              },
-              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
-              "fieldName": "side"
-            },
-            {
-              "name": "overlay",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds an overlay over the content section of the Drawer when opened",
-              "fieldName": "overlay"
-            },
-            {
-              "name": "fill-viewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Makes the drawer fill the viewport height",
-              "fieldName": "fillViewport"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-drawer",
-          "customElement": true,
-          "summary": "A component that adds an off-canvas menu with different effects."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetDrawer",
-            "module": "src/elements/drawer/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-drawer",
-          "declaration": {
-            "name": "KemetDrawer",
-            "module": "src/elements/drawer/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/drawer/styles.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "stylesEffects",
-          "default": "css` /* slide */ :host([effect='slide']) [part=drawer] { visibility: visible; transform: translate3d(-100%, 0, 0); } :host([effect='slide'][opened]) [part=drawer] { visibility: visible; transform: translate3d(0, 0, 0); } :host([effect='slide']) [part=drawer]:after { display: none; } :host([effect='slide'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='slide'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='slide'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='slide'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='slide'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='slide'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } /* reveal */ :host([effect='reveal'][opened]) [part=pusher] { transform: translate3d(var(--kemet-drawer-width), 0, 0); } :host([effect='reveal']) [part=drawer] { z-index: 1; } :host([effect='reveal'][opened]) [part=drawer] { visibility: visible; transition: transform 0.5s; } :host([effect='reveal']) [part=drawer]::after { display: none; } :host([effect='reveal'][side='right'][opened]) [part=pusher] { transform: translate3d(0, 0, 0); } :host([effect='reveal'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='reveal'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='reveal'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='reveal'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='reveal'][side='top'][opened]) [part=pusher] { transform: translate3d(0, var(--kemet-drawer-height), 0); } :host([effect='reveal'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='reveal'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } :host([effect='reveal'][side='bottom'][opened]) [part=pusher] { transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } /* push */ :host([effect='push'][opened]) [part=pusher] { transform: translate3d(var(--kemet-drawer-width), 0, 0); } :host([effect='push']) [part=drawer] { transform: translate3d(-100%, 0, 0); } :host([effect='push'][opened]) [part=drawer] { visibility: visible; transition: transform 0.5s; transform: translate3d(0, 0, 0); } :host([effect='push']) [part=drawer]::after { display: none; } :host([effect='push'][side='right'][opened]) [part=pusher] { transform: translate3d(calc(var(--kemet-drawer-width) * -1), 0, 0); } :host([effect='push'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='push'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='push'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='push'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='push'][side='top'][opened]) [part=pusher] { transform: translate3d(0, var(--kemet-drawer-height), 0); } :host([effect='push'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='push'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } :host([effect='push'][side='bottom'][opened]) [part=pusher] { transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } /* scale */ :host([effect='scale']) [part=pusher] { transform-style: preserve-3d; } :host([effect='scale'][opened]) [part=pusher] { transform: translate3d(0, 0, 0) scale(0.75); } :host([effect='scale']) [part=drawer] { opacity: 1; transform: translate3d(-100%, 0, 0); } :host([effect='scale'][opened]) [part=drawer] { visibility: visible; transition: transform 0.5s; transform: translate3d(0, 0, 0); } :host([effect='scale']) [part=drawer]::after { display: none; } :host([effect='scale'][side='right']) [part=drawer] { transform: translate3d(100vw, 0, 0); } :host([effect='scale'][side='right'][opened]) [part=drawer] { transform: translate3d(calc(100vw - var(--kemet-drawer-width)), 0, 0); } :host([effect='scale'][side='top']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, calc(var(--kemet-drawer-height) * -1), 0); } :host([effect='scale'][side='top'][opened]) [part=drawer] { transform: translate3d(0, 0, 0); } :host([effect='scale'][side='bottom']) [part=drawer] { width: 100vw; height: var(--kemet-drawer-height, 100vh); transform: translate3d(0, ${unsafeCSS(documentHeight)}, 0); } :host([effect='scale'][side='bottom'][opened]) [part=drawer] { transform: translate3d(0, calc(100vh - var(--kemet-drawer-height)), 0); } `"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "stylesEffects",
-          "declaration": {
-            "name": "stylesEffects",
-            "module": "src/elements/drawer/styles.ts"
           }
         }
       ]
@@ -4930,108 +4248,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/flipcard-trigger/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetFlipcardTrigger",
-          "members": [
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "trigger"
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyup",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when a flipcard is flipped",
-              "name": "kemet-flipcard-trigger-flipped"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-flipcard-trigger",
-          "customElement": true,
-          "summary": "Triggers a flipcard component to flip."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetFlipcardTrigger",
-            "module": "src/elements/flipcard-trigger/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-flipcard-trigger",
-          "declaration": {
-            "name": "KemetFlipcardTrigger",
-            "module": "src/elements/flipcard-trigger/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/icon/index.ts",
       "declarations": [
         {
@@ -5235,6 +4451,108 @@
           "declaration": {
             "name": "KemetIcon",
             "module": "src/elements/icon/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/flipcard-trigger/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetFlipcardTrigger",
+          "members": [
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "trigger"
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyup",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when a flipcard is flipped",
+              "name": "kemet-flipcard-trigger-flipped"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-flipcard-trigger",
+          "customElement": true,
+          "summary": "Triggers a flipcard component to flip."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetFlipcardTrigger",
+            "module": "src/elements/flipcard-trigger/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-flipcard-trigger",
+          "declaration": {
+            "name": "KemetFlipcardTrigger",
+            "module": "src/elements/flipcard-trigger/index.ts"
           }
         }
       ]
@@ -6582,6 +5900,526 @@
           "declaration": {
             "name": "KemetInputCombo",
             "module": "src/elements/input-combo/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/input-file/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetInputFile",
+          "cssProperties": [
+            {
+              "description": "The default text color.",
+              "name": "--kemet-upload-file-color"
+            },
+            {
+              "description": "The padding around the file.",
+              "name": "--kemet-upload-file-padding"
+            },
+            {
+              "description": "The border around the file.",
+              "name": "--kemet-upload-file-border"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Area that displays the percentage.",
+              "name": "percentage"
+            },
+            {
+              "description": "Area that displays file name.",
+              "name": "filename"
+            },
+            {
+              "description": "Area that displays how much has uploaded.",
+              "name": "loaded"
+            },
+            {
+              "description": "Area for the error message.",
+              "name": "message"
+            },
+            {
+              "description": "Area for status icon.",
+              "name": "indicator"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the file",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "loaded",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "The number of bytes loaded",
+              "attribute": "loaded"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "The file size in bytes",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The file type",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "description": "The status of the file. Values are complete | uploading | error.",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "percent",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Percentage of file completion that's calculated by the loaded property.",
+              "attribute": "percent"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "An error message to give to users",
+              "attribute": "message"
+            },
+            {
+              "kind": "method",
+              "name": "calculatePercent"
+            },
+            {
+              "kind": "method",
+              "name": "getStatusIcon"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the file",
+              "fieldName": "name"
+            },
+            {
+              "name": "loaded",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "The number of bytes loaded",
+              "fieldName": "loaded"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "The file size in bytes",
+              "fieldName": "size"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The file type",
+              "fieldName": "type"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "description": "The status of the file. Values are complete | uploading | error.",
+              "fieldName": "status"
+            },
+            {
+              "name": "percent",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Percentage of file completion that's calculated by the loaded property.",
+              "fieldName": "percent"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "An error message to give to users",
+              "fieldName": "message"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-upload-file",
+          "customElement": true,
+          "summary": "A file in the upload."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetInputFile",
+            "module": "src/elements/input-file/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-input-file",
+          "declaration": {
+            "name": "KemetInputFile",
+            "module": "src/elements/input-file/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/input-files/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetInputFiles",
+          "cssProperties": [
+            {
+              "description": "The default text color.",
+              "name": "--kemet-upload-color"
+            },
+            {
+              "description": "The height.",
+              "name": "--kemet-upload-height"
+            },
+            {
+              "description": "The border.",
+              "name": "--kemet-upload-border"
+            },
+            {
+              "description": "The background color.",
+              "name": "--kemet-upload-background-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The area where files are dropped.",
+              "name": "upload"
+            },
+            {
+              "description": "The description in the upload area.",
+              "name": "heading"
+            },
+            {
+              "description": "The button in the upload area.",
+              "name": "button"
+            },
+            {
+              "description": "The area where uploaded files are listed.",
+              "name": "files"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'upload'",
+              "description": "A unique identifier for the component",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "accept",
+              "type": {
+                "text": "string"
+              },
+              "description": "Determines what file types are accepted",
+              "attribute": "accept"
+            },
+            {
+              "kind": "field",
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allows for multiple files",
+              "attribute": "multiple"
+            },
+            {
+              "kind": "field",
+              "name": "over",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Automatically is true when a file is being dragged over the upload area",
+              "attribute": "over",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Drag & Drop Files'",
+              "description": "Descriptive text for the upload area",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "mobile",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays the component in a mobile context",
+              "attribute": "mobile",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "breakpoint",
+              "type": {
+                "text": "string"
+              },
+              "default": "'600px'",
+              "description": "Controls the point at which the component is considered mobile",
+              "attribute": "breakpoint",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "noDragDrop",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is true if drag and drop support is not detected",
+              "attribute": "no-drag-drop",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "maxSize",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum file size for uploads",
+              "attribute": "max-size"
+            },
+            {
+              "kind": "field",
+              "name": "buttonLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Browse Files'",
+              "description": "The browse files button text",
+              "attribute": "button-label"
+            },
+            {
+              "kind": "field",
+              "name": "fileInputElement",
+              "type": {
+                "text": "HTMLInputElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "upload",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleChange",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDrop",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "DragEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isMobile"
+            },
+            {
+              "kind": "method",
+              "name": "hasDragDrop"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when files have been added",
+              "name": "kemet-input-files-change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'upload'",
+              "description": "A unique identifier for the component",
+              "fieldName": "slug"
+            },
+            {
+              "name": "accept",
+              "type": {
+                "text": "string"
+              },
+              "description": "Determines what file types are accepted",
+              "fieldName": "accept"
+            },
+            {
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allows for multiple files",
+              "fieldName": "multiple"
+            },
+            {
+              "name": "over",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Automatically is true when a file is being dragged over the upload area",
+              "fieldName": "over"
+            },
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Drag & Drop Files'",
+              "description": "Descriptive text for the upload area",
+              "fieldName": "heading"
+            },
+            {
+              "name": "mobile",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays the component in a mobile context",
+              "fieldName": "mobile"
+            },
+            {
+              "name": "breakpoint",
+              "type": {
+                "text": "string"
+              },
+              "default": "'600px'",
+              "description": "Controls the point at which the component is considered mobile",
+              "fieldName": "breakpoint"
+            },
+            {
+              "name": "no-drag-drop",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is true if drag and drop support is not detected",
+              "fieldName": "noDragDrop"
+            },
+            {
+              "name": "max-size",
+              "type": {
+                "text": "number"
+              },
+              "description": "The maximum file size for uploads",
+              "fieldName": "maxSize"
+            },
+            {
+              "name": "button-label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Browse Files'",
+              "description": "The browse files button text",
+              "fieldName": "buttonLabel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-upload",
+          "customElement": true,
+          "summary": "An interface for uploading files."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetInputFiles",
+            "module": "src/elements/input-files/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-input-files",
+          "declaration": {
+            "name": "KemetInputFiles",
+            "module": "src/elements/input-files/index.ts"
           }
         }
       ]
@@ -9217,6 +9055,549 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/textarea/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLKemetTextareaElement",
+          "cssProperties": [
+            {
+              "description": "The padding on the textarea.",
+              "name": "--kemet-textarea-padding"
+            },
+            {
+              "description": "The border of the textarea.",
+              "name": "--kemet-textarea-border"
+            },
+            {
+              "description": "The border of the error state.",
+              "name": "--kemet-textarea-border-color-error"
+            },
+            {
+              "description": "The border of the success state.",
+              "name": "--kemet-textarea-border-color-success"
+            },
+            {
+              "description": "The border of the warning state.",
+              "name": "--kemet-textarea-border-color-warning"
+            },
+            {
+              "description": "The border radius on rounded.",
+              "name": "--kemet-textarea-border-radius-rounded"
+            },
+            {
+              "description": "The border on filled.",
+              "name": "--kemet-textarea-border-filled"
+            },
+            {
+              "description": "The color on filled.",
+              "name": "--kemet-textarea-color-filled"
+            },
+            {
+              "description": "The background-color on filled.",
+              "name": "--kemet-textarea-background-color-filled"
+            },
+            {
+              "description": "The error state background color.",
+              "name": "--kemet-textarea-background-color-error"
+            },
+            {
+              "description": "The success state background color.",
+              "name": "--kemet-textarea-background-color-success"
+            },
+            {
+              "description": "The warning state background color.",
+              "name": "--kemet-textarea-background-color-warning"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "textarea"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "minlength",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "minlength"
+            },
+            {
+              "kind": "field",
+              "name": "maxlength",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "maxlength"
+            },
+            {
+              "kind": "field",
+              "name": "inputmode",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "inputmode"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "autofocus"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "readonly"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "required",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "invalid",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "attribute": "rows"
+            },
+            {
+              "kind": "field",
+              "name": "validateOnBlur",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "validate-on-blur"
+            },
+            {
+              "kind": "field",
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "autocorrect",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "autocorrect"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "control",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "textarea",
+              "type": {
+                "text": "HTMLTextAreaElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasFocus",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "description": "Handles when the textarea receives focus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleBlur",
+              "description": "Handles when the textarea loses focus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleChange",
+              "description": "Handles when the textarea changes value",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "description": "Handles when the textarea receives input",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInvalid",
+              "description": "Handles when the textarea has an error",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "checkLimitValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the character limit for the count component",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks the validity of the standard input",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Focuses the standard input",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "kemet-textarea-focused",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the textarea is focused or blurred"
+            },
+            {
+              "name": "kemet-textarea-appearance-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the textarea appearance changes"
+            },
+            {
+              "name": "kemet-textarea-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the textarea receives input"
+            },
+            {
+              "description": "Fired when the textarea is mounted to the DOM",
+              "name": "kemet-textarea-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "fieldName": "slug"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'textarea'",
+              "fieldName": "name"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "minlength",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "minlength"
+            },
+            {
+              "name": "maxlength",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "maxlength"
+            },
+            {
+              "name": "inputmode",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "inputmode"
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autofocus"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "disabled"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "readonly"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "required"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "invalid"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances"
+              },
+              "fieldName": "appearance"
+            },
+            {
+              "name": "rows",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "fieldName": "rows"
+            },
+            {
+              "name": "validate-on-blur",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "validateOnBlur"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "filled"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "fieldName": "rounded"
+            },
+            {
+              "name": "autocorrect",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autocorrect"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'light'",
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-textarea",
+          "customElement": true,
+          "summary": "An enhanced textarea element."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLKemetTextareaElement",
+            "module": "src/elements/textarea/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-textarea",
+          "declaration": {
+            "name": "HTMLKemetTextareaElement",
+            "module": "src/elements/textarea/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/tabs/index.ts",
       "declarations": [
         {
@@ -9761,6 +10142,130 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/timer-display/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetTimerDisplay",
+          "members": [
+            {
+              "kind": "field",
+              "name": "format",
+              "type": {
+                "text": "EnumFormats"
+              },
+              "description": "The format to display the remaining time in",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "displayTime",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "getTime"
+            },
+            {
+              "kind": "method",
+              "name": "getTimeInSeconds",
+              "parameters": [
+                {
+                  "name": "time",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the timer display is mounted to the DOM",
+              "name": "kemet-timer-display-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "format",
+              "type": {
+                "text": "EnumFormats"
+              },
+              "description": "The format to display the remaining time in",
+              "fieldName": "format"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-timer-display",
+          "customElement": true,
+          "summary": "Displays remaining time"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetTimerDisplay",
+            "module": "src/elements/timer-display/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-timer-display",
+          "declaration": {
+            "name": "KemetTimerDisplay",
+            "module": "src/elements/timer-display/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/timer/index.ts",
       "declarations": [
         {
@@ -9944,28 +10449,31 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/timer-display/index.ts",
+      "path": "src/elements/tracker/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KemetTimerDisplay",
+          "name": "KemetTracker",
           "members": [
             {
               "kind": "field",
-              "name": "format",
+              "name": "total",
               "type": {
-                "text": "EnumFormats"
+                "text": "number"
               },
-              "description": "The format to display the remaining time in",
-              "attribute": "format"
+              "description": "The total number of steps",
+              "attribute": "total"
             },
             {
               "kind": "field",
-              "name": "displayTime",
+              "name": "breakpoint",
               "type": {
                 "text": "string"
-              }
+              },
+              "default": "'767px'",
+              "description": "The point at which the tracker goes from mobile to standard * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background",
+              "attribute": "breakpoint"
             },
             {
               "kind": "field",
@@ -9989,36 +10497,44 @@
               "reflects": true
             },
             {
-              "kind": "method",
-              "name": "getTime"
+              "kind": "field",
+              "name": "steps",
+              "type": {
+                "text": "NodeListOf<KemetTrackerStep>"
+              }
             },
             {
               "kind": "method",
-              "name": "getTimeInSeconds",
-              "parameters": [
-                {
-                  "name": "time",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
+              "name": "handleSlotChange"
+            },
+            {
+              "kind": "method",
+              "name": "isMobile"
             }
           ],
           "events": [
             {
-              "description": "Fired when the timer display is mounted to the DOM",
-              "name": "kemet-timer-display-mounted"
+              "description": "Fired when the tracker is mounted to the DOM",
+              "name": "kemet-tracker-mounted"
             }
           ],
           "attributes": [
             {
-              "name": "format",
+              "name": "total",
               "type": {
-                "text": "EnumFormats"
+                "text": "number"
               },
-              "description": "The format to display the remaining time in",
-              "fieldName": "format"
+              "description": "The total number of steps",
+              "fieldName": "total"
+            },
+            {
+              "name": "breakpoint",
+              "type": {
+                "text": "string"
+              },
+              "default": "'767px'",
+              "description": "The point at which the tracker goes from mobile to standard * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background",
+              "fieldName": "breakpoint"
             },
             {
               "name": "polarity",
@@ -10042,9 +10558,8 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kemet-timer-display",
-          "customElement": true,
-          "summary": "Displays remaining time"
+          "tagName": "kemet-tracker",
+          "customElement": true
         }
       ],
       "exports": [
@@ -10052,559 +10567,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "KemetTimerDisplay",
-            "module": "src/elements/timer-display/index.ts"
+            "name": "KemetTracker",
+            "module": "src/elements/tracker/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "kemet-timer-display",
+          "name": "kemet-tracker",
           "declaration": {
-            "name": "KemetTimerDisplay",
-            "module": "src/elements/timer-display/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/textarea/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLKemetTextareaElement",
-          "cssProperties": [
-            {
-              "description": "The padding on the textarea.",
-              "name": "--kemet-textarea-padding"
-            },
-            {
-              "description": "The border of the textarea.",
-              "name": "--kemet-textarea-border"
-            },
-            {
-              "description": "The border of the error state.",
-              "name": "--kemet-textarea-border-color-error"
-            },
-            {
-              "description": "The border of the success state.",
-              "name": "--kemet-textarea-border-color-success"
-            },
-            {
-              "description": "The border of the warning state.",
-              "name": "--kemet-textarea-border-color-warning"
-            },
-            {
-              "description": "The border radius on rounded.",
-              "name": "--kemet-textarea-border-radius-rounded"
-            },
-            {
-              "description": "The border on filled.",
-              "name": "--kemet-textarea-border-filled"
-            },
-            {
-              "description": "The color on filled.",
-              "name": "--kemet-textarea-color-filled"
-            },
-            {
-              "description": "The background-color on filled.",
-              "name": "--kemet-textarea-background-color-filled"
-            },
-            {
-              "description": "The error state background color.",
-              "name": "--kemet-textarea-background-color-error"
-            },
-            {
-              "description": "The success state background color.",
-              "name": "--kemet-textarea-background-color-success"
-            },
-            {
-              "description": "The warning state background color.",
-              "name": "--kemet-textarea-background-color-warning"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "textarea"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "minlength",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "minlength"
-            },
-            {
-              "kind": "field",
-              "name": "maxlength",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "maxlength"
-            },
-            {
-              "kind": "field",
-              "name": "inputmode",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "inputmode"
-            },
-            {
-              "kind": "field",
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "autofocus"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "readonly"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "required",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "invalid",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "invalid",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearances"
-              },
-              "attribute": "appearance",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rows",
-              "type": {
-                "text": "number"
-              },
-              "default": "4",
-              "attribute": "rows"
-            },
-            {
-              "kind": "field",
-              "name": "validateOnBlur",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "validate-on-blur"
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "filled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "EnumRoundedSizes"
-              },
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "autocorrect",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "autocorrect"
-            },
-            {
-              "kind": "field",
-              "name": "form",
-              "type": {
-                "text": "HTMLFormElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "control",
-              "type": {
-                "text": "HTMLKemetFieldElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "textarea",
-              "type": {
-                "text": "HTMLTextAreaElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hasFocus",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "validity",
-              "type": {
-                "text": "ValidityState"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus",
-              "description": "Handles when the textarea receives focus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleBlur",
-              "description": "Handles when the textarea loses focus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleChange",
-              "description": "Handles when the textarea changes value",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "description": "Handles when the textarea receives input",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInvalid",
-              "description": "Handles when the textarea has an error",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "checkLimitValidity",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Checks the validity of the character limit for the count component",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "checkValidity",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Checks the validity of the standard input",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "description": "Focuses the standard input",
-              "privacy": "public"
-            }
-          ],
-          "events": [
-            {
-              "name": "kemet-textarea-focused",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the textarea is focused or blurred"
-            },
-            {
-              "name": "kemet-textarea-appearance-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the textarea appearance changes"
-            },
-            {
-              "name": "kemet-textarea-input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the textarea receives input"
-            },
-            {
-              "description": "Fired when the textarea is mounted to the DOM",
-              "name": "kemet-textarea-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "fieldName": "slug"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'textarea'",
-              "fieldName": "name"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "minlength",
-              "type": {
-                "text": "number"
-              },
-              "fieldName": "minlength"
-            },
-            {
-              "name": "maxlength",
-              "type": {
-                "text": "number"
-              },
-              "fieldName": "maxlength"
-            },
-            {
-              "name": "inputmode",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "inputmode"
-            },
-            {
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "autofocus"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "disabled"
-            },
-            {
-              "name": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "readonly"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "required"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "invalid",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "invalid"
-            },
-            {
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearances"
-              },
-              "fieldName": "appearance"
-            },
-            {
-              "name": "rows",
-              "type": {
-                "text": "number"
-              },
-              "default": "4",
-              "fieldName": "rows"
-            },
-            {
-              "name": "validate-on-blur",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "validateOnBlur"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "filled"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "EnumRoundedSizes"
-              },
-              "fieldName": "rounded"
-            },
-            {
-              "name": "autocorrect",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "autocorrect"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'light'",
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-textarea",
-          "customElement": true,
-          "summary": "An enhanced textarea element."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLKemetTextareaElement",
-            "module": "src/elements/textarea/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-textarea",
-          "declaration": {
-            "name": "HTMLKemetTextareaElement",
-            "module": "src/elements/textarea/index.ts"
+            "name": "KemetTracker",
+            "module": "src/elements/tracker/index.ts"
           }
         }
       ]
@@ -10931,140 +10903,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/tracker/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetTracker",
-          "members": [
-            {
-              "kind": "field",
-              "name": "total",
-              "type": {
-                "text": "number"
-              },
-              "description": "The total number of steps",
-              "attribute": "total"
-            },
-            {
-              "kind": "field",
-              "name": "breakpoint",
-              "type": {
-                "text": "string"
-              },
-              "default": "'767px'",
-              "description": "The point at which the tracker goes from mobile to standard * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background",
-              "attribute": "breakpoint"
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "steps",
-              "type": {
-                "text": "NodeListOf<KemetTrackerStep>"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange"
-            },
-            {
-              "kind": "method",
-              "name": "isMobile"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the tracker is mounted to the DOM",
-              "name": "kemet-tracker-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "total",
-              "type": {
-                "text": "number"
-              },
-              "description": "The total number of steps",
-              "fieldName": "total"
-            },
-            {
-              "name": "breakpoint",
-              "type": {
-                "text": "string"
-              },
-              "default": "'767px'",
-              "description": "The point at which the tracker goes from mobile to standard * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background",
-              "fieldName": "breakpoint"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-tracker",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetTracker",
-            "module": "src/elements/tracker/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-tracker",
-          "declaration": {
-            "name": "KemetTracker",
-            "module": "src/elements/tracker/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/tracker-step/index.ts",
       "declarations": [
         {
@@ -11382,6 +11220,210 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/typewriter/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetTypewriter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The content to be typed.",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "delay",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "description": "The delay between each character.",
+              "attribute": "delay"
+            },
+            {
+              "kind": "field",
+              "name": "cursor",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The cursor to be displayed.",
+              "attribute": "cursor"
+            },
+            {
+              "kind": "field",
+              "name": "loop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether to loop the content.",
+              "attribute": "loop"
+            },
+            {
+              "kind": "field",
+              "name": "restartDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "description": "The delay before restarting the typewriter.",
+              "attribute": "restart-delay"
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "typewriter",
+              "type": {
+                "text": "Typewriter"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "timeoutId",
+              "type": {
+                "text": "ReturnType<typeof setTimeout> | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "restartTypewriter"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when typewriter is completed",
+              "name": "kemet-typewriter-completed"
+            },
+            {
+              "description": "Fired when the typewriter is mounted to the DOM",
+              "name": "kemet-typewriter-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The content to be typed.",
+              "fieldName": "content"
+            },
+            {
+              "name": "delay",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "description": "The delay between each character.",
+              "fieldName": "delay"
+            },
+            {
+              "name": "cursor",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The cursor to be displayed.",
+              "fieldName": "cursor"
+            },
+            {
+              "name": "loop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether to loop the content.",
+              "fieldName": "loop"
+            },
+            {
+              "name": "restart-delay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "description": "The delay before restarting the typewriter.",
+              "fieldName": "restartDelay"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-typewriter",
+          "customElement": true,
+          "summary": "An element that types out content."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetTypewriter",
+            "module": "src/elements/typewriter/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-typewriter",
+          "declaration": {
+            "name": "KemetTypewriter",
+            "module": "src/elements/typewriter/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/accordion/styles.css",
       "declarations": [],
       "exports": []
@@ -11394,13 +11436,25 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/avatars/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/alert/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/avatars/styles.css",
+      "path": "src/elements/avatar/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/card/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11412,13 +11466,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/checkbox/styles.css",
+      "path": "src/elements/combo/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/combo/styles.css",
+      "path": "src/elements/checkbox/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11442,31 +11496,19 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/badge/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/fab/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/card/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/field/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/avatar/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/badge/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11491,6 +11533,24 @@
     {
       "kind": "javascript-module",
       "path": "src/elements/input-combo/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/input-file/loaders.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/input-file/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/input-files/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11526,6 +11586,18 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/rotator/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/select/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/sortable/styles.css",
       "declarations": [],
       "exports": []
@@ -11544,19 +11616,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/rotator/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/select/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/tab-panel/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/tabs/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -11587,12 +11653,6 @@
     {
       "kind": "javascript-module",
       "path": "src/elements/tracker/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/tabs/styles.css",
       "declarations": [],
       "exports": []
     },

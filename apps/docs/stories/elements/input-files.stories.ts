@@ -1,17 +1,14 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
-import '../../../../packages/ui/src/elements/upload';
-import '../../../../packages/ui/src/elements/upload-file';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
+import '../../../../packages/ui/src/elements/input-files';
+import '../../../../packages/ui/src/elements/input-file';
 
 const meta: Meta = {
-  title: 'Interactive / Upload',
-  component: 'kemet-upload',
+  title: 'Elements / Input Files',
+  component: 'kemet-input-files',
   args: {
     files: [
       {
@@ -40,19 +37,19 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => {
-  const uploadFiles = [];
+const Template = (args: Args) => {
+  const uploadFiles: any[] = [];
 
-  args.files.forEach((file) => {
+  args.files.forEach((file: any) => {
     uploadFiles.push(html`
-      <kemet-upload-file name=${file.name} size=${file.size} loaded=${file.loaded} status=${file.status} message=${ifDefined(file.message)}></kemet-upload-file>
+      <kemet-input-file name=${file.name} size=${file.size} loaded=${file.loaded} status=${file.status} message=${ifDefined(file.message)}></kemet-input-file>
     `);
   });
 
   return html`
-    <kemet-upload>
+    <kemet-input-files>
       ${uploadFiles}
-    </kemet-upload>
+    </kemet-input-files>
   `;
 };
 

@@ -1,7 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { stylesUploadFile, stylesLoaders } from '../styles/elements/upload';
-import './icon-bootstrap';
+import '../icon';
+import styles from './styles.css?inline';
+import loaderStyles from './loaders.css?inline';
 
 const formatBytes = (bytes: number, decimals = 2) => {
   if (bytes === 0) return '0 Bytes';
@@ -42,9 +43,9 @@ const formatBytes = (bytes: number, decimals = 2) => {
  *
  */
 
-@customElement('kemet-upload-file')
-export default class KemetUploadFile extends LitElement {
-  static styles = [stylesUploadFile, stylesLoaders];
+@customElement('kemet-input-file')
+export default class KemetInputFile extends LitElement {
+  static styles = [unsafeCSS(styles), unsafeCSS(loaderStyles)];
 
   @property({ type: String })
   name!: string;
@@ -98,11 +99,11 @@ export default class KemetUploadFile extends LitElement {
     }
 
     if (this.status === 'complete') {
-      return html`<kemet-icon-bootstrap icon="check-circle" size="48"></kemet-icon-bootstrap>`;
+      return html`<kemet-icon name="check-circle" size="48"></kemet-icon>`;
     }
 
     if (this.status === 'error') {
-      return html`<kemet-icon-bootstrap icon="exclamation-circle" size="48"></kemet-icon-bootstrap>`;
+      return html`<kemet-icon name="exclamation-circle" size="48"></kemet-icon>`;
     }
 
     return null;
@@ -111,6 +112,6 @@ export default class KemetUploadFile extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-upload-file': KemetUploadFile
+    'kemet-input-file': KemetInputFile
   }
 }
