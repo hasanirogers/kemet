@@ -1,0 +1,76 @@
+---
+title: Toggle
+description: A toggle component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="toggle">
+  <kemet-toggle label="Label"></kemet-toggle>
+</ElementDetails>
+
+
+## Examples
+
+### Square Handle
+
+Use the `squared` attribute to make the toggle handle square.
+
+<CodePreview>
+  <kemet-toggle label="Label" squared></kemet-toggle>
+</CodePreview>
+
+### Show Options
+
+You can show labels for the options you are toggling between.
+
+<CodePreview>
+ <kemet-toggle label="Use dark mode?" show option-unchecked="Light" option-checked="Dark"></kemet-toggle>
+</CodePreview>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="toggle" display="attributes" />
+<br />
+
+### Slots
+
+<API element="toggle" display="slots" />
+<br />
+
+### Events
+
+<API element="toggle" display="events" />
+<br />
+
+### Methods
+
+<API element="toggle" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="toggle" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="toggle" display="parts" />
+<br />
+
+<DocsFooter />
+

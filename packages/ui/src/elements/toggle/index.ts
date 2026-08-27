@@ -1,8 +1,8 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { FormSubmitController } from '../utilities/form-controller';
-import { emitEvent } from '../utilities/events';
-import { stylesToggle } from '../styles/elements/toggle';
+import { FormSubmitController } from '../../utilities/form-controller';
+import { emitEvent } from '../../utilities/events';
+import styles from './styles.css?inline';
 
 /**
  * @since 1.0.0
@@ -19,6 +19,8 @@ import { stylesToggle } from '../styles/elements/toggle';
  * @prop {boolean} squared - Displays the toggle as squared instead of rounded
  * @prop {string} optionChecked - The checked option text
  * @prop {string} optionUnchecked - The unchecked option text
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @csspart label - The label element.
  * @csspart control - The control element.
@@ -36,7 +38,10 @@ import { stylesToggle } from '../styles/elements/toggle';
  * @cssproperty --kemet-toggle-handle-color - The color of the handle.
  * @cssproperty --kemet-toggle-handle-shadow - The shadow on the handle.
  *
- * @event kemet-change - Fires when the toggle changes state
+ * @event kemet-toggle-change - Fires when the toggle changes state
+ *
+ * @fires kemet-toggle-mounted - Fired when the toggle is mounted to the DOM
+ * @detail {HTMLElement} element - The toggle element
  *
  */
 
@@ -44,7 +49,7 @@ import { stylesToggle } from '../styles/elements/toggle';
 export default class KemetToggle extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [stylesToggle];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
   name: string = 'toggle-switch';
@@ -70,6 +75,12 @@ export default class KemetToggle extends LitElement {
   @property({ type: String, attribute: 'option-unchecked' })
   optionUnchecked: string = 'off';
 
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @state()
   value: string | boolean = this.checked ? this.optionChecked : this.optionUnchecked;
 
@@ -78,6 +89,17 @@ export default class KemetToggle extends LitElement {
 
     /** @internal */
     this.formSubmitController = new FormSubmitController(this);
+  }
+
+  firstUpdated() {
+    emitEvent(this, 'kemet-toggle-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -107,7 +129,7 @@ export default class KemetToggle extends LitElement {
   handleChange() {
     this.checked = !this.checked;
     this.value = this.checked ? this.optionChecked : this.optionUnchecked;
-    emitEvent(this, 'kemet-change', this);
+    emitEvent(this, 'kemet-toggle-change', { element: this });
   }
 
   makeUncheckedOption() {

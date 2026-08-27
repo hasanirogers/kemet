@@ -1,15 +1,11 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
 import '../../../../packages/ui/src/elements/toggle';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 const meta: Meta = {
-  title: 'Form Controls / Toggle',
+  title: 'Elements / Toggle',
   component: 'kemet-toggle',
   args: {
     label: 'Label'
@@ -19,7 +15,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const Template = (args) => html`
+const Template = (args: Args) => html`
   <kemet-toggle
     label=${ifDefined(args.label)}
     ?disabled=${args.disabled}
