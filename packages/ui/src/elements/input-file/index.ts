@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import '../icon';
 import styles from './styles.css?inline';
 import loaderStyles from './loaders.css?inline';
+import { emitEvent } from '../../utilities/events';
 
 const formatBytes = (bytes: number, decimals = 2) => {
   if (bytes === 0) return '0 Bytes';
@@ -30,6 +31,8 @@ const formatBytes = (bytes: number, decimals = 2) => {
  * @prop {string} status - The status of the file. Values are complete | uploading | error.
  * @prop {number} percent - Percentage of file completion that's calculated by the loaded property.
  * @prop {string} message - An error message to give to users
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @cssproperty --kemet-upload-file-color - The default text color.
  * @cssproperty --kemet-upload-file-padding - The padding around the file.
@@ -41,6 +44,8 @@ const formatBytes = (bytes: number, decimals = 2) => {
  * @csspart message - Area for the error message.
  * @csspart indicator - Area for status icon.
  *
+ * @fires kemet-input-file-mounted - Fired when the input file is mounted to the DOM
+ * @detail {HTMLElement} element - The input file element
  */
 
 @customElement('kemet-input-file')
@@ -67,6 +72,23 @@ export default class KemetInputFile extends LitElement {
 
   @property({ type: String })
   message!: string;
+
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
+  firstUpdated() {
+    emitEvent(this, 'kemet-input-file-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
+  }
 
   updated() {
     this.percent = this.calculatePercent();

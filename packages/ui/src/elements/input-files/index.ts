@@ -35,6 +35,8 @@ const preventDefaults = (event: Event) => {
  * @prop {boolean} noDragDrop - Is true if drag and drop support is not detected
  * @prop {number} maxSize - The maximum file size for uploads
  * @prop {string} buttonLabel - The browse files button text
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @event kemet-input-files-change - Fires when files have been added
  *
@@ -48,6 +50,8 @@ const preventDefaults = (event: Event) => {
  * @cssproperty --kemet-upload-border - The border.
  * @cssproperty --kemet-upload-background-color - The background color.
  *
+ * @fires kemet-input-files-mounted - Fired when the input files is mounted to the DOM
+ * @detail {HTMLElement} element - The input files element
  */
 
 @customElement('kemet-input-files')
@@ -84,6 +88,12 @@ export default class KemetInputFiles extends LitElement {
   @property({ type: String, attribute: 'button-label' })
   buttonLabel: string = 'Browse Files';
 
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
   @state()
   fileInputElement!: HTMLInputElement;
 
@@ -111,6 +121,15 @@ export default class KemetInputFiles extends LitElement {
 
     window.addEventListener('resize', () => { this.isMobile(); });
     this.upload.addEventListener('drop', event => this.handleDrop(event), false);
+
+    emitEvent(this, 'kemet-input-files-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
