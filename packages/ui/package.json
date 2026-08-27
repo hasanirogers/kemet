@@ -12,7 +12,7 @@
     "build": "rimraf dist && npm run build:css && npm run build:scss && npm run build:ts",
     "build:css": "sass --load-path=node_modules src/styles/kemet.tokens.scss:dist/styles/kemet.tokens.css src/styles/kemet.core.scss:dist/styles/kemet.core.css src/styles/kemet.base.scss:dist/styles/kemet.base.css && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
     "build:scss": "cp -R src/styles dist",
-    "build:ts": "tsup",
+    "build:ts": "node --max-old-space-size=8192 node_modules/.bin/tsup",
     "dev": "npm-watch",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-pattern .gitignore",
     "format:stylelint": "npx stylelint --fix 'src/styles/**/*.scss' -c stylelint.config.mjs",
