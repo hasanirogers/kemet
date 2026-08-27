@@ -111,7 +111,7 @@ export default class KemetButton extends LitElement {
   size!: EnumSizes;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

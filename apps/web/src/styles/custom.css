@@ -108,6 +108,10 @@
     background-color: var(--sl-color-bg);
   }
 
+  .sl-container {
+    padding: 0 2rem;
+  }
+
   .sl-markdown-content {
     position: relative;
   }

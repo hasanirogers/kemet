@@ -1,27 +1,27 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { panelEffect, tabsAlign } from '../../../../packages/ui/src/elements/tabs';
+import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
+import { EnumPanelEffect, EnumTabsAlign } from '../../../../packages/ui/src/elements/tabs';
 import { directions } from '../../../../packages/ui/src/utilities/constants';
 
-import '../../../../packages/ui/src/styles/elements/tabs';
+import '../../../../packages/ui/src/elements/icon';
+import '../../../../packages/ui/src/elements/tabs';
 import '../../../../packages/ui/src/elements/tab';
 import '../../../../packages/ui/src/elements/tab-panel';
 
-import '../../../../packages/ui/src/elements/icon-bootstrap';
 
 
 const meta: Meta = {
-  title: 'Organization / Tabs',
+  title: 'Elements / Tabs',
   component: 'kemet-tabs',
   argTypes: {
     panelEffect: {
       control: { type: 'select' },
-      options: panelEffect,
+      options: Object.values(EnumPanelEffect),
     },
     tabsAlign: {
       control: { type: 'select' },
-      options: tabsAlign,
+      options: Object.values(EnumTabsAlign),
     },
     placement: {
       control: { type: 'select' },
@@ -33,16 +33,16 @@ export default meta;
 
 type Story = StoryObj;
 
-const NamedTemplate = (args) => html`
+const NamedTemplate = (args: Args) => html`
   <kemet-tabs selected="${ifDefined(args.selected)}" panel-effect=${ifDefined(args.panelEffect)} ?swipe=${args.swipe} ?divider=${args.divider} tabs-align=${ifDefined(args.tabsAlign)} ?hide-ink=${args.hideInk} placement=${ifDefined(args.placement)} measure-height-offset=${ifDefined(args.measureHeightOffset)}>
     <kemet-tab slot="tab" link="account">
-      <kemet-icon-bootstrap icon="person-circle"></kemet-icon-bootstrap>&nbsp;Account
+      <kemet-icon name="person-circle"></kemet-icon>&nbsp;Account
     </kemet-tab>
     <kemet-tab slot="tab" link="settings">
-      <kemet-icon-bootstrap icon="gear"></kemet-icon-bootstrap>&nbsp;Settings
+      <kemet-icon name="gear"></kemet-icon>&nbsp;Settings
     </kemet-tab>
     <kemet-tab slot="tab" link="dashboard">
-      <kemet-icon-bootstrap icon="columns-gap"></kemet-icon-bootstrap>&nbsp;Dashboard
+      <kemet-icon name="columns-gap"></kemet-icon>&nbsp;Dashboard
     </kemet-tab>
     <kemet-tab-panel panel="account" slot="panel">
       <h3 kemet-margin-top="none">Account</h3>
@@ -61,7 +61,7 @@ const NamedTemplate = (args) => html`
   <hr />
 `;
 
-const IndexTemplate = (args) => {
+const IndexTemplate = (args: Args) => {
   const tabs = Array.from({ length: args.numOfTabs}, (_, index) => {
     return html`<kemet-tab slot="tab" ?closable=${args.closable}>This is tab ${index + 1}.</kemet-tab>`;
   })

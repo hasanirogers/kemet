@@ -1,15 +1,12 @@
 /* eslint-disable no-case-declarations */
-import { LitElement, html } from 'lit';
-import {
- customElement, property, query, state,
-} from 'lit/decorators.js';
-import { emitEvent } from '../utilities/events';
-import { stylesKemetTabs } from '../styles/elements/tabs';
-import { TypeDirection, EnumDirections } from '../utilities/constants';
-import type KemetTab from './tab';
-import type KemetTabPanel from './tab-panel';
-import './icon-bootstrap';
-
+import { LitElement, html, unsafeCSS } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
+import { emitEvent } from '../../utilities/events';
+import { EnumDirections } from '../../utilities/constants';
+import type KemetTab from '../tab';
+import type KemetTabPanel from '../tab-panel';
+import '../icon';
+import styles from './styles.css?inline';
 
 
 interface InterfaceLink {
@@ -25,17 +22,14 @@ export interface InterfaceTabsDetails {
   selectedIndex: number;
 }
 
-export const panelEffect = ['none', 'slide', 'fade', 'stacked'] as const;
 export enum EnumPanelEffect {
   None = 'none',
   Slide = 'slide',
   Fade = 'fade',
   Stacked = 'stacked'
 }
-export type TypePanelEffect = typeof panelEffect[number];
 
 
-export const tabsAlign = ['center', 'between', 'around', 'evenly', 'start', 'end'] as const;
 export enum EnumTabsAlign {
   Center = 'center',
   Between = 'between',
@@ -44,7 +38,6 @@ export enum EnumTabsAlign {
   Start = 'start',
   End = 'end'
 }
-export type TypeTabsAlign = typeof tabsAlign[number];
 
 /**
  * @since 1.0.0
@@ -64,6 +57,8 @@ export type TypeTabsAlign = typeof tabsAlign[number];
  * @prop {object} ink - An object that contains information about the ink
  * @prop {boolean} hideInk - Determines whether to hide the ink
  * @prop {boolean} overflow - Is true when the space of the tabs is larger than it's container
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @slot tab - Place the tabs here.
  * @slot panel - Place the panels here.
@@ -82,13 +77,16 @@ export type TypeTabsAlign = typeof tabsAlign[number];
  * @cssproperty --kemet-tabs-transition-speed - The transition speed of the panels.
  * @cssproperty --kemet-tabs-spacer - The space between tabs and panels.
  *
- * @event kemet-change - Fires when a tab is changed
+ * @event kemet-tabs-change - Fires when a tab is changed
+ *
+ * @fires kemet-tabs-mounted - Fired when the tabs are mounted to the DOM
+ * @detail {HTMLElement} element - The tabs element
  *
  */
 
 @customElement('kemet-tabs')
 export default class KemetTabs extends LitElement {
-  static styles = [stylesKemetTabs];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: String, reflect: true })
   selected?: string;
@@ -100,19 +98,19 @@ export default class KemetTabs extends LitElement {
   panelPosition: number = 0;
 
   @property({ type: String, reflect: true, attribute: 'panel-effect' })
-  panelEffect: TypePanelEffect = EnumPanelEffect.None;
+  panelEffect: EnumPanelEffect = EnumPanelEffect.None;
 
   @property({ type: Boolean })
   swipe: boolean = false;
 
   @property({ type: String, reflect: true })
-  placement: TypeDirection = EnumDirections.Top;
+  placement: EnumDirections = EnumDirections.Top;
 
   @property({ type: Boolean })
   divider: boolean = false;
 
   @property({ type: String, reflect: true, attribute: 'tabs-align' })
-  tabsAlign: TypeTabsAlign = EnumTabsAlign.Center;
+  tabsAlign: EnumTabsAlign = EnumTabsAlign.Center;
 
   @property({ type: Object })
   ink: InterfaceLink = { width: '0', height: '0', positionX: '0', positionY: '0' };
@@ -122,6 +120,12 @@ export default class KemetTabs extends LitElement {
 
   @property({ type: Boolean, reflect: true })
   overflow: boolean = false;
+
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
   tabs!: KemetTab[];
@@ -144,8 +148,8 @@ export default class KemetTabs extends LitElement {
   constructor() {
     super();
 
-    this.addEventListener('kemet-selected', this.tabSelectedChange.bind(this));
-    this.addEventListener('kemet-closed', this.handleTabClose.bind(this));
+    this.addEventListener('kemet-tab-selected', this.tabSelectedChange.bind(this));
+    this.addEventListener('kemet-tab-closed', this.handleTabClose.bind(this));
     window.addEventListener('resize', this.handleResize.bind(this));
   }
 
@@ -157,6 +161,15 @@ export default class KemetTabs extends LitElement {
     this.yDown = null;
 
     this.links = this.shadowRoot?.getElementById('links') as HTMLElement;
+
+    emitEvent(this, 'kemet-tabs-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -292,7 +305,7 @@ export default class KemetTabs extends LitElement {
   }
 
   handleTabClose(event: Event) {
-    const tab = (event as CustomEvent).detail;
+    const tab = (event as CustomEvent).detail.element;
     const panel = this.panels[tab.index];
 
     if (this.tabs[0]) {
@@ -330,7 +343,7 @@ export default class KemetTabs extends LitElement {
 
   makeLeftArrow() {
     if (this.overflow) {
-      return html`<kemet-icon-bootstrap icon='chevron-left' size="20" @click=${() => this.handleLeftArrow()}></kemet-icon-bootstrap>`;
+      return html`<kemet-icon name='chevron-left' size="20" @click=${() => this.handleLeftArrow()}></kemet-icon>`;
     }
 
     return null;
@@ -338,7 +351,7 @@ export default class KemetTabs extends LitElement {
 
   makeRightArrow() {
     if (this.overflow) {
-      return html`<kemet-icon-bootstrap icon='chevron-right' size="20" @click=${() => this.handleRightArrow()}></kemet-icon-bootstrap>`;
+      return html`<kemet-icon name='chevron-right' size="20" @click=${() => this.handleRightArrow()}></kemet-icon>`;
     }
 
     return null;
@@ -435,7 +448,7 @@ export default class KemetTabs extends LitElement {
   }
 
   dispatchTabChange() {
-    emitEvent(this, 'kemet-change', {
+    emitEvent(this, 'kemet-tabs-change', {
       element: this,
       selectedName: this.selected,
       selectedIndex: this.selectedIndex
@@ -445,10 +458,10 @@ export default class KemetTabs extends LitElement {
   tabSelectedChange(event: Event) {
     if (this.selected) {
       // if selected has been set, use the string attribute
-      this.selected = (event as CustomEvent).detail.getAttribute('link');
+      this.selected = (event as CustomEvent).detail.element.getAttribute('link');
     } else {
       // otherwise use the generated index
-      this.selectedIndex = (event as CustomEvent).detail.index;
+      this.selectedIndex = (event as CustomEvent).detail.element.index;
     }
 
     this.selectTab();
