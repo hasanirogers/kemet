@@ -57,7 +57,7 @@ export enum EnumEffects {
  */
 
 @customElement('kemet-dialog')
-export default class KemetDialog extends LitElement {
+export default class Dialog extends LitElement {
   static styles = [unsafeCSS(styles), unsafeCSS(effects)];
 
   @property({ type: Boolean, reflect: true })
@@ -197,6 +197,6 @@ export default class KemetDialog extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-dialog': KemetDialog
+    'kemet-dialog': Dialog
   }
 }

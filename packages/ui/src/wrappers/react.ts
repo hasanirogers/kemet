@@ -9,19 +9,9 @@ import Avatar from '../elements/avatar';
 import Avatars from '../elements/avatars';
 import Badge from '../elements/badge';
 import Card from '../elements/card';
-import Carousel from '../elements/carousel';
-import CarouselCurrent from '../elements/carousel-current';
-import CarouselFirst from '../elements/carousel-first';
-import CarouselLast from '../elements/carousel-last';
-import CarouselNext from '../elements/carousel-next';
-import CarouselPrev from '../elements/carousel-prev';
-import CarouselLink from '../elements/carousel-link';
-import CarouselSlide from '../elements/carousel-slide';
-import CarouselTotal from '../elements/carousel-total';
 import Checkbox from '../elements/checkbox';
 import Count from '../elements/count';
 import Combo, { InterfaceKemetSelectionEvent as InterfaceSelectionDetails } from '../elements/combo';
-import Draggable from '../elements/draggable';
 import Drawer from '../elements/drawer';
 import Fab from '../elements/fab';
 import Field from '../elements/field';
@@ -29,37 +19,29 @@ import Flipcard from '../elements/flipcard';
 import FlipcardTrigger from '../elements/flipcard-trigger';
 import Icon from '../elements/icon';
 import Input from '../elements/input';
-import Modal from '../elements/dialog';
-import ModalClose from '../elements/modal-close';
-import MultiInput from '../elements/input-multi';
-import Password, { InterfacePasswordStatusChangeDetails } from '../elements/password';
-import Popper from '../elements/popper';
-import PopperClose from '../elements/popper-close';
+import Dialog from '../elements/dialog';
+import DialogClose from '../elements/dialog-close';
+import InputCombo from '../elements/input-combo';
+import Password, { InterfacePasswordStrengthChangeDetails } from '../elements/password';
 import Radio from '../elements/radio';
 import Radios from '../elements/radios';
 import Rotator from '../elements/rotator';
-import ScrollNav from '../elements/scroll-nav';
-import ScrollSnap from '../elements/scroll-snap';
-import ScrollSnapPaginator from '../elements/scroll-snap-paginator';
-import ScrollSnapSlide from '../elements/scroll-snap-slide';
 import Select from '../elements/select';
 import SelectOption from '../elements/select-option';
 import Sortable, { InterfaceSortableDragDetails } from '../elements/sortable';
 import SortableItem from '../elements/sortable-item';
-import Svg from '../elements/svg';
-import Svgs from '../elements/svgs';
 import Tab from '../elements/tab';
 import TabPanel from '../elements/tab-panel';
 import Tabs, { InterfaceTabsDetails } from '../elements/tabs';
 import Toggle from '../elements/toggle';
 import Timer from '../elements/timer';
 import TimerDisplay from '../elements/timer-display';
-import Tooltip from '../elements/tooltip';
 import Tracker from '../elements/tracker';
 import TrackerStep from '../elements/tracker-step';
-import Upload, { InterfaceUploadChangeDetails } from '../elements/upload';
-import UploadFile from '../elements/upload-file';
+import InputFiles, { InterfaceUploadChangeDetails } from '../elements/input-files';
+import InputFile from '../elements/input-file';
 import { InterfaceInputDetails } from '../utilities/constants';
+import Typewriter from '../elements/typewriter';
 
 
 export const KemetAccordion = createComponent({
@@ -118,79 +100,6 @@ export const KemetCard = createComponent({
   react: React,
 });
 
-export const KemetCarousel = createComponent({
-  tagName: 'kemet-carousel',
-  elementClass: Carousel,
-  react: React,
-  events: {
-    onChangeStart: 'kemet-change-start' as EventName<CustomEvent<Carousel>>,
-    onChangeFinished: 'kemet-change-finished' as EventName<CustomEvent<Carousel>>,
-  },
-});
-
-export const KemetCarouselCurrent = createComponent({
-  tagName: 'kemet-carousel-current',
-  elementClass: CarouselCurrent,
-  react: React,
-});
-
-export const KemetCarouselFirst = createComponent({
-  tagName: 'kemet-carousel-first',
-  elementClass: CarouselFirst,
-  react: React,
-  events: {
-    onActivated: 'kemet-first-activated' as EventName<CustomEvent<CarouselFirst>>,
-  },
-});
-
-export const KemetCarouselLast = createComponent({
-  tagName: 'kemet-carousel-last',
-  elementClass: CarouselLast,
-  react: React,
-  events: {
-    onActivated: 'kemet-last-activated' as EventName<CustomEvent<CarouselLast>>,
-  },
-});
-
-export const KemetCarouselNext = createComponent({
-  tagName: 'kemet-carousel-next',
-  elementClass: CarouselNext,
-  react: React,
-  events: {
-    onActivated: 'kemet-next-activated' as EventName<CustomEvent<CarouselNext>>,
-  },
-});
-
-export const KemetCarouselPrev = createComponent({
-  tagName: 'kemet-carousel-prev',
-  elementClass: CarouselPrev,
-  react: React,
-  events: {
-    onActivated: 'kemet-prev-activated' as EventName<CustomEvent<CarouselPrev>>,
-  },
-});
-
-export const KemetCarouselLink = createComponent({
-  tagName: 'kemet-carousel-link',
-  elementClass: CarouselLink,
-  react: React,
-  events: {
-    onActivated: 'kemet-link-activated' as EventName<CustomEvent<CarouselLink>>,
-  },
-});
-
-export const KemetCarouselSlide = createComponent({
-  tagName: 'kemet-carousel-slide',
-  elementClass: CarouselSlide,
-  react: React,
-});
-
-export const KemetCarouselTotal = createComponent({
-  tagName: 'kemet-carousel-total',
-  elementClass: CarouselTotal,
-  react: React,
-});
-
 export const KemetCheckbox = createComponent({
   tagName: 'kemet-checkbox',
   elementClass: Checkbox,
@@ -217,16 +126,6 @@ export const KemetCount = createComponent({
   react: React,
   events: {
     onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfaceInputDetails>>,
-  }
-});
-
-export const KemetDraggable = createComponent({
-  tagName: 'kemet-draggable',
-  elementClass: Draggable,
-  react: React,
-  events: {
-    onStart: 'kemet-start' as EventName<CustomEvent<Draggable>>,
-    onStop: 'kemet-stop' as EventName<CustomEvent<Draggable>>,
   }
 });
 
@@ -267,7 +166,7 @@ export const KemetFlipcard = createComponent({
   react: React,
 });
 
-export const KemetIconBootstrap = createComponent({
+export const KemetIcon = createComponent({
   tagName: 'kemet-icon',
   elementClass: Icon,
   react: React,
@@ -285,37 +184,37 @@ export const KemetInput = createComponent({
   }
 });
 
-export const KemetModal = createComponent({
-  tagName: 'kemet-modal',
-  elementClass: Modal,
+export const KemetDialog = createComponent({
+  tagName: 'kemet-dialog',
+  elementClass: Dialog,
   react: React,
   events: {
-    onOpened: 'kemet-opened' as EventName<CustomEvent<Modal>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<Modal>>,
+    onOpened: 'kemet-opened' as EventName<CustomEvent<Dialog>>,
+    onClosed: 'kemet-closed' as EventName<CustomEvent<Dialog>>,
   }
 });
 
-export const KemetModalClose = createComponent({
-  tagName: 'kemet-modal-close',
-  elementClass: ModalClose,
+export const KemetDialogClose = createComponent({
+  tagName: 'kemet-dialog-close',
+  elementClass: DialogClose,
   react: React,
   events: {
-    onClosedPressed: 'kemet-closed-pressed' as EventName<CustomEvent<ModalClose>>,
+    onClosedPressed: 'kemet-closed-pressed' as EventName<CustomEvent<DialogClose>>,
   }
 });
 
-export const KemetMultiInput = createComponent({
-  tagName: 'kemet-multi-input',
-  elementClass: MultiInput,
+export const KemetInputCombo = createComponent({
+  tagName: 'kemet-input-combo',
+  elementClass: InputCombo,
   react: React,
   events: {
-    onInput: 'kemet-input' as EventName<CustomEvent<MultiInput>>,
-    onFocus: 'kemet-focus' as EventName<CustomEvent<MultiInput>>
+    onInput: 'kemet-input' as EventName<CustomEvent<InputCombo>>,
+    onFocus: 'kemet-focus' as EventName<CustomEvent<InputCombo>>
   }
 });
 
-export const KemetOption = createComponent({
-  tagName: 'kemet-option',
+export const KemetSelectOption = createComponent({
+  tagName: 'kemet-select-option',
   elementClass: SelectOption,
   react: React,
 });
@@ -325,26 +224,7 @@ export const KemetPassword = createComponent({
   elementClass: Password,
   react: React,
   events: {
-    onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfacePasswordStatusChangeDetails>>,
-  }
-});
-
-export const KemetPopper = createComponent({
-  tagName: 'kemet-popper',
-  elementClass: Popper,
-  react: React,
-  events: {
-    onOpened: 'kemet-opened' as EventName<CustomEvent<Popper>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<Popper>>,
-  }
-});
-
-export const KemetPopperClose = createComponent({
-  tagName: 'kemet-popper-close',
-  elementClass: PopperClose,
-  react: React,
-  events: {
-    onClosedPressed: 'kemet-closed-pressed' as EventName<CustomEvent<PopperClose>>,
+    onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfacePasswordStrengthChangeDetails>>,
   }
 });
 
@@ -373,36 +253,6 @@ export const KemetRotator = createComponent({
   react: React,
 });
 
-export const KemetScrollNav = createComponent({
-  tagName: 'kemet-scroll-nav',
-  elementClass: ScrollNav,
-  react: React,
-});
-
-export const KemetScrollSnap = createComponent({
-  tagName: "kemet-scroll-snap",
-  elementClass: ScrollSnap,
-  react: React,
-  events: {
-    onMakeSlides: 'kemet-make-slides' as EventName<CustomEvent>,
-  }
-});
-
-export const KemetScrollSnapSlide = createComponent({
-  tagName: "kemet-scroll-snap-slide",
-  elementClass: ScrollSnapSlide,
-  react: React,
-});
-
-export const KemetScrollSnapPaginator = createComponent({
-  tagName: "kemet-scroll-snap-paginator",
-  elementClass: ScrollSnapPaginator,
-  react: React,
-  events: {
-    onFocus: 'kemet-focus' as EventName<CustomEvent<number>>,
-  }
-});
-
 export const KemetSelect = createComponent({
   tagName: 'kemet-select',
   elementClass: Select,
@@ -429,18 +279,6 @@ export const KemetSortable = createComponent({
 export const KemetSortableItem = createComponent({
   tagName: 'kemet-sortable-item',
   elementClass: SortableItem,
-  react: React,
-});
-
-export const KemetSvg = createComponent({
-  tagName: 'kemet-svg',
-  elementClass: Svg,
-  react: React,
-});
-
-export const KemetSvgs = createComponent({
-  tagName: 'kemet-svgs',
-  elementClass: Svgs,
   react: React,
 });
 
@@ -495,12 +333,6 @@ export const KemetTimerDisplay = createComponent({
   react: React,
 });
 
-export const KemetTooltip = createComponent({
-  tagName: 'kemet-tooltip',
-  elementClass: Tooltip,
-  react: React,
-});
-
 export const KemetTracker = createComponent({
   tagName: 'kemet-tracker',
   elementClass: Tracker,
@@ -513,18 +345,24 @@ export const KemetTrackerStep = createComponent({
   react: React,
 });
 
-export const KemetUpload = createComponent({
-  tagName: 'kemet-upload',
-  elementClass: Upload,
+export const KemetInputFiles = createComponent({
+  tagName: 'kemet-input-files',
+  elementClass: InputFiles,
   react: React,
   events: {
     onChange: 'kemet-change' as EventName<CustomEvent<InterfaceUploadChangeDetails>>,
   }
 });
 
-export const KemetUploadFile = createComponent({
-  tagName: 'kemet-upload-file',
-  elementClass: UploadFile,
+export const KemetInputFile = createComponent({
+  tagName: 'kemet-input-file',
+  elementClass: InputFile,
+  react: React,
+});
+
+export const KemetTypewriter = createComponent({
+  tagName: 'kemet-typewriter',
+  elementClass: Typewriter,
   react: React,
 });
 
@@ -536,18 +374,9 @@ export type KemetAvatarsClass = Avatars;
 export type KemetBadgeClass = Badge;
 export type KemetButtonClass = Button;
 export type KemetCardClass = Card;
-export type KemetCarouselClass = Carousel;
-export type KemetCarouselCurrentClass = CarouselCurrent;
-export type KemetCarouselFirstClass = CarouselFirst;
-export type KemetCarouselLastClass = CarouselLast;
-export type KemetCarouselNextClass = CarouselNext;
-export type KemetCarouselPrevClass = CarouselPrev;
-export type KemetCarouselSlideClass = CarouselSlide;
-export type KemetCarouselTotalClass = CarouselTotal;
 export type KemetCheckboxClass = Checkbox;
 export type KemetComboClass = Combo;
 export type KemetCountClass = Count;
-export type KemetDraggableClass = Draggable;
 export type KemetDrawerClass = Drawer;
 export type KemetFabClass = Fab;
 export type KemetFieldClass = Field;
@@ -555,41 +384,32 @@ export type KemetFlipcardClass = Flipcard;
 export type KemetFlipcardTriggerClass = FlipcardTrigger;
 export type KemetIcon = Icon;
 export type KemetInputClass = Input;
-export type KemetModalClass = Modal;
-export type KemetModalCloseClass = ModalClose;
-export type KemetMultiInputClass = MultiInput;
+export type KemetModalClass = Dialog;
+export type KemetModalCloseClass = DialogClose;
+export type KemetMultiInputClass = InputCombo;
 export type KemetOptionClass = SelectOption;
 export type KemetPasswordClass = Password;
-export type KemetPopperClass = Popper;
-export type KemetPopperCloseClass = PopperClose;
 export type KemetRadioClass = Radio;
 export type KemetRadiosClass = Radios;
 export type KemetRotatorClass = Rotator;
-export type KemetScrollNavClass = ScrollNav;
-export type KemetScrollSnapClass = ScrollSnap;
-export type KemetScrollSnapSlideClass = ScrollSnapSlide;
-export type KemetScrollSnapPaginatorClass = ScrollSnapPaginator;
 export type KemetSelectClass = Select;
 export type KemetSortableClass = Sortable;
 export type KemetSortableItemClass = SortableItem;
-export type KemetSvgClass = Svg;
-export type KemetSvgsClass = Svgs;
 export type KemetTabClass = Tab;
 export type KemetTabPanelClass = TabPanel;
 export type KemetTabsClass = Tabs;
 export type KemetToggleClass = Toggle;
 export type KemetTimerClass = Timer;
 export type KemetTimerDisplayClass = TimerDisplay;
-export type KemetTooltipClass = Tooltip;
 export type KemetTrackerClass = Tracker;
 export type KemetTrackerStepClass = TrackerStep;
-export type KemetUploadClass = Upload;
-export type KemetUploadFileClass = UploadFile;
-
+export type KemetUploadClass = InputFiles;
+export type KemetUploadFileClass = InputFile;
+export type KemetTypewriterClass = Typewriter;
 
 export type KemetEventDetailsSelection = InterfaceSelectionDetails;
 export type KemetEventDetailsStatusChange = InterfaceInputDetails;
-export type KemetEventDetailsPasswordStatusChange = InterfacePasswordStatusChangeDetails;
+export type KemetEventDetailsPasswordStatusChange = InterfacePasswordStrengthChangeDetails;
 export type KemetEventDetailsSortableDrag = InterfaceSortableDragDetails;
 export type KemetEventDetailsTabs = InterfaceTabsDetails;
 export type KemetEventDetailsUploadChange = InterfaceUploadChangeDetails;

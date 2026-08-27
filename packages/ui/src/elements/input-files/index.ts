@@ -55,7 +55,7 @@ const preventDefaults = (event: Event) => {
  */
 
 @customElement('kemet-input-files')
-export default class KemetInputFiles extends LitElement {
+export default class InputFiles extends LitElement {
   static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
@@ -180,6 +180,6 @@ export default class KemetInputFiles extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-input-files': KemetInputFiles
+    'kemet-input-files': InputFiles
   }
 }

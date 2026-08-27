@@ -20,7 +20,7 @@ import { emitEvent } from '../../utilities/events';
  */
 
 @customElement('kemet-dialog-close')
-export default class KemetDialogClose extends LitElement {
+export default class DialogClose extends LitElement {
   static styles = [
     css`
       :host {
@@ -64,6 +64,6 @@ export default class KemetDialogClose extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-dialog-close': KemetDialogClose
+    'kemet-dialog-close': DialogClose
   }
 }

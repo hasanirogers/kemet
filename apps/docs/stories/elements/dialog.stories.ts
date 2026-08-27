@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js'
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
-import KemetDialog, { EnumEffects } from '../../../../packages/ui/src/elements/dialog';
+import Dialog, { EnumEffects } from '../../../../packages/ui/src/elements/dialog';
 import { EnumRoundedSizes, roundedSizes } from '../../../../packages/ui/src/utilities/constants';
 
 import '../../../../packages/ui/src/elements/dialog';
@@ -34,7 +34,7 @@ type Story = StoryObj;
 
 const Template = (args: Args) => {
   const openDialog = () => {
-    const dialog = document.querySelector('kemet-dialog') as KemetDialog;
+    const dialog = document.querySelector('kemet-dialog') as Dialog;
     dialog.opened = true;
   };
 

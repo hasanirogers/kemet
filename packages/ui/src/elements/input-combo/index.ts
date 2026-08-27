@@ -55,7 +55,7 @@ export interface InterfaceSelections {
  */
 
 @customElement('kemet-input-combo')
-export default class KemetInputCombo extends LitElement {
+export default class InputCombo extends LitElement {
   static styles = [unsafeCSS(styles)];
 
   @property({ type: String })
@@ -265,6 +265,6 @@ export default class KemetInputCombo extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-input-combo': KemetInputCombo
+    'kemet-input-combo': InputCombo
   }
 }

@@ -49,7 +49,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
  */
 
 @customElement('kemet-input-file')
-export default class KemetInputFile extends LitElement {
+export default class InputFile extends LitElement {
   static styles = [unsafeCSS(styles), unsafeCSS(loaderStyles)];
 
   @property({ type: String })
@@ -134,6 +134,6 @@ export default class KemetInputFile extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'kemet-input-file': KemetInputFile
+    'kemet-input-file': InputFile
   }
 }
