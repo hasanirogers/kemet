@@ -5,12 +5,8 @@ import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import '../../../../packages/ui/src/elements/tracker';
 import '../../../../packages/ui/src/elements/tracker-step';
 
-import '../../../../packages/ui/src/elements/tabs';
-import '../../../../packages/ui/src/elements/tab';
-import '../../../../packages/ui/src/elements/tab-panel';
-
 const meta: Meta = {
-  title: 'Feedback & Status / Tracker',
+  title: 'Elements / Tracker',
   component: 'kemet-tracker',
   render: args => Template(args),
   parameters: {

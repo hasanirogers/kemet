@@ -1,9 +1,9 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { stylesStep } from '../styles/elements/tracker';
-import './icon-bootstrap';
-import KemetTracker from './tracker';
-
+import { emitEvent } from '../../utilities/events';
+import HTMLKemetTrackerElement from '../tracker';
+import '../icon';
+import styles from './styles.css?inline';
 /**
  *
  * @since 1.2.0
@@ -19,6 +19,8 @@ import KemetTracker from './tracker';
  * @prop {boolean} mobile - Determines if a step should render as mobile
  * @prop {boolean} hideDotContent - Hides the label inside of a dot
  * @prop {number} completedSize - The icon size for the completed check mark
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @cssproperty --kemet-tracker-step-dot-font-size - The font size.
  * @cssproperty --kemet-tracker-step-dot-color - The text color.
@@ -41,11 +43,14 @@ import KemetTracker from './tracker';
  * @csspart line - A connector line from dot to dot.
  * @csspart completed-line - A completed connector line.
  *
+ * @fires kemet-tracker-step-mounted - Fired when the tracker step is mounted to the DOM
+ * @detail {HTMLElement} element - The tracker step element
+ *
  */
 
 @customElement('kemet-tracker-step')
 export default class KemetTrackerStep extends LitElement {
-  static styles = [stylesStep];
+  static styles = [unsafeCSS(styles)];
 
   @property({ type: Number })
   step!: number;
@@ -68,11 +73,27 @@ export default class KemetTrackerStep extends LitElement {
   @property({ type: Number })
   completedSize: number = 16;
 
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
+
+
   @state()
-  tracker!: KemetTracker;
+  tracker!: HTMLKemetTrackerElement;
 
   firstUpdated() {
-    this.tracker = this.closest('kemet-tracker') as KemetTracker;
+    this.tracker = this.closest('kemet-tracker') as HTMLKemetTrackerElement;
+    emitEvent(this, 'kemet-button-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
@@ -103,7 +124,7 @@ export default class KemetTrackerStep extends LitElement {
   makeDotContent() {
     if (this.completed && !this.mobile && !this.hideDotContent) {
       return html`
-        <kemet-icon-bootstrap icon="check2" size=${this.completedSize}></kemet-icon-bootstrap>
+        <kemet-icon name="check2" size=${this.completedSize}></kemet-icon>
       `;
     }
 

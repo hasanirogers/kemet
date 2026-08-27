@@ -1,0 +1,83 @@
+---
+title: Tracker
+description: A tracker component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>
+  `tracker` and `tracker-step` are designed to be used together.
+</Callout>
+
+<ElementDetails element="tracker">
+  <kemet-tracker>
+    <kemet-tracker-step completed>Step 1</kemet-tracker-step>
+    <kemet-tracker-step completed>Step 2</kemet-tracker-step>
+    <kemet-tracker-step current>Step 3</kemet-tracker-step>
+    <kemet-tracker-step>Step 4</kemet-tracker-step>
+    <kemet-tracker-step>Step 5</kemet-tracker-step>
+  </kemet-tracker>
+</ElementDetails>
+
+
+## Examples
+
+### Hide dot content
+
+You can use the `hide-dot-content` attribute to display only the dot.
+
+<CodePreview>
+  <kemet-tracker>
+  <kemet-tracker-step completed hide-dot-content>Step 1</kemet-tracker-step>
+    <kemet-tracker-step completed hide-dot-content>Step 2</kemet-tracker-step>
+    <kemet-tracker-step current hide-dot-content>Step 3</kemet-tracker-step>
+    <kemet-tracker-step hide-dot-content>Step 4</kemet-tracker-step>
+    <kemet-tracker-step hide-dot-content>Step 5</kemet-tracker-step>
+  </kemet-tracker>
+</CodePreview>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="tracker" display="attributes" />
+<br />
+
+### Slots
+
+<API element="tracker" display="slots" />
+<br />
+
+### Events
+
+<API element="tracker" display="events" />
+<br />
+
+### Methods
+
+<API element="tracker" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="tracker" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="tracker" display="parts" />
+<br />
+
+<DocsFooter />
+
