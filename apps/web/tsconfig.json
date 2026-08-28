@@ -1,5 +1,5 @@
 {
-  "extends": "../../packages/typescript-config/lit.json",
-  "include": [".astro/types.d.ts", "**/*"],
+  "extends": "../../packages/typescript-config/astro.json",
+  "include": ["**/*"],
   "exclude": ["dist"]
 }

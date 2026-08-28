@@ -17,5 +17,6 @@
     "apps/*",
     "packages/*",
     "integrations/*"
-  ]
+  ],
+  "packageManager": "npm@11.12.1"
 }
