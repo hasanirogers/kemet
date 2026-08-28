@@ -1,14 +1,14 @@
 {
-  "name": "@kemet/docs",
+  "name": "@kemet/storybook",
   "version": "1.0.0",
-  "description": "Docs for Kemet UI",
+  "description": "Storybook docs for Kemet UI",
   "scripts": {
     "build": "storybook build",
     "dev": "storybook dev -p 6006"
   },
   "author": {
     "name": "Hasani Rogers",
-    "email": "hasani@deificarts.com"
+    "email": "contact@deificarts.com"
   },
   "dependencies": {
     "kemet-ui": "*"

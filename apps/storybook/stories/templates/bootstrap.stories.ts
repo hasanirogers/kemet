@@ -10,7 +10,7 @@ import '../../../../packages/ui/src/elements/select-option';
 import '../../../../packages/ui/src/elements/radio';
 import '../../../../packages/ui/src/elements/radios';
 import '../../../../packages/ui/src/elements/badge';
-import '../../../../packages/ui/src/elements/icon-bootstrap';
+import '../../../../packages/ui/src/elements/icon';
 
 const meta: Meta = {
   title: 'Templates / Bootstrap',
@@ -19,7 +19,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const handleFormSubmit = (event) => {
+const handleFormSubmit = (event: { preventDefault: () => void; srcElement: any; }) => {
   event.preventDefault();
   const form = event.srcElement;
   const formData = new FormData(form) as any;
@@ -37,12 +37,12 @@ const CheckoutTemplate = () => html`
   </style>
   <main kemet-margin="auto" kemet-padding="lg">
     <header kemet-type-align="center">
-      <kemet-icon-bootstrap icon="cart3" size="128" kemet-color="white" kemet-border-radius="lg" kemet-background-color="primary" kemet-padding="lg"></kemet-icon-bootstrap>
+      <kemet-icon name="cart3" size="128" kemet-color="white" kemet-border-radius="lg" kemet-background-color="primary" kemet-padding="lg"></kemet-icon>
       <h1 kemet-margin="2xl">Checkout Form</h1>
       <p kemet-type-size="lg" kemet-padding-left="3xl" kemet-padding-right="3xl">This form is a recreation of Bootstrap's Checkout example. It's been recreated using Kemet UI Core API styles and components. It serves as an example of doing validation with web components using Kemet UI.</p>
     </header>
     <section kemet-layout="flexrow" kemet-autostack kemet-gutters="4xl" kemet-margin-top="2xl">
-      <form novalidate kemet-margin-top="tiny:2xl medium:none" @submit=${event => handleFormSubmit(event)}>
+      <form novalidate kemet-margin-top="tiny:2xl medium:none" @submit=${(event: { preventDefault: () => void; srcElement: any; }) => handleFormSubmit(event)}>
         <h2 kemet-margin="none">Billing address</h2>
         <div kemet-layout="flexrow" kemet-gutters kemet-margin-top="2xl">
           <kemet-field slug="first-name" label="First Name*" message="First name is required.">
@@ -54,22 +54,22 @@ const CheckoutTemplate = () => html`
         </div>
         <kemet-field slug="username" label="Username*" message="Username is required." kemet-margin-top="lg">
           <kemet-input required slot="input" name="username" rounded>
-            <kemet-icon-bootstrap icon="person-fill" slot="left"></kemet-icon-bootstrap>
+            <kemet-icon name="person-fill" slot="left"></kemet-icon>
           </kemet-input>
         </kemet-field>
         <kemet-field slug="email" label="Email*" message="Invalid email." kemet-margin-top="lg">
           <kemet-input required slot="input" type="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$" rounded>
-            <kemet-icon-bootstrap icon="envelope-fill" slot="left"></kemet-icon-bootstrap>
+            <kemet-icon name="envelope-fill" slot="left"></kemet-icon>
           </kemet-input>
         </kemet-field>
         <kemet-field slug="address" label="Address*" message="Address is required." kemet-margin-top="lg">
           <kemet-input required slot="input" name="address" rounded>
-            <kemet-icon-bootstrap icon="geo-alt-fill" slot="left"></kemet-icon-bootstrap>
+            <kemet-icon name="geo-alt-fill" slot="left"></kemet-icon>
           </kemet-input>
         </kemet-field>
         <kemet-field slug="address2" label="Address 2" kemet-margin-top="lg">
           <kemet-input slot="input" name="address2" rounded>
-            <kemet-icon-bootstrap icon="geo-alt-fill" slot="left"></kemet-icon-bootstrap>
+            <kemet-icon name="geo-alt-fill" slot="left"></kemet-icon>
           </kemet-input>
         </kemet-field>
         <div kemet-layout="flexrow" kemet-gutters kemet-margin-top="lg">
@@ -106,12 +106,12 @@ const CheckoutTemplate = () => html`
         <div kemet-layout="flexgrid" kemet-gutters kemet-margin-top="lg">
           <kemet-field slug="name-on-card" label="Name on card*" message="Name is required." kemet-breakpoint="tiny:100 medium:50">
             <kemet-input required slot="input" name="name-on-card" rounded>
-              <kemet-icon-bootstrap icon="person-fill" slot="left"></kemet-icon-bootstrap>
+              <kemet-icon name="person-fill" slot="left"></kemet-icon>
             </kemet-input>
           </kemet-field>
           <kemet-field slug="credit-card-number" label="Credit card number*" message="Credit card is required." kemet-breakpoint="tiny:100 medium:50">
             <kemet-input required slot="input" name="credit-card-number" rounded>
-              <kemet-icon-bootstrap icon="credit-card" slot="left"></kemet-icon-bootstrap>
+              <kemet-icon name="credit-card" slot="left"></kemet-icon>
             </kemet-input>
           </kemet-field>
           <kemet-field slug="expiration" label="Expiration*" message="Expiration is not valid." kemet-breakpoint="tiny:100 medium:25">
