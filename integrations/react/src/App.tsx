@@ -1,34 +1,35 @@
 import { useState } from 'react'
 import './App.css'
 
-import 'kemet-ui/elements/button.js'
-import 'kemet-ui/elements/drawer.js'
-import 'kemet-ui/elements/icon-bootstrap.js'
+import 'kemet-ui/button'
+import 'kemet-ui/drawer'
+import 'kemet-ui/icon'
 
 function App() {
   const [count, setCount] = useState(0)
   const [isDrawerOpened, setIsDrawerOpened] = useState(false)
 
   return (
-    <kemet-drawer 
+    <kemet-drawer
+      fill-viewport
       opened={isDrawerOpened}
-      onkemet-drawer-opened={() => setIsDrawerOpened(true)} 
+      onkemet-drawer-opened={() => setIsDrawerOpened(true)}
       onkemet-drawer-closed={() => setIsDrawerOpened(false)}
     >
-      <aside slot="navigation">
+      <aside slot="sidebar">
         <br />
         <button onClick={() => setIsDrawerOpened(false)}>
-          <kemet-icon-bootstrap icon="x-lg" size={24}></kemet-icon-bootstrap>
+          <kemet-icon name="x-lg" size={24}></kemet-icon>
         </button>
         <br /><br />
         <nav>[Your nav here]</nav>
       </aside>
-      <section slot="content">
+      <main slot="body">
         <button onClick={() => setIsDrawerOpened(true)}>
-          <kemet-icon-bootstrap icon="list" size={24}></kemet-icon-bootstrap>
+          <kemet-icon name="list" size={24}></kemet-icon>
         </button>
         <br /><br />
-        <div> 
+        <div>
           <svg  fill="currentColor" viewBox="0 0 512 512" preserveAspectRatio="none">
             <g id="anubis">
               <path d="M201 5.5c-1.5 1.8-.9 5.6 2.7 17.5 2.5 8.4 2.7 8.5 12 17.4 32.9 31.1 53.3 67.7 56.8 101.9l.7 6.8 6.6 3c3.6 1.6 6.7 2.8 6.9 2.6.5-.5-7-26.4-11-38.2-6-17.4-10.6-28.5-19.2-46-12.9-26.2-26.8-46.2-41.6-59.9-7.4-6.9-11.3-8.3-13.9-5.1z"></path>
@@ -46,10 +47,10 @@ function App() {
             count is {count}
           </kemet-button>
           <p>
-            Reactbox is a integration demo for using <a href="https://kemet.dev" target="_blank">Kemet Web Components</a> in React 19 and higher.
+            Reactbox is a integration demo for using <a href="https://kemet.dev" target="_blank">Kemet UI</a> in React 19 and higher.
           </p>
         </div>
-      </section>
+      </main>
     </kemet-drawer>
   )
 }
