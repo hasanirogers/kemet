@@ -3,7 +3,6 @@ import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '../../../../packages/ui/src/elements/loader';
-import '../../.storybook/elements/docs-icons';
 import { EnumVariants } from '../../../../packages/ui/src/elements/loader';
 
 

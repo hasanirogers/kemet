@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './style.scss'
-import 'kemet-ui/styles/kemet.base.css'
-import 'kemet-ui/elements/button.js'
-import 'kemet-ui/elements/drawer.js'
-import 'kemet-ui/elements/icon-bootstrap.js'
+
+import 'kemet-ui/styles/kemet.tokens.css'
+import 'kemet-ui/button'
+import 'kemet-ui/drawer'
+import 'kemet-ui/icon'
 
 createApp(App).mount('#app')

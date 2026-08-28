@@ -55,10 +55,20 @@ button:focus-visible {
   padding: 2em;
 }
 
+main {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  margin: auto;
+}
+
 #app {
-  max-width: 1280px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 

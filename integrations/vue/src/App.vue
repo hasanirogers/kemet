@@ -18,13 +18,13 @@
 </script>
 
 <template>
-  <kemet-drawer :opened="isDrawerOpened">
-    <aside slot="navigation">
+  <kemet-drawer :opened="isDrawerOpened" fill-viewport>
+    <aside slot="sidebar">
       <nav>[Your nav here]</nav>
     </aside>
-    <section slot="content">
+    <main slot="body">
       <button aria-label="toggle drawer" @click="toggleDrawer">
-        <kemet-icon-bootstrap icon="list" size="24"></kemet-icon-bootstrap>
+        <kemet-icon name="list" size="24"></kemet-icon>
       </button>
       <br /><br />
       <div>
@@ -45,7 +45,7 @@
         <kemet-button @click="increment">
           Count: {{count}}
         </kemet-button>
-      <p>Vue is an integration repo demonstrating how to use Web Components with Vue.</p>
-    </section>
+      <p>Vuebox is an integration repo demonstrating how to use Kemet UI with Vue.</p>
+      </main>
   </kemet-drawer>
 </template>

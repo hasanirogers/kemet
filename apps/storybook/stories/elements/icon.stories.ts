@@ -5,7 +5,6 @@ import { EnumLibrary } from '../../../../packages/ui/src/elements/icon';
 
 import '../../../../packages/ui/src/elements/icon';
 import '../../../../packages/ui/src/elements/button';
-import '../../.storybook/elements/docs-icons';
 
 
 const meta: Meta = {
