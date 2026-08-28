@@ -1,22 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 
-import 'kemet-ui/styles/kemet.base.css';
-import 'kemet-ui/elements/button.js';
-import 'kemet-ui/elements/drawer.js';
-import 'kemet-ui/elements/icon-bootstrap.js';
+import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/button';
+import 'kemet-ui/drawer';
+import 'kemet-ui/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   template: `
-    <kemet-drawer [opened]="isDrawerOpened">
-      <aside slot="navigation">
+    <kemet-drawer fill-viewport [opened]="isDrawerOpened">
+      <aside slot="sidebar">
         <nav>[Your nav here]</nav>
       </aside>
-      <section slot="content">
+      <section slot="body">
         <button aria-label="toggle drawer" (click)="toggleDrawer()">
-          <kemet-icon-bootstrap icon="list" size="24"></kemet-icon-bootstrap>
+          <kemet-icon name="list" size="24"></kemet-icon>
         </button>
         <br /><br />
         <div>
@@ -37,7 +37,7 @@ import 'kemet-ui/elements/icon-bootstrap.js';
         <kemet-button (click)="increment()">
           Count: {{count}}
         </kemet-button>
-        <p>Angularbox is an integration repo demonstrating how to use Web Components with Angular.</p>
+        <p>Angularbox is an integration repo demonstrating how to use Kemet UI with Angular.</p>
       </section>
     </kemet-drawer>
   `,
