@@ -1,31 +1,31 @@
 import { useState } from 'react'
-import { KemetButton, KemetDrawer, KemetIconBootstrap } from '../../../packages/ui/dist/wrappers/react'; 
-
-import 'kemet-ui/styles/kemet.base.scss';
+import { KemetButton, KemetDrawer, KemetIcon } from 'kemet-ui/react';
+import 'kemet-ui/styles/kemet.tokens.css';
 import './App.css'
+
 
 function App() {
   const [count, setCount] = useState(0)
   const [isDrawerOpened, setIsDrawerOpened] = useState(false)
 
   return (
-    <KemetDrawer opened={isDrawerOpened} onOpened={() => setIsDrawerOpened(true)} onClosed={() => setIsDrawerOpened(false)}>
-      <aside slot="navigation">
+    <KemetDrawer opened={isDrawerOpened} onOpened={() => setIsDrawerOpened(true)} onClosed={() => setIsDrawerOpened(false)} fillViewport={true} overlay={true} effect={"push"} side={"left"}>
+      <aside slot="sidebar">
         <br />
         <button onClick={() => setIsDrawerOpened(false)}>
-          <KemetIconBootstrap icon="x-lg" size={24}></KemetIconBootstrap>
+          <KemetIcon name="x-lg" size={24}></KemetIcon>
         </button>
         <br /><br />
         <nav>[Your nav here]</nav>
       </aside>
-      <section slot="content">
+      <main slot="body">
         <button onClick={() => setIsDrawerOpened(true)}>
-          <KemetIconBootstrap icon="list" size={24}></KemetIconBootstrap>
+          <KemetIcon name="list" size={24}></KemetIcon>
         </button>
         <br /><br />
         <div>
           <a href="https://kemet.dev" target="_blank">
-            <svg  fill="currentColor" viewBox="0 0 512 512" preserveAspectRatio="none">
+            <svg fill="currentColor" viewBox="0 0 512 512" preserveAspectRatio="none" style={{ maxWidth: '512px'}}>
               <g id="anubis">
                 <path d="M201 5.5c-1.5 1.8-.9 5.6 2.7 17.5 2.5 8.4 2.7 8.5 12 17.4 32.9 31.1 53.3 67.7 56.8 101.9l.7 6.8 6.6 3c3.6 1.6 6.7 2.8 6.9 2.6.5-.5-7-26.4-11-38.2-6-17.4-10.6-28.5-19.2-46-12.9-26.2-26.8-46.2-41.6-59.9-7.4-6.9-11.3-8.3-13.9-5.1z"></path>
                 <path d="M168.5 17c-.3.6 5.9 20.5 13.9 44.3 20.3 60.4 26.1 82 27.3 100.8.5 8.6.3 10.2-1.6 14-5 10.2-14.4 17.3-40.8 30.8-15.4 7.8-21.1 11.2-23.5 14.1-1.8 2.1-7.3 10.5-12.3 18.6-12.6 20.7-22.5 34.4-31.9 44.2-6.5 6.7-12.2 11.1-28.1 21.7-31.3 20.6-41.1 29.4-40.3 36.2.2 2.2 1.8 3.8 7.3 7.5C48.6 356.1 61 362 65 362c2 0 8.8-2.3 15.5-5.1 28.4-12.1 63.7-25 75.5-27.5 5.6-1.2 8.3-1.1 20 .2 15.1 1.8 27.1 1.4 34.2-1.1 5.3-1.9 11.8-7.6 14.5-12.9l1.8-3.4 6 8.9c3.3 4.8 6.4 8.7 6.9 8.6.5-.2 1.5-1.2 2.2-2.3 1.2-1.7.5-3.7-6-16.6-10.1-20-12.1-26.2-10.7-33 .7-2.9 3.4-9.4 6.1-14.3 11.1-20 16.2-33.1 23-59.7 9.8-38.7 10.5-56.5 2.9-81.6-6.8-22.5-29.7-55-60.9-86.3-15.5-15.5-25.4-22.3-27.5-18.9zm58 174c0 3-31.3 27.8-41.5 33-3 1.5-8.2 3.5-11.4 4.5-13.1 3.7-21.8 10.1-26.5 19.4-2.4 4.5-3.8 5.8-5.3 4.3-2.5-2.5 8.6-17 16.8-21.8 2.3-1.4 8.8-4 14.4-5.8 12.8-4.3 27.6-14.2 47.5-32 4-3.5 6-4.1 6-1.6zm-3.1 14.6c4.7 1.8-2 8-29.2 26.5-11.1 7.6-11.6 8.1-14.9 14.9-4.6 9.4-8.3 11.9-19 12.9-7 .6-8.5 1.1-13 4.4-5.6 4.1-6.5 4.4-8.3 2.2-1-1.2-.7-1.9 1.6-4 1.6-1.5 4.1-3.4 5.6-4.3 1.5-.9 3.3-3 4-4.6 3.2-7.8 13-14.8 25.3-18 6.4-1.7 14.1-6.5 34-21.5 6.6-5 12.1-9.1 12.2-9.1.1 0 .8.3 1.7.6z"></path>
@@ -43,10 +43,10 @@ function App() {
             count is {count}
           </KemetButton>
           <p>
-            Reactbox (Legacy) is an integration repo on using Web Components in React 18 and older. 
+            Reactbox (Legacy) is an integration repo on using Web Components in React 18 and older.
           </p>
         </div>
-      </section>
+      </main>
     </KemetDrawer>
   )
 }

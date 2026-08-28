@@ -5,10 +5,8 @@ export default defineConfig((options) => ({
     "src/elements/**/*.ts",
     "src/wrappers/**/*.(ts|tsx)"
   ],
-  format: ["cjs", "esm"],
-  dts: {
-    resolve: true,
-  },
+  format: ["esm"],
+  dts: true,
   sourcemap: true,
   target: 'es2020',
   external: [
@@ -17,7 +15,7 @@ export default defineConfig((options) => ({
     '@lit/react',
   ],
   // Split chunks to reduce memory pressure
-  splitting: true,
+  splitting: false,
   // Disable workers to prevent memory issues during DTS generation
   workers: false,
   ...options,

@@ -35,7 +35,7 @@ export default class DialogClose extends LitElement {
   ];
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

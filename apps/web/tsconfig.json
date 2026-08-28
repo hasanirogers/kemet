@@ -1,5 +1,12 @@
 {
   "extends": "../../packages/typescript-config/astro.json",
   "include": ["**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  }
 }

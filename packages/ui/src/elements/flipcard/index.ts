@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 import { EnumRoundedSizes } from '../../utilities/constants';
 
@@ -40,7 +40,7 @@ import { EnumRoundedSizes } from '../../utilities/constants';
 
 @customElement('kemet-flipcard')
 export default class KemetFlipcard extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String, reflect: true })
   axis: string = 'horizontal';
@@ -61,7 +61,7 @@ export default class KemetFlipcard extends LitElement {
   rounded?: EnumRoundedSizes;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

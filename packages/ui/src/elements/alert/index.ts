@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 import * as constants from '../../utilities/constants';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export enum EnumOverlayPositions {
   FIXED = 'fixed',
@@ -63,7 +63,7 @@ export enum EnumBorderAppearances {
 
 @customElement('kemet-alert')
 export default class KemetAlert extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Boolean, reflect: true })
   opened!: boolean;
@@ -93,7 +93,7 @@ export default class KemetAlert extends LitElement {
   filled!: boolean;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

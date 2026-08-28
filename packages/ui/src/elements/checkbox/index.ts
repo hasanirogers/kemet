@@ -5,7 +5,7 @@ import { live } from 'lit/directives/live.js';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
 import { EnumAppearances } from '../../utilities/constants';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 /**
  * @since 1.0.0
@@ -59,7 +59,7 @@ export default class KemetCheckbox extends LitElement {
   /** @internal */
   formSubmitController: FormSubmitController;
 
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   label: string = '';
@@ -98,7 +98,7 @@ export default class KemetCheckbox extends LitElement {
   message: string = '';
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

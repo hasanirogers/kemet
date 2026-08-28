@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 /**
  * @since 1.0.0
@@ -35,7 +35,7 @@ import styles from './styles.css?inline';
 
 @customElement('kemet-accordion-panel')
 export default class KemetAccordionPanel extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Boolean, reflect: true })
   opened: boolean | undefined = undefined;
@@ -53,7 +53,7 @@ export default class KemetAccordionPanel extends LitElement {
   dom: string = 'initializing';
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   /** @internal */
   @state()

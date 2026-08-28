@@ -2,7 +2,7 @@ import { css, unsafeCSS } from 'lit';
 
 const documentHeight = `${document.documentElement.scrollHeight}px`;
 
-export const stylesEffects = css`
+export default css`
   /* slide */
   :host([effect='slide']) [part=drawer] {
     visibility: visible;

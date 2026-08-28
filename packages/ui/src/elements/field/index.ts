@@ -4,7 +4,7 @@ import { EnumAppearances } from '../../utilities/constants';
 import HTMLKemetComboElement from '../combo';
 import HTMLKemetInputElement from '../input';
 import HTMLKemetTextareaElement from '../textarea';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 /**
@@ -37,7 +37,7 @@ import { emitEvent } from '../../utilities/events';
 
 @customElement('kemet-field')
 export default class HTMLKemetFieldElement extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug!: string;
@@ -70,7 +70,7 @@ export default class HTMLKemetFieldElement extends LitElement {
   successIcon: string = 'check-lg';
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

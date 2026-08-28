@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 import '../icon';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 /**
  * @since 1.0.0
@@ -29,7 +29,7 @@ import styles from './styles.css?inline';
 
 @customElement('kemet-tab')
 export default class KemetTab extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Number })
   index!: number;

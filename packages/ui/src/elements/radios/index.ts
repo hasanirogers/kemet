@@ -1,10 +1,10 @@
-import { html, LitElement, unsafeCSS } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
-import { EnumAxis, EnumAppearances, TypeAxis, TypeAppearance } from '../../utilities/constants';
+import { EnumAxis, EnumAppearances } from '../../utilities/constants';
 import type HTMLKemetRadioElement from '../radio';
-import styles from './styles.css?inline'
+import styles from './styles.css.ts'
 
 
 /**
@@ -38,7 +38,7 @@ import styles from './styles.css?inline'
 export default class KemetRadios extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   legend: string = '';
@@ -62,7 +62,7 @@ export default class KemetRadios extends LitElement {
   required!: boolean;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

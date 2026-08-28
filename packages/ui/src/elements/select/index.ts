@@ -6,7 +6,7 @@ import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
 import HTMLKemetFieldElement from '../field';
 import type HTMLKemetOptionElement from '../select-option';
 import '../icon';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 interface IOptions {
   label: string;
@@ -66,7 +66,7 @@ interface IOptions {
 export default class KemetSelect extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug: string = '';
@@ -105,7 +105,7 @@ export default class KemetSelect extends LitElement {
   rounded?: EnumRoundedSizes;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

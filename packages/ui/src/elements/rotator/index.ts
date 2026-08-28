@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export enum EnumEffects {
   Fade = 'fade',
@@ -32,7 +32,7 @@ export enum EnumEffects {
 
 @customElement('kemet-rotator')
 export default class KemetRotator extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Number, attribute: 'active-slide' })
   activeSlide: number = 0;
@@ -47,7 +47,7 @@ export default class KemetRotator extends LitElement {
   speed: number = 3;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

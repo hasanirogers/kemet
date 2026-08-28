@@ -3,7 +3,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { polyfill } from 'mobile-drag-drop';
 import { emitEvent } from '../../utilities/events';
 import type HTMLKemetSortableItemElement from '../sortable-item';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export interface InterfaceSortableDragDetails {
   event: DragEvent,
@@ -45,10 +45,10 @@ const getElementVerticalCenter = (element: HTMLElement) => {
 
 @customElement('kemet-sortable')
 export default class KemetSortable extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

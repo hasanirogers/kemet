@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 export enum EnumVariants {
@@ -36,7 +36,7 @@ export enum EnumVariants {
  */
 @customElement('kemet-loader')
 export class KemetLoader extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String, reflect: true })
   variant: EnumVariants = EnumVariants.NO_BORDER;

@@ -6,7 +6,7 @@ import { FormSubmitController } from '../../utilities/form-controller';
 import HTMLKemetFieldElement from '../field';
 import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 /**
  * @since 1.0.0
@@ -69,7 +69,7 @@ import styles from './styles.css?inline';
 export default class HTMLKemetTextareaElement extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug: string = 'textarea';
@@ -141,7 +141,7 @@ export default class HTMLKemetTextareaElement extends LitElement {
   validity!: ValidityState;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

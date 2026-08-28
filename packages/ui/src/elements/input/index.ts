@@ -7,7 +7,7 @@ import { emitEvent } from '../../utilities/events';
 import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
 import HTMLKemetFieldElement from '../field';
 import HTMLKemetCountElement from '../count';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export enum EnumInputTypes {
   Text = 'text',
@@ -138,7 +138,7 @@ export default class HTMLKemetInputElement extends LitElement {
   /** @internal */
   formSubmitController: FormSubmitController;
 
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug!: string;
@@ -231,7 +231,7 @@ export default class HTMLKemetInputElement extends LitElement {
   rounded?: EnumRoundedSizes;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

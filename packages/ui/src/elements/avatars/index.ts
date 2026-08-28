@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 /**
@@ -18,10 +18,10 @@ import { emitEvent } from '../../utilities/events';
 
 @customElement('kemet-avatars')
 export default class KemetAvatars extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

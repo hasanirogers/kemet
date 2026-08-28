@@ -65,6 +65,7 @@ export const Standard: Story = {};
 export const FillViewport: Story = {
   args: {
     fillViewport: true,
+    effect: EnumEffects.Push
   }
 };
 

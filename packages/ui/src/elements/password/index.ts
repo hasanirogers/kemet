@@ -6,7 +6,7 @@ import HTMLKemetFieldElement from '../field';
 import HTMLKemetInputElement from '../input';
 import HTMLKemetTextareaElement from '../textarea';
 import '../icon';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 interface InterfaceOptions {
   pattern: string;
@@ -46,7 +46,7 @@ export interface InterfacePasswordStrengthChangeDetails {
 
 @customElement('kemet-password')
 export default class KemetPassword extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Array })
   rules: InterfaceOptions[] = [

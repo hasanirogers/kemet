@@ -5,7 +5,7 @@ import { emitEvent } from '../../utilities/events';
 import { EnumKeyCodes, EnumAppearances, TypeRoundedSizes, TypeAppearance, EnumRoundedSizes } from '../../utilities/constants';
 import HTMLKemetFieldElement from '../field';
 import HTMLKemetComboElement from '../combo';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export interface InterfaceSelections {
   element: HTMLUListElement;
@@ -56,7 +56,7 @@ export interface InterfaceSelections {
 
 @customElement('kemet-input-combo')
 export default class InputCombo extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug: string = 'input';

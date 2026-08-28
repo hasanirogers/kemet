@@ -4,7 +4,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetInputFileElement from '../input-file';
 import '../icon';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 
 export interface InterfaceUploadChangeDetails {
@@ -56,7 +56,7 @@ const preventDefaults = (event: Event) => {
 
 @customElement('kemet-input-files')
 export default class InputFiles extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug: string = 'upload';

@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import type { TypeRoundedSizes, TypeAppearance } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export enum EnumVariants {
   Standard = 'standard',
@@ -72,7 +72,7 @@ export enum EnumSizes {
 
 @customElement('kemet-button')
 export default class KemetButton extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   href!: string;

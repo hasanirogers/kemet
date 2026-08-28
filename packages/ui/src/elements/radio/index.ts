@@ -1,10 +1,10 @@
-import { html, LitElement, unsafeCSS } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetRadiosElements from '../radios';
-import styles from './styles.css?inline'
+import styles from './styles.css.ts'
 
 /**
  * @since 1.0.0
@@ -46,7 +46,7 @@ import styles from './styles.css?inline'
 
 @customElement('kemet-radio')
 export default class KemetRadio extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   label: string = '';
@@ -70,7 +70,7 @@ export default class KemetRadio extends LitElement {
   filled: boolean = false;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

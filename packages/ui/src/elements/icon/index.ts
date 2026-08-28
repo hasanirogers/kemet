@@ -2,7 +2,7 @@ import { html, HTMLTemplateResult, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 const CACHEABLE_ERROR = Symbol();
 const RETRYABLE_ERROR = Symbol();
@@ -63,7 +63,7 @@ export enum EnumLibrary {
 
 @customElement('kemet-icon')
 export default class KemetIcon extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   name: string = 'house';
@@ -81,7 +81,7 @@ export default class KemetIcon extends LitElement {
   version?: string;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

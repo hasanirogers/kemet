@@ -1,7 +1,7 @@
 import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { EnumFormats } from '../timer';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 /**
@@ -21,7 +21,7 @@ import { emitEvent } from '../../utilities/events';
 
 @customElement('kemet-timer-display')
 export default class KemetTimerDisplay extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   format: EnumFormats = EnumFormats.Seconds;

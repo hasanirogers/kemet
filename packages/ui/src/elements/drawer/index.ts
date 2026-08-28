@@ -1,9 +1,10 @@
-import { LitElement, html, unsafeCSS } from 'lit';
+import { LitElement, css, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
-import { EnumDirections, TypeDirection } from '../../utilities/constants';
-import { stylesEffects } from './styles';
-import styles from './styles.css?inline';
+import { EnumDirections } from '../../utilities/constants';
+import effectsStyles from './effects';
+import styles from './styles.css.ts';
+
 
 export enum EnumEffects {
   Slide = 'slide',
@@ -11,6 +12,11 @@ export enum EnumEffects {
   Push = 'push',
   Scale = 'scale'
 }
+
+const effects = Object.values(EnumEffects) as string[];
+
+const directions = Object.values(EnumDirections) as string[];
+
 
 /**
  * @since 1.0.0
@@ -52,16 +58,16 @@ export enum EnumEffects {
 
 @customElement('kemet-drawer')
 export default class KemetDrawer extends LitElement {
-  static styles = [unsafeCSS(styles), stylesEffects];
+  static styles = [styles, effectsStyles];
 
   @property({ type: Boolean, reflect: true })
   opened: boolean = false;
 
   @property({ type: String, reflect: true })
-  effect: EnumEffects = EnumEffects.Slide;
+  effect: typeof effects[number] = EnumEffects.Slide;
 
   @property({ type: String, reflect: true })
-  side: EnumDirections = EnumDirections.Left;
+  side: typeof directions[number] = EnumDirections.Left;
 
   @property({ type: Boolean, reflect: true })
   overlay: boolean = false;
@@ -70,7 +76,7 @@ export default class KemetDrawer extends LitElement {
   fillViewport: boolean = false;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

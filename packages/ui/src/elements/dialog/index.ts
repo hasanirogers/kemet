@@ -1,9 +1,9 @@
-import { html, LitElement, unsafeCSS } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 import { EnumRoundedSizes } from '../../utilities/constants';
-import styles from './styles.css?inline';
-import effects from './effects.css?inline';
+import styles from './styles.css.ts';
+import stylesEffects from './effects.css.ts';
 
 export enum EnumEffects {
   FadeinScaleup = 'fadein-scaleup',
@@ -58,7 +58,7 @@ export enum EnumEffects {
 
 @customElement('kemet-dialog')
 export default class Dialog extends LitElement {
-  static styles = [unsafeCSS(styles), unsafeCSS(effects)];
+  static styles = [styles, stylesEffects];
 
   @property({ type: Boolean, reflect: true })
   opened: boolean = false;
@@ -79,7 +79,7 @@ export default class Dialog extends LitElement {
   rounded?: EnumRoundedSizes;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

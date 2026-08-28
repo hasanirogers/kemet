@@ -6,7 +6,7 @@ import { EnumDirections } from '../../utilities/constants';
 import type KemetTab from '../tab';
 import type KemetTabPanel from '../tab-panel';
 import '../icon';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 
 interface InterfaceLink {
@@ -86,7 +86,7 @@ export enum EnumTabsAlign {
 
 @customElement('kemet-tabs')
 export default class KemetTabs extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String, reflect: true })
   selected?: string;

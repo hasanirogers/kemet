@@ -7,18 +7,19 @@
     "analyze": "src/elements/*.ts",
     "pack": "src/**/*.*"
   },
+  "type": "module",
   "scripts": {
     "analyze": "custom-elements-manifest analyze --litelement --globs \"src/elements/**/*\"",
-    "build": "rimraf dist && npm run build:css && npm run build:scss && npm run build:ts",
-    "build:css": "sass --load-path=node_modules src/styles/kemet.tokens.scss:dist/styles/kemet.tokens.css src/styles/kemet.core.scss:dist/styles/kemet.core.css src/styles/kemet.base.scss:dist/styles/kemet.base.css && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
-    "build:scss": "cp -R src/styles dist",
+    "build": "rimraf dist && npm run build:css && npm run build:ts",
+    "build:css": "sass --load-path=node_modules src/styles/kemet.tokens.scss:dist/styles/kemet.tokens.css && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
+    "build:litcss": "node scripts/build-litcss.js",
     "build:ts": "node --max-old-space-size=8192 node_modules/.bin/tsup",
     "dev": "npm-watch",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-pattern .gitignore",
     "format:stylelint": "npx stylelint --fix 'src/styles/**/*.scss' -c stylelint.config.mjs",
     "lint:eslint": "eslint --ext .js,.html . --ignore-pattern .gitignore",
     "lint:stylelint": "npx stylelint 'src/styles/**/*.scss' -c stylelint.config.mjs",
-    "pack": "npm pack --pack-destination ../published",
+    "pack": "npm run build && npm pack --pack-destination ../published",
     "prepublish": "rimraf dist && npm run build",
     "test": "vitest --config=vitest.browser.config.mts",
     "preversion": "npm run build"
@@ -53,7 +54,7 @@
   "dependencies": {
     "@lit/react": "^1.0.8",
     "autoprefixer": "^10.5.4",
-    "kemet-tokens": "file:../published/kemet-tokens-1.0.0.tgz",
+    "kemet-tokens": "*",
     "lit": "^3.3.3",
     "mobile-drag-drop": "2.2.0",
     "typewriter-effect": "^2.22.0"

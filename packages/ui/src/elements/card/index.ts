@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 import { EnumRoundedSizes } from '../../utilities/constants';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export enum EnumElevation {
   Level1 = 'level1',
@@ -59,7 +59,7 @@ export enum EnumElevation {
 
 @customElement('kemet-card')
 export default class KemetCard extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Boolean, reflect: true })
   center: boolean = false;
@@ -77,7 +77,7 @@ export default class KemetCard extends LitElement {
   elevation!: string;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

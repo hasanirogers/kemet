@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { EnumRoundedSizes, EnumAppearances } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 
 /**
@@ -31,7 +31,7 @@ import styles from './styles.css?inline';
 
 @customElement('kemet-badge')
 export default class KemetBadge extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ reflect: true })
   appearance!: EnumAppearances;
@@ -46,7 +46,7 @@ export default class KemetBadge extends LitElement {
   outlined: boolean = false;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

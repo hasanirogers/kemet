@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 import type HTMLKemetFieldElement from '../field';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 export interface InterfaceKemetSelectionEvent {
   element: KemetCombo;
@@ -41,7 +41,7 @@ export interface InterfaceKemetSelectionEvent {
 
 @customElement('kemet-combo')
 export default class KemetCombo extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   slug?: string;

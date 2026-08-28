@@ -3,7 +3,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetTrackerElement from '../tracker';
 import '../icon';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 /**
  *
  * @since 1.2.0
@@ -50,7 +50,7 @@ import styles from './styles.css?inline';
 
 @customElement('kemet-tracker-step')
 export default class KemetTrackerStep extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Number })
   step!: number;

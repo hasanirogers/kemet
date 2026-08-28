@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { type TypeRoundedSizes } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 
 /**
@@ -31,7 +31,7 @@ import styles from './styles.css?inline';
 
 @customElement('kemet-avatar')
 export default class KemetAvatar extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   size!: string;
@@ -49,7 +49,7 @@ export default class KemetAvatar extends LitElement {
   rounded!: TypeRoundedSizes;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

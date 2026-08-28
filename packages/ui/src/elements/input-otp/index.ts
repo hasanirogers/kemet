@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, queryAll, state } from 'lit/decorators.js';
 import { EnumKeyCodes } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 
 /**
@@ -34,7 +34,7 @@ import styles from './styles.css?inline';
 
 @customElement('kemet-input-otp')
 export default class KemetInputOtp extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Number })
   digits: number = 6;
@@ -46,7 +46,7 @@ export default class KemetInputOtp extends LitElement {
   pattern!: string;
 
   @property({ type: String, reflect: true })
-  polarity: 'light' | 'dark' = 'light';
+  polarity?: 'light' | 'dark';
 
   @property({ type: String, reflect: true })
   dom: string = 'initializing';

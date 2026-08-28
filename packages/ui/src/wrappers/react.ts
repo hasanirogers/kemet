@@ -55,8 +55,8 @@ export const KemetAccordionPanel = createComponent({
   elementClass: AccordionPanel,
   react: React,
   events: {
-    onOpened: 'kemet-opened' as EventName<CustomEvent<AccordionPanel>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<AccordionPanel>>,
+    onOpened: 'kemet-accordion-panel-opened' as EventName<CustomEvent<AccordionPanel>>,
+    onClosed: 'kemet-accordion-panel-closed' as EventName<CustomEvent<AccordionPanel>>,
   },
 });
 
@@ -65,8 +65,8 @@ export const KemetAlert = createComponent({
   elementClass: Alert,
   react: React,
   events: {
-    onOpened: 'kemet-opened' as EventName<CustomEvent<Alert>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<Alert>>,
+    onOpened: 'kemet-alert-opened' as EventName<CustomEvent<Alert>>,
+    onClosed: 'kemet-alert-closed' as EventName<CustomEvent<Alert>>,
   },
 });
 
@@ -105,9 +105,9 @@ export const KemetCheckbox = createComponent({
   elementClass: Checkbox,
   react: React,
   events: {
-    onChange: 'kemet-change' as EventName<CustomEvent<Checkbox>>,
-    onFocus: 'kemet-focus' as EventName<CustomEvent<boolean>>,
-    onBlur: 'kemet-blur' as EventName<CustomEvent<boolean>>,
+    onChange: 'kemet-checkbox-change' as EventName<CustomEvent<Checkbox>>,
+    onFocus: 'kemet-checkbox-focus' as EventName<CustomEvent<boolean>>,
+    onBlur: 'kemet-checkbox-blur' as EventName<CustomEvent<boolean>>,
   },
 });
 
@@ -125,7 +125,7 @@ export const KemetCount = createComponent({
   elementClass: Count,
   react: React,
   events: {
-    onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfaceInputDetails>>,
+    onAppearanceChange: 'kemet-count-appearance-change' as EventName<CustomEvent<InterfaceInputDetails>>,
   }
 });
 
@@ -134,8 +134,8 @@ export const KemetDrawer = createComponent({
   elementClass: Drawer,
   react: React,
   events: {
-    onOpened: 'kemet-opened' as EventName<CustomEvent<Drawer>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<Drawer>>,
+    onOpened: 'kemet-drawer-opened' as EventName<CustomEvent<Drawer>>,
+    onClosed: 'kemet-drawer-closed' as EventName<CustomEvent<Drawer>>,
   }
 });
 
@@ -156,7 +156,7 @@ export const KemetFlipcardTrigger = createComponent({
   elementClass: FlipcardTrigger,
   react: React,
   events: {
-    onFlipped: 'kemet-flipped' as EventName<CustomEvent<FlipcardTrigger>>,
+    onFlipped: 'kemet-flipcard-trigger-flipped' as EventName<CustomEvent<FlipcardTrigger>>,
   }
 });
 
@@ -177,10 +177,10 @@ export const KemetInput = createComponent({
   elementClass: Input,
   react: React,
   events: {
-    onInput: 'kemet-input' as EventName<CustomEvent<InterfaceInputDetails>>,
-    onFocus: 'kemet-focus' as EventName<CustomEvent<Input>>,
-    onBlur: 'kemet-blur' as EventName<CustomEvent<Input>>,
-    onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfaceInputDetails>>,
+    onInput: 'kemet-input-input' as EventName<CustomEvent<InterfaceInputDetails>>,
+    onFocus: 'kemet-input-focus' as EventName<CustomEvent<Input>>,
+    onBlur: 'kemet-input-blur' as EventName<CustomEvent<Input>>,
+    onAppearanceChange: 'kemet-input-appearance-change' as EventName<CustomEvent<InterfaceInputDetails>>,
   }
 });
 
@@ -189,8 +189,8 @@ export const KemetDialog = createComponent({
   elementClass: Dialog,
   react: React,
   events: {
-    onOpened: 'kemet-opened' as EventName<CustomEvent<Dialog>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<Dialog>>,
+    onOpened: 'kemet-dialog-opened' as EventName<CustomEvent<Dialog>>,
+    onClosed: 'kemet-dialog-closed' as EventName<CustomEvent<Dialog>>,
   }
 });
 
@@ -199,7 +199,7 @@ export const KemetDialogClose = createComponent({
   elementClass: DialogClose,
   react: React,
   events: {
-    onClosedPressed: 'kemet-closed-pressed' as EventName<CustomEvent<DialogClose>>,
+    onClosedPressed: 'kemet-dialog-close-pressed' as EventName<CustomEvent<DialogClose>>,
   }
 });
 
@@ -208,8 +208,8 @@ export const KemetInputCombo = createComponent({
   elementClass: InputCombo,
   react: React,
   events: {
-    onInput: 'kemet-input' as EventName<CustomEvent<InputCombo>>,
-    onFocus: 'kemet-focus' as EventName<CustomEvent<InputCombo>>
+    onInput: 'kemet-input-combo-input' as EventName<CustomEvent<InputCombo>>,
+    onFocus: 'kemet-input-combo-focus' as EventName<CustomEvent<InputCombo>>
   }
 });
 
@@ -224,7 +224,7 @@ export const KemetPassword = createComponent({
   elementClass: Password,
   react: React,
   events: {
-    onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfacePasswordStrengthChangeDetails>>,
+    onStrengthChange: 'kemet-password-strength-change' as EventName<CustomEvent<InterfacePasswordStrengthChangeDetails>>,
   }
 });
 
@@ -233,8 +233,8 @@ export const KemetRadio = createComponent({
   elementClass: Radio,
   react: React,
   events: {
-    onFocus: 'kemet-focus' as EventName<CustomEvent<boolean>>,
-    onBlur: 'kemet-blur' as EventName<CustomEvent<boolean>>,
+    onFocus: 'kemet-radio-focus' as EventName<CustomEvent<boolean>>,
+    onBlur: 'kemet-radio-blur' as EventName<CustomEvent<boolean>>,
   }
 });
 
@@ -243,7 +243,7 @@ export const KemetRadios = createComponent({
   elementClass: Radios,
   react: React,
   events: {
-    onChange: 'kemet-change' as EventName<CustomEvent<Radios>>,
+    onChange: 'kemet-radios-change' as EventName<CustomEvent<Radios>>,
   }
 });
 
@@ -258,10 +258,10 @@ export const KemetSelect = createComponent({
   elementClass: Select,
   react: React,
   events: {
-    onChange: 'kemet-change' as EventName<CustomEvent<InterfaceInputDetails>>,
-    onFocus: 'kemet-focus' as EventName<CustomEvent<Select>>,
-    onBlur: 'kemet-blur' as EventName<CustomEvent<Select>>,
-    onStatusChange: 'kemet-status-change' as EventName<CustomEvent<InterfaceInputDetails>>,
+    onChange: 'kemet-select-change' as EventName<CustomEvent<InterfaceInputDetails>>,
+    onFocus: 'kemet-select-focus' as EventName<CustomEvent<Select>>,
+    onBlur: 'kemet-select-blur' as EventName<CustomEvent<Select>>,
+    onAppearanceChange: 'kemet-select-appearance-change' as EventName<CustomEvent<InterfaceInputDetails>>,
   }
 });
 
@@ -270,9 +270,9 @@ export const KemetSortable = createComponent({
   elementClass: Sortable,
   react: React,
   events: {
-    onDragStart: 'kemet-drag-start' as EventName<CustomEvent<InterfaceSortableDragDetails>>,
-    onDragOver: 'kemet-drag-over' as EventName<CustomEvent<InterfaceSortableDragDetails>>,
-    onDragEnd: 'kemet-drag-end' as EventName<CustomEvent<InterfaceSortableDragDetails>>,
+    onDragStart: 'kemet-sortable-drag-start' as EventName<CustomEvent<InterfaceSortableDragDetails>>,
+    onDragOver: 'kemet-sortable-drag-over' as EventName<CustomEvent<InterfaceSortableDragDetails>>,
+    onDragEnd: 'kemet-sortable-drag-end' as EventName<CustomEvent<InterfaceSortableDragDetails>>,
   }
 });
 
@@ -287,8 +287,8 @@ export const KemetTab = createComponent({
   elementClass: Tab,
   react: React,
   events: {
-    onSelected: 'kemet-selected' as EventName<CustomEvent<Tab>>,
-    onClosed: 'kemet-closed' as EventName<CustomEvent<Tab>>,
+    onSelected: 'kemet-tab-selected' as EventName<CustomEvent<Tab>>,
+    onClosed: 'kemet-tab-closed' as EventName<CustomEvent<Tab>>,
   }
 });
 
@@ -303,7 +303,7 @@ export const KemetTabs = createComponent({
   elementClass: Tabs,
   react: React,
   events: {
-    onChange: 'kemet-change' as EventName<CustomEvent<InterfaceTabsDetails>>,
+    onChange: 'kemet-tabs-change' as EventName<CustomEvent<InterfaceTabsDetails>>,
   }
 });
 
@@ -312,7 +312,7 @@ export const KemetToggle = createComponent({
   elementClass: Toggle,
   react: React,
   events: {
-    onChange: 'kemet-change' as EventName<CustomEvent<Toggle>>,
+    onChange: 'kemet-toggle-change' as EventName<CustomEvent<Toggle>>,
   }
 });
 
@@ -321,9 +321,9 @@ export const KemetTimer = createComponent({
   elementClass: Timer,
   react: React,
   events: {
-    onStart: 'kemet-start' as EventName<CustomEvent<Timer>>,
-    onIncrement: 'kemet-increment' as EventName<CustomEvent<number>>,
-    onComplete: 'kemet-complete' as EventName<CustomEvent<Timer>>,
+    onStart: 'kemet-timer-start' as EventName<CustomEvent<Timer>>,
+    onIncrement: 'kemet-timer-increment' as EventName<CustomEvent<number>>,
+    onComplete: 'kemet-timer-complete' as EventName<CustomEvent<Timer>>,
   }
 });
 
@@ -350,7 +350,7 @@ export const KemetInputFiles = createComponent({
   elementClass: InputFiles,
   react: React,
   events: {
-    onChange: 'kemet-change' as EventName<CustomEvent<InterfaceUploadChangeDetails>>,
+    onChange: 'kemet-input-files-change' as EventName<CustomEvent<InterfaceUploadChangeDetails>>,
   }
 });
 

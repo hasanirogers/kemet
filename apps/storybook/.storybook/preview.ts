@@ -7,7 +7,7 @@ import customElements from 'kemet-ui/custom-elements.json';
 
 // import 'kemet-ui/styles/kemet.base.scss';
 // import 'kemet-ui/styles/kemet.core.scss';
-import '../../../packages/tokens/dist/css/_variables.css';
+import '../../../packages/tokens/dist/css/tokens.css';
 import './ausar.scss';
 import './storybook.scss';
 

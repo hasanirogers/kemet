@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 export enum EnumFormats {
@@ -34,7 +34,7 @@ export enum EnumFormats {
 
 @customElement('kemet-timer')
 export default class KemetTimer extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   format: EnumFormats = EnumFormats.Seconds;

@@ -1,8 +1,8 @@
-import { html, LitElement, unsafeCSS } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../icon';
-import styles from './styles.css?inline';
-import loaderStyles from './loaders.css?inline';
+import styles from './styles.css.ts';
+import loaderStyles from './loaders.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 const formatBytes = (bytes: number, decimals = 2) => {
@@ -50,7 +50,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
 
 @customElement('kemet-input-file')
 export default class InputFile extends LitElement {
-  static styles = [unsafeCSS(styles), unsafeCSS(loaderStyles)];
+  static styles = [styles, loaderStyles];
 
   @property({ type: String })
   name!: string;

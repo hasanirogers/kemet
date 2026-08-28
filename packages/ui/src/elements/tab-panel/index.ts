@@ -1,6 +1,6 @@
 import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
 /**
@@ -24,7 +24,7 @@ import { emitEvent } from '../../utilities/events';
 
 @customElement('kemet-tab-panel')
 export default class KemetTabPanel extends LitElement {
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: Boolean, reflect: true })
   selected: boolean = false;

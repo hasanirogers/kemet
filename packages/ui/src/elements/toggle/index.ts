@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
-import styles from './styles.css?inline';
+import styles from './styles.css.ts';
 
 /**
  * @since 1.0.0
@@ -49,7 +49,7 @@ import styles from './styles.css?inline';
 export default class KemetToggle extends LitElement {
   formSubmitController: FormSubmitController;
 
-  static styles = [unsafeCSS(styles)];
+  static styles = [styles];
 
   @property({ type: String })
   name: string = 'toggle-switch';
