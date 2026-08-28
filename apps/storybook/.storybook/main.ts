@@ -5,7 +5,6 @@ import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: [
-    '../stories/**/*.docs.mdx',
     '../stories/**/*.stories.@(jsx|ts|tsx)'
   ],
   addons: [
