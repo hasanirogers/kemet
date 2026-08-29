@@ -2,16 +2,18 @@
 
 import { useState } from 'react'
 
-import 'kemet-ui/styles/kemet.base.css';
-import 'kemet-ui/elements/drawer.js';
+import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/icon';
+import 'kemet-ui/button';
+import 'kemet-ui/drawer';
 
 function PageContent() {
   const [count, setCount] = useState(0)
   const [isDrawerOpened, setIsDrawerOpened] = useState(false)
 
   return (
-    <kemet-drawer opened={isDrawerOpened} onkemet-opened={() => setIsDrawerOpened(true)} onkemet-closed={() => setIsDrawerOpened(false)}>
-      <aside slot="navigation">
+    <kemet-drawer fill-viewport opened={isDrawerOpened} onkemet-opened={() => setIsDrawerOpened(true)} onkemet-closed={() => setIsDrawerOpened(false)}>
+      <aside slot="sidebar">
         <br />
         <button onClick={() => setIsDrawerOpened(false)}>
           <kemet-icon name="x-lg" size={24}></kemet-icon>
@@ -19,7 +21,7 @@ function PageContent() {
         <br /><br />
         <nav>[Your nav here]</nav>
       </aside>
-      <section slot="content">
+      <section slot="body">
         <button onClick={() => setIsDrawerOpened(true)}>
           <kemet-icon name="list" size={24}></kemet-icon>
         </button>
@@ -44,7 +46,7 @@ function PageContent() {
             count is {count}
           </kemet-button>
           <p>
-            Nextbox is an integration repo on using Web Components in Next 15+.
+            Nextbox is an integration repo on using Kemet UI in Next 15+.
           </p>
         </div>
       </section>
