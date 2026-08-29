@@ -39,6 +39,8 @@ import KemetTrackerClass from '../dist/elements/tracker';
 import KemetTrackerStepClass from '../dist/elements/tracker-step';
 import KemetInputFilesClass from '../dist/elements/input-files';
 import KemetInputFileClass from '../dist/elements/input-file';
+import KemetTypewriterClass from '../dist/elements/typewriter';
+import KemetInputOtpClass from '../dist/elements/input-otp';
 
 
 /**
@@ -107,6 +109,8 @@ declare module 'react' {
       'kemet-toggle': ReactLitProps<KemetToggleClass>;
       'kemet-tracker': ReactLitProps<KemetTrackerClass>;
       'kemet-tracker-step': ReactLitProps<KemetTrackerStepClass>;
+      'kemet-input-otp': ReactLitProps<KemetInputOtpClass>;
+      'kemet-typewriter': ReactLitProps<KemetTypewriterClass>;
     }
   }
 }
