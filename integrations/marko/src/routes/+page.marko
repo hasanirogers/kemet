@@ -1,40 +1,41 @@
 // use client keyword for import to load client side
 // note that you must have a marko.json file in the root of your project that tells Marko to handle each kemet element you use as an native html tag
 
-import 'kemet-ui/styles/kemet.base.css';
-client import 'kemet-ui/elements/button';
-client import 'kemet-ui/elements/drawer'; 
-client import 'kemet-ui/elements/icon-bootstrap';
+import 'kemet-ui/styles/kemet.tokens.css';
+client import 'kemet-ui/button';
+client import 'kemet-ui/drawer';
+client import 'kemet-ui/icon';
 
 <let/drawer={ isOpened: false }>
 <let/count=0>
 
-<kemet-drawer 
-  opened=drawer.isOpened 
+<kemet-drawer
+  fill-viewport
+  opened=drawer.isOpened
   on-kemet-drawer-opened() {
     drawer = { ...drawer, isOpened: true }
   }
   on-kemet-drawer-closed() {
     drawer = { ...drawer, isOpened: false }
   }>
-  <aside slot="navigation">
+  <aside slot="sidebar">
     <br />
-    <button onClick() { 
+    <button onClick() {
       drawer = { ...drawer, isOpened: !drawer.isOpened }
     }>
-      <kemet-icon-bootstrap icon="x-lg" size=24 />
+      <kemet-icon name="x-lg" size=24 />
     </button>
     <br /><br />
     <nav>[Your nav here]</nav>
   </aside>
-  <section slot="content">
+  <section slot="body">
     <button onClick() {
       drawer = { ...drawer, isOpened: !drawer.isOpened }
     }>
-      <kemet-icon-bootstrap icon="list" size=24 />
+      <kemet-icon name="list" size=24 />
     </button>
     <br /><br />
-    <div> 
+    <div>
       <svg fill="currentColor" viewBox="0 0 512 512" preserveAspectRatio="none">
         <g id="anubis">
           <path d="M201 5.5c-1.5 1.8-.9 5.6 2.7 17.5 2.5 8.4 2.7 8.5 12 17.4 32.9 31.1 53.3 67.7 56.8 101.9l.7 6.8 6.6 3c3.6 1.6 6.7 2.8 6.9 2.6.5-.5-7-26.4-11-38.2-6-17.4-10.6-28.5-19.2-46-12.9-26.2-26.8-46.2-41.6-59.9-7.4-6.9-11.3-8.3-13.9-5.1z"></path>
@@ -51,7 +52,7 @@ client import 'kemet-ui/elements/icon-bootstrap';
       <mouse-mask/>
       <kemet-button on-click() { count++ }>Count: ${count}</kemet-button>
       <p>
-        Markobox is a integration demo for using <a href="https://kemet.dev" target="_blank">Kemet Web Components</a> in Marko.
+        Markobox is a integration demo for using <a href="https://kemet.dev" target="_blank">Kemet UI</a> in Marko.
       </p>
     </div>
   </section>
