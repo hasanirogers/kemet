@@ -1,0 +1,67 @@
+@use '../shared/colors.scss' as colors;
+
+@mixin makeBorders {
+  $sides: 'top', 'right', 'bottom', 'left';
+  $widths: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9';
+  $radiuses: 'none', 'sm', 'md', 'lg', 'xl', 'cirlce', 'pill', 'base';
+  $styles: dotted, dashed, solid, double, groove, ridge, inset, outset, none, hidden;
+  $semantic: 'black', 'white', 'light', 'base', 'dark', 'focus', 'error', 'warning', 'success';
+
+
+  [data-kemet*="border"] {
+    border-style: solid;
+  }
+
+  @each $shade in colors.$shades {
+    @each $color in colors.$basecolors {
+      [data-kemet*="border:#{$color}-#{$shade}"] {
+        border-color: var(--kemet-color-base-#{$color}-#{$shade});
+      }
+    }
+  }
+
+  @each $name in $semantic {
+    [data-kemet*="border:#{$name}"] {
+      border-color: var(--kemet-color-border-#{$name});
+    }
+  }
+
+  @each $radius in $radiuses {
+    [data-kemet*="border:rounded-#{$radius}"] {
+      border-radius: var(--kemet-border-radius-#{$radius});
+    }
+  }
+
+  @each $width in $widths {
+    [data-kemet*="border:#{$width}"] {
+      border-width: var(--kemet-border-width-#{$width});
+    }
+  }
+
+  @each $style in $styles {
+    [data-kemet*="border:#{$style}"] {
+      border-style: $style;
+    }
+
+    [data-kemet*="border:horizontal"][data-kemet*="border:#{$style}"] {
+      border-style: none;
+      border-top-style: $style;
+      border-bottom-style: $style;
+    }
+
+    [data-kemet*="border:vertical"][data-kemet*="border:#{$style}"] {
+      border-style: none;
+      border-left-style: $style;
+      border-right-style: $style;
+    }
+
+    @each $side in $sides {
+      [data-kemet*="border:#{$side}"][data-kemet*="border:#{$style}"] {
+        border-style: none;
+        border-#{$side}-style: $style;
+      }
+    }
+  }
+}
+
+@include makeBorders;
