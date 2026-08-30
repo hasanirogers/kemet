@@ -115,4 +115,18 @@
   .sl-markdown-content {
     position: relative;
   }
+
+  @media screen and (width > 800px) {
+    header.header {
+      .header {
+        justify-content: space-between;
+
+        & > :has(> site-search) {
+          width: 100%;
+          margin: auto;
+          justify-content: center;
+        }
+      }
+    }
+  }
 }

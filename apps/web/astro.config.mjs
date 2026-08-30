@@ -23,21 +23,43 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Getting Started',
-          items: [{ autogenerate: { directory: 'getting-started' } }],
-					// items: [
-					// 	// Each item here is one entry in the navigation menu.
-					// 	{ label: 'Getting Started', slug: 'getting-started' },
-					// ],
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{ label: 'Installation', slug: 'docs/installation' },
+            { label: 'Usage', slug: 'docs/usage' },
+            { label: 'Design Tokens', slug: 'docs/design-tokens' },
+            { label: 'Customization', slug: 'docs/customization'},
+            { label: 'Typography', slug: 'docs/typography' },
+            { label: 'Iconography', slug: 'docs/iconography' },
+            { label: 'Forms', slug: 'docs/forms' },
+            { label: 'Frameworks', slug: 'docs/frameworks' },
+					],
 				},
 				{
 					label: 'Elements',
+          collapsed: true,
 					items: [{ autogenerate: { directory: 'elements' } }],
 				},
+        {
+          label: 'Native Elements',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'elements-native' } }],
+        },
 				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
+					label: 'Integrations',
+          collapsed: true,
+					items: [{ autogenerate: { directory: 'integrations' } }],
 				},
-			]
+        {
+          label: 'Styling Utilities',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'styles' } }],
+        }
+			],
+      components: {
+        // Override the SiteTitle component
+        SiteTitle: './src/components/CustomSiteTitle.astro',
+      },
 		}),
 	],
 });
