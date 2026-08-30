@@ -1,0 +1,12 @@
+$elevation: 'none', '1', '2', '3', '4', '5', '6', 'inner';
+
+@mixin makeElevation {
+  @each $layer in $elevation {
+    [data-kemet*="elevation:#{$layer}"] {
+      box-shadow: var(--kemet-elevation-layer-#{'' + $layer});
+    }
+  }
+}
+
+@include makeElevation;
+
