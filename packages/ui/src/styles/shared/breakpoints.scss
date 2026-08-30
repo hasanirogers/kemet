@@ -6,3 +6,11 @@ $breakpoints: (
   mqlg: 1440px,
   mqxl: 1920px
 ) !default;
+
+$breakranges: (
+  tiny: (0, 374px),
+  small: (375px, 767px),
+  medium: (768px, 1023px),
+  large: (1024px, 1439px),
+  huge: (1440px, 9999px)
+) !default;
