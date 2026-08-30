@@ -6,7 +6,7 @@
   "scripts": {
     "analyze": "custom-elements-manifest analyze --litelement --globs \"src/elements/**/*\"",
     "build": "rimraf dist && npm run build:css && npm run build:litcss && npm run build:ts && npm run copy:vanilla",
-    "build:css": "sass --load-path=node_modules src/styles/kemet.tokens.scss:dist/styles/kemet.tokens.css && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
+    "build:css": "sass --load-path=node_modules src/styles:dist/styles && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
     "build:litcss": "node scripts/build-litcss.js",
     "build:ts": "node --max-old-space-size=8192 node_modules/.bin/tsup",
     "copy:vanilla": "cp -r dist/* ../../integrations/vanilla/dist",
@@ -18,10 +18,11 @@
     "pack": "npm run build && npm pack --pack-destination ../published",
     "prepublish": "rimraf dist && npm run build",
     "test": "vitest --config=vitest.browser.config.mts",
-    "watch": "concurrently \"npm run watch:analyze\" \"npm run watch:elements\" \"npm run watch:elements:css\"",
+    "watch": "concurrently \"npm run watch:analyze\" \"npm run watch:elements\" \"npm run watch:elements:css\" \"npm run watch:scss\"",
     "watch:analyze": "chokidar \"src/elements/**/index.ts\" -c \"npm run analyze\"",
     "watch:elements": "chokidar \"src/elements/**/index.ts\" -c \"npm run build:ts\"",
     "watch:elements:css": "chokidar \"src/elements/**/*.css\" -c \"npm run build:litcss\"",
+    "watch:scss": "chokidar \"src/styles/**/*.scss\" -c \"npm run build:css\"",
     "preversion": "npm run build"
   },
   "author": {

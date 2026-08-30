@@ -41,16 +41,6 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'elements' } }],
 				},
         {
-          label: 'Native Elements',
-          collapsed: true,
-          items: [{ autogenerate: { directory: 'elements-native' } }],
-        },
-				{
-					label: 'Integrations',
-          collapsed: true,
-					items: [{ autogenerate: { directory: 'integrations' } }],
-				},
-        {
           label: 'Styling Utilities',
           collapsed: true,
           items: [{ autogenerate: { directory: 'styles' } }],

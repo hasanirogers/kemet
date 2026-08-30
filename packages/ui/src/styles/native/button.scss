@@ -1,0 +1,230 @@
+a,
+button[data-kemet] {
+  /* public */
+  --kemet-button-hover-brightness: 1.25;
+  --kemet-button-active-brightness: 1.75;
+  --kemet-button-circle-size: 50px;
+  --kemet-button-transition-speed: 300ms;
+  --kemet-button-gap: 0.5rem;
+  --kemet-button-border-width: 1.5px;
+  --kemet-button-border-style: solid;
+
+  /* private */
+  --_kemet-button-brightness: 1;
+  --_kemet-button-font-size: inherit;
+  --_kemet-button-width: auto;
+  --_kemet-button-height: auto;
+  --_kemet-button-padding: 1rem 1.25rem;
+  --_kemet-button-font-color: var(--kemet-color-font-inverse-base);
+  --_kemet-button-border: 0;
+  --_kemet-button-border-radius: 0;
+  --_kemet-button-background-color: var(--kemet-color-background-button-primary-base);
+  --_kemet-button-hover-decoration: underline;
+  --_kemet-button-border-color: var(--kemet-color-background-button-primary-base);
+
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--_kemet-button-font-size);
+  color: var(--_kemet-button-font-color);
+  width: var(--_kemet-button-width);
+  height: var(--_kemet-button-height);
+  border: var(--_kemet-button-border);
+  padding: var(--_kemet-button-padding);
+  border-radius: var(--_kemet-button-border-radius);
+  filter: brightness(var(--_kemet-button-brightness));
+  transition: filter var(--kemet-button-transition-speed) ease;
+  background-color: var(--_kemet-button-background-color);
+
+  &:hover:not([disabled]) {
+    --_kemet-button-brightness: var(--kemet-button-hover-brightness);
+  }
+
+  &:active:not([disabled]) {
+    --_kemet-button-brightness: var(--kemet-button-active-brightness);
+  }
+
+  &[disabled] {
+    --_kemet-button-font-color: var(--kemet-color-font-disabled);
+    --_kemet-button-background-color: var(--kemet-color-background-disabled);
+  }
+
+  &[disabled][data-kemet*="variant:outlined"] {
+    --_kemet-button-border-color: var(--kemet-color-font-disabled);
+  }
+
+  &[data-kemet*="variant:text"] {
+    --_kemet-button-font-color: var(--kemet-color-font-base);
+    --_kemet-button-background-color: none;
+  }
+
+  &[data-kemet*="variant:text"]:hover {
+    text-decoration: var(--_kemet-button-hover-decoration);
+  }
+
+  &[data-kemet*="appearance:brand"]:not([disabled]):not([data-kemet*="variant:text"]):not([data-kemet*="variant:outlined"]):not([data-kemet*="variant:plain"]) {
+    --_kemet-button-background-color: var(--kemet-color-brand-primary-base);
+  }
+
+  &[data-kemet*="appearance:success"]:not([disabled]):not([data-kemet*="variant:text"]):not([data-kemet*="variant:outlined"]):not([data-kemet*="variant:plain"]) {
+    --_kemet-button-background-color: var(--kemet-color-background-success);
+  }
+
+  &[data-kemet*="appearance:warning"]:not([disabled]):not([data-kemet*="variant:text"]):not([data-kemet*="variant:outlined"]):not([data-kemet*="variant:plain"]) {
+    --_kemet-button-background-color: var(--kemet-color-background-warning);
+  }
+
+  &[data-kemet*="appearance:error"]:not([disabled]):not([data-kemet*="variant:text"]):not([data-kemet*="variant:outlined"]):not([data-kemet*="variant:plain"]) {
+    --_kemet-button-background-color: var(--kemet-color-background-error);
+  }
+
+  &[data-kemet*="appearance:info"]:not([disabled]):not([data-kemet*="variant:text"]):not([data-kemet*="variant:outlined"]):not([data-kemet*="variant:plain"]) {
+    --_kemet-button-background-color: var(--kemet-color-background-info);
+  }
+
+  &[data-kemet*="appearance:link"]:not([disabled]):not([data-kemet*="variant:text"]):not([data-kemet*="variant:outlined"]):not([data-kemet*="variant:plain"]) {
+    --_kemet-button-background-color: var(--kemet-color-background-link);
+  }
+
+  &[data-kemet*="variant:text"][data-kemet*="appearance:brand"]:not([disabled]),
+  &[data-kemet*="variant:plain"][data-kemet*="appearance:brand"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-brand-primary-base);
+  }
+
+  &[data-kemet*="variant:text"][data-kemet*="appearance:success"]:not([disabled]),
+  &[data-kemet*="variant:plain"][data-kemet*="appearance:success"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-success);
+  }
+
+  &[data-kemet*="variant:text"][data-kemet*="appearance:warning"]:not([disabled]),
+  &[data-kemet*="variant:plain"][data-kemet*="appearance:warning"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-warning);
+  }
+
+  &[data-kemet*="variant:text"][data-kemet*="appearance:error"]:not([disabled]),
+  &[data-kemet*="variant:plain"][data-kemet*="appearance:error"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-error);
+  }
+
+  &[data-kemet*="variant:text"][data-kemet*="appearance:info"]:not([disabled]),
+  &[data-kemet*="variant:plain"][data-kemet*="appearance:info"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-info);
+  }
+
+  &[data-kemet*="variant:text"][data-kemet*="appearance:link"]:not([disabled]),
+  &[data-kemet*="variant:plain"][data-kemet*="appearance:link"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-link);
+  }
+
+  &[data-kemet*="appearance:neutral"][data-kemet*="polarity:dark"] {
+    --_kemet-button-font-color: var(--kemet-color-font-base);
+  }
+
+  &[data-kemet*="rounded"] {
+    --_kemet-button-border-radius: var(--kemet-border-radius-md);
+  }
+
+  &[data-kemet*="rounded:sm"] {
+    --_kemet-button-border-radius: var(--kemet-border-radius-sm);
+  }
+
+  &[data-kemet*="rounded:lg"] {
+    --_kemet-button-border-radius: var(--kemet-border-radius-lg);
+  }
+
+  &[data-kemet*="rounded:xl"] {
+    --_kemet-button-border-radius: var(--kemet-border-radius-xl);
+  }
+
+  &[data-kemet*="rounded:circle"] {
+    --_kemet-button-border-radius: var(--kemet-border-radius-circle);
+    --_kemet-button-width: var(--kemet-button-circle-size);
+    --_kemet-button-height: var(--kemet-button-circle-size);
+  }
+
+  &[data-kemet*="rounded:pill"] {
+    --_kemet-button-border-radius: var(--kemet-border-radius-pill);
+  }
+
+  &[data-kemet*="variant:outlined"] {
+    --_kemet-button-font-color: var(--kemet-color-background-button-primary-base);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+  &[data-kemet*="variant:outlined"][data-kemet*="appearance:brand"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-brand-primary-base);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border-color: var(--kemet-color-brand-primary-base);
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+  &[data-kemet*="variant:outlined"][data-kemet*="appearance:success"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-success);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border-color: var(--kemet-color-background-success);
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+  &[data-kemet*="variant:outlined"][data-kemet*="appearance:warning"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-warning);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border-color: var(--kemet-color-background-warning);
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+  &[data-kemet*="variant:outlined"][data-kemet*="appearance:error"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-error);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border-color: var(--kemet-color-background-error);
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+  &[data-kemet*="variant:outlined"][data-kemet*="appearance:info"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-info);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border-color: var(--kemet-color-background-info);
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+  &[data-kemet*="variant:outlined"][data-kemet*="appearance:link"]:not([disabled]) {
+    --_kemet-button-font-color: var(--kemet-color-background-link);
+    --_kemet-button-background-color: transparent;
+    --_kemet-button-border-color: var(--kemet-color-background-link);
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
+  }
+
+
+
+  &[data-kemet*="variant:edge"] {
+    --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) rgba(255, 255, 255, 0.25);
+  }
+
+  &[data-kemet*="variant:plain"] {
+    --_kemet-button-font-color: var(--kemet-color-font-base);
+    --_kemet-button-padding: 0;
+    --_kemet-button-border: none;
+    --_kemet-button-background-color: transparent;
+  }
+
+  &[data-kemet*="size:xs"] {
+    --_kemet-button-font-size: 0.8rem;
+    --_kemet-button-padding: 0.5rem 0.75rem;
+  }
+
+  &[data-kemet*="size:sm"] {
+    --_kemet-button-font-size: 0.9rem;
+    --_kemet-button-padding: 0.75rem 1rem;
+  }
+
+  &[data-kemet*="size:lg"] {
+    --_kemet-button-font-size: 1.1rem;
+    --_kemet-button-padding: 1.25rem 1.5rem;
+  }
+
+  &[data-kemet*="size:xl"] {
+    --_kemet-button-font-size: 1.2rem;
+    --_kemet-button-padding: 1.5rem 2rem;
+  }
+}

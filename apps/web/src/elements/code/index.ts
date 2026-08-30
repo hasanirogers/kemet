@@ -1,16 +1,17 @@
 import { html, LitElement, svg, unsafeCSS } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 
 import hljs from 'highlight.js';
 import hljscss from 'highlight.js/styles/github-dark.css?inline';
 import * as js_beautify from 'js-beautify';
 
 import styles from './styles.css?inline';
+import nativeStyles from '../../../../../packages/ui/dist/styles/kemet.native.css?inline';
 
 @customElement('web-code')
 export class WebCode extends LitElement {
-  static styles = [unsafeCSS(styles), unsafeCSS(hljscss)];
+  static styles = [unsafeCSS(styles), unsafeCSS(hljscss), unsafeCSS(nativeStyles)];
 
   @property({ type: String })
   code = '';

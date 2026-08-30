@@ -1,0 +1,34 @@
+---
+title: Native Elements
+description: Styles for native HTML elements
+---
+
+import CodePreview from '../../components/CodePreview.astro';
+import DocsFooter from '../../components/DocsFooter.astro';
+import Callout from '../../components/Callout.astro';
+
+Kemet UI v5+ now supports styling on native html elements. If you are not able to use the custom elements, you can use the `data-kemet` attribute to apply styles from the design system to native html elements. This page details how to use the `data-kemet` on each native element.
+
+## Why the data attribute?
+<hr />
+
+The data attribute gives each element a consistent way of being able to opt-in and applies styles to element APIs without convoluted class names. Take the button for example, instead of having to add classes like `kemet-button kemet-button--filled kemet-button--brand kemet-button--md` to every button element, you can simply add `data-kemet="size:md variant:filled appearance:brand rounded:full"` to the button element where values for `data-kemet` is `property:value`. We believe this increases readability for users.
+
+## Supported Elements
+<hr />
+
+### Button
+
+In this example we set custom values for the properties, `size`, `variant`, `appearance`, and `rounded`. All properties are optional and mirror that of the [button element](/elements/button).
+
+<CodePreview>
+  <button data-kemet="size:md variant:filled appearance:brand rounded:pill">
+    <span>Native Button Element</span>
+  </button>
+</CodePreview>
+
+<br />
+<Callout>The native button supports both `button` and `a` elements.</Callout>
+
+<br />
+<DocsFooter />
