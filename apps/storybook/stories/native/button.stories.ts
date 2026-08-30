@@ -1,5 +1,4 @@
 import { html } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import type { Args, Meta, StoryObj } from '@storybook/web-components-vite';
 
 
@@ -24,29 +23,7 @@ const meta: Meta = {
       control: { type: 'select' },
       options: ['rounded:sm', 'rounded:md', 'rounded:lg', 'rounded:xl', 'rounded:circle', 'rounded:pill'],
     },
-  },
-  // argTypes: {
-  //   size: {
-  //     control: { type: 'select' },
-  //     options: Object.values(EnumSizes),
-  //   },
-  //   polarity: {
-  //     control: { type: 'radio' },
-  //     options: ['light', 'dark'],
-  //   },
-  //   variant: {
-  //     control: { type: 'select' },
-  //     options: Object.values(EnumVariants),
-  //   },
-  //   rounded: {
-  //     control: { type: 'select' },
-  //     options: roundedSizes,
-  //   },
-  //   appearance: {
-  //     control: { type: 'select' },
-  //     options: Object.values(EnumAppearances),
-  //   },
-  // }
+  }
 };
 export default meta;
 

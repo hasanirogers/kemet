@@ -10,6 +10,8 @@ import customElements from 'kemet-ui/custom-elements.json';
 
 import '../../../packages/ui/dist/styles/kemet.tokens.css';
 import '../../../packages/ui/dist/styles/kemet.native.css';
+import '../../../packages/ui/dist/styles/kemet.utilities.css';
+
 import './ausar.scss';
 import './storybook.scss';
 
