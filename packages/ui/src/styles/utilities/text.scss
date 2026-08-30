@@ -1,0 +1,24 @@
+@use '../shared/breakpoints.scss' as *;
+
+@mixin makeText() {
+  $sizes: base, 2xs,xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl;
+  @each $size in $sizes {
+    [data-kemet*="text:#{$size}"] {
+      font-size: var(--kemet-size-font-#{$size});
+      line-height: var(--kemet-size-leading-#{$size});
+    }
+  }
+
+  @each $breakpoint, $pixel in $breakpoints {
+    @media screen and (min-width: #{$pixel}) {
+      @each $size in $sizes {
+        [data-kemet*="text:#{$breakpoint}-#{$size}"] {
+          font-size: var(--kemet-size-font-#{$size});
+          line-height: var(--kemet-size-leading-#{$size});
+        }
+      }
+    }
+  }
+}
+
+@include makeText();
