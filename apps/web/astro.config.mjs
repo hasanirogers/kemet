@@ -22,11 +22,12 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Getting Started',
+          items: [{ autogenerate: { directory: 'getting-started' } }],
+					// items: [
+					// 	// Each item here is one entry in the navigation menu.
+					// 	{ label: 'Getting Started', slug: 'getting-started' },
+					// ],
 				},
 				{
 					label: 'Elements',

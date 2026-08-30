@@ -18,5 +18,8 @@
     "packages/*",
     "integrations/*"
   ],
-  "packageManager": "npm@11.12.1"
+  "packageManager": "npm@11.12.1",
+  "dependencies": {
+    "vite": "^8.2.2"
+  }
 }

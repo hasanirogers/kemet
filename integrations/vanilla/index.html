@@ -2,10 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kemet UI | Alpinebox</title>
-    <script defer src="https://unpkg.com/alpinejs@3.15.1/dist/cdn.min.js"></script>
+    <title>Kemet UI | Vanilla</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="/dist/styles/kemet.tokens.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "lit": "https://esm.sh",
+          "lit/": "https://esm.sh/"
+        }
+      }
+    </script>
+    <script type="module" src="/dist/elements/drawer/index.js"></script>
+    <script type="module" src="/dist/elements/button/index.js"></script>
+    <script type="module" src="/dist/elements/icon/index.js"></script>
   </head>
   <body>
     <kemet-drawer fill-viewport>
@@ -30,16 +41,18 @@
             </svg>
           </a>
         </div>
-        <h1>Alpinebox</h1>
+        <h1>Vanillabox</h1>
         <h2>Kemet UI</h2>
-        <div x-data="{ count: 0 }">
-          <kemet-button x-on:click="count++">
-            Count: <span x-text="Math.pow(2, count)"></span>
-          </kemet-button>
-        </div>
-        <p>Alpinebox is an integration repo demonstrating how to use Kemet UI with AlpineJS.</p>
+        <p>Vanillabox is an integration repo demonstrating how to use Kemet UI with with no tools other than native browser standards.</p>
       </main>
     </kemet-drawer>
-    <script type="module" src="/src/index.ts"></script>
   </body>
+  <script>
+    const drawer = document.querySelector('kemet-drawer');
+    const toggleButton = document.querySelector('button');
+    toggleButton.addEventListener('click', () => {
+      console.log('Toggle button clicked');
+      drawer.opened = !drawer.opened;
+    });
+  </script>
 </html>

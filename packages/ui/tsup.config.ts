@@ -10,6 +10,7 @@ export default defineConfig((options) => ({
   sourcemap: true,
   target: 'es2020',
   external: [
+    /^lit(\/.*)?$/,
     'react',
     'react-dom',
     '@lit/react',
