@@ -1,0 +1,43 @@
+@use '../shared/colors.scss' as *;
+
+@mixin makeColors {
+  $brands: 'primary-lighter', 'primary-light', 'primary-base', 'primary-dark', 'primary-darker', 'secondary-lighter', 'secondary-light', 'secondary-base', 'secondary-dark', 'secondary-darker';
+  $backgrounds: 'base', 'alt', 'disabled', 'inverse', 'success', 'error', 'warning', 'info', 'link', 'low-priority';
+  $fonts: 'base', 'secondary', 'tertiary', 'quaternary', 'link', 'active', 'error', 'warning', 'success', 'disabled', 'inverse-base', 'inverse-secondary', 'inverse-tertiary', 'inverse-quaternary', 'inverse-link', 'inverse-active', 'inverse-error', 'inverse-warning', 'inverse-success', 'inverse-disabled';
+
+  @each $brand in $brands {
+    [data-kemet*="cfont:#{$brand}"] {
+      color: var(--kemet-color-brand-#{$brand});
+    }
+
+    [data-kemet*="cbackground:#{$brand}"] {
+      background-color: var(--kemet-color-brand-#{$brand});
+    }
+  }
+
+  @each $background in $backgrounds {
+    [data-kemet*="cbackground:#{$background}"] {
+      background-color: var(--kemet-color-background-#{$background});
+    }
+  }
+
+  @each $font in $fonts {
+    [data-kemet*="cfont:#{$font}"] {
+      color: var(--kemet-color-font-#{$font});
+    }
+  }
+
+  @each $basecolor in $basecolors {
+    @each $shade in $shades {
+      [data-kemet*="cfont:#{$basecolor}-#{$shade}"] {
+        color: var(--kemet-color-font-#{$basecolor}-#{$shade});
+      }
+
+      [data-kemet*="cbackground:#{$basecolor}-#{$shade}"] {
+        background-color: var(--kemet-color-background-#{$basecolor}-#{$shade});
+      }
+    }
+  }
+}
+
+@include makeColors();

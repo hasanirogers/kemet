@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { makeColors } from '../../.storybook/utilities';
+import { makeBorderColors } from '../../.storybook/utilities';
 
 const meta: Meta = {
   title: 'Styles API / Border',
@@ -54,7 +54,7 @@ export const Standard: Story = {
     },
     color: {
       control: { type: 'select' },
-      options: makeColors(),
+      options: makeBorderColors(),
     },
   }
 }

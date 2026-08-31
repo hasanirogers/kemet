@@ -5,12 +5,10 @@ import * as html from 'prettier/plugins/html';
 import {  handleThemeSwitching, globalFormatting } from './decorators';
 import customElements from 'kemet-ui/custom-elements.json';
 
-// import 'kemet-ui/styles/kemet.base.scss';
-// import 'kemet-ui/styles/kemet.core.scss';
 
-import '../../../packages/ui/dist/styles/kemet.tokens.css';
-import '../../../packages/ui/dist/styles/kemet.native.css';
-import '../../../packages/ui/dist/styles/kemet.utilities.css';
+import '../../../packages/ui/dist/styles/tokens.css';
+import '../../../packages/ui/dist/styles/native.css';
+import '../../../packages/ui/dist/styles/utilities.css';
 
 import './ausar.scss';
 import './storybook.scss';
