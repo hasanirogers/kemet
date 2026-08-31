@@ -1,0 +1,79 @@
+[data-kemet*="article"] {
+  color: var(--kemet-color-font-base);
+  line-height: 1.5;
+  background-color: var(--kemet-color-background-base);
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.2;
+    margin: 0.5em 0;
+  }
+
+  a {
+    color: var(--kemet-color-font-link);
+  }
+
+  h1 {
+    font-size: var(--kemet-size-font-4xl);
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: var(--kemet-size-font-3xl);
+  }
+
+  h3 {
+    font-size: var(--kemet-size-font-2xl);
+  }
+
+  h4 {
+    font-size: var(--kemet-size-font-xl);
+  }
+
+  h5 {
+    font-size: var(--kemet-size-font-lg);
+  }
+
+  h6 {
+    font-size: var(--kemet-size-font-md);
+  }
+
+  mark {
+    color: var(--kemet-color-font-inverse-base);
+    padding: 2px 4px;
+    background-color: var(--kemet-color-background-info);
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  figure {
+    display: inline-flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid;
+  }
+
+  blockquote {
+    display: block;
+    font-style: italic;
+    padding: 0 1rem;
+    margin: 1.5rem 0;
+    border-left: 3px solid;
+  }
+
+  table, td, th {
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  th {
+    padding: 0.75em;
+  }
+
+  td {
+    padding: 0.5em;
+  }
+}
