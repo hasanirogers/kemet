@@ -14,23 +14,23 @@ React 19 finally ships with out of the box support for Web Components. This mean
 [Reactbox](https://github.com/hasanirogers/kemet/tree/main/integrations/react) is a React sandbox that demonstrates how to use Kemet UI components in React 19 and newer. Check it out.
 
 
-Notice that the components were simply imported then then the Web Component's API was simply used in the `App.tsx`. On line 15 you'll see an event.
+Notice that the components were simply imported then then the Web Component's API was used in the `App.tsx`. On line 15 you'll see an event.
 
 ```javascript
 onkemet-drawer-opened={() => setIsDrawerOpened(true)}
 ```
 
-The name of the event in Kemet UI is `kemet-drawer-opened`. In React 19 and newer, simply prepend `on` to your event name and work with them like you would regular synthetic React events like `onClick`.
+The name of the event in Kemet UI is `kemet-drawer-opened`. In React 19 and newer, just prepend `on` to your event name and work with them like you would regular synthetic React events like `onClick`.
 
-**Note**: To get your editor to recognize the Web Component in JSX, see [Using JSX](/guides/using-jsx/).
+<Callout appearance="info">To get your editor to recognize the Web Component in JSX, see&nbsp;[Using JSX](/docs/jsx/).</Callout>
 
 ## React Legacy
 
-React 18 and older has issues with Web Components. Kemet v4 now ships with wrappers for React (Legacy).
+React 18 and older has issues with Web Components. Since v4, Kemet UI ships with wrappers for React (Legacy).
 
 [Reactbox](https://github.com/hasanirogers/kemet/tree/main/integrations/react-legacy) is a React sandbox that demonstrates how to use Kemet UI components in React 18 and older. Check it out.
 
-Just import the wrapper at 'kemet-ui/react/[component-name]' and use it as a React component. Every wrapper will have a have a event mapped to it as a call back that replaces `kemet-` with `on` and camel cases the rest. So for example, the event `kemet-status-change` becomes `onStatusChange`.
+Just import the wrapper at `kemet-ui/react/[component-name]` and use it as a React component. Every wrapper will have a have a event mapped to it as a callback that replaces `kemet-[component-name]-` with `on` and camel cases the rest. So for example, the event `kemet-drawer-opened` becomes `onOpened`.
 
 ## Angular
 
@@ -60,9 +60,9 @@ import { Component, HostListener } from '@angular/core';
 import 'kemet-ui';
 ...
 export class AppComponent  {
-  @HostListener('kemet-modal-closed', ['$event.target'])
-  onClose(modal) {
-    console.log(modal);
+  @HostListener('kemet-dialog-closed', ['$event.target'])
+  onClose(dialog) {
+    console.log(dialog);
     this.isDrawerOpened = false;
   }
 
@@ -74,7 +74,7 @@ export class AppComponent  {
 }
 ```
 
-The second argument simply captures the element that triggered the event (the modal) and we log it to the console just as an example of this.
+The second argument simply captures the element that triggered the event (the dialog) and we log it to the console just as an example of this.
 
 
 ## Vue
@@ -95,7 +95,7 @@ With AlpineJS, you work with Web Components as if it was standard HTML and JavaS
 
 ## Next
 
-Next 15 supports web components natively. However you can load them using import because even when you use 'use client' it will still load the components on the server. You need to load the component client side with a dynamic import. To make things easier, Kemet UI provides Next JS wrapper components for you to use that will automatically load client side. You must use these components in a Next JS component with `use client`.
+Next 15+ ships with React 19+ which has native support for Web Components. The only thing to note here is that you need to make sure the web component is loded on the client. SSR support is out of scope for this documentation.
 
 [Nextbox](https://github.com/hasanirogers/kemet/tree/main/integrations/next) is a Next sandbox that demonstrates how to use Kemet UI components in Next. Check it out.
 
@@ -116,7 +116,7 @@ Lit supports Web Components natively. This simply documents some examples on how
 
 ## Solid
 
-Solid has excellent support for Web Components. The only thing to consider is that because Solid uses JSX, you'll need to [get JSX to recognize the Web Component](/guides/using-jsx/).
+Solid has excellent support for Web Components. The only thing to consider is that because Solid uses JSX, you'll need to [get JSX to recognize the Web Component](/docs/jsx/).
 
 [Solidbox](https://github.com/hasanirogers/kemet/tree/main/integrations/solid) is a Solid sandbox that demonstrates how to use Kemet UI components in Solid. Check it out.
 

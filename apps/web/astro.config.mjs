@@ -32,7 +32,7 @@ export default defineConfig({
             { label: 'Typography', slug: 'docs/typography' },
             { label: 'Iconography', slug: 'docs/iconography' },
             { label: 'Forms', slug: 'docs/forms' },
-            { label: 'Frameworks', slug: 'docs/frameworks' },
+            { label: 'Using JSX', slug: 'docs/jsx' },
 					],
 				},
 				{

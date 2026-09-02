@@ -6,6 +6,10 @@ const { appearance = "warning" } = Astro.props;
   <slot />
 </div>
 
+<script>
+  import '../../../../packages/tokens/dist/css/tokens.css';
+</script>
+
 <style>
   .callout {
     display: flex;
@@ -33,6 +37,11 @@ const { appearance = "warning" } = Astro.props;
     &[data-appearance="warning"] {
       color: var(--kemet-color-font-inverse-base);
       background-color: var(--kemet-color-base-orange-800);
+    }
+
+    &[data-appearance="info"] {
+      color: var(--kemet-color-font-inverse-base);
+      background-color: var(--kemet-color-base-blue-800);
     }
   }
 
