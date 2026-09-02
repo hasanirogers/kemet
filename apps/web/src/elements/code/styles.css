@@ -29,6 +29,7 @@ button {
 }
 
 div:has(pre) {
+  overflow: auto;
   margin: 0;
   padding: 0 1rem;
   background: #0d1117;

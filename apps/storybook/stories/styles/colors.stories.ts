@@ -13,8 +13,8 @@ const Template = ({
   font = 'none',
   background = 'none'
 }) => {
-  const fontAttr = font !== 'none' ? `cfont:${font}` : '';
-  const backgroundAttr = background !== 'none' ? `cbackground:${background}` : '';
+  const fontAttr = font !== 'none' ? `cfont:${font}` : 'cfont:base';
+  const backgroundAttr = background !== 'none' ? `cbackground:${background}` : 'cbackground:base';
   return html`
     <div data-kemet="${fontAttr} ${backgroundAttr} padding:xl elevation:3">The quick brown fox jumps over the lazy dog.</div>
   `;

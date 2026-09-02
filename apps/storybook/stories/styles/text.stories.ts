@@ -27,7 +27,7 @@ const Template = ({
   breakpoint = '2xs',
   size = 'md'
 }) => {
-  const breakpointAttr = breakpoint !== '2xs' ? `mq${breakpoint}-` : '';
+  const breakpointAttr = breakpoint !== '2xs' ? `[${breakpoint}]-` : '';
   return html`
     <div data-kemet="text:${breakpointAttr}${size}">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

@@ -3,4 +3,187 @@ title: Article
 description: Article documentation
 ---
 
-Temp
+import CodePreview from '../../../components/CodePreview.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+The article styles utility allows you to style long form standalone content with basic styles. Simply add `data-kemet="article"` to your article element or main container for the content. Elements within the container will automatically be styled.
+
+
+<CodePreview>
+  <article data-kemet="article padding:2xl">
+    <header>
+      <h1>Understanding Modern Web Architecture</h1>
+      <p>
+        Published on <time datetime="2026-08-30">August 30, 2026</time> by
+        <a href="#author">Alex Chen</a><br />
+        Estimated Reading Time: <data value="5">5 minutes</data>
+      </p>
+    </header>
+
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        Building accessible and semantic websites requires a deep understanding of
+        HTML elements. While many developers rely solely on
+        <code>&lt;div&gt;</code> tags, HTML offers a rich vocabulary for styling
+        and structuring content natively.
+      </p>
+      <p>
+        For instance, we can highlight critical text using the
+        <mark>highlighted mark tag</mark>, show
+        <strong>strong importance</strong>, or simply add
+        <em>semantic emphasis</em>. When citing sources like
+        <cite>The Web Standards Handbook</cite>, proper tags ensure screen readers
+        interpret the context accurately.
+      </p>
+      <p>
+        We can also represent mathematical formulas like H<sub>2</sub>O or 2<sup>10</sup>
+        = 1024, as well as strike through
+        <s class="outdated">outdated information</s> and replace it with
+        <ins>updated corrections</ins> or <del>deleted text</del>.
+      </p>
+    </section>
+
+    <aside>
+      <h3>Quick Fact</h3>
+      <p>
+        The <abbr title="HyperText Markup Language">HTML</abbr> specification is
+        maintained by the <abbr title="World Wide Web Consortium">W3C</abbr> and
+        the WHATWG.
+      </p>
+    </aside>
+
+    <section>
+      <h2>Obscure Inline Elements</h2>
+      <p>
+        Here are several lesser-known elements that add semantic meaning to
+        specific types of text:
+      </p>
+      <ul>
+        <li>
+          <strong>Definitions:</strong> The
+          <dfn title="A lightweight data-interchange format">JSON</dfn> format is
+          widely used for web APIs.
+        </li>
+        <li>
+          <strong>Bi-Directional Override:</strong>
+          <bdo dir="rtl">This text will be rendered from right to left.</bdo>
+        </li>
+        <li>
+          <strong>Bi-Directional Isolation:</strong> User
+          <bdi>إبراهيم</bdi> logged in successfully.
+        </li>
+        <li>
+          <strong>Word Break Opportunity:</strong> A long string like
+          <code>super<wbr />cali<wbr />fragi<wbr />listic<wbr />expialidocious</code>
+          can break cleanly.
+        </li>
+        <li>
+          <strong>Ruby Annotations (East Asian Typography):</strong>
+          <ruby>漢 <rt>かん</rt> 字 <rt>じ</rt></ruby>
+        </li>
+        <li>
+          <strong>Presentational Inlines:</strong> Use <b>bold text</b> for visual
+          draw without added importance, <i>italicized text</i> for idiomatic
+          terms, <u>unarticulated annotation</u> for proper names in specific
+          languages, or <small>small print</small> for legal disclaimers.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Visual and Interactive Media</h2>
+      <figure>
+        <img
+          src="https://placehold.co/600x200"
+          alt="Sample semantic flowchart"
+          width="600"
+          height="200"
+        />
+        <figcaption>
+          Figure 1: Standard layout flow for a semantic HTML5 article.
+        </figcaption>
+      </figure>
+      <p>
+        Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your progress in the browser.
+      </p>
+      <details>
+        <summary>Click here to reveal detailed system requirements</summary>
+        <p>
+          System output logs indicate a CPU usage level of
+          <samp>0.42 FLOPS</samp>. The process assigned variable <var>x</var> to
+          represent memory offset.
+        </p>
+        <label for="disk-usage">Disk Storage Used:</label>
+        <meter id="disk-usage" value="0.6" min="0" max="1">60%</meter>
+        <br />
+        <label for="task-progress">Task Progress:</label>
+        <progress id="task-progress" value="75" max="100">75%</progress>
+      </details>
+    </section>
+    <section>
+      <h2>Quotations and Code Samples</h2>
+      <p>
+        As the developer stated,
+        <q>Semantics make the web readable for everyone.</q>
+      </p>
+      <blockquote cite="https://example.com/quote-source">
+        <p>
+          The web is for all of us. By building cleanly and using appropriate
+          tags, we ensure accessibility, usability, and long-term durability
+          across devices.
+        </p>
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>Semantic Element Summary</h2>
+      <table>
+        <caption>
+          Overview of HTML Tag Categories
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Tag</th>
+            <th scope="col">Category</th>
+            <th scope="col">Semantic Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;mark&gt;</code></td>
+            <td>Inline Formatting</td>
+            <td>Highlights text due to relevance in another context.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;ruby&gt;</code></td>
+            <td>Typography</td>
+            <td>Provides pronunciation annotations for East Asian characters.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;meter&gt;</code></td>
+            <td>Form/Interactive</td>
+            <td>Represents a scalar measurement within a known range.</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Data valid as of 2026 HTML5 Living Standard.</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <footer>
+      <br />
+      <hr />
+      <p>Authored by <span id="author">Alex Chen</span>.</p>
+      <p>
+        <small>Copyright © 2026 Web Standard Publishing. All rights reserved.</small>
+      </p>
+    </footer>
+  </article>
+</CodePreview>
+
+<br /><br />
+<DocsFooter />

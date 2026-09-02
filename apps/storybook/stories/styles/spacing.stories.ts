@@ -7,7 +7,6 @@ const meta: Meta = {
   args: {
     type: 'padding',
     side: 'all',
-    breakpoint: '2xs',
     spacer: 'md',
   },
   argTypes: {
@@ -21,7 +20,7 @@ const meta: Meta = {
     },
     breakpoint: {
       control: { type: 'select' },
-      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
     },
     spacer: {
       control: { type: 'select' },
@@ -36,13 +35,13 @@ type Story = StoryObj;
 const Template = ({
   type = 'padding',
   side = 'all',
-  breakpoint = '2xs',
+  breakpoint = 'xs',
   spacer = 'md'
 }) => {
   const sideAttr = side !== 'all' ? `-${side}-` : '';
-  const breakpointAttr = breakpoint !== '2xs' ? `mq${breakpoint}-` : '';
+  const breakpointAttr = !!breakpoint ? `[${breakpoint}]-` : '';
   return html`
-    <div data-kemet="${type}:${breakpointAttr}${sideAttr}${spacer}">
+    <div data-kemet="${type}:${breakpointAttr}${sideAttr}${spacer} border:1">
       The quick brown fox jumps over the lazy dog.
     </div>
   `;

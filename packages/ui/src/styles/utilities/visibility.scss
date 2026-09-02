@@ -16,43 +16,43 @@
     $max: getListLast($range);
 
     @media screen and (min-width: $min) {
-      [data-kemet="show:#{$breakpoint}-up"] {
+      [data-kemet*="show:[#{$breakpoint}]-up"] {
         display: inherit !important;
       }
 
-      table[data-kemet="show:#{$breakpoint}-up"] {
+      table[data-kemet*="show:[#{$breakpoint}]-up"] {
         display: table !important;
       }
 
-      [data-kemet="hide:#{$breakpoint}-up"] {
+      [data-kemet*="hide:[#{$breakpoint}]-up"] {
         display: none !important;
       }
     }
 
     @media screen and (max-width: $max) {
-      [data-kemet="show:#{$breakpoint}-down"] {
+      [data-kemet*="show:[#{$breakpoint}]-down"] {
         display: inherit !important;
       }
 
-      table[data-kemet="show:#{$breakpoint}-down"] {
+      table[data-kemet*="show:[#{$breakpoint}]-down"] {
         display: table !important;
       }
 
-      [data-kemet="hide:#{$breakpoint}-down"] {
+      [data-kemet*="hide:[#{$breakpoint}]-down"] {
         display: none !important;
       }
     }
 
     @media screen and (min-width: $min) and (max-width: $max) {
-      [data-kemet="show:#{$breakpoint}"] {
+      [data-kemet*="show:[#{$breakpoint}]"] {
         display: inherit !important;
       }
 
-      table[data-kemet="show:#{$breakpoint}"] {
+      table[data-kemet*="show:[#{$breakpoint}]"] {
         display: table !important;
       }
 
-      [data-kemet="hide:#{$breakpoint}"] {
+      [data-kemet*="hide:[#{$breakpoint}]"] {
         display: none !important;
       }
     }

@@ -7,11 +7,12 @@ import hljscss from 'highlight.js/styles/github-dark.css?inline';
 import * as js_beautify from 'js-beautify';
 
 import styles from './styles.css?inline';
-import nativeStyles from '../../../../../packages/ui/dist/styles/kemet.native.css?inline';
+import nativeStyles from '../../../../../packages/ui/dist/styles/native.css?inline';
+import utilityStyles from '../../../../../packages/ui/dist/styles/utilities.css?inline';
 
 @customElement('web-code')
 export class WebCode extends LitElement {
-  static styles = [unsafeCSS(styles), unsafeCSS(hljscss), unsafeCSS(nativeStyles)];
+  static styles = [unsafeCSS(styles), unsafeCSS(hljscss), unsafeCSS(nativeStyles), unsafeCSS(utilityStyles)];
 
   @property({ type: String })
   code = '';

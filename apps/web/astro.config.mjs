@@ -41,7 +41,7 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'elements' } }],
 				},
         {
-          label: 'Styling Utilities',
+          label: 'Styles API',
           collapsed: true,
           items: [{ autogenerate: { directory: 'styles' } }],
         }
