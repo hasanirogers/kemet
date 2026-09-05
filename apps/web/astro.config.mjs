@@ -28,7 +28,6 @@ export default defineConfig({
 						{ label: 'Installation', slug: 'docs/installation' },
             { label: 'Usage', slug: 'docs/usage' },
             { label: 'Design Tokens', slug: 'docs/design-tokens' },
-            { label: 'Customization', slug: 'docs/customization'},
             { label: 'Typography', slug: 'docs/typography' },
             { label: 'Iconography', slug: 'docs/iconography' },
             { label: 'Forms', slug: 'docs/forms' },

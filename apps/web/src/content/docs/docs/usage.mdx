@@ -38,7 +38,7 @@ Custom elements have a concept of slots. Slots are used to insert content into c
 ```
 <br />
 
-Slots render in the light dom so they are import for seo and discoverability as they are content that doesn't need JavaScript to render. Web crawlers can read the content directly from the light DOM as unknown html elements.
+Slots render in the light dom so they are important for seo and discoverability as they are content that doesn't need JavaScript to render. Web crawlers can read the content directly from the light DOM as unknown html elements.
 
 ### Rich data
 
@@ -148,6 +148,23 @@ kemet-drawer[dom="mounted"] {
   visibility: visible;
 }
 ```
+
+### Styles API
+
+Kemet UI is unique in how it handles styles. Instead of using class names, all styles are used by a combination of values in the `data-kemet` attribute. This allows for a more robust approach of targeting Kemet UI specific styles and writing values that are more similar to definiing properties on a component.
+
+
+
+## A word on Frameworks
+
+The above assumes a vanilla JavaScript environment. If you are using a framework like React, Vue, or Angular, you may need to use a different approach to access the APIs of an element. Do what makes sense in your framework. For example in React properties are written in JSX like so:
+
+```jsx
+<kemet-button variant={`filled`}>Click me</kemet-button>
+```
+
+You can checkout our [Framework Integrations](/frameworks) page for more information. Also see [custom elements everywhere](https://custom-elements-everywhere.com/) for a primer.
+
 
 
 

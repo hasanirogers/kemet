@@ -1,6 +1,75 @@
 ---
 title: Design Tokens
 description: Design Tokens documentation
+
 ---
 
-Temp
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import Callout from '../../../components/Callout.astro';
+
+A design token is a single value that represents a design decision. For example, a border radius or a color. Kemet UI expresses design tokens as css custom properties. Including the design tokens is a requirement for Kemet UI to work properly.
+
+The custom properties follow the following pattern: `--kemet-{category}-{name}`.
+
+Kemet UI has several categories of design tokens:
+
+{ /* https://starlight.astro.build/reference/icons */}
+<CardGrid>
+	<Card title="Border" icon="comment-alt">
+		Controls for border radius and width.
+	</Card>
+	<Card title="Color" icon="seti:julia">
+		Primitive and semantic color names for fonts and backgrounds.
+	</Card>
+	<Card title="Size" icon="up-arrow">
+		Sizes for fonts, leading, margin, padding, etc.
+	</Card>
+  <Card title="Elevation" icon="seti:plan">
+    Levels of drop shadow to be applied to an element.
+	</Card>
+	<Card title="Time" icon="clock">
+		Durations for animations and transitions.
+	</Card>
+</CardGrid>
+<br />
+
+All of them are self evident. But some have nuances that should be noticed. Take color for example. Color has base names and semantic names. Think of a base name as a constant. The semantic names are derived from the base names however and their name describes the purpose of the token.
+
+```css
+/* a semantic token, the base brand color for your theme */
+--kemet-color-brand-primary-base: #2196f3;
+```
+<br />
+
+If you ever need to know what custom properties are available via the tokens just inspect the page and look at the root (html) element of the document.
+
+## Using tokens
+
+To use a design token in your CSS, simply reference it using the `var()` function.
+
+```css
+.my-element {
+  /* these are local custom properties that reference the design tokens */
+  --bg-color: var(--kemet-color-brand-primary-base);
+  --border-radius: var(--kemet-border-radius-md);
+
+  background-color: var(--bg-color);
+  border-radius: var(--border-radius);
+}
+```
+<br />
+
+<Callout appearance="info">We recommend that you use local custom properties to reference the design tokens. This makes it easier to override the tokens in your own CSS.</Callout>
+
+## Overriding tokens
+
+You can override design tokens on a thematic level by setting them in your own CSS. This is useful for customizing the entire look and feel of your application.
+
+```css
+[data-theme="yours"] {
+  --kemet-color-brand-primary-base: #ffc400;
+}
+```
+
+Following this apprach you can either theme the entire document or specific elements by adding a data attribute of your theme name.
+
