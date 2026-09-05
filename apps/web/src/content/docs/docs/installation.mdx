@@ -3,4 +3,87 @@ title: Installation
 description: How to install Kemet UI
 ---
 
-Temp
+import Callout from '../../../components/Callout.astro';
+
+Welcome! This guide will walk you through the basics of installing Kemet UI. There two main ways of installing.
+
+1. Via package manager using like npm
+2. Via CDN
+
+Kemet has been setup to work with both, so take your pick depending on your project needs.
+
+## Via a Package Manager
+
+Run the following command to install Kemet UI:
+
+```bash
+npm install kemet-ui
+```
+<br />
+
+You can then import the elements in your project as needed.
+
+```javascript
+import 'kemet-ui/[element]';
+```
+<br />
+
+See each element page for the exact import path.
+
+<br />
+<Callout>If you're using a version of React lower than 19 you'll need to use the legacy wrappers. See the element documentation for "Legacy React" under import for the exact import.</Callout>
+
+
+
+## Via CDN
+
+If you're working with a Vanilla project you can install via a CDN. Just include a script tag with a reference to the element you want:
+
+```html
+<script type="module" src="https://unpkg.com/kemet-ui@latest/dist/elements/[element].js"></script>
+```
+<br />
+
+See each element page for the exact path on the cdn.
+
+<br />
+<Callout>Kemet UI elements are written in Lit and to keep the elements as small as possible we've opted to not include the Lit library in the build. This means you'll need to include an importmap to resolve the Lit dependency. You can do so with the following as an example:</Callout>
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "lit": "https://esm.sh",
+      "lit/": "https://esm.sh/"
+    }
+  }
+</script>
+```
+
+Put this in the head before your scripts for any elements.
+
+## Installing styles
+
+Kemet UI depends on it's design tokens. You must include the design tokens on any page with a Kemet UI element. The design tokens can be found at:
+
+
+```javascript
+import 'kemet-ui/styles/tokens.css';
+```
+<br />
+
+OR
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/kemet-ui@latest/dist/styles/tokens.css" />
+```
+<br />
+
+Kemet UI also ships with styles for native elements and Styles API Utilities. You can include them by adding the following:
+
+```javascript
+import 'kemet-ui/styles/native.css';
+import 'kemet-ui/styles/utilities.css';
+```
+<br />
+

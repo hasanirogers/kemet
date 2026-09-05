@@ -31,6 +31,13 @@ const tags = getElementTags(allTags, tagname)?.[0]?.tags;
 
 const importCode = `import '@kemet-ui/${element}';`;
 const importHTML = hljs.highlight(importCode, { language: 'javascript' }).value
+
+const cdnCode = `<script type="module" src="https://unpkg.com/kemet-ui@latest/dist/elements/${element}.js"></script>`;
+const cdnHTML = hljs.highlight(cdnCode, { language: 'html' }).value
+
+const reactLegacyCode = `import { Kemet${element.charAt(0).toUpperCase() + element.slice(1)} } from 'kemet-ui/react';`;
+const reactLegacyHTML = hljs.highlight(reactLegacyCode, { language: 'javascript' }).value
+
 ---
 
 <div class="view-on">
@@ -51,9 +58,30 @@ const importHTML = hljs.highlight(importCode, { language: 'javascript' }).value
 
 <h2>Import</h2>
 <hr /><br />
-<pre><code><Fragment set:html={importHTML} /></code></pre>
+
+<kemet-tabs>
+  <kemet-tab slot="tab">Bundler</kemet-tab>
+  <kemet-tab slot="tab">CDN</kemet-tab>
+  <kemet-tab slot="tab">React Legacy</kemet-tab>
+  <kemet-tab-panel slot="panel">
+    <pre><code><Fragment set:html={importHTML} /></code></pre>
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <pre><code><Fragment set:html={cdnHTML} /></code></pre>
+  </kemet-tab-panel>
+  <kemet-tab-panel slot="panel">
+    <pre><code><Fragment set:html={reactLegacyHTML} /></code></pre>
+  </kemet-tab-panel>
+</kemet-tabs>
+
+
 
 <style>
+  kemet-tab,
+  kemet-tab-panel {
+    margin-top: 0;
+  }
+
   .view-on {
     position: absolute;
     top: -6.5rem;
