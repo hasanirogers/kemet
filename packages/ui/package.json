@@ -1,6 +1,6 @@
 {
   "name": "kemet-ui",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "A framework agnostic design system that's blessed by the gods.",
   "type": "module",
   "scripts": {
