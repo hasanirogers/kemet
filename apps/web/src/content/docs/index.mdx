@@ -18,25 +18,33 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import CustomElements from '../../components/CustomElements.astro';
+import WorksEverywhere from '../../components/WorksEverywhere.astro';
+import DocsFooter from '../../components/DocsFooter.astro';
 
+<WorksEverywhere />
 
-## Native Elements
+<hr /><br />
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+<CardGrid>
+	<Card title="Accessibility">
+		All components passes a11y testing in axe and are built with accessibility in mind.
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="Storybook">
+		Storybook is automatically deployed and updated with each release and contains advanced controls.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Framework Compatible">
+		Kemet UI is framework agnostic and works in all popular front end libraries such as React, Angular, and Vue.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="Test Driven">
+		Kemet UI components are automatically tested with a greater than 90% test coverage on each release.
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Configurable">
+		Kemet UI styles and components are highly configurable allowing you to customize the look and feel differently for each use.
 	</Card>
+  <Card title="Integrations">
+    A plethora of integrations are available in sandboxes online for you to get a handle on how to integrate Kemet UI into your application.
+  </Card>
 </CardGrid>
+
+<br />
+<DocsFooter />

@@ -38,7 +38,7 @@ const Template = ({
   breakpoint = 'xs',
   spacer = 'md'
 }) => {
-  const sideAttr = side !== 'all' ? `-${side}-` : '';
+  const sideAttr = side !== 'all' ? `${side}-` : '';
   const breakpointAttr = !!breakpoint ? `[${breakpoint}]-` : '';
   return html`
     <div data-kemet="${type}:${breakpointAttr}${sideAttr}${spacer} border:1">

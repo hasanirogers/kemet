@@ -22,7 +22,14 @@ onkemet-drawer-opened={() => setIsDrawerOpened(true)}
 
 The name of the event in Kemet UI is `kemet-drawer-opened`. In React 19 and newer, just prepend `on` to your event name and work with them like you would regular synthetic React events like `onClick`.
 
-<Callout appearance="info">To get your editor to recognize the Web Component in JSX, see&nbsp;[Using JSX](/docs/jsx/).</Callout>
+### JSX Support
+
+To get your editor to recognize Kemet UI elements in JSX, you can use the `kemet-ui/types/jsx` package and import it into your `global.d.ts` file:
+
+```typescript
+// src/global.d.ts
+import 'kemet-ui/types/jsx';
+```
 
 ## React Legacy
 
@@ -99,6 +106,14 @@ Next 15+ ships with React 19+ which has native support for Web Components. The o
 
 [Nextbox](https://github.com/hasanirogers/kemet/tree/main/integrations/next) is a Next sandbox that demonstrates how to use Kemet UI components in Next. Check it out.
 
+### JSX Support
+
+To get your editor to recognize Kemet UI elements in JSX, you can use the `kemet-ui/types/jsx` package and import it into your `global.d.ts` file:
+
+```typescript
+// src/global.d.ts
+import 'kemet-ui/types/jsx';
+```
 
 ## Svelte
 
@@ -119,6 +134,15 @@ Lit supports Web Components natively. This simply documents some examples on how
 Solid has excellent support for Web Components. The only thing to consider is that because Solid uses JSX, you'll need to [get JSX to recognize the Web Component](/docs/jsx/).
 
 [Solidbox](https://github.com/hasanirogers/kemet/tree/main/integrations/solid) is a Solid sandbox that demonstrates how to use Kemet UI components in Solid. Check it out.
+
+### JSX Support
+
+To get your editor to recognize Kemet UI elements in JSX, you can use the `kemet-ui/types/solid` package and import it into your `global.d.ts` file:
+
+```typescript
+// global.d.ts
+import 'kemet-ui/types/jsx';
+```
 
 
 ## Marko

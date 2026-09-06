@@ -21,7 +21,7 @@ export const globalFormatting = (StoryFn: any, context: { component?: string }) 
 export const handleThemeSwitching = (StoryFn: any, context: { component?: string; viewMode?: string }) => {
   const [globals, updateGlobals] = useGlobals();
 
-  console.log(globals.theme);
+  // console.log(globals.theme);
 
   useEffect(() => {
     document.documentElement.dataset.theme = globals.theme;
