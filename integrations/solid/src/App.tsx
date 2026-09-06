@@ -2,7 +2,7 @@ import type { Component } from 'solid-js';
 import { createSignal } from "solid-js";
 import styles from './App.module.css';
 
-import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/styles/tokens.css';
 import 'kemet-ui/button';
 import 'kemet-ui/drawer';
 import 'kemet-ui/icon';

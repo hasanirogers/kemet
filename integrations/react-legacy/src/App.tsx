@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { KemetButton, KemetDrawer, KemetIcon } from 'kemet-ui/react';
-import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/styles/tokens.css';
 import './App.css'
 
 

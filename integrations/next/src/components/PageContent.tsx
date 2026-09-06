@@ -1,15 +1,24 @@
 'use client'
 
-import { useState } from 'react'
-
-import 'kemet-ui/styles/kemet.tokens.css';
-import 'kemet-ui/icon';
-import 'kemet-ui/button';
-import 'kemet-ui/drawer';
+import { useState, useEffect } from 'react'
 
 function PageContent() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    // Dynamically import kemet-ui components only on client side
+    import('kemet-ui/styles/tokens.css');
+    import('kemet-ui/icon');
+    import('kemet-ui/button');
+    import('kemet-ui/drawer');
+    setMounted(true)
+  }, [])
   const [count, setCount] = useState(0)
   const [isDrawerOpened, setIsDrawerOpened] = useState(false)
+
+  if (!mounted) {
+    return null // or a loading placeholder
+  }
 
   return (
     <kemet-drawer fill-viewport opened={isDrawerOpened} onkemet-opened={() => setIsDrawerOpened(true)} onkemet-closed={() => setIsDrawerOpened(false)}>

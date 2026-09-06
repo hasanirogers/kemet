@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 
-import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/styles/tokens.css';
 import 'kemet-ui/button';
 import 'kemet-ui/drawer';
 import 'kemet-ui/icon';

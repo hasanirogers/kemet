@@ -1,5 +1,5 @@
 <script lang="ts">
-  import 'kemet-ui/styles/kemet.tokens.css'
+  import 'kemet-ui/styles/tokens.css'
   import 'kemet-ui/button'
   import 'kemet-ui/icon'
   import 'kemet-ui/drawer'
