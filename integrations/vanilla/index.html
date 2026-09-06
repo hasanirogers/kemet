@@ -9,14 +9,16 @@
     <script type="importmap">
       {
         "imports": {
-          "lit": "https://esm.sh",
-          "lit/": "https://esm.sh/"
+          "lit": "https://esm.sh/lit",
+          "lit/": "https://esm.sh/lit/",
+          "@lit/reactive-element": "https://esm.sh/@lit/reactive-element",
+          "@lit/reactive-element/": "https://esm.sh/@lit/reactive-element/"
         }
       }
     </script>
-    <script type="module" src="/dist/elements/drawer/index.js"></script>
-    <script type="module" src="/dist/elements/button/index.js"></script>
-    <script type="module" src="/dist/elements/icon/index.js"></script>
+    <script type="module" src="https://unpkg.com/kemet-ui@latest/dist/elements/drawer/index.js"></script>
+    <script type="module" src="https://unpkg.com/kemet-ui@latest/dist/elements/button/index.js"></script>
+    <script type="module" src="https://unpkg.com/kemet-ui@latest/dist/elements/icon/index.js"></script>
   </head>
   <body>
     <kemet-drawer fill-viewport>
