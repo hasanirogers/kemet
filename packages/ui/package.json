@@ -9,7 +9,7 @@
     "build:css": "sass --load-path=node_modules src/styles:dist/styles && postcss dist/styles/**/*.css -u autoprefixer --dir dist/styles",
     "build:litcss": "node scripts/build-litcss.js",
     "build:ts": "node --max-old-space-size=8192 node_modules/.bin/tsup",
-    "copy:vanilla": "cp -r dist/* ../../integrations/vanilla/dist",
+    "copy:vanilla": "mkdir -p ../../integrations/vanilla/dist && cp -r dist/* ../../integrations/vanilla/dist",
     "dev": "npm run watch",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-pattern .gitignore",
     "format:stylelint": "npx stylelint --fix 'src/styles/**/*.scss' -c stylelint.config.mjs",
