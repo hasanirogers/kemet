@@ -1,0 +1,33 @@
+---
+// src/components/CustomSiteTitle.astro
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+---
+
+<div class="site-title-container">
+  <!-- Renders the original logo and site title -->
+  <Default {...Astro.props} />
+
+  <a href="/elements" class="custom-nav-link">Elements</a>
+  <a href="/native" class="custom-nav-link">Native Elements</a>
+  <a href="/frameworks" class="custom-nav-link">Frameworks</a>
+</div>
+
+<style>
+  .site-title-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .custom-nav-link {
+    color: var(--sl-color-text-muted);
+    text-decoration: none;
+    font-size: var(--sl-text-sm);
+    font-weight: 500;
+  }
+
+  .custom-nav-link:hover {
+    color: var(--sl-color-text-accent);
+  }
+</style>

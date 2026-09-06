@@ -1,5 +1,5 @@
 import KemetCount from "../elements/count";
-import KemetInput from "../elements/input";
+import HTMLKemetInputElement from "../elements/input";
 
 export enum EnumKeyCodes {
   ESCAPE = 'Escape',
@@ -19,15 +19,17 @@ export enum EnumDirections {
 }
 export type TypeDirection = typeof directions[number];
 
-export const statuses = ['standard', 'primary', 'success', 'warning', 'error'] as const;
-export enum EnumStatuses {
-  Standard = 'standard',
-  Primary = 'primary',
+export const appearances = ['neutral', 'brand', 'success', 'warning', 'error'] as const;
+export enum EnumAppearances {
+  Neutral = 'neutral',
+  Brand = 'brand',
   Success = 'success',
   Warning = 'warning',
-  Error = 'error'
+  Error = 'error',
+  Info = 'info',
+  Link = 'link'
 }
-export type TypeStatus = typeof statuses[number];
+export type TypeAppearance = typeof appearances[number];
 
 export const axis = ['horizontal', 'vertical'] as const;
 export enum EnumAxis {
@@ -42,14 +44,14 @@ export enum EnumRoundedSizes {
   MD = 'md',
   LG = 'lg',
   XL = 'xl',
-  CIRCLE = 'circle',
-  PILL = 'pill'
+  Circle = 'circle',
+  Pill = 'pill'
 }
 export type TypeRoundedSizes = typeof roundedSizes[number];
 
 export interface InterfaceInputDetails {
-  status: TypeStatus;
+  status: TypeAppearance;
   validity: ValidityState;
-  element: HTMLElement | KemetCount | KemetInput;
+  element: HTMLElement | KemetCount | HTMLKemetInputElement;
   value?: string;
 }

@@ -1,0 +1,64 @@
+---
+title: Input Files
+description: A component for uploading files.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>
+  Input file is just a UI component. You'll need to combine it with your own upload script. You can do this by listening to the `kemet-input-files-change` event. This event will give you the files that have been added. You'll need to dynamically insert a `kemet-input-file` element for each of these files in the event. [Here's an example script that demonstrates how to do this](https://stackblitz.com/edit/kemet-upload-example).
+</Callout>
+
+<ElementDetails element="input-files">
+  <kemet-input-files>
+    <kemet-input-file name="image.jpg" size="2000000" loaded="2000000" status="complete"></kemet-input-file>
+    <kemet-input-file name="image.png" size="200000" loaded="100000" status="uploading"></kemet-input-file>
+    <kemet-input-file name="package.zip" size="8000000" loaded="2000000" status="error" message="File size is too big."></kemet-input-file>
+  </kemet-input-files>
+</ElementDetails>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="input-files" display="attributes" />
+<br />
+
+### Slots
+
+<API element="input-files" display="slots" />
+<br />
+
+### Events
+
+<API element="input-files" display="events" />
+<br />
+
+### Methods
+
+<API element="input-files" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="input-files" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="input-files" display="parts" />
+<br />
+
+<DocsFooter />
+

@@ -1,0 +1,48 @@
+:host {
+  --kemet-upload-file-ripple-color: var(--kemet-color-font-active);
+  --kemet-upload-file-color: var(--kemet-color-font-base);
+  --kemet-upload-file-padding: 0.5rem 1rem;
+  --kemet-upload-file-border: 1px solid var(--kemet-color-font-base);
+
+  color: var(--kemet-upload-file-color);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  height: 100%;
+  max-height: 50%;
+  padding: var(--kemet-upload-file-padding);
+  border: var(--kemet-upload-file-border);
+}
+
+:host([status='error']) {
+  border: 1px solid var(--kemet-color-font-error);
+}
+
+:host([status='complete']) {
+  border: 1px solid var(--kemet-color-font-success);
+}
+
+h3 {
+  margin: 0;
+}
+
+.percentage {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  align-self: center;
+  justify-self: center;
+}
+
+.indicator {
+  transform: scale(0.8);
+}
+
+:host([status='complete']) .message,
+:host([status='complete']) .indicator {
+  color: rgb(var(--kemet-color-success));
+}
+
+:host([status='error']) .message,
+:host([status='error']) .indicator {
+  color: rgb(var(--kemet-color-error));
+}

@@ -1,0 +1,156 @@
+import { html, LitElement, unsafeCSS } from 'lit';
+import { customElement, property, state } from 'lit/decorators.js';
+import { EnumAppearances } from '../../utilities/constants';
+import HTMLKemetComboElement from '../combo';
+import HTMLKemetInputElement from '../input';
+import HTMLKemetTextareaElement from '../textarea';
+import styles from './styles.css.ts';
+import { emitEvent } from '../../utilities/events';
+
+/**
+ * @since 1.0.0
+ * @status stable
+ *
+ * @tagname kemet-field
+ * @summary Used in combination with Input, Select, and Textarea, to make a Field.
+ *
+ * @prop {string} slug - Uniquely identifies the control. Use the same slug for slotted subcomponents.
+ * @prop {string} label - The label text
+ * @prop {string} message - The validation message for error or success
+ * @prop {boolean} focused - Determines if the containing input is focused
+ * @prop {EnumAppearances} appearance - The appearance of the input
+ * @prop {boolean} filled - Is true when the containing input has a value
+ * @prop {number} length - The length of the containing input
+ * @prop {boolean} disabled - Determines the disabled state of the control
+ * @prop {string} errorIcon - The icon while in an error or warning state
+ * @prop {string} successIcon - The icon while in a success state
+ *
+ * @slot component - Allows subcomponents of the field to display.
+ *
+ * @csspart label - The label of the field.
+ * @csspart message - The validation message of the field.
+ * @csspart text - The text in the label.
+ *
+ * @event kemet-input - Fires when input fires on the input slot
+ *
+ */
+
+@customElement('kemet-field')
+export default class HTMLKemetFieldElement extends LitElement {
+  static styles = [styles];
+
+  @property({ type: String })
+  slug!: string;
+
+  @property({ type: String })
+  label!: string;
+
+  @property({ type: String })
+  message!: string;
+
+  @property({ type: Boolean, reflect: true })
+  focused!: boolean;
+
+  @property({ type: String, reflect: true })
+  appearance: EnumAppearances = EnumAppearances.Neutral;
+
+  @property({ type: Boolean, reflect: true })
+  filled!: boolean;
+
+  @property({ type: Number })
+  length!: number;
+
+  @property({ type: Boolean, reflect: true })
+  disabled!: boolean;
+
+  @property({ type: String, attribute: 'error-icon' })
+  errorIcon: string = 'exclamation-triangle-fill';
+
+  @property({ type: String, attribute: 'success-icon' })
+  successIcon: string = 'check-lg';
+
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
+
+  @state()
+  slotInput!: HTMLKemetInputElement | HTMLKemetTextareaElement;
+
+  @state()
+  slotCombo!: HTMLKemetComboElement;
+
+  firstUpdated() {
+    this.slotInput = this.querySelector('[slot="input"]') as HTMLKemetInputElement | HTMLKemetTextareaElement;
+    this.slotCombo = this.querySelector('[slot="combo"]') as HTMLKemetComboElement;
+
+    // TODO: trace what components should be listened to
+    // this.slotInput.addEventListener('kemet-focus', (event: Event) => this.handleFocused(event));
+    // this.slotInput.addEventListener('kemet-status-change', (event: Event) => this.handleAppearance(event));
+    // this.slotInput.addEventListener('kemet-input', (event: Event) => this.handleInput(event));
+    this.slotCombo?.addEventListener('kemet-input-combo-selection', (event: Event) => this.handleSelection(event));
+
+
+    if (this.slotInput.value) {
+      this.length = this.slotInput.value.length;
+    } else {
+      this.length = 0;
+    }
+
+    emitEvent(this, 'kemet-field-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
+  }
+
+  render() {
+    return html`
+      <label for="${this.slug}" id="${this.slug}-label" part="label">
+        <span part="text">${this.label}</span>
+        <slot name="input"></slot>
+      </label>
+      ${this.makeStatusMessage()}
+      <slot name="component"></slot>
+    `;
+  }
+
+  makeStatusMessage() {
+    if (this.appearance !== 'neutral') {
+      return html`<span class="message" part="message">${this.message}</span>`;
+    }
+
+    return null;
+  }
+
+  handleFocused(event: Event) {
+    this.focused = (event as CustomEvent).detail;
+
+    if (!this.focused && this.slotCombo && this.slotCombo.options.length < 1) {
+      this.slotCombo.show = false;
+    }
+  }
+
+  handleAppearance(event: Event) {
+    this.appearance = (event as CustomEvent).detail.appearance;
+  }
+
+  handleInput(event: Event) {
+    this.length = (event as CustomEvent).detail.value.length ?? 0;
+    this.filled = (event as CustomEvent).detail.value !== '';
+  }
+
+  handleSelection(event: Event) {
+    this.slotInput.setAttribute('aria-activedescendant', (event as CustomEvent).detail);
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'kemet-field': HTMLKemetFieldElement
+  }
+}

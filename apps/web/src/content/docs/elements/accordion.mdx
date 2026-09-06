@@ -1,0 +1,59 @@
+---
+title: Accordion
+description: An accordion component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>You must use the `accordion` with the `accordion-panel` element.</Callout>
+
+<ElementDetails element="accordion" sample='<kemet-accordion><kemet-accordion-panel><h3 slot="trigger">Trigger 1</h3><kemet-icon slot="icon" name="chevron-down" size="18"></kemet-icon><div slot="body">The quick brown fox jumps over the lazy dog.</div></kemet-accordion-panel></kemet-accordion>' />
+
+
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="accordion" display="attributes" />
+<br />
+
+### Slots
+
+<API element="accordion" display="slots" />
+<br />
+
+### Events
+
+<API element="accordion" display="events" />
+<br />
+
+### Methods
+
+<API element="accordion" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="accordion" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="accordion" display="parts" />
+<br />
+
+<DocsFooter />
+

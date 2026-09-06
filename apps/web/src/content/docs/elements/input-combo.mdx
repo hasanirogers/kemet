@@ -1,0 +1,60 @@
+---
+title: Input Combo
+description: An input field design to work with a combo selection component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="input-combo">
+  <kemet-field slug="categories" label="Categories">
+    <kemet-input-combo slot="input" name="categories"></kemet-input-combo>
+    <kemet-combo slot="component" options='["Art","Automotive","Bar","Beauty","Contractor","Finance","Fitness","Food","Health","Home","Legal","Other","Pet","Restaurant","Retail","Service","Shopping","Sports","Travel"]'></kemet-combo>
+  </kemet-field>
+</ElementDetails>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="combo" display="attributes" />
+<br />
+
+### Slots
+
+<API element="combo" display="slots" />
+<br />
+
+### Events
+
+<API element="combo" display="events" />
+<br />
+
+### Methods
+
+<API element="combo" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="combo" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="combo" display="parts" />
+<br />
+
+<DocsFooter />
+

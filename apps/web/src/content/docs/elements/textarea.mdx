@@ -1,0 +1,77 @@
+---
+title: Textarea
+description: A textarea component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="textarea" sample='<kemet-textarea></kemet-textarea>' />
+
+The textarea element supports attributes of a standard textarea element with a few additions.
+
+
+## Examples
+<hr />
+
+### Rounded
+
+The textarea element supports `rounded` as a boolean attribute.
+
+<CodePreview code='<kemet-textarea rounded></kemet-textarea>' language="html" />
+
+### Filled
+
+Fill the textarea with the `filled` attribute.
+
+<CodePreview code='<kemet-textarea filled></kemet-textarea>' language="html" />
+
+### Appearance
+
+The textarea element supports `appearance` attribute.
+
+<CodePreview code='<kemet-textarea appearance="success"></kemet-textarea>' language="html" />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="input" display="attributes" />
+<br />
+
+### Slots
+
+<API element="input" display="slots" />
+<br />
+
+### Events
+
+<API element="input" display="events" />
+<br />
+
+### Methods
+
+<API element="input" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="input" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="input" display="parts" />
+<br />
+
+<DocsFooter />
+

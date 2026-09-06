@@ -2,17 +2,22 @@ import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
   entryPoints: [
-    "src/elements/*.ts",
-    "src/wrappers/*.(ts|tsx)"
+    "src/elements/**/*.ts",
+    "src/wrappers/**/*.(ts|tsx)"
   ],
-  format: ["cjs", "esm"],
+  format: ["esm"],
   dts: true,
   sourcemap: true,
   target: 'es2020',
   external: [
+    /^lit(\/.*)?$/,
     'react',
     'react-dom',
     '@lit/react',
   ],
+  // Split chunks to reduce memory pressure
+  splitting: false,
+  // Disable workers to prevent memory issues during DTS generation
+  workers: false,
   ...options,
 }));

@@ -1,0 +1,136 @@
+---
+title: Flipcard
+description: A card that can flip between front and back.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="flipcard">
+  <kemet-flipcard>
+    <div slot="front" style="padding:1rem;">
+      <p>This is the front of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the back</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+    <div slot="back" style="padding:1rem;">
+      <p>This is the back of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the front</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+  </kemet-flipcard>
+</ElementDetails>
+
+## Examples
+
+### Rounded
+
+Flipcard supports standard rounded attributes values.
+
+<CodePreview>
+  <kemet-flipcard rounded="lg">
+    <div slot="front" style="padding:0.5rem 1rem;">
+      <p>This is the front of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the back</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+    <div slot="back" style="padding:0.5rem 1rem;">
+      <p>This is the back of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the front</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+  </kemet-flipcard>
+</CodePreview>
+
+
+### Vertical
+
+Use the `axis` attribute to flip the card vertically.
+
+<CodePreview>
+  <kemet-flipcard axis="vertical">
+    <div slot="front" style="padding:1rem;">
+      <p>This is the front of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the back</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+    <div slot="back" style="padding:1rem;">
+      <p>This is the back of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the front</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+  </kemet-flipcard>
+</CodePreview>
+
+### On Hover
+
+Use the `flip-on-hover` attribute to flip the card on hover.
+
+<CodePreview>
+  <kemet-flipcard flip-on-hover>
+    <div slot="front" style="padding:1rem;">
+      <p>This is the front of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the back</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+    <div slot="back" style="padding:1rem;">
+      <p>This is the back of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button>Flip to the front</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+  </kemet-flipcard>
+</CodePreview>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="flipcard" display="attributes" />
+<br />
+
+### Slots
+
+<API element="flipcard" display="slots" />
+<br />
+
+### Events
+
+<API element="flipcard" display="events" />
+<br />
+
+### Methods
+
+<API element="flipcard" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="flipcard" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="flipcard" display="parts" />
+<br />
+
+<DocsFooter />
+

@@ -1,0 +1,98 @@
+---
+import customElements from '../../../../packages/ui/custom-elements.json';
+import extractJSDocTags from '../utilities/extractJSDocTags.js';
+---
+
+<section>
+  <div class="search-container">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="Search elements..."
+      class="search-input"
+    />
+  </div>
+  <ul id="elements-list">
+    {
+      customElements.modules
+        .map((element) => ({
+          element,
+          tagsData: extractJSDocTags(element.path),
+        }))
+        .filter(({ tagsData }) => tagsData[0]?.tags?.tagname)
+        .sort((a, b) => a.tagsData[0].tags.tagname.localeCompare(b.tagsData[0].tags.tagname))
+        .map(({ element, tagsData }) => {
+          const title = (tagsData[0]?.className || '').replace(/([A-Z])/g, ' $1').replace('Kemet', '').trim();
+          const tags = tagsData[0]?.tags || {};
+
+          return (
+            <li data-search={`${title} ${tags.tagname} ${tags.summary} ${tags.status}`.toLowerCase()}>
+              <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary}>
+                <!-- TODO: Add pre-render placeholder -->
+              </web-element-card>
+            </li>
+          )
+        })
+    }
+  </ul>
+</section>
+<script>
+  import '../elements/element-card/index.js';
+
+  const searchInput = document.getElementById('search-input');
+  const elementsList = document.getElementById('elements-list');
+
+  if (searchInput && elementsList) {
+    const listItems = elementsList.querySelectorAll('li');
+
+    searchInput.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      const searchTerm = target.value.toLowerCase();
+
+      listItems.forEach((item) => {
+        const searchData = item.dataset.search || '';
+        const matches = searchData.includes(searchTerm);
+        item.style.display = matches ? '' : 'none';
+      });
+    });
+  }
+</script>
+<style>
+  .search-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-input {
+    display: inline-flex;
+    width: 100%;
+    padding: 1rem;
+    margin: 0 auto 2rem auto;
+    border: 1px solid var(--sl-color-hairline-shade);
+    border-radius: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: var(--sl-color-white);
+    font-size: 1rem;
+    font-family: inherit;
+    max-width: 640px;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--sl-color-text-accent);
+  }
+
+  .search-input::placeholder {
+    color: var(--sl-color-text-muted);
+  }
+
+  ul {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    list-style: none;
+    padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 1280px;
+  }
+</style>

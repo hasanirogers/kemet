@@ -1,8 +1,8 @@
 <script lang="ts">
-  import 'kemet-ui/styles/kemet.base.css'
-  import 'kemet-ui/elements/button'
-  import 'kemet-ui/elements/icon-bootstrap'
-  import 'kemet-ui/elements/drawer'
+  import 'kemet-ui/styles/kemet.tokens.css'
+  import 'kemet-ui/button'
+  import 'kemet-ui/icon'
+  import 'kemet-ui/drawer'
   import Counter from './lib/Counter.svelte'
 
   let isDrawerOpened: boolean = false;
@@ -12,15 +12,15 @@
   }
 </script>
 
-<kemet-drawer opened={isDrawerOpened}>
-  <aside slot="navigation">
+<kemet-drawer fill-viewport opened={isDrawerOpened}>
+  <aside slot="sidebar">
     <nav>[Your nav here]</nav>
   </aside>
-  <section slot="content">
+  <main slot="body">
     <div>
       <p>
         <button onclick={toggleDrawer}>
-          <kemet-icon-bootstrap icon="list" size={24}></kemet-icon-bootstrap>
+          <kemet-icon name="list" size={24}></kemet-icon>
         </button>
       </p>
         <svg  fill="currentColor" viewBox="0 0 512 512" preserveAspectRatio="none">
@@ -43,7 +43,7 @@
     <p class="read-the-docs">
       Visit <a href="https://kemet.dev" target="_blank">Kemet UI</a> for more details and documentation.
     </p>
-  </section>
+  </main>
 </kemet-drawer>
 
 <style>

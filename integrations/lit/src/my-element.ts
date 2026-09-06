@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import HTMLKemetDrawerElement from 'kemet-ui/elements/drawer.js';
+import HTMLKemetDrawerElement from 'kemet-ui/elements/drawer';
 
 /**
  * An example element.
@@ -14,7 +14,7 @@ export class MyElement extends LitElement {
    * Copy for the read the docs hint.
    */
   @property()
-  docsHint = html`Litbox is an integration repo demonstrating how to use <a href="https://kemet.dev">Kemet Web Components</a> with Lit.`;
+  docsHint = html`Litbox is an integration repo demonstrating how to use <a href="https://kemet.dev">Kemet UI</a> with Lit.`;
 
   /**
    * The number of times the button has been clicked.
@@ -25,7 +25,7 @@ export class MyElement extends LitElement {
   render() {
     return html`
       <button aria-label="toggle drawer" @click="${() => this.toggleDrawer()}">
-        <kemet-icon-bootstrap icon="list" size="24"></kemet-icon-bootstrap>
+        <kemet-icon name="list" size="24"></kemet-icon>
       </button>
       <br /><br />
       <div>

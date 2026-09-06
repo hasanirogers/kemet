@@ -1,0 +1,57 @@
+---
+title: Count
+description: A count sub component that pairs with a field component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>A count must be used with a field element's `component` slot.</Callout>
+
+<ElementDetails element="count" sample={`<kemet-field slug="unique-identifier" label="Label"><kemet-input slot="input" name="input-field" validate-on-blur></kemet-input><kemet-count slot="component" message="characters remaining." limit="8" validate-immediately></kemet-count></kemet-field>`} />
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="count" display="attributes" />
+<br />
+
+### Slots
+
+<API element="count" display="slots" />
+<br />
+
+### Events
+
+<API element="count" display="events" />
+<br />
+
+### Methods
+
+<API element="count" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="count" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="count" display="parts" />
+<br />
+
+<DocsFooter />
+

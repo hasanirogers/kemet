@@ -1,0 +1,126 @@
+:host {
+  /* public */
+  --kemet-select-padding: 1rem;
+  --kemet-select-color: var(--kemet-color-font-base);
+  --kemet-select-font-color: var(--kemet-color-font-base);
+  --kemet-select-border: 1px solid var(--kemet-select-color);
+  --kemet-select-border-radius: 0;
+  --kemet-select-icon-gap: 1rem;
+
+  /* private */
+  --_kemet-select-background-color: transparent;
+
+
+  position: relative;
+  display: block;
+}
+
+select {
+  color: var(--kemet-select-font-color);
+  display: block;
+  font-size: 1rem;
+  width: 100%;
+  padding: var(--kemet-select-padding);
+  border: var(--kemet-select-border);
+  appearance: none;
+  box-sizing: border-box;
+  background-color: var(--_kemet-select-background-color);
+  border-radius: var(--kemet-select-border-radius);
+}
+
+option {
+  color: var(--kemet-color-font-base);
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+:host([polarity=dark]) {
+  --kemet-select-color: var(--kemet-color-font-inverse-base);
+  --kemet-select-font-color: var(--kemet-color-font-inverse-base);
+}
+
+:host([appearance=brand]) {
+  --kemet-select-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error]) {
+  --kemet-select-color: var(--kemet-color-background-error);
+}
+
+:host([appearance=success]) {
+  --kemet-select-color: var(--kemet-color-background-success);
+}
+
+:host([appearance=warning]) {
+  --kemet-select-color: var(--kemet-color-background-warning);
+}
+
+:host([disabled]) {
+  --kemet-select-font-color: var(--kemet-color-font-disabled);
+  --kemet-select-color: var(--kemet-color-font-disabled);
+}
+
+:host([rounded]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=md]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=lg]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill]) {
+  --kemet-select-border-radius: var(--kemet-border-radius-pill);
+}
+
+:host([filled]) {
+  --kemet-select-font-color: var(--kemet-color-font-inverse-base);
+  --_kemet-select-background-color: var(--kemet-color-background-inverse);
+  --kemet-select-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+:host([appearance=brand][filled]) {
+  --_kemet-select-background-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error][filled]) {
+  --_kemet-select-background-color: var(--kemet-color-font-error);
+}
+
+:host([appearance=success][fiiled]) {
+  --_kemet-select-background-color: var(--kemet-color-font-success);
+}
+
+:host([appearance=warning][filled]) {
+  --_kemet-select-background-color: var(--kemet-color-font-warning);
+}
+
+:host([appearance=link][filled]) {
+  --_kemet-select-background-color: var(--kemet-color-font-link);
+}
+
+
+kemet-icon {
+  color: var(--kemet-select-font-color);
+  position: absolute;
+  right: var(--kemet-select-icon-gap);
+  top: 50%;
+  transform: translateY(-50%);
+}

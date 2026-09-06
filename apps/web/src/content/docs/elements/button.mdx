@@ -1,0 +1,121 @@
+---
+title: Button
+description: A button component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="button" sample="<kemet-button>Button</kemet-button>" />
+
+
+## Examples
+<hr />
+
+### Variant
+
+Use the `variant` attribute to change the button's style. For example, you can create an outlined button.
+
+<CodePreview code='<kemet-button variant="outlined">Outlined Button</kemet-button>' language="html" />
+
+### Size
+
+Use the `size` attribute to change the button's size.
+
+<CodePreview code='<ul class="row"><li><kemet-button size="xl">Extra Large Button</kemet-button></li><li><kemet-button size="xs">Extra Small Button</kemet-button></li></ul>' language="html" />
+
+### Appearance
+
+Use the `appearance` attribute to change the button's appearance. This is for color to indicate a status state.
+
+<CodePreview code='<ul class="row"><li><kemet-button appearance="neutral">Neutral Button</kemet-button></li><li><kemet-button appearance="brand">Brand Button</kemet-button></li><li><kemet-button appearance="error">Error Button</kemet-button></li><li><kemet-button appearance="success">Success Button</kemet-button></li><li><kemet-button appearance="warning">Warning Button</kemet-button></li></ul>' language="html" />
+
+
+### Rounded
+
+Use the `rounded` attribute to make the button rounded.
+
+<CodePreview code='<kemet-button rounded>Rounded Button</kemet-button>' language="html" />
+
+You can give the rounded attributte certain values for different roundedness.
+
+<CodePreview code='<ul class="row"><li><kemet-button rounded="lg">Large Rounded Button</kemet-button></li><li><kemet-button rounded="pill">Pill Button</kemet-button></li></ul>' language="html" />
+
+### Combining Attributes
+
+You can combine attributes to create different button styles.
+
+<CodePreview code='<ul class="row"><li><kemet-button variant="outlined" appearance="brand">Outlined Brand Button</kemet-button></li><li><kemet-button variant="edge" appearance="error">Edge Error Button</kemet-button></li></ul>' language="html" />
+
+### Link
+
+Use the `href` attribute to make the button a link.
+
+<CodePreview code='<kemet-button href="https://kemet.dev">Link Button</kemet-button>' language="html" />
+
+### Disabled
+
+Using the `disabled` attribute disables the button.
+
+<CodePreview code='<kemet-button disabled>Disabled Button</kemet-button>' language="html" />
+
+### Icon button
+Use the `left` and/or `right` slots to add icons to the button.
+
+<CodePreview code='<kemet-button><kemet-icon slot="right" name="chevron-right" size="24"></kemet-icon>Kemet Button</kemet-button>' language="html" />
+
+
+### Icon button
+Use the `icon-button` slot to add an icon to the button.
+
+<CodePreview code='<kemet-button>Kemet Button<kemet-icon slot="icon-button" name="house" library="fontawesome" family="solid" size="24"></kemet-icon></kemet-button>' language="html" />
+
+### Loading
+
+You can put the button in a loading state and combine it with the loader element to show a loading indicator. When loading, the button will hide the text it originally had, keeping the width true to whatever the text was.
+
+<CodePreview code='<kemet-button loading>Loading...<kemet-loader variant="three-dots" slot="loader" size="12"></kemet-loader></kemet-button>' language="html" />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="button" display="attributes" />
+<br />
+
+### Slots
+
+<API element="button" display="slots" />
+<br />
+
+### Events
+
+<API element="button" display="events" />
+<br />
+
+### Methods
+
+<API element="button" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="button" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="button" display="parts" />
+<br />
+
+<DocsFooter />
+

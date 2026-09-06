@@ -1,0 +1,30 @@
+{
+  "size": {
+    "font": {
+      "2xs": { "value": "0.625", "type": "fontSize" },
+      "xs": { "value": "0.75", "type": "fontSize" },
+      "sm": { "value": "0.875", "type": "fontSize" },
+      "md": { "value": "1", "type": "fontSize" },
+      "lg": { "value": "1.25", "type": "fontSize" },
+      "xl": { "value": "1.5", "type": "fontSize" },
+      "2xl": { "value": "2", "type": "fontSize" },
+      "3xl": { "value": "2.5", "type": "fontSize" },
+      "4xl": { "value": "3", "type": "fontSize" },
+      "5xl": { "value": "4", "type": "fontSize" },
+      "base": { "value": "{size.font.md}", "type": "fontSize" }
+    },
+    "leading": {
+      "2xs": { "value": "1", "type": "fontHeight" },
+      "xs": { "value": "1", "type": "fontHeight" },
+      "sm": { "value": "1.125", "type": "fontHeight" },
+      "md": { "value": "1.2", "type": "fontHeight" },
+      "lg": { "value": "1.2", "type": "fontHeight" },
+      "xl": { "value": "1.25", "type": "fontHeight" },
+      "2xl": { "value": "1.25", "type": "fontHeight" },
+      "3xl": { "value": "1.35", "type": "fontHeight" },
+      "4xl": { "value": "1.35", "type": "fontHeight" },
+      "5xl": { "value": "1.35", "type": "fontHeight" },
+      "base": { "value": "{size.leading.md}", "type": "fontHeight" }
+    }
+  }
+}

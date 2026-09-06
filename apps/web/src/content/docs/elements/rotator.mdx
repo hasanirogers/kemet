@@ -1,0 +1,67 @@
+---
+title: Rotator
+description: Rotates through an array of text.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="rotator">
+  <kemet-rotator speed="3" messages='["First", "Second", "Third"]'> </kemet-rotator>
+</ElementDetails>
+
+## Examples
+
+### Flip
+
+Use the `effect` attribute to change the animation to flip.
+
+<CodePreview>
+  <kemet-rotator effect="flip" speed="3" messages='["First", "Second", "Third"]'></kemet-rotator>
+</CodePreview>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="rotator" display="attributes" />
+<br />
+
+### Slots
+
+<API element="rotator" display="slots" />
+<br />
+
+### Events
+
+<API element="rotator" display="events" />
+<br />
+
+### Methods
+
+<API element="rotator" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="rotator" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="rotator" display="parts" />
+<br />
+
+<DocsFooter />
+

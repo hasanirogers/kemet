@@ -1,0 +1,58 @@
+---
+title: Combo
+description: A combo sub component that pairs with a field component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+<Callout>A combo must be used with a field element's `component` slot.</Callout>
+
+<ElementDetails element="combo" sample={`<kemet-field slug="unique-identifier" label="Frequently asked questions."><kemet-input slot="input" name="input" placeholder="Start typing to see the FAQs"></kemet-input><kemet-combo slot="component" options='["How do use Kemet UI?", "Are there going to be more components?", "Does Kemet UI work with React?"]'></kemet-combo></kemet-field>`} />
+
+
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="combo" display="attributes" />
+<br />
+
+### Slots
+
+<API element="combo" display="slots" />
+<br />
+
+### Events
+
+<API element="combo" display="events" />
+<br />
+
+### Methods
+
+<API element="combo" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="combo" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="combo" display="parts" />
+<br />
+
+<DocsFooter />
+

@@ -1,0 +1,182 @@
+:host {
+  /* public */
+  --kemet-input-combo-height: 50px;
+  --kemet-input-combo-color: var(--kemet-color-font-base);
+  --kemet-input-combo-border: 1px solid var(--kemet-input-combo-color);
+  --kemet-input-combo-padding-y: 0.5rem;
+  --kemet-input-combo-padding-x: 1rem;
+  --kemet-input-combo-icon-gap: 3rem;
+  --kemet-input-combo-font-color: var(--kemet-input-combo-color);
+  --kemet-input-combo-chip-font-color: var(--kemet-color-font-inverse-base);
+  --kemet-input-combo-chip-background-color: var(--kemet-color-background-inverse);
+
+  /* private */
+  --_kemet-input-combo-border-radius: var(--kemet-input-combo-border-radius);
+  --_kemet-input-combo-background-color: transparent;
+  --_kemet-input-combo-icon-left-padding: var(--kemet-input-combo-padding-x);
+  --_kemet-input-combo-icon-right-padding: var(--kemet-input-combo-padding-x);
+
+  position: relative;
+  display: block;
+}
+
+input {
+  color: var(--kemet-input-combo-font-color);
+  display: block;
+  font-size: 1rem;
+  width: 100%;
+  height: var(--kemet-input-combo-height);
+  border: var(--kemet-input-combo-border);
+  appearance: none;
+  box-sizing: border-box;
+  background-color: var(--_kemet-input-combo-background-color);
+  border-radius: var(--_kemet-input-combo-border-radius);
+  padding-left: var(--_kemet-input-combo-icon-left-padding);
+  padding-right: var(--_kemet-input-combo-icon-right-padding);
+  padding-top: var(--kemet-input-combo-padding-y);
+  padding-bottom: var(--kemet-input-combo-padding-y);
+}
+
+:host([polarity=dark]) {
+  --kemet-input-combo-color: var(--kemet-color-font-inverse-base);
+  --kemet-input-combo-font-color: var(--kemet-color-font-inverse-base);
+}
+
+:host([icon-left]) {
+  --_kemet-input-combo-icon-left-padding: var(--kemet-input-combo-icon-gap);
+}
+
+:host([icon-right]) {
+  --_kemet-input-combo-icon-right-padding: var(--kemet-input-combo-icon-gap);
+}
+
+:host([appearance=brand]) {
+  --kemet-input-combo-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error]) {
+  --kemet-input-combo-color: var(--kemet-color-font-error);
+}
+
+:host([appearance=success]) {
+  --kemet-input-combo-color: var(--kemet-color-font-success);
+}
+
+:host([appearance=warning]) {
+  --kemet-input-combo-color: var(--kemet-color-font-warning);
+}
+
+:host([appearance=link]) {
+  --kemet-input-combo-color: var(--kemet-color-font-link);
+}
+
+:host([appearance=brand][filled]) {
+  --_kemet-input-combo-background-color: var(--kemet-color-brand-primary-base);
+}
+
+:host([appearance=error][filled]) {
+  --_kemet-input-combo-background-color: var(--kemet-color-font-error);
+}
+
+:host([appearance=success][fiiled]) {
+  --_kemet-input-combo-background-color: var(--kemet-color-font-success);
+}
+
+:host([appearance=warning][filled]) {
+  --_kemet-input-combo-background-color: var(--kemet-color-font-warning);
+}
+
+:host([appearance=link][filled]) {
+  --_kemet-input-combo-background-color: var(--kemet-color-font-link);
+}
+
+:host([disabled]) {
+  --kemet-input-combo-color: var(--kemet-color-font-disabled);
+}
+
+:host([rounded]) {
+  --_kemet-input-combo-border-radius: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm])  {
+  --_kemet-input-combo-border-radius: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=lg]) {
+  --_kemet-input-combo-border-radius: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl])  {
+  --_kemet-input-combo-border-radius: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) {
+  --_kemet-input-combo-border-radius: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill])  {
+  --_kemet-input-combo-border-radius: var(--kemet-border-radius-pill);
+}
+
+:host([filled]) {
+  --kemet-input-combo-font-color: var(--kemet-color-font-inverse-base);
+  --_kemet-input-combo-background-color: var(--kemet-color-background-inverse);
+  --kemet-input-combo-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+kemet-icon,
+::slotted(kemet-icon) {
+  color: var(--kemet-input-combo-font-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+kemet-icon.left,
+:host([icon-left]) ::slotted(kemet-icon) {
+  left: 1rem;
+}
+
+kemet-icon.right,
+:host([icon-right]) ::slotted(kemet-icon) {
+  right: 1rem;
+}
+
+
+div {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+ul {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  color: var(--kemet-input-combo-chip-font-color);
+  background-color: var(--kemet-input-combo-chip-background-color);
+}
+
+:host([rounded]) li {
+  border-radius: var(--_kemet-input-combo-border-radius);
+}
+
+button {
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0;
+  border: 0;
+  background-color: transparent
+}

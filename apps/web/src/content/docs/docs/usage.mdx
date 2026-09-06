@@ -1,0 +1,170 @@
+---
+title: Usage
+description: Usage documentation
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import Callout from '../../../components/Callout.astro';
+
+Kemet UI's elements is a library comprised of primarily custom elements. Since many developers are new to custom elements, this guide will help you with getting familiar with how to use custom elements and thus Kemet UI.
+
+Custom elements are HTML elements that are defined by the developer. They are used to create custom components that can be used in HTML documents. You work with custom elements like you would with standard HTML, CSS, or JavaScript.
+
+
+## Usage in HTML
+
+For instance, to use Kemet UI's button element, you would use the following syntax in HTML:
+
+```html
+<kemet-button>Click me</kemet-button>
+```
+<br />
+
+Attributes are used to configure custom elements properties. For instance, to use Kemet UI's button element with a specific variant, you would use the following syntax in HTML:
+
+```html
+<kemet-button variant="outlined" rounded="pill">Click me</kemet-button>
+```
+<br />
+
+### Slots
+Custom elements have a concept of slots. Slots are used to insert content into custom elements. And example of this are Tabs. Tabs have both a `tab` and `panel` slot where it's respective elements should go. For example:
+
+```html
+<kemet-tabs>
+  <kemet-tab slot="tab">Tab 1</kemet-tab>
+  <kemet-tab-panel slot="panel">Panel 1</kemet-tab-panel>
+</kemet-tabs>
+```
+<br />
+
+Slots render in the light dom so they are important for seo and discoverability as they are content that doesn't need JavaScript to render. Web crawlers can read the content directly from the light DOM as unknown html elements.
+
+### Rich data
+
+Some elements require that you pass rich data (like an array) to them through an attribute. If you are not using a Framework that has it's own way of handling this, then you need to stringify the attribute value. An example of this is the rotator element. It takes a messages array.
+
+```html
+<kemet-rotator messages='["message 1", "messsage 2"]'>
+```
+<br />
+
+
+## Styling Custom Elements
+
+Custom elements can be styled using CSS. For instance, to style Kemet UI's button element, you could use the following syntax in CSS:
+
+```css
+kemet-button {
+  color: #fff;
+  background-color: #000;
+}
+```
+
+<CodePreview code={`<style>
+  kemet-button {
+    color: #fff;
+    background-color: #000;
+  }
+</style>
+<kemet-button>Click me</kemet-button>`} />
+<br />
+
+
+### Using custom properties
+
+In addition to this, most Kemet UI element ship with public custom properties that are designed for you to change the look and feel of the element. Take the button for example:
+
+<CodePreview code={`<style>
+  kemet-button {
+    --kemet-button-border-width: 3px;
+  }
+</style>
+<kemet-button variant="outlined">Click me</kemet-button>`} />
+<br />
+
+### Parts
+
+Custom elements by design hide away the internal shadow dom of the element from you to style it from the outside. Kemet UI is really generous with exposing parts of the shadow dom for you to style however. This is done with parts. A part is a element in the shadow dom that has been exposed for you to override the styles. Use the `::part()` pseudo-element to target a part. For example:
+
+```css
+kemet-button::part(button) {
+  font-size: 4rem;
+}
+```
+<br />
+
+Checkout the documentation for each element to see what parts are available.
+
+
+## Working in JavaScript
+
+You can access the API of an element like you would any other vanilla HTML element. Use dot notation to access properties and methods.
+
+### Setting Properties
+```javascript
+const button = document.querySelector('kemet-button');
+button.variant = 'filled';
+```
+<br />
+
+<Callout appearance="info">
+  Note that if the element property is `camelCased` then in HTML it would be hyphenated as an attribute like `attribute-version`.
+</Callout>
+
+### Event Listeners
+
+Add and remove event listeners like normal.
+```javascript
+const button = document.querySelector('kemet-button');
+button.addEventListener('click', () => {
+  console.log('Button clicked');
+});
+```
+<br />
+
+
+### Calling methods
+
+Some elements have methods that you can call to interact with them.
+```javascript
+const button = document.querySelector('kemet-button');
+button.click();
+```
+
+
+## Global Considerations
+
+All Kemet UI elements are built with a dom property. This proprety is set to `mounted` once the element is ready and available in the dom. You can use this to help with FOUC (Flash of Unstyled Content) by checking if the element is mounted before applying styles or showing content.
+
+For example, you visually hide the drawer element by default. Once mounted select drawer with the dom attribute and reveal the drawer:
+
+```css
+kemet-drawer {
+  visibility: hidden;
+}
+
+kemet-drawer[dom="mounted"] {
+  visibility: visible;
+}
+```
+
+### Styles API
+
+Kemet UI is unique in how it handles styles. Instead of using class names, all styles are used by a combination of values in the `data-kemet` attribute. This allows for a more robust approach of targeting Kemet UI specific styles and writing values that are more similar to definiing properties on a component.
+
+
+
+## A word on Frameworks
+
+The above assumes a vanilla JavaScript environment. If you are using a framework like React, Vue, or Angular, you may need to use a different approach to access the APIs of an element. Do what makes sense in your framework. For example in React properties are written in JSX like so:
+
+```jsx
+<kemet-button variant={`filled`}>Click me</kemet-button>
+```
+
+You can checkout our [Framework Integrations](/frameworks) page for more information. Also see [custom elements everywhere](https://custom-elements-everywhere.com/) for a primer.
+
+
+
+

@@ -1,27 +1,29 @@
 'use client'
 
 import { useState } from 'react'
-import { KemetButton, KemetDrawer, KemetIconBootstrap } from 'kemet-ui/next' // the next wrappers must be loaded in a client side component
 
-import 'kemet-ui/styles/kemet.base.css';
+import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/icon';
+import 'kemet-ui/button';
+import 'kemet-ui/drawer';
 
 function PageContent() {
-    const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0)
   const [isDrawerOpened, setIsDrawerOpened] = useState(false)
 
   return (
-    <KemetDrawer opened={isDrawerOpened} onkemet-opened={() => setIsDrawerOpened(true)} onkemet-closed={() => setIsDrawerOpened(false)}>
-      <aside slot="navigation">
+    <kemet-drawer fill-viewport opened={isDrawerOpened} onkemet-opened={() => setIsDrawerOpened(true)} onkemet-closed={() => setIsDrawerOpened(false)}>
+      <aside slot="sidebar">
         <br />
         <button onClick={() => setIsDrawerOpened(false)}>
-          <KemetIconBootstrap icon="x-lg" size={24}></KemetIconBootstrap>
+          <kemet-icon name="x-lg" size={24}></kemet-icon>
         </button>
         <br /><br />
         <nav>[Your nav here]</nav>
       </aside>
-      <section slot="content">
+      <section slot="body">
         <button onClick={() => setIsDrawerOpened(true)}>
-          <KemetIconBootstrap icon="list" size={24}></KemetIconBootstrap>
+          <kemet-icon name="list" size={24}></kemet-icon>
         </button>
         <br /><br />
         <div>
@@ -40,15 +42,15 @@ function PageContent() {
         <h1>Nextbox</h1>
         <h2>Kemet UI</h2>
         <div className="card">
-          <KemetButton onClick={() => setCount((count) => count + 1)}>
+          <kemet-button onClick={() => setCount((count) => count + 1)}>
             count is {count}
-          </KemetButton>
+          </kemet-button>
           <p>
-            Nextbox is an integration repo on using Web Components in Next 15+. 
+            Nextbox is an integration repo on using Kemet UI in Next 15+.
           </p>
         </div>
       </section>
-    </KemetDrawer>
+    </kemet-drawer>
   )
 }
 

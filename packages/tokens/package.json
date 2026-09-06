@@ -1,0 +1,22 @@
+{
+  "name": "kemet-tokens",
+  "version": "1.0.0",
+  "description": "Kemet UI design tokens.",
+  "scripts": {
+    "dev": "chokidar \"tokens/**/*\" -c \"npm run build\"",
+    "build": "style-dictionary build",
+    "pack": "npm pack --pack-destination ../published"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./css/*": "./dist/css/*"
+  },
+  "dependencies": {
+    "style-dictionary": "^5.5.1"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0"
+  }
+}

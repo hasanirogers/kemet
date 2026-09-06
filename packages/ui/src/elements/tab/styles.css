@@ -1,0 +1,21 @@
+:host {
+  --kemet-tab-padding: 1rem;
+
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: var(--kemet-tab-padding);
+}
+
+:host([selected]) {
+  cursor: auto;
+  color: inherit;
+}
+
+kemet-icon {
+  cursor: pointer;
+  margin-left: 0.5rem;
+}

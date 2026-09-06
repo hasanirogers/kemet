@@ -9,8 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "kemet-ui": "*",
-    "next": "16.2.6",
+    "kemet-ui": "file:../../../../../../tmp/kemet-ui-4.1.0.tgz",
+    "next": "^16.3.3",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },

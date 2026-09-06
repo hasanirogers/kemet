@@ -2,23 +2,23 @@ import type { Component } from 'solid-js';
 import { createSignal } from "solid-js";
 import styles from './App.module.css';
 
-import 'kemet-ui/styles/kemet.base.css';
-import 'kemet-ui/elements/button';
-import 'kemet-ui/elements/drawer';
-import 'kemet-ui/elements/icon-bootstrap';
+import 'kemet-ui/styles/kemet.tokens.css';
+import 'kemet-ui/button';
+import 'kemet-ui/drawer';
+import 'kemet-ui/icon';
 
 const App: Component = () => {
   const [count, setCount] = createSignal(0);
   const [isDrawerOpened, setIsDrawerOpened] = createSignal(false);
 
   return (
-    <kemet-drawer opened={isDrawerOpened()} class={styles.App}>
-      <aside slot="navigation">
+    <kemet-drawer fill-viewport opened={isDrawerOpened()} class={styles.App}>
+      <aside slot="sidebar">
         <nav>[Your nav here]</nav>
       </aside>
-      <section slot="content">
+      <main slot="body">
         <button aria-label="toggle drawer" onClick={() => setIsDrawerOpened(opened => !opened)}>
-          <kemet-icon-bootstrap icon="list" size={24}></kemet-icon-bootstrap>
+          <kemet-icon name="list" size={24}></kemet-icon>
         </button>
         <br /><br />
         <div>
@@ -37,8 +37,8 @@ const App: Component = () => {
           <kemet-button onClick={() => setCount(c => c + 1)}>
             Count: {count()}
           </kemet-button>
-        <p>Solidbox is an integration repo demonstrating how to use Web Components with SolidJS.</p>
-      </section>
+        <p>Solidbox is an integration repo demonstrating how to use Kemet UI with SolidJS.</p>
+      </main>
     </kemet-drawer>
   );
 };

@@ -1,0 +1,52 @@
+@use '../shared/breakpoints.scss' as *;
+
+@mixin makeSpacer() {
+  $sides: 'top', 'right', 'bottom', 'left';
+  $spacers: 'auto', 'none', '3xs', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl';
+
+  @each $spacer in $spacers {
+    [data-kemet*="margin:#{$spacer}"] {
+      margin: var(--kemet-size-spacer-#{$spacer});
+    }
+
+    [data-kemet*="padding:#{$spacer}"] {
+      padding: var(--kemet-size-spacer-#{$spacer});
+    }
+
+    @each $side in $sides {
+      [data-kemet*="margin:#{$side}-#{$spacer}"] {
+        margin-#{$side}: var(--kemet-size-spacer-#{$spacer});
+      }
+
+      [data-kemet*="padding:#{$side}-#{$spacer}"] {
+        padding-#{$side}: var(--kemet-size-spacer-#{$spacer});
+      }
+    }
+  }
+
+  @each $breakpoint, $pixel in $breakpoints {
+    @media screen and (min-width: #{$pixel}) {
+      @each $spacer in $spacers {
+        [data-kemet*="margin:[#{$breakpoint}]-#{$spacer}"] {
+          margin: var(--kemet-size-spacer-#{$spacer});
+        }
+
+        [data-kemet*="padding:[#{$breakpoint}]-#{$spacer}"] {
+          padding: var(--kemet-size-spacer-#{$spacer});
+        }
+
+        @each $side in $sides {
+          [data-kemet*="margin:[#{$breakpoint}]-#{$side}-#{$spacer}"] {
+            margin-#{$side}: var(--kemet-size-spacer-#{$spacer});
+          }
+
+          [data-kemet*="padding:[#{$breakpoint}]-#{$side}-#{$spacer}"] {
+            padding-#{$side}: var(--kemet-size-spacer-#{$spacer});
+          }
+        }
+      }
+    }
+  }
+}
+
+@include makeSpacer();

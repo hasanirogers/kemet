@@ -21,6 +21,7 @@
 /out-tsc/
 /storybook-static/
 tsconfig.tsbuildinfo
+*.css.ts
 
 # environment
 .env

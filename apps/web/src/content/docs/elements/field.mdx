@@ -1,0 +1,63 @@
+---
+title: Field
+description: An field component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="field" sample='<kemet-field slug="unique-identifier" label="Label" message="This is a message." appearance><kemet-input required slot="input" name="input-field" validate-on-blur status></kemet-input></kemet-field>' />
+
+
+## Examples
+<hr />
+
+### Slots
+
+Use the `input` slot to combine with textarea, select, and input elements.
+
+<CodePreview code='<kemet-field slug="unique-identifier" label="Label" message="This is a message." appearance><kemet-select slot="input" name="select-field" required appearance><kemet-select-option label="Choose an Item" value></kemet-select-option><kemet-select-option label="Item 1" value="1"></kemet-select-option><kemet-select-option label="Item 2" value="2" selected></kemet-select-option><kemet-select-option label="Item 3" value="3"></kemet-select-option><kemet-select-option label="Item 4" value="4" disabled></kemet-select-option></kemet-select></kemet-field>' language="html" />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="field" display="attributes" />
+<br />
+
+### Slots
+
+<API element="field" display="slots" />
+<br />
+
+### Events
+
+<API element="field" display="events" />
+<br />
+
+### Methods
+
+<API element="field" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="field" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="field" display="parts" />
+<br />
+
+<DocsFooter />
+

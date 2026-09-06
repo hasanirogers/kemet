@@ -1,0 +1,56 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+}
+
+figure {
+  margin: 0;
+  padding: 2rem;
+
+  &.light {
+    color: var(--kemet-color-font-base);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  &.dark {
+    color: var(--kemet-color-font-inverse-base);
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+div:has(pre) {
+  overflow: auto;
+  margin: 0;
+  padding: 0 1rem;
+  background: #0d1117;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--sl-color-hairline-shade);
+}
+
+/* display utilities */
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+

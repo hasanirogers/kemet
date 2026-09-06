@@ -1,0 +1,126 @@
+---
+title: Typewriter
+description: A typewriter component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="typewriter">
+  <kemet-typewriter
+    content='
+        &lt;h2&gt;The content property fully supports HTML strings.&lt;/h2&gt;
+        &lt;p&gt;&lt;strong&gt;Lorem ipsum&lt;/strong&gt; dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Item 1&lt;/li&gt;
+          &lt;li&gt;Item 2&lt;/li&gt;
+          &lt;li&gt;Item 3&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;Incididunt ut labore et dolore magna aliqua ut enim ad. Minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.&lt;/p&gt;
+        &lt;p&gt;Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in.&lt;/p&gt;
+        &lt;img src="https://placehold.co/600x400" alt="Placeholder Image" /&gt;
+        &lt;p&gt;Culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.&lt;/p&gt;
+        &lt;p&gt;Laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.&lt;/p&gt;
+      '
+  >
+  </kemet-typewriter>
+</ElementDetails>
+
+
+## Examples
+
+### With Cursor
+
+Use the `cursor` attribute to add a cursor character to the typewriter.
+
+<CodePreview>
+  <kemet-typewriter
+    content='
+        &lt;h2&gt;The content property fully supports HTML strings.&lt;/h2&gt;
+        &lt;p&gt;&lt;strong&gt;Lorem ipsum&lt;/strong&gt; dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Item 1&lt;/li&gt;
+          &lt;li&gt;Item 2&lt;/li&gt;
+          &lt;li&gt;Item 3&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;Incididunt ut labore et dolore magna aliqua ut enim ad. Minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.&lt;/p&gt;
+        &lt;p&gt;Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in.&lt;/p&gt;
+        &lt;img src="https://placehold.co/600x400" alt="Placeholder Image" /&gt;
+        &lt;p&gt;Culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.&lt;/p&gt;
+        &lt;p&gt;Laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.&lt;/p&gt;
+      '
+    cursor="|"
+  >
+  </kemet-typewriter>
+</CodePreview>
+
+### Slow
+
+Use the `delay` attribute to slow down the typing effect
+
+<CodePreview>
+ <kemet-typewriter
+    content='
+        &lt;h2&gt;The content property fully supports HTML strings.&lt;/h2&gt;
+        &lt;p&gt;&lt;strong&gt;Lorem ipsum&lt;/strong&gt; dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Item 1&lt;/li&gt;
+          &lt;li&gt;Item 2&lt;/li&gt;
+          &lt;li&gt;Item 3&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;Incididunt ut labore et dolore magna aliqua ut enim ad. Minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.&lt;/p&gt;
+        &lt;p&gt;Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in.&lt;/p&gt;
+        &lt;img src="https://placehold.co/600x400" alt="Placeholder Image" /&gt;
+        &lt;p&gt;Culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.&lt;/p&gt;
+        &lt;p&gt;Laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.&lt;/p&gt;
+      '
+    delay="40"
+  >
+  </kemet-typewriter>
+</CodePreview>
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="typewriter" display="attributes" />
+<br />
+
+### Slots
+
+<API element="typewriter" display="slots" />
+<br />
+
+### Events
+
+<API element="typewriter" display="events" />
+<br />
+
+### Methods
+
+<API element="typewriter" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="typewriter" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="typewriter" display="parts" />
+<br />
+
+<DocsFooter />
+

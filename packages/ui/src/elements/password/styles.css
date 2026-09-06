@@ -1,0 +1,79 @@
+:host {
+  color: inherit;
+  display: none;
+}
+
+:host([show]) {
+  display: block;
+}
+
+p {
+  margin: 1.6rem 0;
+}
+
+[part=strength] {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  line-height: 1;
+  margin-top: 0.8rem;
+}
+
+[part=strength] > span {
+  text-transform: capitalize;
+}
+
+.weak {
+  color: var(--kemet-color-font-error);
+}
+
+.better {
+  color: var(--kemet-color-font-warning);
+}
+
+.strong {
+  color: var(--kemet-color-font-success);
+}
+
+[part=indicator] {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0;
+  list-style: none;
+}
+
+[part=indicator] li {
+  width: 1.6rem;
+  height: 0.2rem;
+}
+
+.weak [part=indicator] li:nth-child(1) {
+  background-color: var(--kemet-color-font-error);
+}
+
+.better [part=indicator] li:nth-child(1),
+.better [part=indicator] li:nth-child(2) {
+  background-color: var(--kemet-color-font-warning);
+}
+
+.strong [part=indicator] li {
+  background-color: var(--kemet-color-font-success);
+}
+
+[part=rules] {
+  color: inherit;
+  line-height: 1.5;
+  list-style: none;
+  font-size: 90%;
+  padding-left: 2rem;
+}
+
+[part=rules] li {
+  position: relative;
+}
+
+[part=rules] kemet-icon {
+  color: var(--kemet-color-font-success);
+  position: absolute;
+  left: -2rem;
+}

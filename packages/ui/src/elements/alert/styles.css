@@ -1,0 +1,188 @@
+:host {
+    /* public */
+    --kemet-alert-align-items: center;
+    --kemet-alert-padding: 1rem;
+    --kemet-alert-border-thickness: 4px;
+
+    /* private */
+    --_kemet-alert-appearance-color: var(--kemet-color-font-base);
+    --_kemet-alert-border: 1px solid;
+    --_kemet-alert-radius: 0;
+    --_kemet-alert-color: inherit;
+    --_kemet-alert-background-color: transparent;
+
+    color: var(--_kemet-alert-color);
+    display: flex;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--kemet-alert-padding);
+    align-items: var(--kemet-alert-align-items);
+    opacity: 0;
+    padding: var(--kemet-alert-padding);
+    border: var(--_kemet-alert-border);
+    transition: opacity 300ms ease;
+    border-radius: var(--_kemet-alert-radius);
+    background-color: var(--_kemet-alert-background-color);
+  }
+
+  :host([polarity=dark]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-font-inverse-base);
+  }
+
+  :host([opened]) {
+    opacity: 1;
+  }
+
+  :host([filled]) {
+    --_kemet-alert-border: 2px solid var(--kemet-color-font-inverse-base);
+    --_kemet-alert-color: var(--kemet-color-font-inverse-base);
+    --_kemet-alert-background-color: var(--_kemet-alert-appearance-color);
+    --_kemet-alert-appearance-color: var(--kemet-color-background-inverse);
+  }
+
+  :host([filled][appearance="brand"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-brand-primary-base);
+  }
+
+  :host([filled][appearance="success"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-success);
+  }
+
+  :host([filled][appearance="warning"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-warning);
+  }
+
+  :host([filled][appearance="error"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-error);
+  }
+
+  :host([filled][appearance="info"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-info);
+  }
+
+  :host([filled][appearance="link"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-link);
+  }
+
+  :host([appearance]) {
+    border-color: var(--_kemet-alert-appearance-color);
+  }
+
+  :host([border-appearance="top"]) {
+    border-top: var(--kemet-alert-border-thickness) solid var(--_kemet-alert-appearance-color);
+  }
+
+  :host([border-appearance="right"]) {
+    border-right: var(--kemet-alert-border-thickness) solid var(--_kemet-alert-appearance-color);
+  }
+
+  :host([border-appearance="bottom"]) {
+    border-bottom: var(--kemet-alert-border-thickness) solid var(--_kemet-alert-appearance-color);
+  }
+
+  :host([border-appearance="left"]) {
+    border-left: var(--kemet-alert-border-thickness) solid var(--_kemet-alert-appearance-color);
+  }
+
+  :host([appearance="brand"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-brand-primary-base);
+  }
+
+  :host([appearance="success"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-success);
+  }
+
+  :host([appearance="warning"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-warning);
+  }
+
+  :host([appearance="error"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-error);
+  }
+
+  :host([appearance="info"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-info);
+  }
+
+  :host([appearance="link"]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-background-link);
+  }
+
+  :host([hidden]) {
+    display: none;
+  }
+
+  :host([reveal]) {
+    animation: fadeIn 300ms ease forwards;
+  }
+
+  :host([overlay]) {
+    position: fixed;
+  }
+
+  :host([overlay*="full"]) {
+    width: 100%;
+  }
+
+  :host([overlay*="top"]) {
+    top: 0;
+  }
+
+  :host([overlay*="bottom"]) {
+    bottom: 0;
+  }
+
+  :host([overlay*="left"]) {
+    left: 0;
+  }
+
+  :host([overlay*="right"]) {
+    right: 0;
+  }
+
+  :host([rounded]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-md);
+  }
+
+  :host([rounded="sm"]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-sm);
+  }
+
+  :host([rounded="md"]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-md);
+  }
+
+  :host([rounded="lg"]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-lg);
+  }
+
+  :host([rounded="xl"]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-xl);
+  }
+
+  :host([rounded="circle"]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-circle);
+  }
+
+  :host([rounded="pill"]) {
+    --_kemet-alert-radius: var(--kemet-border-radius-pill);
+  }
+
+  [part=message] {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .close {
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  :host(:not([filled])) ::slotted(kemet-icon) {
+    color: var(--_kemet-alert-appearance-color);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

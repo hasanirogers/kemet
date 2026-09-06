@@ -1,0 +1,64 @@
+---
+interface Props {
+  code: string;
+  language?: string;
+}
+
+const { code, language = 'html' } = Astro.props;
+let slotContent = code;
+
+if (!code) {
+  slotContent = await Astro.slots.render('default');
+}
+---
+
+<web-code language={language} code={slotContent}></web-code>
+
+<script type="module">
+  import '../elements/code';
+  // UI
+  import '../../../../packages/tokens/dist/css/tokens.css';
+  import '../../../../packages/ui/src/elements/button/index.js';
+  import '../../../../packages/ui/src/elements/loader/index.js';
+  import '../../../../packages/ui/src/elements/icon/index.js';
+  import '../../../../packages/ui/src/elements/accordion/index.js';
+  import '../../../../packages/ui/src/elements/accordion-panel/index.js';
+  import '../../../../packages/ui/src/elements/alert/index.js';
+  import '../../../../packages/ui/src/elements/avatar/index.js';
+  import '../../../../packages/ui/src/elements/avatars/index.js';
+  import '../../../../packages/ui/src/elements/badge/index.js';
+  import '../../../../packages/ui/src/elements/card/index.js';
+  import '../../../../packages/ui/src/elements/checkbox/index.js';
+  import '../../../../packages/ui/src/elements/input/index.js';
+  import '../../../../packages/ui/src/elements/field/index.js';
+  import '../../../../packages/ui/src/elements/textarea/index.js';
+  import '../../../../packages/ui/src/elements/select/index.js';
+  import '../../../../packages/ui/src/elements/select-option/index.js';
+  import '../../../../packages/ui/src/elements/combo/index.js';
+  import '../../../../packages/ui/src/elements/count/index.js';
+  import '../../../../packages/ui/src/elements/drawer/index.js';
+  import '../../../../packages/ui/src/elements/fab/index.js';
+  import '../../../../packages/ui/src/elements/flipcard/index.js';
+  import '../../../../packages/ui/src/elements/flipcard-trigger/index.js';
+  import '../../../../packages/ui/src/elements/input-combo/index.js';
+  import '../../../../packages/ui/src/elements/input-otp/index.js';
+  import '../../../../packages/ui/src/elements/dialog/index.js';
+  import '../../../../packages/ui/src/elements/dialog-close/index.js';
+  import '../../../../packages/ui/src/elements/password/index.js';
+  import '../../../../packages/ui/src/elements/radio/index.js';
+  import '../../../../packages/ui/src/elements/radios/index.js';
+  import '../../../../packages/ui/src/elements/rotator/index.js';
+  import '../../../../packages/ui/src/elements/sortable/index.js';
+  import '../../../../packages/ui/src/elements/sortable-item/index.js';
+  import '../../../../packages/ui/src/elements/tabs/index.js';
+  import '../../../../packages/ui/src/elements/tab/index.js';
+  import '../../../../packages/ui/src/elements/tab-panel/index.js';
+  import '../../../../packages/ui/src/elements/timer/index.js';
+  import '../../../../packages/ui/src/elements/timer-display/index.js';
+  import '../../../../packages/ui/src/elements/toggle/index.js';
+  import '../../../../packages/ui/src/elements/tracker/index.js';
+  import '../../../../packages/ui/src/elements/tracker-step/index.js';
+  import '../../../../packages/ui/src/elements/typewriter/index.js';
+  import '../../../../packages/ui/src/elements/input-file/index.js';
+  import '../../../../packages/ui/src/elements/input-files/index.js';
+</script>

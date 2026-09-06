@@ -1,0 +1,47 @@
+:host {
+  --kemet-tab-panel-fade-speed: 0.5s;
+
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+::slotted(img) {
+  max-width: 100%;
+}
+
+:host(.fade) {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--kemet-tab-panel-fade-speed) ease;
+}
+
+:host(.fade[selected]) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+:host(.fade.push) {
+  margin-left: -100%;
+}
+
+:host(.vertical) {
+  display: none;
+}
+
+:host(.vertical[selected]) {
+  display: block;
+}
+
+:host(.stacked) {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+:host(.stacked[selected]) {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+}

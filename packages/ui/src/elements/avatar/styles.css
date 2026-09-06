@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  /* public */
+  --kemet-avatar-initials-margin: 1rem;
+
+  /* private */
+  --_kemet-avatar-color: var(--kemet-color-font-inverse-base);
+  --_kemet-avatar-background-color: var(--kemet-color-background-avatar-primary-base);
+  --_kemet-avatar-rounded: 0;
+
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--_kemet-avatar-color);
+  position: relative;
+  border-radius: var(--_kemet-avatar-rounded);
+  background-color: var(--_kemet-avatar-background-color);
+}
+
+:host > * {
+  border-radius: var(--_kemet-avatar-rounded);
+}
+
+:host([rounded]) {
+  --_kemet-avatar-rounded: var(--kemet-border-radius-md);
+}
+
+:host([rounded=sm]) {
+  --_kemet-avatar-rounded: var(--kemet-border-radius-sm);
+}
+
+:host([rounded=lg]) {
+  --_kemet-avatar-rounded: var(--kemet-border-radius-lg);
+}
+
+:host([rounded=xl]) {
+  --_kemet-avatar-rounded: var(--kemet-border-radius-xl);
+}
+
+:host([rounded=circle]) {
+  --_kemet-avatar-rounded: var(--kemet-border-radius-circle);
+}
+
+:host([rounded=pill]) {
+  --_kemet-avatar-rounded: var(--kemet-border-radius-pill);
+}
+
+.initials {
+  margin: var(--kemet-avatar-initials-margin);
+}
+
+::slotted(kemet-badge) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: var(--kemet-border-radius-circle);
+}

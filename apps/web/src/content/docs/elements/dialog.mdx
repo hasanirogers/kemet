@@ -1,0 +1,130 @@
+---
+title: Dialog
+description: A dialog component
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+import Callout from '../../../components/Callout.astro';
+
+
+<ElementDetails element="dialog" sample={`
+  <script>
+    const button = shadowRoot.querySelector('kemet-button');
+    const dialog = shadowRoot.querySelector('kemet-dialog');
+    button.addEventListener('click', function() {
+      dialog.opened = true;
+    });
+  </script>
+  <kemet-button>Open Modal</kemet-button>
+  <kemet-dialog>
+    <div style="padding:1rem;">
+      <kemet-dialog-close tabindex="0" role="button" aria-label="Close Button" style="display:flex;">
+        <kemet-icon name="x-circle" size="24"></kemet-icon>
+      </kemet-dialog-close>
+      <h2 style="margin:0;">Modal Title</h2>
+      <p>
+        Your modal contents
+        <a href="http://google.com" kemet-color="primary"><strong>here</strong></a>
+      </p>
+    </div>
+  </kemet-dialog>`} />
+
+## Examples
+
+### Rounded
+
+The dialog supports standard rounded sizes.
+
+<CodePreview code={`
+  <script>
+    const button = shadowRoot.querySelector('kemet-button');
+    const dialog = shadowRoot.querySelector('kemet-dialog');
+    button.addEventListener('click', function() {
+      dialog.opened = true;
+    });
+  </script>
+  <kemet-button>Open Modal</kemet-button>
+  <kemet-dialog rounded="lg">
+    <div style="padding:1rem;">
+      <kemet-dialog-close tabindex="0" role="button" aria-label="Close Button" style="display:flex;">
+        <kemet-icon name="x-circle" size="24"></kemet-icon>
+      </kemet-dialog-close>
+      <h2 style="margin:0;">Modal Title</h2>
+      <p>
+        Your modal contents
+        <a href="http://google.com" kemet-color="primary"><strong>here</strong></a>
+      </p>
+    </div>
+  </kemet-dialog>`} />
+
+
+### Close on click
+
+You have the dialog close by clicking outside of it's content by using the `close-on-click` attribute.
+
+<CodePreview code={`
+  <script>
+    const button = shadowRoot.querySelector('kemet-button');
+    const dialog = shadowRoot.querySelector('kemet-dialog');
+    button.addEventListener('click', function() {
+      dialog.opened = true;
+    });
+  </script>
+  <kemet-button>Open Modal</kemet-button>
+  <kemet-dialog close-on-click>
+    <div style="padding:1rem;">
+      <kemet-dialog-close tabindex="0" role="button" aria-label="Close Button" style="display:flex;">
+        <kemet-icon name="x-circle" size="24"></kemet-icon>
+      </kemet-dialog-close>
+      <h2 style="margin:0;">Modal Title</h2>
+      <p>
+        Your modal contents
+        <a href="http://google.com" kemet-color="primary"><strong>here</strong></a>
+      </p>
+    </div>
+  </kemet-dialog>`} />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="dialog" display="attributes" />
+<br />
+
+### Slots
+
+<API element="dialog" display="slots" />
+<br />
+
+### Events
+
+<API element="dialog" display="events" />
+<br />
+
+### Methods
+
+<API element="dialog" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="dialog" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="dialog" display="parts" />
+<br />
+
+<DocsFooter />
+

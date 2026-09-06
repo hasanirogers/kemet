@@ -1,0 +1,78 @@
+---
+title: Loader
+description: A loader component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="loader" sample='<kemet-loader>Loading..</kemet-loader>' />
+
+
+## Examples
+<hr />
+
+### Variant
+
+Use the `variant` attribute to change the style of loader to display.
+
+<CodePreview code='<kemet-loader variant="mesh" size="24">Loading...</kemet-loader>' language="html" />
+
+
+### Size
+
+Use the `size` attribute to change the size of the loader.
+
+<CodePreview code='<kemet-loader variant="border-top" size="128">Loading...</kemet-loader>' language="html" />
+
+*Note: The meaning of size changes depending on the variant. It refers to the size of dots for variants with dots and the size of the container for others.*
+
+### Changing the Color
+
+Use css to change the color of the loader.
+
+<CodePreview code='<kemet-loader variant="full-circle" size="24" style="--kemet-loader-color: purple;">Loading...</kemet-loader>' language="html" />
+
+
+## API
+<hr />
+
+### Attributes
+
+<API element="loader" display="attributes" />
+<br />
+
+### Slots
+
+<API element="loader" display="slots" />
+<br />
+
+### Events
+
+<API element="loader" display="events" />
+<br />
+
+### Methods
+
+<API element="loader" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="loader" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="loader" display="parts" />
+<br />
+
+<DocsFooter />
+

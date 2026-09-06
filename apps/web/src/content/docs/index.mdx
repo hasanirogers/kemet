@@ -1,0 +1,50 @@
+---
+title: Kemet UI
+description: Blessed by the gods, Kemet UI is a completely free framework agnostic design system.
+template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: Blessed by the gods, Kemet UI is a completely free framework agnostic design system.
+  image:
+    file: ../../assets/logo/anubis.svg
+  actions:
+    - text: Get started with the docs
+      link: /docs/installation/
+      icon: right-arrow
+    - text: Go to the Storybook
+      link: https://storybook.kemet.dev
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import CustomElements from '../../components/CustomElements.astro';
+import WorksEverywhere from '../../components/WorksEverywhere.astro';
+import DocsFooter from '../../components/DocsFooter.astro';
+
+<WorksEverywhere />
+
+<hr /><br />
+
+<CardGrid>
+	<Card title="Accessibility">
+		All components passes a11y testing in axe and are built with accessibility in mind.
+	</Card>
+	<Card title="Storybook">
+		Storybook is automatically deployed and updated with each release and contains advanced controls.
+	</Card>
+	<Card title="Framework Compatible">
+		Kemet UI is framework agnostic and works in all popular front end libraries such as React, Angular, and Vue.
+	</Card>
+	<Card title="Test Driven">
+		Kemet UI components are automatically tested with a greater than 90% test coverage on each release.
+	</Card>
+	<Card title="Configurable">
+		Kemet UI styles and components are highly configurable allowing you to customize the look and feel differently for each use.
+	</Card>
+  <Card title="Integrations">
+    A plethora of integrations are available in sandboxes online for you to get a handle on how to integrate Kemet UI into your application.
+  </Card>
+</CardGrid>
+
+<br />
+<DocsFooter />

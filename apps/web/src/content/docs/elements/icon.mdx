@@ -1,0 +1,82 @@
+---
+title: Icon
+description: An icon component.
+head:
+  - tag: script
+    content: "
+      import '../../../elements/code/index.ts';
+    "
+---
+
+import CodePreview from '../../../components/CodePreview.astro';
+import ElementDetails from '../../../components/ElementDetails.astro';
+import API from '../../../components/API.astro';
+import DocsFooter from '../../../components/DocsFooter.astro';
+
+<ElementDetails element="icon">
+  <kemet-icon name="gear"></kemet-icon>
+</ElementDetails>
+
+
+## Examples
+<hr />
+
+### Size
+
+Use the `size` attribute to change the size of the icon.
+
+<CodePreview code='<kemet-icon name="gear" size="64"></kemet-icon>' language="html" />
+
+### Library
+
+The default library is [Bootstrap Icons](https://icons.getbootstrap.com/). You can switch the library to [Font Awesome](https://fontawesome.com/) by setting the `library` attribute to `fontawesome`.
+
+<CodePreview code='<kemet-icon name="house" library="fontawesome" size="64"></kemet-icon>' language="html" />
+
+### Family
+
+Some libraries, like Font Awesome, support families. Use it to determine which subset of Icons to load. For example, load the brand fonts:
+
+<CodePreview code='<kemet-icon name="github" library="fontawesome" family="brands" size="64"></kemet-icon>' language="html" />
+
+### Auto Color Inheriting
+
+By setting the color of the parent element, the icon will automatically inherit that color.
+
+<CodePreview code='<div style="color:green;"><kemet-icon name="gear" size="64"></kemet-icon></div>' language="html" />
+
+## API
+<hr />
+
+### Attributes
+
+<API element="icon" display="attributes" />
+<br />
+
+### Slots
+
+<API element="icon" display="slots" />
+<br />
+
+### Events
+
+<API element="icon" display="events" />
+<br />
+
+### Methods
+
+<API element="icon" display="methods" />
+<br />
+
+### CSS Properties
+
+<API element="icon" display="properties" />
+<br />
+
+### CSS Parts
+
+<API element="icon" display="parts" />
+<br />
+
+<DocsFooter />
+
