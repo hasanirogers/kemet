@@ -1,6 +1,7 @@
 import { css, unsafeCSS } from 'lit';
 
-const documentHeight = `${document.documentElement.scrollHeight}px`;
+const documentHeight = typeof document !== 'undefined' ? `${document.documentElement.scrollHeight}px` : '100vh';
+
 
 export default css`
   /* slide */

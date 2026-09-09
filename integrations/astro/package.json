@@ -1,0 +1,24 @@
+{
+  "name": "@kemet-ui/astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "dev:stop": "astro dev stop",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@lit-labs/ssr": "^4.1.0",
+    "@lit-labs/ssr-client": "^1.1.8",
+    "astro": "^7.3.1",
+    "kemet-ui": "*"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

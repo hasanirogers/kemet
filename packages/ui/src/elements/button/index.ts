@@ -39,6 +39,7 @@ export enum EnumSizes {
  *
  * @tagname kemet-button
  * @summary A versatile button that can be used either to submit a form, trigger an action, or link to content.
+ * @ssrsafe yes
  *
  * @prop {string} href - The url a button should link too
  * @prop {boolean} outlined - Outline style for a button
