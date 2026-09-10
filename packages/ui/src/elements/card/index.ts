@@ -20,6 +20,7 @@ export enum EnumElevation {
  *
  * @tagname kemet-card
  * @summary A highly configurable panel design to display media and information.
+ * @ssrsafe yes
  *
  * @prop {boolean} center - Centers the elements in the card.
  * @prop {boolean} filled - Fills the card with a background color.

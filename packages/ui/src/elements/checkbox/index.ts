@@ -13,6 +13,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-checkbox
  * @summary An enhanced checkbox.
+ * @ssrsafe
  *
  * @prop {string} label - Label text for the checkbox
  * @prop {boolean} checked - Determines if the checkbox is selected

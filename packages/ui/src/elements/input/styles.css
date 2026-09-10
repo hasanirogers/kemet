@@ -1,8 +1,8 @@
 :host {
   /* public */
   --kemet-input-height: 50px;
-  --kemet-input-color: var(--kemet-color-font-base);
-  --kemet-input-border: 1px solid var(--kemet-input-color);
+  --kemet-input-color: inherit;
+  --kemet-input-border: 1px solid;
   --kemet-input-padding-y: 0.5rem;
   --kemet-input-padding-x: 1rem;
   --kemet-input-icon-gap: 3rem;

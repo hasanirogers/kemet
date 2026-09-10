@@ -10,6 +10,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-accordion-panel
  * @summary A blade for an accordion.
+ * @ssrsafe yes
  *
  * @prop {boolean} opened - Determines the opened state of the panel
  * @prop {string} maxHeight - Sets the max height of the panel's body

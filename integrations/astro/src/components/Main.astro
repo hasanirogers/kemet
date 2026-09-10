@@ -17,3 +17,13 @@
 <h2>Kemet UI</h2>
 <p>Astrobox is an integration repo demonstrating how to use Kemet UI with Astro.</p>
 <kemet-button href="https://kemet.dev">Go to the docs</kemet-button>
+<script>
+  import HTMLKemetDrawerElement from 'kemet-ui/drawer';
+
+  const toggleButton = document.querySelector('button[aria-label="toggle drawer"]') as HTMLButtonElement;
+
+  toggleButton.addEventListener('click', () => {
+    const drawer = document.querySelector('kemet-drawer') as HTMLKemetDrawerElement;
+    drawer.opened = !drawer.opened;
+  });
+</script>

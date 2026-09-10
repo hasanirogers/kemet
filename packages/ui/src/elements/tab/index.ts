@@ -1,7 +1,6 @@
 import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { emitEvent } from '../../utilities/events';
-import '../icon';
 import styles from './styles.css.ts';
 
 /**

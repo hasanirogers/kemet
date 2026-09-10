@@ -11,6 +11,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-avatar
  * @summary A representation of a person or thing.
+ * @ssrsafe yes
  *
  * @prop {string} size - The size in pixels.
  * @prop {string} image - Url to an image.

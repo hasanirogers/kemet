@@ -97,8 +97,6 @@ export default class KemetRotator extends LitElement {
     const setWidth = this.effect === 'flip' ? `width:${this.width};` : '';
     const setHeight = this.effect === 'flip' ? `height:${this.height};` : '';
 
-    console.log(this.height);
-
     return html`
       <span part="rotator" style="${setWidth} ${setHeight}">
         ${this.makeMessages()}

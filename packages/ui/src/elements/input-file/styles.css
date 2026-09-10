@@ -1,8 +1,8 @@
 :host {
   --kemet-upload-file-ripple-color: var(--kemet-color-font-active);
-  --kemet-upload-file-color: var(--kemet-color-font-base);
+  --kemet-upload-file-color: inherit;
   --kemet-upload-file-padding: 0.5rem 1rem;
-  --kemet-upload-file-border: 1px solid var(--kemet-color-font-base);
+  --kemet-upload-file-border: 1px solid;
 
   color: var(--kemet-upload-file-color);
   display: grid;
@@ -15,11 +15,11 @@
   border: var(--kemet-upload-file-border);
 }
 
-:host([status='error']) {
+:host([status=error]) {
   border: 1px solid var(--kemet-color-font-error);
 }
 
-:host([status='complete']) {
+:host([status=complete]) {
   border: 1px solid var(--kemet-color-font-success);
 }
 
@@ -37,12 +37,12 @@ h3 {
   transform: scale(0.8);
 }
 
-:host([status='complete']) .message,
-:host([status='complete']) .indicator {
+:host([status=complete]) .message,
+:host([status=complete]) .indicator {
   color: rgb(var(--kemet-color-success));
 }
 
-:host([status='error']) .message,
-:host([status='error']) .indicator {
+:host([status=error]) .message,
+:host([status=error]) .indicator {
   color: rgb(var(--kemet-color-error));
 }

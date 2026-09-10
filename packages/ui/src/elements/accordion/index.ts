@@ -10,6 +10,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-accordion
  * @summary A component that acts like a standard accordion.
+ * @ssrsafe yes
  *
  * @prop {number} currentPanel - The index value for the most recently opened panel
  * @prop {boolean} togglePanels - Support for closing all inactive panels when one is opened

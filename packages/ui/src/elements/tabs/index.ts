@@ -5,7 +5,6 @@ import { emitEvent } from '../../utilities/events';
 import { EnumDirections } from '../../utilities/constants';
 import type KemetTab from '../tab';
 import type KemetTabPanel from '../tab-panel';
-import '../icon';
 import styles from './styles.css.ts';
 
 
@@ -150,7 +149,10 @@ export default class KemetTabs extends LitElement {
 
     this.addEventListener('kemet-tab-selected', this.tabSelectedChange.bind(this));
     this.addEventListener('kemet-tab-closed', this.handleTabClose.bind(this));
-    window.addEventListener('resize', this.handleResize.bind(this));
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', this.handleResize.bind(this));
+    }
   }
 
   firstUpdated() {
@@ -358,6 +360,7 @@ export default class KemetTabs extends LitElement {
   }
 
   selectTab() {
+    console.log('selectTab')
     const marginLeft = this.links ? parseInt(window.getComputedStyle(this.links).marginLeft.replace('px', ''), 10) : 0;
     const overflowOffset = this.overflow ? marginLeft : 0;
 
@@ -385,6 +388,7 @@ export default class KemetTabs extends LitElement {
 
       // otherwise select by index
     } else {
+      console.log('selecting by index', this.selectedIndex);
       this.tabs.forEach((tab) => {
         if (this.selectedIndex === tab.index) {
           tab.selected = true;

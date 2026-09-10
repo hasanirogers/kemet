@@ -3,7 +3,6 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetInputFileElement from '../input-file';
-import '../icon';
 import styles from './styles.css.ts';
 
 

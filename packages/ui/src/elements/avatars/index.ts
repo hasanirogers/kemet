@@ -9,6 +9,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-avatars
  * @summary Groups multiple avatar elements.
+ * @ssrsafe yes
  *
  * @cssproperty --kemet-avatars-squeeze - The space between avatars. Default: -1.5rem.
  *

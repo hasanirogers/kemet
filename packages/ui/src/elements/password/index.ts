@@ -5,7 +5,6 @@ import { EnumAppearances } from '../../utilities/constants';
 import HTMLKemetFieldElement from '../field';
 import HTMLKemetInputElement from '../input';
 import HTMLKemetTextareaElement from '../textarea';
-import '../icon';
 import styles from './styles.css.ts';
 
 interface InterfaceOptions {

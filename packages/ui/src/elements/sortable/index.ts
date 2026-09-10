@@ -31,6 +31,7 @@ const getElementVerticalCenter = (element: HTMLElement) => {
  *
  * @tagname kemet-sortable
  * @summary A list that can be sorted by drag and drop.
+ * @ssrsafe no - This component uses a drag and drop polyfill which is not supported on the server.
  *
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
  * @prop {string} dom - The status of dom initalization.

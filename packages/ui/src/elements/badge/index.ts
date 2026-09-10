@@ -11,6 +11,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-badge
  * @summary Badges display the status of information.
+ * @ssrsafe yes
  *
  * @prop {TypeStatus} status - The status of the badge
  * @prop {number} circlePadding - Padding on the badge as a circle
