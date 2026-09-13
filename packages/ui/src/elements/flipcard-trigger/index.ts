@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 
 /**

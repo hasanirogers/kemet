@@ -37,6 +37,14 @@ import 'kemet-ui/rotator';
 import 'kemet-ui/tabs';
 import 'kemet-ui/tab';
 import 'kemet-ui/tab-panel';
+import 'kemet-ui/textarea';
+import 'kemet-ui/timer';
+import 'kemet-ui/timer-display';
+import 'kemet-ui/toggle';
+import 'kemet-ui/tracker';
+import 'kemet-ui/tracker-step';
+import 'kemet-ui/typewriter';
+
 
 
 
@@ -194,25 +202,6 @@ const rotator = litToDSD(html`
   <kemet-rotator speed="3" messages="[&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;]"></kemet-rotator>
 `);
 
-// Not Safe for SSR
-// const select = litToDSD(html`
-//   <kemet-select>
-//     <kemet-select-option value="1" label="Option 1">
-//     </kemet-select-option>
-//     <kemet-select-option value="2" label="Option 2">
-//     </kemet-select-option>
-//   </kemet-select>
-// `);
-
-// Note Safe for SSR
-// const sortable = litToDSD(html`
-//   <kemet-sortable>
-//     <kemet-sortable-item>Item 1</kemet-sortable-item>
-//     <kemet-sortable-item>Item 2</kemet-sortable-item>
-//     <kemet-sortable-item>Item 3</kemet-sortable-item>
-//   </kemet-sortable>
-// `);
-
 const tabs = litToDSD(html`
   <kemet-tabs>
     <kemet-tab slot="tab">Tab 1</kemet-tab>
@@ -223,6 +212,44 @@ const tabs = litToDSD(html`
     <kemet-tab-panel slot="panel">Panel 3</kemet-tab-panel>
   </kemet-tabs>
 `);
+
+const textarea = litToDSD(html`
+  <kemet-field slug="textarea" label="Label">
+    <kemet-textarea slot="input" name="textarea"></kemet-textarea>
+  </kemet-field>
+`);
+
+const timer = litToDSD(html`
+  <kemet-timer amount="2" format="minutes">
+    <kemet-timer-display format="seconds">
+    </kemet-timer-display> Seconds :
+    <kemet-timer-display format="minutes">
+    </kemet-timer-display> Minutes :
+    <kemet-timer-display format="hours">
+    </kemet-timer-display> Hours :
+    <kemet-timer-display format="days">
+    </kemet-timer-display> Days
+  </kemet-timer>
+`);
+
+const toggle = litToDSD(html`
+  <kemet-toggle label="Toggle"></kemet-toggle>
+`);
+
+const tracker = litToDSD(html`
+  <kemet-tracker>
+    <kemet-tracker-step step="1" total="5" completed>Step 1</kemet-tracker-step>
+    <kemet-tracker-step step="2" total="5" completed>Step 2</kemet-tracker-step>
+    <kemet-tracker-step step="3" total="5" current>Step 3</kemet-tracker-step>
+    <kemet-tracker-step step="4" total="5">Step 4</kemet-tracker-step>
+    <kemet-tracker-step step="5" total="5">Step 5</kemet-tracker-step>
+  </kemet-tracker>
+`);
+
+const typewriter = litToDSD(html`
+  <kemet-typewriter content="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor."></kemet-typewriter>
+`);
+
 ---
 
 <Layout>
@@ -319,18 +346,28 @@ const tabs = litToDSD(html`
     </li>
 
     <li>
-      <h2>Select</h2>
-      <strong>Not safe for SSR</strong>
-    </li>
-
-    <li>
-      <h2>Sortable</h2>
-      <strong>Not safe for SSR</strong>
-    </li>
-
-    <li>
       <h2>Tabs</h2>
       <Fragment set:html={tabs} />
+    </li>
+
+    <li>
+      <h2>Textarea</h2>
+      <Fragment set:html={textarea} />
+    </li>
+
+    <li>
+      <h2>Timer</h2>
+      <Fragment set:html={timer} />
+    </li>
+
+    <li>
+      <h2>Toggle</h2>
+      <Fragment set:html={toggle} />
+    </li>
+
+    <li>
+      <h2>Tracker</h2>
+      <Fragment set:html={tracker} />
     </li>
   </ol>
 </Layout>
@@ -380,6 +417,13 @@ const tabs = litToDSD(html`
   import 'kemet-ui/tabs';
   import 'kemet-ui/tab';
   import 'kemet-ui/tab-panel';
+  import 'kemet-ui/textarea';
+  import 'kemet-ui/timer';
+  import 'kemet-ui/timer-display';
+  import 'kemet-ui/toggle';
+  import 'kemet-ui/tracker';
+  import 'kemet-ui/tracker-step';
+  import 'kemet-ui/typewriter';
 
 
 

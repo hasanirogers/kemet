@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { polyfill } from 'mobile-drag-drop';
 import { emitEvent } from '../../utilities/events';
 import type HTMLKemetSortableItemElement from '../sortable-item';

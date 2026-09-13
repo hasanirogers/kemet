@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state, query } from 'lit/decorators.js';
+import { customElement, property, state, query } from '../../utilities/decorators';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 import { EnumRoundedSizes } from '../../utilities/constants';

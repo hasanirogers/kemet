@@ -1,5 +1,5 @@
 import { html, HTMLTemplateResult, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';

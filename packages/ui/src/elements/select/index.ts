@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS, TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
 import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';

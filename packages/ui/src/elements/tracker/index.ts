@@ -1,5 +1,5 @@
-import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { html, LitElement } from 'lit';
+import { customElement, property, state } from '../../utilities/decorators';
 import type KemetTrackerStep from '../tracker-step';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
@@ -24,10 +24,7 @@ export default class KemetTracker extends LitElement {
   static styles = [styles];
 
   @property({ type: Number })
-  total!: number;
-
-  @property({ type: String })
-  breakpoint!: string;
+  total?: number;
 
   @property({ type: String, reflect: true })
   polarity?: 'light' | 'dark';
@@ -38,23 +35,8 @@ export default class KemetTracker extends LitElement {
   @state()
   steps!: NodeListOf<KemetTrackerStep>;
 
-  constructor() {
-    super();
-    this.breakpoint = '767px';
-  }
-
   firstUpdated() {
-    // elements
-    this.steps = this.querySelectorAll('kemet-tracker-step');
-
-    // methods exe
-    this.isMobile();
-
-    // events
-    window.addEventListener('resize', () => {
-      this.isMobile();
-    });
-
+    this.initializeSteps();
     emitEvent(this, 'kemet-tracker-mounted', {
       bubbles: true,
       composed: true,
@@ -66,10 +48,11 @@ export default class KemetTracker extends LitElement {
   }
 
   render() {
-    return html`<slot @slotchange=${() => this.handleSlotChange()}></slot>`;
+    return html`<slot @slotchange=${() => this.initializeSteps()}></slot>`;
   }
 
-  handleSlotChange() {
+  initializeSteps() {
+    this.steps = this.querySelectorAll('kemet-tracker-step');
     this.total = this.steps.length;
 
     this.steps.forEach((step, index) => {
@@ -77,14 +60,6 @@ export default class KemetTracker extends LitElement {
       if (step.step === this.total) {
         step.last = true;
       }
-    });
-  }
-
-  isMobile() {
-    const mediaQuery = window.matchMedia(`(max-width: ${this.breakpoint})`);
-
-    this.steps.forEach((step) => {
-      step.mobile = mediaQuery.matches;
     });
   }
 }

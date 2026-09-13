@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetFieldElement from '../field';
 import HTMLKemetInputElement from '../input';

@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { EnumFormats } from '../timer';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
@@ -35,12 +35,9 @@ export default class KemetTimerDisplay extends LitElement {
   @property({ type: String, reflect: true })
   dom: string = 'initializing';
 
-  constructor() {
-    super();
-    this.getTime();
-  }
-
   firstUpdated() {
+    this.getTime();
+
     emitEvent(this, 'kemet-timer-display-mounted', {
       bubbles: true,
       composed: true,

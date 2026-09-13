@@ -29,7 +29,7 @@ type Story = StoryObj;
 const Template = (args: Args) => {
   const steps = Array.from({ length: args.numOfSteps }, (_, i) => {
     const stepNum = i + 1;
-    return html`<kemet-tracker-step ?completed=${stepNum < args.currentStep || args.currentStep > args.numOfSteps} ?current=${stepNum === args.currentStep} ?hide-dot-content=${args.hideDotContent}>Step ${stepNum}</kemet-tracker-step>`;
+    return html`<kemet-tracker-step total=${args.numOfSteps} ?completed=${stepNum < args.currentStep || args.currentStep > args.numOfSteps} ?current=${stepNum === args.currentStep} ?hide-dot-content=${args.hideDotContent}>Step ${stepNum}</kemet-tracker-step>`;
   });
 
   return html`

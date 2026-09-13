@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import * as constants from '../../utilities/constants';
 import styles from './styles.css.ts';

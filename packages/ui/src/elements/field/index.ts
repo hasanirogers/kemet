@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { EnumAppearances } from '../../utilities/constants';
 import HTMLKemetComboElement from '../combo';
 import HTMLKemetInputElement from '../input';

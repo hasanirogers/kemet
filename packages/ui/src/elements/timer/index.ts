@@ -1,7 +1,7 @@
-import { html, LitElement, unsafeCSS, PropertyValues } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
-import styles from './styles.css.ts';
+import { html, LitElement, PropertyValues } from 'lit';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
+import styles from './styles.css.ts';
 
 export enum EnumFormats {
   Seconds = 'seconds',

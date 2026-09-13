@@ -1,5 +1,5 @@
 import { html, LitElement, PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import Typewriter from 'typewriter-effect/dist/core';
 import { emitEvent } from '../../utilities/events';
 
@@ -9,6 +9,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-typewriter
  * @summary An element that types out content.
+ * @ssrsafe no - Depends on client-side effect library
  *
  * @prop {string} content - The content to be typed.
  * @prop {number} delay - The delay between each character.
