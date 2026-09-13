@@ -44,6 +44,7 @@ export enum EnumTabsAlign {
  *
  * @tagname kemet-tabs
  * @summary A group of tabs and panels.
+ * @ssrsafe yes
  *
  * @prop {string} selected - The selected tab by name
  * @prop {number} selectedIndex - The selected tab by index

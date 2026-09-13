@@ -27,6 +27,7 @@ export enum EnumBorderAppearances {
  *
  * @tagname kemet-alert
  * @summary Calls out important messages and notifications.
+ * @ssrsafe yes
  *
  * @prop {boolean} opened - Determines if the alert is opened or not.
  * @prop {boolean} reveal - Fades in the alert when opened.

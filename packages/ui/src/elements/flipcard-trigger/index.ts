@@ -8,6 +8,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-flipcard-trigger
  * @summary Triggers a flipcard component to flip.
+ * @ssrsafe yes
  *
  * @event kemet-flipcard-trigger-flipped - Fires when a flipcard is flipped
  *

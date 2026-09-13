@@ -18,6 +18,7 @@ export interface InterfaceAppearanceChangeEvent {
  *
  * @tagname kemet-count
  * @summary Maintains a character count for an input field. Is to be used only in the component slot of a Field component.
+ * @ssrsafe yes
  *
  * @prop {string} message - The text label shown to users
  * @prop {number} remaining - The number of characters remaining

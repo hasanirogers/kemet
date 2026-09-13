@@ -16,6 +16,7 @@ export interface InterfaceKemetSelectionEvent {
  *
  * @tagname kemet-combo
  * @summary Allows the user to select a choice filtered through an Input. May only be used as a component of Field.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Uniquely identifies the component. Should match the slug used in a control.
  * @prop {array} options - An array of items listed for the combo box

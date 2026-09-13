@@ -10,6 +10,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-fab
  * @summary The FAB, or Floating Action Button, performs a primary action on a page.
+ * @ssrsafe yes
  *
  * @prop {boolean} expanded - The expanded state of the button.
  * @prop {boolean} outlined - Outline style for a button.

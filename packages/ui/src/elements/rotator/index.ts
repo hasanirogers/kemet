@@ -15,6 +15,7 @@ export enum EnumEffects {
  *
  * @tagname kemet-rotator
  * @summary A component that rotates through an array of text.
+ * @ssrsafe yes
  *
  * @prop {number} activeSlide - The index number for the current slide.
  * @prop {array} messages - Text in the rotator. Supports HTML.

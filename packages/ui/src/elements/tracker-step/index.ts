@@ -11,6 +11,7 @@ import styles from './styles.css.ts';
 
  * @tagname kemet-tracker-step
  * @summary A step in the Tracker
+ * @ssrsafe yes
  *
  * @prop {number} step - The current step number
  * @prop {boolean} completed - Determines whether a step renders as complete

@@ -16,6 +16,7 @@ export enum EnumFormats {
  *
  * @tagname kemet-timer
  * @summary Counts down from a specified amount of time or date.
+ * @ssrsafe yes
  *
  * @prop {TypeFormats} format - The format of the amount property
  * @prop {number} amount - The amount of time to set the timer

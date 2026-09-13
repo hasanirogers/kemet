@@ -9,6 +9,10 @@ import { emitEvent } from '../../utilities/events';
  * @since 1.2.0
  * @status stable
  *
+ * @tagname kemet-tracker
+ * @summary A tracker for a multi step process
+ * @ssrsafe yes
+ *
  * @prop {number} total - The total number of steps
  * @prop {string} breakpoint - The point at which the tracker goes from mobile to standard * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background

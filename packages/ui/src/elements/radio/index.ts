@@ -12,6 +12,7 @@ import styles from './styles.css.ts'
  *
  * @tagname kemet-radio
  * @summary An enhanced radio button.
+ * @ssrsafe yes
  *
  * @prop {string} label - The text next to the radio button
  * @prop {boolean} checked - Determines whether or not the button is checked

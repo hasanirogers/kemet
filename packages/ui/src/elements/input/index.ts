@@ -71,6 +71,7 @@ export enum EnumInputModes {
  *
  * @tagname kemet-input
  * @summary An enhanced input element.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Used for the id of the input. Should match the slug used in a control if applicable.
  * @prop {string} name - The name of the input

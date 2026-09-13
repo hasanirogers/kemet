@@ -9,6 +9,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-tab
  * @summary A tab in a set of tabs.
+ * @ssrsafe yes
  *
  * @prop {boolean} selected - Is true when the tab is selected
  * @prop {string} link - Links to a panel name

@@ -30,7 +30,7 @@ import extractJSDocTags from '../utilities/extractJSDocTags.js';
 
           return (
             <li data-search={`${title} ${tags.tagname} ${tags.summary} ${tags.status}`.toLowerCase()}>
-              <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary} {...(tags.ssrsafe && { ssrsafe: true })}>
+              <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary} {...(tags.ssrsafe === 'yes' && { ssrsafe: true })}>
                 <!-- TODO: Add pre-render placeholder -->
               </web-element-card>
             </li>

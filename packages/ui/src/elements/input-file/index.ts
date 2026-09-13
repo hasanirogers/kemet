@@ -22,6 +22,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
  *
  * @tagname kemet-input-file
  * @summary Displays a file to be uploaded.
+ * @ssrsafe yes
  *
  * @prop {string} name - The name of the file
  * @prop {number} loaded - The number of bytes loaded

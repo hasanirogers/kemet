@@ -14,6 +14,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-textarea
  * @summary An enhanced textarea element.
+ * @ssrsafe yes
  *
  * @prop {string} slug
  * @prop {string}  name

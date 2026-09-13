@@ -11,8 +11,10 @@ import { emitEvent } from '../../utilities/events';
  * @since 1.0.0
  * @status stable
  *
+ *
  * @tagname kemet-field
  * @summary Used in combination with Input, Select, and Textarea, to make a Field.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Uniquely identifies the control. Use the same slug for slotted subcomponents.
  * @prop {string} label - The label text

@@ -23,6 +23,7 @@ export enum EnumVariants {
  *
  * @prop {string} variant - The style of loader to display
  * @prop {number} size - How large to make the loader.
+ * @ssrsafe yes
  *
  * @csspart loader - The main loader container
  *

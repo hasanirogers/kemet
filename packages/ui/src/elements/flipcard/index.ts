@@ -10,6 +10,7 @@ import { EnumRoundedSizes } from '../../utilities/constants';
  *
  * @tagname kemet-flipcard
  * @summary A card that has a front and back side which can be flipped.
+ * @ssrsafe yes
  *
  * @prop {string} axis
  * @prop {boolean} flipped

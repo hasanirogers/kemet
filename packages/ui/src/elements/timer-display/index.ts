@@ -10,6 +10,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-timer-display
  * @summary Displays remaining time
+ * @ssrsafe yes
  *
  * @prop {EnumFormats} format - The format to display the remaining time in
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background

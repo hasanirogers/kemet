@@ -13,6 +13,7 @@ import styles from './styles.css.ts'
  *
  * @tagname kemet-radios
  * @summary A group of radio buttons.
+ * @ssrsafe yes
  *
  * @prop {string} legend - The legend text for the fieldset
  * @prop {TypeAxis} axis - The direction of the button's layout

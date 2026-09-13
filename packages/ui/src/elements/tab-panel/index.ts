@@ -9,6 +9,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-tab-panel
  * @summary A panel in a set of tabs.
+ * @ssrsafe yes
  *
  * @prop {boolean} selected - Is true when a panel is selected
  * @prop {string} panel - Identifies the panel to be linked by a tab

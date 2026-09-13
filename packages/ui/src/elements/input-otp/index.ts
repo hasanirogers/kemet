@@ -11,6 +11,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-input-otp
  * @summary An input element that accepts multiple items from a combo.
+ * @ssrsafe yes
  *
  * @prop {number} digits - The number of inputs.
  * @prop {string} pattern - The pattern to match against for stripping characters

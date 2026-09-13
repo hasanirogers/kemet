@@ -10,6 +10,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-toggle
  * @summary A toggle switch for forms.
+ * @ssrsafe yes
  *
  * @prop {string} name - The name on the input field
  * @prop {boolean} checked - Determines whether the toggle is checked

@@ -19,6 +19,7 @@ export interface InterfaceSelections {
  *
  * @tagname kemet-multi-input
  * @summary An input element that accepts multiple items from a combo.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Used for the id of the input. Should match the slug used in a control if applicable.
  * @prop {string} name - The name of the input

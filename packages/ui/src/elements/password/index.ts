@@ -25,6 +25,7 @@ export interface InterfacePasswordStrengthChangeDetails {
  *
  * @tagname kemet-password
  * @summary Gauges the strength of a password entered by the user.
+ * @ssrsafe yes
  *
  * @prop {array} rules - An array of objects containing the rules the password must meet.
  * @prop {boolean} show - Controls the display of the component.
