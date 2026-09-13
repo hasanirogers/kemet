@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, queryAll, state } from 'lit/decorators.js';
+import { customElement, property, queryAll, state } from '../../utilities/decorators';
 import { EnumKeyCodes } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';
@@ -11,6 +11,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-input-otp
  * @summary An input element that accepts multiple items from a combo.
+ * @ssrsafe yes
  *
  * @prop {number} digits - The number of inputs.
  * @prop {string} pattern - The pattern to match against for stripping characters

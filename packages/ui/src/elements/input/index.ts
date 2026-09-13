@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { FormSubmitController } from '../../utilities/form-controller';
@@ -71,6 +71,7 @@ export enum EnumInputModes {
  *
  * @tagname kemet-input
  * @summary An enhanced input element.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Used for the id of the input. Should match the slug used in a control if applicable.
  * @prop {string} name - The name of the input

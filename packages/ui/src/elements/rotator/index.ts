@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';
@@ -15,6 +15,7 @@ export enum EnumEffects {
  *
  * @tagname kemet-rotator
  * @summary A component that rotates through an array of text.
+ * @ssrsafe yes
  *
  * @prop {number} activeSlide - The index number for the current slide.
  * @prop {array} messages - Text in the rotator. Supports HTML.
@@ -96,8 +97,6 @@ export default class KemetRotator extends LitElement {
   render() {
     const setWidth = this.effect === 'flip' ? `width:${this.width};` : '';
     const setHeight = this.effect === 'flip' ? `height:${this.height};` : '';
-
-    console.log(this.height);
 
     return html`
       <span part="rotator" style="${setWidth} ${setHeight}">

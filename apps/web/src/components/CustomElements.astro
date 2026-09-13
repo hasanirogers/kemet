@@ -22,12 +22,15 @@ import extractJSDocTags from '../utilities/extractJSDocTags.js';
         .filter(({ tagsData }) => tagsData[0]?.tags?.tagname)
         .sort((a, b) => a.tagsData[0].tags.tagname.localeCompare(b.tagsData[0].tags.tagname))
         .map(({ element, tagsData }) => {
+          if (tagsData[0]?.tags?.tagname === 'kemet-drawer') {
+            console.log(tagsData);
+          }
           const title = (tagsData[0]?.className || '').replace(/([A-Z])/g, ' $1').replace('Kemet', '').trim();
           const tags = tagsData[0]?.tags || {};
 
           return (
             <li data-search={`${title} ${tags.tagname} ${tags.summary} ${tags.status}`.toLowerCase()}>
-              <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary}>
+              <web-element-card title={title} since={tags.since} name={tags.tagname} status={tags.status} summary={tags.summary} {...(tags.ssrsafe === 'yes' && { ssrsafe: true })}>
                 <!-- TODO: Add pre-render placeholder -->
               </web-element-card>
             </li>

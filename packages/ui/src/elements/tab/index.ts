@@ -1,7 +1,6 @@
 import { LitElement, html, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
-import '../icon';
 import styles from './styles.css.ts';
 
 /**
@@ -10,6 +9,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-tab
  * @summary A tab in a set of tabs.
+ * @ssrsafe yes
  *
  * @prop {boolean} selected - Is true when the tab is selected
  * @prop {string} link - Links to a panel name

@@ -1,0 +1,16 @@
+---
+title: Server-Side Rendering
+description: Server-side rendering documentation
+---
+
+import SSRSupportTable from '.././../../components/SSRSupportTable.astro';
+
+SSR Support for Kemet UI elements is currently experimental. This is because Kemet UI elements rely on custom elements which rely on the browser API and are not available in SSR environments. In recent years there is a way to tackle this problem with Web Components. It's called Declarative Shadow DOM. DSD is a way to write components declaratively in HTML, allowing for styling and markup to be rendered by the server then sent to the client.
+
+Since Kemet UI elements are written in Lit, they rely on the experimental `@lit-labs/ssr` package to enable SSR. This package is not yet stable and is subject to change, but it does make SSR possible with Kemet UI. In addition to this, even while using `@lit-labs/ssr`, there are still some limitations with SSR and a small percentage of Kemet UI elements will break when attempting to be hydrated with DSD. The following table list all of the elements and there support for SSR.
+
+<SSRSupportTable />
+
+## Framework Specific Documentation
+
+For documentation on specific SSR implementations, please see the [framework documentation page](/frameworks).

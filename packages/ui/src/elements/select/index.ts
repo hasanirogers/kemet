@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS, TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
 import { EnumAppearances, EnumRoundedSizes } from '../../utilities/constants';
@@ -21,6 +21,7 @@ interface IOptions {
  *
  * @tagname kemet-select
  * @summary An enhanced select element.
+ * @ssrsafe no - This element queriesAll for child elements which is not supported in SSR.
  *
  * @prop {string} slug - A string the uniquely identifies the select
  * @prop {string} name - The name of the select
@@ -133,12 +134,10 @@ export default class KemetSelect extends LitElement {
 
     /** @internal */
     this.formSubmitController = new FormSubmitController(this);
-
-    /** @internal */
-    this.control = this.closest('kemet-field') as HTMLKemetFieldElement;
   }
 
   firstUpdated() {
+    this.control = this.closest('kemet-field') as HTMLKemetFieldElement;
     this.select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
     this.selectedOption = this.querySelector('[selected]') as HTMLOptionElement;
     this.value = this.selectedOption ? this.selectedOption.value : '';

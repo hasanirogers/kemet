@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 
 /**
  * @since 1.0.0
@@ -7,6 +7,7 @@ import { customElement, property } from 'lit/decorators.js';
  *
  * @tagname kemet-select-option
  * @summary An option in a select.
+ * @ssrsafe no
  *
  * @prop {string} label - The label of the option
  * @prop {string} value - The value of the options

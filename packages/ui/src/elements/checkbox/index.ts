@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query } from '../../utilities/decorators';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { FormSubmitController } from '../../utilities/form-controller';
@@ -13,6 +13,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-checkbox
  * @summary An enhanced checkbox.
+ * @ssrsafe yes
  *
  * @prop {string} label - Label text for the checkbox
  * @prop {boolean} checked - Determines if the checkbox is selected

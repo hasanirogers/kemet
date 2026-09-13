@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
@@ -9,6 +9,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-avatars
  * @summary Groups multiple avatar elements.
+ * @ssrsafe yes
  *
  * @cssproperty --kemet-avatars-squeeze - The space between avatars. Default: -1.5rem.
  *

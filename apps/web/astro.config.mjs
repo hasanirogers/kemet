@@ -32,6 +32,7 @@ export default defineConfig({
             { label: 'Typography', slug: 'docs/typography' },
             { label: 'Iconography', slug: 'docs/iconography' },
             { label: 'Forms', slug: 'docs/forms' },
+            { label: 'SSR Support', slug: 'docs/ssr' },
 					],
 				},
 				{

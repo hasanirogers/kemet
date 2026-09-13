@@ -1,7 +1,7 @@
-import { html, LitElement, unsafeCSS, PropertyValues } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
-import styles from './styles.css.ts';
+import { html, LitElement, PropertyValues } from 'lit';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
+import styles from './styles.css.ts';
 
 export enum EnumFormats {
   Seconds = 'seconds',
@@ -16,6 +16,7 @@ export enum EnumFormats {
  *
  * @tagname kemet-timer
  * @summary Counts down from a specified amount of time or date.
+ * @ssrsafe yes
  *
  * @prop {TypeFormats} format - The format of the amount property
  * @prop {number} amount - The amount of time to set the timer

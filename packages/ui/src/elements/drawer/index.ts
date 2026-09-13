@@ -1,5 +1,5 @@
 import { LitElement, css, html, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import { EnumDirections } from '../../utilities/constants';
 import effectsStyles from './effects';
@@ -14,7 +14,6 @@ export enum EnumEffects {
 }
 
 const effects = Object.values(EnumEffects) as string[];
-
 const directions = Object.values(EnumDirections) as string[];
 
 
@@ -24,6 +23,7 @@ const directions = Object.values(EnumDirections) as string[];
  *
  * @tagname kemet-drawer
  * @summary A component that adds an off-canvas menu with different effects.
+ * @ssrsafe yes
  *
  * @prop {boolean} opened - Determines if the drawer is opened or not.
  * @prop {string} effect - The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)

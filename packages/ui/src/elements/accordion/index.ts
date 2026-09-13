@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import HTMLKemetAccordionPanelElement from '../accordion-panel';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
@@ -10,6 +10,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-accordion
  * @summary A component that acts like a standard accordion.
+ * @ssrsafe yes
  *
  * @prop {number} currentPanel - The index value for the most recently opened panel
  * @prop {boolean} togglePanels - Support for closing all inactive panels when one is opened

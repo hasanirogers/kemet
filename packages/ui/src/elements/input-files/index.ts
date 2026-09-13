@@ -1,9 +1,8 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetInputFileElement from '../input-file';
-import '../icon';
 import styles from './styles.css.ts';
 
 
@@ -24,6 +23,7 @@ const preventDefaults = (event: Event) => {
  *
  * @tagname kemet-input-files
  * @summary An interface for inputing files.
+ * @ssrsafe yes
  *
  * @prop {string} slug - A unique identifier for the component
  * @prop {string} accept - Determines what file types are accepted

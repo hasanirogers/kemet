@@ -21,6 +21,9 @@ export class WebElementCard extends LitElement {
   @property({ type: String })
   since: string = '';
 
+  @property({ type: Boolean })
+  ssrsafe: boolean = false;
+
   render() {
     return html`
       <a href=${`elements/${this.name.replace('kemet-', '')}`}>
@@ -29,9 +32,19 @@ export class WebElementCard extends LitElement {
         <p>${this.summary}</p>
       </a>
       <footer>
-        <span>${this.status}</span>
-        <span>Since ${this.since}</span>
+        <div>
+          <span>${this.status}</span>
+          ${this.makeSSRSafe()}
+        </div>
+        <span>since ${this.since}</span>
       </footer>
     `;
+  }
+
+  makeSSRSafe() {
+    if (this.ssrsafe) {
+      return html`&nbsp;<span>ssr safe</span>`;
+    }
+    return html``;
   }
 }

@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
@@ -9,6 +9,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-sortable-item
  * @summary An item in a sortable list.
+ * @ssrsafe no - This component uses a drag and drop polyfill which is not supported on the server.
  *
  * @prop {boolean} ghost - Automatically set to true when an item is dragged to a new spot.
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background

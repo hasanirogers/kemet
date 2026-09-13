@@ -1,24 +1,27 @@
-import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { html, LitElement } from 'lit';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetTrackerElement from '../tracker';
-import '../icon';
 import styles from './styles.css.ts';
+
 /**
  *
  * @since 1.2.0
  * @status stable
- *
+
  * @tagname kemet-tracker-step
  * @summary A step in the Tracker
+ * @ssrsafe yes
  *
  * @prop {number} step - The current step number
  * @prop {boolean} completed - Determines whether a step renders as complete
  * @prop {boolean} current - Determines whether a step renders as the current step
  * @prop {boolean} last - Is automatically added to the last step
+ * @prop {string} breakpoint - The breakpoint to use for mobile rendering
  * @prop {boolean} mobile - Determines if a step should render as mobile
  * @prop {boolean} hideDotContent - Hides the label inside of a dot
  * @prop {number} completedSize - The icon size for the completed check mark
+ * @prop {number} total - The total number of steps
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
  * @prop {string} dom - The status of dom initalization.
  *
@@ -52,7 +55,7 @@ import styles from './styles.css.ts';
 export default class KemetTrackerStep extends LitElement {
   static styles = [styles];
 
-  @property({ type: Number })
+  @property({ type: Number})
   step!: number;
 
   @property({ type: Boolean, reflect: true })
@@ -64,6 +67,9 @@ export default class KemetTrackerStep extends LitElement {
   @property({ type: Boolean, reflect: true })
   last!: boolean;
 
+  @property({ type: String })
+  breakpoint: string = '767px';
+
   @property({ type: Boolean, reflect: true })
   mobile!: boolean;
 
@@ -72,6 +78,9 @@ export default class KemetTrackerStep extends LitElement {
 
   @property({ type: Number })
   completedSize: number = 16;
+
+  @property({ type: Number })
+  total: number = 0;
 
   @property({ type: String, reflect: true })
   polarity?: 'light' | 'dark';
@@ -85,8 +94,15 @@ export default class KemetTrackerStep extends LitElement {
   tracker!: HTMLKemetTrackerElement;
 
   firstUpdated() {
-    this.tracker = this.closest('kemet-tracker') as HTMLKemetTrackerElement;
-    emitEvent(this, 'kemet-button-mounted', {
+    this.last = this.step === this.total;
+
+    this.isMobile();
+
+    window.addEventListener('resize', () => {
+      this.isMobile();
+    });
+
+    emitEvent(this, 'kemet-tracker-step-mounted', {
       bubbles: true,
       composed: true,
       detail: {
@@ -130,7 +146,7 @@ export default class KemetTrackerStep extends LitElement {
 
     if (!this.mobile && !this.hideDotContent) {
       return html`
-        <span>${this.step}/${this.tracker?.total}</span>
+        <span>${this.step}/${this.total}</span>
       `;
     }
 
@@ -146,11 +162,16 @@ export default class KemetTrackerStep extends LitElement {
   }
 
   handleCompletedLineEnd() {
-    const currentDot = this.tracker?.querySelector('[current]')?.shadowRoot?.querySelector('.dot');
+    const currentDot = this.current ? this.shadowRoot?.querySelector('.dot') : null;
 
     if (currentDot) {
       currentDot.classList.add('animate');
     }
+  }
+
+  isMobile() {
+    const mediaQuery = window.matchMedia(`(max-width: ${this.breakpoint})`);
+    this.mobile = mediaQuery.matches;
   }
 }
 

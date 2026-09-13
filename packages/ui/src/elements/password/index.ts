@@ -1,11 +1,10 @@
 import { html, LitElement, unsafeCSS, TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import { EnumAppearances } from '../../utilities/constants';
 import HTMLKemetFieldElement from '../field';
 import HTMLKemetInputElement from '../input';
 import HTMLKemetTextareaElement from '../textarea';
-import '../icon';
 import styles from './styles.css.ts';
 
 interface InterfaceOptions {
@@ -26,6 +25,7 @@ export interface InterfacePasswordStrengthChangeDetails {
  *
  * @tagname kemet-password
  * @summary Gauges the strength of a password entered by the user.
+ * @ssrsafe yes
  *
  * @prop {array} rules - An array of objects containing the rules the password must meet.
  * @prop {boolean} show - Controls the display of the component.

@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query } from '../../utilities/decorators';
 import type { TypeRoundedSizes, TypeAppearance } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';
@@ -39,6 +39,7 @@ export enum EnumSizes {
  *
  * @tagname kemet-button
  * @summary A versatile button that can be used either to submit a form, trigger an action, or link to content.
+ * @ssrsafe yes
  *
  * @prop {string} href - The url a button should link too
  * @prop {boolean} outlined - Outline style for a button

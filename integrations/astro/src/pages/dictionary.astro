@@ -1,0 +1,430 @@
+---
+import Layout from '../layouts/Dictionary.astro';
+import { html } from 'lit';
+import litToDSD from '../shared/litToDSD';
+
+import 'kemet-ui/styles/tokens.css'
+
+// import components on the server to get html and css to render from the server
+import 'kemet-ui/accordion';
+import 'kemet-ui/accordion-panel';
+import 'kemet-ui/alert';
+import 'kemet-ui/avatar';
+import 'kemet-ui/avatars';
+import 'kemet-ui/badge';
+import 'kemet-ui/button';
+import 'kemet-ui/card';
+import 'kemet-ui/checkbox';
+import 'kemet-ui/combo';
+import 'kemet-ui/count';
+import 'kemet-ui/drawer';
+import 'kemet-ui/dialog';
+import 'kemet-ui/dialog-close';
+import 'kemet-ui/fab';
+import 'kemet-ui/field';
+import 'kemet-ui/flipcard';
+import 'kemet-ui/flipcard-trigger';
+import 'kemet-ui/icon';
+import 'kemet-ui/input';
+import 'kemet-ui/input-file';
+import 'kemet-ui/input-files';
+import 'kemet-ui/input-otp';
+import 'kemet-ui/loader';
+import 'kemet-ui/password';
+import 'kemet-ui/radios';
+import 'kemet-ui/radio';
+import 'kemet-ui/rotator';
+import 'kemet-ui/tabs';
+import 'kemet-ui/tab';
+import 'kemet-ui/tab-panel';
+import 'kemet-ui/textarea';
+import 'kemet-ui/timer';
+import 'kemet-ui/timer-display';
+import 'kemet-ui/toggle';
+import 'kemet-ui/tracker';
+import 'kemet-ui/tracker-step';
+
+
+
+const accordion = litToDSD(html`
+  <kemet-accordion>
+    <kemet-accordion-panel>
+      <h3 slot="trigger">Trigger 1</h3>
+      <kemet-icon slot="icon" name="chevron-down" size="18">
+      </kemet-icon>
+      <div slot="body">The quick brown fox jumps over the lazy dog.</div>
+    </kemet-accordion-panel>
+  </kemet-accordion>
+`);
+
+const alert = litToDSD(html`
+  <kemet-alert appearance="brand" opened>Your message here.</kemet-alert>
+`);
+
+const avatars = litToDSD(html`
+  <kemet-avatars>
+    <kemet-avatar rounded="circle" image="https://placehold.co/64x64" style="border:4px solid white;">
+    </kemet-avatar>
+    <kemet-avatar rounded="circle" image="https://placehold.co/64x64" style="border:4px solid white;">
+    </kemet-avatar>
+    <kemet-avatar rounded="circle" image="https://placehold.co/64x64" style="border:4px solid white;">
+    </kemet-avatar>
+  </kemet-avatars>
+`);
+
+const badge = litToDSD(html`
+  <kemet-badge appearance="brand">Badge</kemet-badge>
+`);
+
+const button = litToDSD(html`
+  <kemet-button appearance="brand">Button</kemet-button>
+`);
+
+const card = litToDSD(html`
+  <kemet-card center borderless elevation="level6" rounded="xl">
+    <h3 slot="header">This is the header.</h3>
+    <kemet-avatar circle slot="media">
+      <kemet-icon size="196" name="person">
+      </kemet-icon>
+    </kemet-avatar>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<div slot="footer">This is the footer.</div>
+  </kemet-card>
+`);
+
+const checkbox = litToDSD(html`
+  <kemet-checkbox label="Label"></kemet-checkbox>
+`);
+
+const combo = litToDSD(html`
+  <kemet-field slug="unique-identifier" label="Frequently asked questions.">
+    <kemet-input slot="input" name="input" placeholder="Start typing to see the FAQs">
+    </kemet-input>
+    <kemet-combo slot="component" options='["How do use Kemet UI?", "Are there going to be more components?", "Does Kemet UI work with React?"]'>
+    </kemet-combo>
+  </kemet-field>
+`);
+
+const count = litToDSD(html`
+  <kemet-field slug="unique-identifier" label="Label">
+    <kemet-input slot="input" name="input-field" validate-on-blur>
+    </kemet-input>
+    <kemet-count slot="component" message="characters remaining." limit="8" validate-immediately>
+    </kemet-count>
+  </kemet-field>
+`);
+
+const dialog = litToDSD(html`
+  <kemet-button id="dialog-button" appearance="brand" @click=${() => {console.log('what')}}>Open Dialog</kemet-button>
+  <kemet-dialog>
+    <div style="padding:1rem;">
+      <kemet-dialog-close tabindex="0" role="button" aria-label="Close Button" style="display:flex;">
+        <kemet-icon name="x-circle" size="24"></kemet-icon>
+      </kemet-dialog-close>
+      <h2 style="margin:0;">Dialog Title</h2>
+      <p>
+        Your modal contents
+        <a href="http://google.com">
+          <strong>here</strong>
+        </a>
+      </p>
+    </div>
+  </kemet-dialog>
+`);
+
+const fab = litToDSD(html`
+  <kemet-fab appearance="brand">
+    <kemet-icon slot="icon" name="envelope" size="24"></kemet-icon>
+    <span>Email</span>
+  </kemet-fab>
+`);
+
+const flipcard = litToDSD(html`
+  <kemet-flipcard>
+    <div slot="front" style="padding:1rem;">
+      <p>This is the front of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button appearance="brand">Flip to the back</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+    <div slot="back" style="padding:1rem;">
+      <p>This is the back of the card.</p>
+      <kemet-flipcard-trigger>
+        <kemet-button appearance="brand">Flip to the front</kemet-button>
+      </kemet-flipcard-trigger>
+    </div>
+  </kemet-flipcard>
+`);
+
+const inputFiles = litToDSD(html`
+  <kemet-input-files>
+    <kemet-input-file name="image.jpg" size="2000000" loaded="2000000" status="complete">
+    </kemet-input-file>
+    <kemet-input-file name="image.png" size="200000" loaded="100000" status="uploading">
+    </kemet-input-file>
+    <kemet-input-file name="package.zip" size="8000000" loaded="2000000" status="error" message="File size is too big.">
+    </kemet-input-file>
+  </kemet-input-files>
+`);
+
+const inputOTP = litToDSD(html`
+  <kemet-input-otp length="6"></kemet-input-otp>
+`);
+
+const loader = litToDSD(html`
+  <kemet-loader>Loading...</kemet-loader>
+`);
+
+const password = litToDSD(html`
+  <kemet-field slug="new-password" label="New Password">
+    <kemet-input slot="input" type="password" name="new-password">
+    </kemet-input>
+    <kemet-password slot="component" message="Please make sure you meet all the requirements.">
+    </kemet-password>
+  </kemet-field>
+`);
+
+const radios = litToDSD(html`
+  <kemet-radios legend="Legend" axis="true">
+    <kemet-radio value="1" name="kemet-radio-button" label="Item 1">
+    </kemet-radio>
+    <kemet-radio value="2" name="kemet-radio-button" label="Item 2">
+    </kemet-radio>
+    <kemet-radio value="3" name="kemet-radio-button" label="Item 3">
+    </kemet-radio>
+    <kemet-radio value="4" name="kemet-radio-button" label="Item 4">
+    </kemet-radio>
+  </kemet-radios>
+`);
+
+
+const rotator = litToDSD(html`
+  <kemet-rotator speed="3" messages="[&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;]"></kemet-rotator>
+`);
+
+const tabs = litToDSD(html`
+  <kemet-tabs>
+    <kemet-tab slot="tab">Tab 1</kemet-tab>
+    <kemet-tab slot="tab">Tab 2</kemet-tab>
+    <kemet-tab slot="tab">Tab 3</kemet-tab>
+    <kemet-tab-panel slot="panel">Panel 1</kemet-tab-panel>
+    <kemet-tab-panel slot="panel">Panel 2</kemet-tab-panel>
+    <kemet-tab-panel slot="panel">Panel 3</kemet-tab-panel>
+  </kemet-tabs>
+`);
+
+const textarea = litToDSD(html`
+  <kemet-field slug="textarea" label="Label">
+    <kemet-textarea slot="input" name="textarea"></kemet-textarea>
+  </kemet-field>
+`);
+
+const timer = litToDSD(html`
+  <kemet-timer amount="2" format="minutes">
+    <kemet-timer-display format="seconds">
+    </kemet-timer-display> Seconds :
+    <kemet-timer-display format="minutes">
+    </kemet-timer-display> Minutes :
+    <kemet-timer-display format="hours">
+    </kemet-timer-display> Hours :
+    <kemet-timer-display format="days">
+    </kemet-timer-display> Days
+  </kemet-timer>
+`);
+
+const toggle = litToDSD(html`
+  <kemet-toggle label="Toggle"></kemet-toggle>
+`);
+
+const tracker = litToDSD(html`
+  <kemet-tracker>
+    <kemet-tracker-step step="1" total="5" completed>Step 1</kemet-tracker-step>
+    <kemet-tracker-step step="2" total="5" completed>Step 2</kemet-tracker-step>
+    <kemet-tracker-step step="3" total="5" current>Step 3</kemet-tracker-step>
+    <kemet-tracker-step step="4" total="5">Step 4</kemet-tracker-step>
+    <kemet-tracker-step step="5" total="5">Step 5</kemet-tracker-step>
+  </kemet-tracker>
+`);
+
+---
+
+<Layout>
+  <h1>A dictionary of SSR safe elements</h1>
+  <ol>
+    <li>
+      <h2>Accordion</h2>
+      <Fragment set:html={accordion} />
+    </li>
+
+    <li>
+      <h2>Alert</h2>
+      <Fragment set:html={alert} />
+    </li>
+
+    <li>
+      <h2>Avatars</h2>
+      <Fragment set:html={avatars} />
+    </li>
+
+    <li>
+      <h2>Badge</h2>
+      <Fragment set:html={badge} />
+    </li>
+
+    <li>
+      <h2>Button</h2>
+      <Fragment set:html={button} />
+    </li>
+
+    <li>
+      <h2>Card</h2>
+      <Fragment set:html={card} />
+    </li>
+
+    <li>
+      <h2>Checkbox</h2>
+      <Fragment set:html={checkbox} />
+    </li>
+
+    <li>
+      <h2>Combo</h2>
+      <Fragment set:html={combo} />
+    </li>
+
+    <li>
+      <h2>Count</h2>
+      <Fragment set:html={count} />
+    </li>
+
+    <li>
+      <h2>Dialog</h2>
+      <Fragment set:html={dialog} />
+    </li>
+
+    <li>
+      <h2>Fab</h2>
+      <Fragment set:html={fab} />
+    </li>
+
+    <li>
+      <h2>Flipcard</h2>
+      <Fragment set:html={flipcard} />
+    </li>
+
+    <li>
+      <h2>Input Files</h2>
+      <Fragment set:html={inputFiles} />
+    </li>
+
+    <li>
+      <h2>Input OTP</h2>
+      <Fragment set:html={inputOTP} />
+    </li>
+
+    <li>
+      <h2>Loader</h2>
+      <Fragment set:html={loader} />
+    </li>
+
+    <li>
+      <h2>Password</h2>
+      <Fragment set:html={password} />
+    </li>
+
+    <li>
+      <h2>Radios</h2>
+      <Fragment set:html={radios} />
+    </li>
+
+    <li>
+      <h2>Rotator</h2>
+      <Fragment set:html={rotator} />
+    </li>
+
+    <li>
+      <h2>Tabs</h2>
+      <Fragment set:html={tabs} />
+    </li>
+
+    <li>
+      <h2>Textarea</h2>
+      <Fragment set:html={textarea} />
+    </li>
+
+    <li>
+      <h2>Timer</h2>
+      <Fragment set:html={timer} />
+    </li>
+
+    <li>
+      <h2>Toggle</h2>
+      <Fragment set:html={toggle} />
+    </li>
+
+    <li>
+      <h2>Tracker</h2>
+      <Fragment set:html={tracker} />
+    </li>
+  </ol>
+</Layout>
+<style>
+  ol {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>
+<script>
+  import type HTMLKementDialogElement from 'kemet-ui/dialog';
+
+  // import components on the client to get full functionality to work
+  import 'kemet-ui/accordion';
+  import 'kemet-ui/accordion-panel';
+  import 'kemet-ui/alert';
+  import 'kemet-ui/avatar';
+  import 'kemet-ui/avatars';
+  import 'kemet-ui/badge';
+  import 'kemet-ui/button';
+  import 'kemet-ui/card';
+  import 'kemet-ui/checkbox';
+  import 'kemet-ui/combo';
+  import 'kemet-ui/count';
+  import 'kemet-ui/drawer';
+  import 'kemet-ui/dialog';
+  import 'kemet-ui/dialog-close';
+  import 'kemet-ui/fab';
+  import 'kemet-ui/field';
+  import 'kemet-ui/flipcard';
+  import 'kemet-ui/flipcard-trigger';
+  import 'kemet-ui/icon';
+  import 'kemet-ui/input';
+  import 'kemet-ui/input-file';
+  import 'kemet-ui/input-files';
+  import 'kemet-ui/input-otp';
+  import 'kemet-ui/loader';
+  import 'kemet-ui/password';
+  import 'kemet-ui/radios';
+  import 'kemet-ui/radio';
+  import 'kemet-ui/rotator';
+  import 'kemet-ui/tabs';
+  import 'kemet-ui/tab';
+  import 'kemet-ui/tab-panel';
+  import 'kemet-ui/textarea';
+  import 'kemet-ui/timer';
+  import 'kemet-ui/timer-display';
+  import 'kemet-ui/toggle';
+  import 'kemet-ui/tracker';
+  import 'kemet-ui/tracker-step';
+
+
+  // handle dialog
+  const dialogButton = document.getElementById('dialog-button');
+  const dialog = document.querySelector('kemet-dialog') as HTMLKementDialogElement;
+
+  dialogButton?.addEventListener('click', function() {
+    dialog.opened = true;
+  });
+</script>
+

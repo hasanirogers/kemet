@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
 import { EnumAxis, EnumAppearances } from '../../utilities/constants';
@@ -13,6 +13,7 @@ import styles from './styles.css.ts'
  *
  * @tagname kemet-radios
  * @summary A group of radio buttons.
+ * @ssrsafe yes
  *
  * @prop {string} legend - The legend text for the fieldset
  * @prop {TypeAxis} axis - The direction of the button's layout

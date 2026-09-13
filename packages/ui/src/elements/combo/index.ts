@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import type HTMLKemetFieldElement from '../field';
 import styles from './styles.css.ts';
@@ -16,6 +16,7 @@ export interface InterfaceKemetSelectionEvent {
  *
  * @tagname kemet-combo
  * @summary Allows the user to select a choice filtered through an Input. May only be used as a component of Field.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Uniquely identifies the component. Should match the slug used in a control.
  * @prop {array} options - An array of items listed for the combo box

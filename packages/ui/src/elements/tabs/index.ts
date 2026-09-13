@@ -1,11 +1,10 @@
 /* eslint-disable no-case-declarations */
 import { LitElement, html, unsafeCSS } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import { EnumDirections } from '../../utilities/constants';
 import type KemetTab from '../tab';
 import type KemetTabPanel from '../tab-panel';
-import '../icon';
 import styles from './styles.css.ts';
 
 
@@ -45,6 +44,7 @@ export enum EnumTabsAlign {
  *
  * @tagname kemet-tabs
  * @summary A group of tabs and panels.
+ * @ssrsafe yes
  *
  * @prop {string} selected - The selected tab by name
  * @prop {number} selectedIndex - The selected tab by index
@@ -91,7 +91,7 @@ export default class KemetTabs extends LitElement {
   @property({ type: String, reflect: true })
   selected?: string;
 
-  @property({ type: Number })
+  @property({ type: Number, reflect: true, attribute: 'selected-index' })
   selectedIndex: number = 0;
 
   @property({ type: Number })
@@ -145,12 +145,17 @@ export default class KemetTabs extends LitElement {
   @query('#panels')
   panelsElement!: HTMLElement;
 
+  private _handleTabKeydown = this.handleTabKeydown.bind(this);
+
   constructor() {
     super();
 
     this.addEventListener('kemet-tab-selected', this.tabSelectedChange.bind(this));
     this.addEventListener('kemet-tab-closed', this.handleTabClose.bind(this));
-    window.addEventListener('resize', this.handleResize.bind(this));
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', this.handleResize.bind(this));
+    }
   }
 
   firstUpdated() {
@@ -161,6 +166,9 @@ export default class KemetTabs extends LitElement {
     this.yDown = null;
 
     this.links = this.shadowRoot?.getElementById('links') as HTMLElement;
+
+    this.handleLinksSlotChange();
+    this.handlePanelsSlotChange();
 
     emitEvent(this, 'kemet-tabs-mounted', {
       bubbles: true,
@@ -208,6 +216,9 @@ export default class KemetTabs extends LitElement {
   }
 
   handleLinksSlotChange() {
+    this.tabs?.forEach((tab) => tab.removeEventListener('keydown', this._handleTabKeydown));
+    this.tabs = [];
+
     const tabs = this.querySelectorAll('kemet-tab');
     let index = 0;
 
@@ -220,7 +231,7 @@ export default class KemetTabs extends LitElement {
       this.tabs = this.tabs.concat(tab);
 
       // add keyboard support
-      tab.addEventListener('keydown', event => this.handleTabKeydown(event));
+      tab.addEventListener('keydown', this._handleTabKeydown);
     });
 
     // default to the first tab/panel selected
@@ -234,6 +245,8 @@ export default class KemetTabs extends LitElement {
   }
 
   handlePanelsSlotChange() {
+    this.panels = [];
+
     const panels = this.querySelectorAll('kemet-tab-panel');
     const panelElement = this.shadowRoot?.getElementById('panels');
     let index = 0;

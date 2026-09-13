@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import styles from './styles.css.ts';
 import { emitEvent } from '../../utilities/events';
 
@@ -23,6 +23,7 @@ export enum EnumVariants {
  *
  * @prop {string} variant - The style of loader to display
  * @prop {number} size - How large to make the loader.
+ * @ssrsafe yes
  *
  * @csspart loader - The main loader container
  *

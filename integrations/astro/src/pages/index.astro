@@ -1,0 +1,28 @@
+---
+import '../index.css';
+---
+
+<h1>Choose a render type.</h1>
+
+<div>
+  <kemet-button href="/ssr" rounded>Server Side Rendering</kemet-button>
+  <kemet-button href="/client" rounded>Client Side Rendering</kemet-button>
+</div>
+
+<style>
+  body {
+    display: block;
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem auto;
+  }
+</style>
+
+<script>
+  import 'kemet-ui/styles/tokens.css';
+  import 'kemet-ui/button';
+</script>

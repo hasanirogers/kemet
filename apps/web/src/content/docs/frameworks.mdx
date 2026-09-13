@@ -157,5 +157,23 @@ Marko has excellent support for Web Components. The caveat is that because Marko
 
 [Markobox](https://github.com/hasanirogers/kemet/tree/main/integrations/marko) is a Marko sandbox that demonstrates how to use Kemet UI components in Marko. Check it out.
 
+
+## Astro
+
+Astro has two ways to render components: Server-Side Rendering (SSR) and Client Side Rendering. Kemet UI components work with both, but there are some considerations.
+
+### Client-Side Rendering
+
+This is by far the most straight forward way to use Kemet UI components in Astro. When rendering on the client your component uses standard Web Component APIs. Just import the element in a script tag and write the HTML of the element. The component will be rendered with JavaScript on the client. [An example can be found here](https://github.com/hasanirogers/kemet/tree/main/integrations/astro/integrations/astro/src/layouts/Layout.astro).
+
+### Server-Side Rendering (SSR)
+
+SSR is more complicated to work with but you get added benefits like SEO and faster initial page loads. To render Kemet UI elements on the server, you'll need to convert the Lit component to Declarative Shadow DOM. This can be done with [an experimental package from the Lit team](https://www.npmjs.com/package/@lit-labs/ssr). Checkout our implementation of converting [here](https://github.com/hasanirogers/kemet/tree/main/integrations/astro/integrations/astro/src/shared/litToDSD.ts).
+
+You can use the `litToDSD` function to convert your Lit components to Declarative Shadow DOM. This function takes a Lit component and returns a Declarative Shadow DOM component. You can [see it in action here](https://github.com/hasanirogers/kemet/tree/main/integrations/astro/integrations/astro/src/layouts/LayoutSSR.astro).
+
+Take note that, because the drawer has slotted content, you'll need render the HTML output of your slots and or componenets in Astro and pass them appropriately.
+
+
 <br />
 <DocsFooter />

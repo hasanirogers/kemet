@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import HTMLKemetFieldElement from '../field';
 import HTMLKemetInputElement from '../input';
@@ -18,15 +18,21 @@ export interface InterfaceAppearanceChangeEvent {
  *
  * @tagname kemet-count
  * @summary Maintains a character count for an input field. Is to be used only in the component slot of a Field component.
+ * @ssrsafe yes
  *
  * @prop {string} message - The text label shown to users
  * @prop {number} remaining - The number of characters remaining
  * @prop {number} limit - The maximum number of characters allowed
  * @prop {boolean} validateImmediately - Set to true if the field should validate as soon as the character limit is reached
+ * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
+ * @prop {string} dom - The status of dom initalization.
  *
  * @cssproperty --kemet-count-font-size - The font size. Default: 90%.
  *
  * @fires kemet-count-appearance-change - Fires when there's a change in status.
+ *
+ * @fires kemet-count-mounted - Fired when the count is mounted to the DOM
+ * @detail {HTMLElement} element - The count element
  *
  */
 
@@ -50,6 +56,12 @@ export default class KemetCount extends LitElement {
 
   @property({ type: Boolean, attribute: 'validate-immediately' })
   validateImmediately!: boolean;
+
+  @property({ type: String, reflect: true })
+  polarity?: 'light' | 'dark';
+
+  @property({ type: String, reflect: true })
+  dom: string = 'initializing';
 
   @state()
   remaining!: number;
@@ -76,14 +88,28 @@ export default class KemetCount extends LitElement {
 
     this.input = this.inputSlot?.shadowRoot?.querySelector('input') || null;
     this.textarea = this.inputSlot?.shadowRoot?.querySelector('textarea') || null;
+
+    emitEvent(this, 'kemet-count-mounted', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        element: this,
+      },
+    });
+    this.dom = 'mounted';
   }
 
   render() {
+    if (isNaN(this.remaining)) {
+      this.remaining = this.limit;
+    }
     return html`${this.remaining} ${this.message}`;
   }
 
   handleInput(event: Event) {
+    console.log('event detail', (event as CustomEvent).detail);
     this.remaining = this.limit - (event as CustomEvent).detail.value.length;
+    console.log('remaining', this.remaining);
 
     const nativeElement = this.input || this.textarea;
 

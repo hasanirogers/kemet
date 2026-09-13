@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { EnumAppearances } from '../../utilities/constants';
 import HTMLKemetComboElement from '../combo';
 import HTMLKemetInputElement from '../input';
@@ -11,8 +11,10 @@ import { emitEvent } from '../../utilities/events';
  * @since 1.0.0
  * @status stable
  *
+ *
  * @tagname kemet-field
  * @summary Used in combination with Input, Select, and Textarea, to make a Field.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Uniquely identifies the control. Use the same slug for slotted subcomponents.
  * @prop {string} label - The label text

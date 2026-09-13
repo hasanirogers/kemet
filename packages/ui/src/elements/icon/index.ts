@@ -1,5 +1,5 @@
 import { html, HTMLTemplateResult, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';
@@ -47,6 +47,7 @@ export enum EnumLibrary {
  *
  * @tagname kemet-icon
  * @summary An element that represents an icon from a predefined set of open sourced icons.
+ * @ssrsafe yes
  *
  * @prop {string} name - The name of the icon to reference.
  * @prop {string} library - The library of icons to use. Values include: (bootstrap | fontawesome)
@@ -162,7 +163,7 @@ export default class KemetIcon extends LitElement {
 
     if (isTemplateResult(svg)) {
       this.svg = svg;
-    } else if (svg instanceof SVGSVGElement) {
+    } else if (typeof SVGSVGElement !== 'undefined' && svg instanceof SVGSVGElement) {
       // Clone the SVG so each icon instance gets its own copy
       this.svg = svg.cloneNode(true) as SVGSVGElement;
     }

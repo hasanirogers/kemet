@@ -1,0 +1,43 @@
+---
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import litToDSD from '../shared/litToDSD';
+import Nav from '../components/Nav.astro';
+
+
+const container = await AstroContainer.create();
+const mainHTML = await Astro.slots.render('default');
+const navHTML = await container.renderToString(Nav);
+
+const drawerTemplate = html`
+  <kemet-drawer fill-viewport>
+    <aside slot="sidebar">
+      ${unsafeHTML(navHTML)}
+    </aside>
+    <main slot="body">
+      ${unsafeHTML(mainHTML)}
+    </main>
+  </kemet-drawer>
+`;
+
+const drawerElement = litToDSD(drawerTemplate);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/src/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kemet UI | Astrobox</title>
+  </head>
+  <body>
+    <Fragment set:html={drawerElement} />
+    <script type="module">
+      // hydration support for Lit elements
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    </script>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
+</html>

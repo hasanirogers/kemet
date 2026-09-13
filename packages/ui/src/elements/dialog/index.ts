@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import { EnumRoundedSizes } from '../../utilities/constants';
 import styles from './styles.css.ts';
@@ -28,6 +28,7 @@ export enum EnumEffects {
  *
  * @tagname kemet-dialog
  * @summary A dialog that has many built-in effects and flexible styles.
+ * @ssrsafe yes
  *
  * @prop {boolean} opened
  * @prop {string} effect

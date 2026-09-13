@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { emitEvent } from '../../utilities/events';
@@ -12,6 +12,7 @@ import styles from './styles.css.ts'
  *
  * @tagname kemet-radio
  * @summary An enhanced radio button.
+ * @ssrsafe yes
  *
  * @prop {string} label - The text next to the radio button
  * @prop {boolean} checked - Determines whether or not the button is checked

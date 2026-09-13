@@ -1,6 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import '../icon';
+import { customElement, property } from '../../utilities/decorators';
 import styles from './styles.css.ts';
 import loaderStyles from './loaders.css.ts';
 import { emitEvent } from '../../utilities/events';
@@ -23,6 +22,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
  *
  * @tagname kemet-input-file
  * @summary Displays a file to be uploaded.
+ * @ssrsafe yes
  *
  * @prop {string} name - The name of the file
  * @prop {number} loaded - The number of bytes loaded

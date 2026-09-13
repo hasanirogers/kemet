@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state } from '../../utilities/decorators';
 import { FormSubmitController } from '../../utilities/form-controller';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';
@@ -10,6 +10,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-toggle
  * @summary A toggle switch for forms.
+ * @ssrsafe yes
  *
  * @prop {string} name - The name on the input field
  * @prop {boolean} checked - Determines whether the toggle is checked

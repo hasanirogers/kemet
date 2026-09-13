@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from '../../utilities/decorators';
 import { live } from 'lit/directives/live.js';
 import { emitEvent } from '../../utilities/events';
 import { EnumKeyCodes, EnumAppearances, TypeRoundedSizes, TypeAppearance, EnumRoundedSizes } from '../../utilities/constants';
@@ -19,6 +19,7 @@ export interface InterfaceSelections {
  *
  * @tagname kemet-multi-input
  * @summary An input element that accepts multiple items from a combo.
+ * @ssrsafe yes
  *
  * @prop {string} slug - Used for the id of the input. Should match the slug used in a control if applicable.
  * @prop {string} name - The name of the input

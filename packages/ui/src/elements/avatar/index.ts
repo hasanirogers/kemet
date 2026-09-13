@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { type TypeRoundedSizes } from '../../utilities/constants';
 import { emitEvent } from '../../utilities/events';
 import styles from './styles.css.ts';
@@ -11,6 +11,7 @@ import styles from './styles.css.ts';
  *
  * @tagname kemet-avatar
  * @summary A representation of a person or thing.
+ * @ssrsafe yes
  *
  * @prop {string} size - The size in pixels.
  * @prop {string} image - Url to an image.

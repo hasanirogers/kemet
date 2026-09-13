@@ -1,7 +1,7 @@
 :host {
-  --kemet-upload-color: var(--kemet-color-font-base);
+  --kemet-upload-color: inherit;
   --kemet-upload-height: 364px;
-  --kemet-upload-border: 1rem solid transparent;
+  --kemet-upload-border: 0;
   --kemet-upload-background-color: transparent;
 
   color: var(--kemet-upload-color);

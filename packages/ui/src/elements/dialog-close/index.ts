@@ -1,5 +1,5 @@
 import { css, html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 
 /**
@@ -8,6 +8,7 @@ import { emitEvent } from '../../utilities/events';
  *
  * @tagname kemet-dialog-close
  * @summary A close button for a dialog.
+ * @ssrsafe yes
  *
  * @prop {'light' | 'dark'} polarity - Determines if the component has a dark or light background
  * @prop {string} dom - The status of dom initalization.

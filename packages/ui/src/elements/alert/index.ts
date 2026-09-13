@@ -1,5 +1,5 @@
 import { html, LitElement, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property } from '../../utilities/decorators';
 import { emitEvent } from '../../utilities/events';
 import * as constants from '../../utilities/constants';
 import styles from './styles.css.ts';
@@ -27,6 +27,7 @@ export enum EnumBorderAppearances {
  *
  * @tagname kemet-alert
  * @summary Calls out important messages and notifications.
+ * @ssrsafe yes
  *
  * @prop {boolean} opened - Determines if the alert is opened or not.
  * @prop {boolean} reveal - Fades in the alert when opened.
