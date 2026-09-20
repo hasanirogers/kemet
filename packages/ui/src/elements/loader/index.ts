@@ -36,7 +36,7 @@ export enum EnumVariants {
  * @detail {HTMLElement} element - The loader element
  */
 @customElement('kemet-loader')
-export class KemetLoader extends LitElement {
+export default class KemetLoader extends LitElement {
   static styles = [styles];
 
   @property({ type: String, reflect: true })
