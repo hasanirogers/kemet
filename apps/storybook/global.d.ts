@@ -22,3 +22,18 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+declare module '*.scss' {
+  const src: string;
+  export default src;
+}
+
+declare module '*.css' {
+  const src: string;
+  export default src;
+}
+
+declare module '*?inline' {
+  const src: string;
+  export default src;
+}
