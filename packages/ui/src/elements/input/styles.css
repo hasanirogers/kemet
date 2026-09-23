@@ -63,7 +63,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 
 :host([appearance=brand]) {
-  --kemet-input-color: var(--kemet-color-brand-primary-base);
+  --kemet-input-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error]) {
@@ -84,7 +84,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 
 :host([appearance=brand][filled]) {
-  --_kemet-input-background-color: var(--kemet-color-brand-primary-base);
+  --_kemet-input-background-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error][filled]) {

@@ -39,8 +39,8 @@
     --_kemet-alert-appearance-color: var(--kemet-color-background-inverse);
   }
 
-  :host([filled][appearance="brand"]) {
-    --_kemet-alert-appearance-color: var(--kemet-color-brand-primary-base);
+  :host([filled][appearance=brand]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-brand-primary-darker);
   }
 
   :host([filled][appearance="success"]) {
@@ -83,8 +83,8 @@
     border-left: var(--kemet-alert-border-thickness) solid var(--_kemet-alert-appearance-color);
   }
 
-  :host([appearance="brand"]) {
-    --_kemet-alert-appearance-color: var(--kemet-color-brand-primary-base);
+  :host([appearance=brand]) {
+    --_kemet-alert-appearance-color: var(--kemet-color-brand-primary-darker);
   }
 
   :host([appearance="success"]) {

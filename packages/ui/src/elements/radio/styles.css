@@ -34,7 +34,7 @@ input {
   opacity: 0;
 }
 
-button {
+[part=button] {
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -80,7 +80,7 @@ button {
 }
 
 :host([appearance=brand]) {
-  --kemet-checkbox-color: var(--kemet-color-brand-primary-base);
+  --kemet-checkbox-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error]) {

@@ -41,7 +41,7 @@ option {
 }
 
 :host([appearance=brand]) {
-  --kemet-select-color: var(--kemet-color-brand-primary-base);
+  --kemet-select-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error]) {
@@ -97,7 +97,7 @@ option {
 
 
 :host([appearance=brand][filled]) {
-  --_kemet-select-background-color: var(--kemet-color-brand-primary-base);
+  --_kemet-select-background-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error][filled]) {
