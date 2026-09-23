@@ -51,7 +51,7 @@ input {
 }
 
 :host([appearance=brand]) {
-  --kemet-input-combo-color: var(--kemet-color-brand-primary-base);
+  --kemet-input-combo-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error]) {
@@ -71,7 +71,7 @@ input {
 }
 
 :host([appearance=brand][filled]) {
-  --_kemet-input-combo-background-color: var(--kemet-color-brand-primary-base);
+  --_kemet-input-combo-background-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error][filled]) {

@@ -31,7 +31,7 @@
 }
 
 :host([appearance=brand]) {
-  --_kemet-badge-color: var(--kemet-color-brand-primary-base);
+  --_kemet-badge-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=success]) {

@@ -71,7 +71,7 @@ textarea {
 
 
 :host([appearance=brand][filled]) {
-  --_kemet-textarea-background-color: var(--kemet-color-brand-primary-base);
+  --_kemet-textarea-background-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error][filled]) {
@@ -92,7 +92,7 @@ textarea {
 
 
 :host([appearance=brand]) {
-  --kemet-textarea-color: var(--kemet-color-brand-primary-base);
+  --kemet-textarea-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error]) {

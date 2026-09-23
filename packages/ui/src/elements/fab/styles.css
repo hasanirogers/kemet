@@ -63,7 +63,7 @@ button {
 }
 
 :host([appearance=brand]:not([disabled])) {
-  --kemet-fab-color: var(--kemet-color-brand-primary-base);
+  --kemet-fab-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=error]:not([disabled])) {

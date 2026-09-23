@@ -80,7 +80,6 @@ export default class KemetRadios extends LitElement {
 
   firstUpdated() {
     this.radios = this.querySelectorAll('kemet-radio');
-    this.setAttribute('role', 'radiogroup');
 
     emitEvent(this, 'kemet-radios-mounted', {
       bubbles: true,
@@ -96,7 +95,7 @@ export default class KemetRadios extends LitElement {
     return html`
       <fieldset part="fieldset">
         ${this.legend !== '' ? html`<legend part="legend">${this.legend}</legend>` : null}
-        <slot @click=${(event: MouseEvent) => this.handleClick(event)} @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)} @slotchange=${() => this.handleSlotChange()}></slot>
+        <slot @click=${(event: MouseEvent) => this.handleClick(event)} @keydown=${(event: KeyboardEvent) => this.handleKeyDown(event)}></slot>
       </fieldset>
       ${this.makeMessage()}
     `;
@@ -104,12 +103,6 @@ export default class KemetRadios extends LitElement {
 
   handleClick(event: MouseEvent) {
     const target = event.target as HTMLKemetRadioElement;
-
-    this.radios.forEach((radio) => {
-      radio.checked = false;
-      radio.tabIndex = radio === target ? 0 : -1;
-      radio.setAttribute('aria-checked', 'false');
-    });
 
     if (!target.disabled) {
       target.checked = true;
@@ -156,20 +149,6 @@ export default class KemetRadios extends LitElement {
         radio.checked = true;
         radio.tabIndex = 0;
       }
-    }
-  }
-
-  handleSlotChange() {
-    const radios = Array.from(this.radios);
-    const checkedRadio = radios.find((radio: HTMLKemetRadioElement) => radio.checked) as HTMLKemetRadioElement;
-
-    this.radios.forEach((radio: HTMLKemetRadioElement) => {
-      radio.tabIndex = -1;
-      radio.input.tabIndex = -1;
-    });
-
-    if (checkedRadio) {
-      checkedRadio.tabIndex = 0;
     }
   }
 

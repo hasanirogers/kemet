@@ -105,7 +105,7 @@
 }
 
 :host([appearance=brand]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
-  --_kemet-button-background-color: var(--kemet-color-brand-primary-base);
+  --_kemet-button-background-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([appearance=success]:not([disabled]):not([variant=text]):not([variant=outlined]):not([variant=plain])) {
@@ -130,7 +130,7 @@
 
 :host([variant=text][appearance=brand]:not([disabled])),
 :host([variant=plain][appearance=brand]:not([disabled])) {
-  --_kemet-button-font-color: var(--kemet-color-brand-primary-base);
+  --_kemet-button-font-color: var(--kemet-color-brand-primary-darker);
 }
 
 :host([variant=text][appearance=success]:not([disabled])),
@@ -195,9 +195,9 @@
 }
 
 :host([variant=outlined][appearance=brand]:not([disabled])) {
-  --_kemet-button-font-color: var(--kemet-color-brand-primary-base);
+  --_kemet-button-font-color: var(--kemet-color-brand-primary-darker);
   --_kemet-button-background-color: transparent;
-  --_kemet-button-border-color: var(--kemet-color-brand-primary-base);
+  --_kemet-button-border-color: var(--kemet-color-brand-primary-darker);
   --_kemet-button-border: var(--kemet-button-border-width) var(--kemet-button-border-style) var(--_kemet-button-border-color);
 }
 

@@ -136,7 +136,6 @@ export enum EnumInputModes {
 
 @customElement('kemet-input')
 export default class HTMLKemetInputElement extends LitElement {
-  /** @internal */
   formSubmitController: FormSubmitController;
 
   static styles = [styles];

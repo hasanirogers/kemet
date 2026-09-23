@@ -84,13 +84,6 @@ export default class KemetRadio extends LitElement {
 
     this.name = radiosElement.name || 'radio-button';
     this.input = this.shadowRoot?.querySelector('input') as HTMLInputElement;
-    this.setAttribute('role', 'radio');
-
-    if (this.checked) {
-      this.setAttribute('aria-checked', 'true');
-    } else {
-      this.setAttribute('aria-checked', 'false');
-    }
 
     emitEvent(this, 'kemet-radio-mounted', {
       bubbles: true,
@@ -114,7 +107,7 @@ export default class KemetRadio extends LitElement {
           @blur=${() => this.handleBlur()}
           @focus=${() => this.handleFocus()}
         />
-        <button part="button" aria-label=${this.label}>${this.makeDot()}</button>
+        <button part="button">${this.makeDot()}</button>
         <span part="text">${this.label}</span>
       </label>
     `;

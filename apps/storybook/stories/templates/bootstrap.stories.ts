@@ -60,7 +60,7 @@ const CheckoutTemplate = () => html`
       grid-template-columns: 3fr 1fr;
     }
 
-    aside {
+    .sidebar {
       header {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -208,7 +208,7 @@ const CheckoutTemplate = () => html`
         <br /><hr /><br />
         <kemet-button type="submit" appearance="brand" rounded>CONTINUE TO CHECKOUT</kemet-button>
       </form>
-      <aside>
+      <div class="sidebar">
         <header>
           <h2>Your cart</h2>
           <div>
@@ -259,7 +259,7 @@ const CheckoutTemplate = () => html`
             </div>
           </li>
         </ul>
-      </aside>
+      </div>
     </section>
     <footer kemet-type-align="center">
       <p>&copy; 2026 Company Name</p>

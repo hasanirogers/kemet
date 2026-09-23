@@ -1,3 +1,5 @@
+import { EnumAppearances } from "./constants";
+
 export class FormSubmitController {
   host: any;
   form: HTMLFormElement | null | undefined;
@@ -26,12 +28,16 @@ export class FormSubmitController {
 
     this.handleFormData = this.handleFormData.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+
+
   }
 
   hostConnected() {
+    console.log('what?!');
     this.form = this.options.form(this.host);
 
     if (this.form) {
+      console.log('Adding form listeners');
       this.form.addEventListener('formdata', this.handleFormData);
       this.form.addEventListener('submit', this.handleFormSubmit);
     }
@@ -64,6 +70,7 @@ export class FormSubmitController {
   }
 
   handleFormSubmit(event: SubmitEvent) {
+    console.log('~~Form submitted~~');
     event.preventDefault();
     event.stopImmediatePropagation();
 
@@ -78,7 +85,7 @@ export class FormSubmitController {
           component.checkValidity();
 
           if (!component.checkValidity()) {
-            component.status = 'error';
+            component.appearance = EnumAppearances.Error;
             component.invalid = true;
 
             component.dispatchEvent(
@@ -86,7 +93,7 @@ export class FormSubmitController {
                 bubbles: true,
                 composed: true,
                 detail: {
-                  status: 'error',
+                  status: EnumAppearances.Error,
                   validity: component.validity ? component.validity : {},
                   element: component,
                 },
@@ -95,7 +102,7 @@ export class FormSubmitController {
           }
 
           if (component.checkLimitValidity && !component.checkLimitValidity()) {
-            component.status = 'error';
+            component.appearance = EnumAppearances.Error;
             component.invalid = true;
 
             component.dispatchEvent(
