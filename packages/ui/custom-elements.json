@@ -778,25 +778,75 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/avatars/index.ts",
+      "path": "src/elements/badge/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KemetAvatars",
+          "name": "KemetBadge",
           "cssProperties": [
             {
-              "description": "The space between avatars. Default: -1.5rem.",
-              "name": "--kemet-avatars-squeeze"
+              "description": "The padding of the badge.",
+              "name": "--kemet-badge-padding"
+            },
+            {
+              "description": "The border width of the badge.",
+              "name": "--kemet-badge-border-width"
+            },
+            {
+              "description": "The border style of the badge.",
+              "name": "--kemet-badge-border-style"
             }
           ],
           "members": [
             {
               "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearance"
+              },
+              "description": "The appearance of the badge's color",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "circlePadding",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Padding on the badge as a circle",
+              "attribute": "circle-padding"
+            },
+            {
+              "kind": "field",
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Rounds the corners on the badge",
+              "attribute": "rounded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "outlined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Outlines the badge",
+              "attribute": "outlined",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "polarity",
               "type": {
-                "text": "'light' | 'dark' | undefined"
+                "text": "'light' | 'dark'"
               },
+              "description": "Determines if the component has a dark or light background",
               "attribute": "polarity",
               "reflects": true
             },
@@ -807,22 +857,94 @@
                 "text": "string"
               },
               "default": "'initializing'",
+              "description": "The status of dom initalization.",
               "attribute": "dom",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconLeft",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "iconRight",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleLeftChange"
+            },
+            {
+              "kind": "method",
+              "name": "handleRightChange"
+            },
+            {
+              "type": {
+                "text": "TypeStatus"
+              },
+              "description": "The status of the badge",
+              "name": "status",
+              "kind": "field"
             }
           ],
           "events": [
             {
-              "description": "Fires when the avatars are mounted.",
-              "name": "kemet-avatars-mounted"
+              "description": "Fires when the badge is mounted",
+              "name": "kemet-badge-mounted"
             }
           ],
           "attributes": [
             {
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearance"
+              },
+              "description": "The appearance of the badge's color",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "circle-padding",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Padding on the badge as a circle",
+              "fieldName": "circlePadding"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "TypeRoundedSizes"
+              },
+              "description": "Rounds the corners on the badge",
+              "fieldName": "rounded"
+            },
+            {
+              "name": "outlined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Outlines the badge",
+              "fieldName": "outlined"
+            },
+            {
               "name": "polarity",
               "type": {
-                "text": "'light' | 'dark' | undefined"
+                "text": "'light' | 'dark'"
               },
+              "description": "Determines if the component has a dark or light background",
               "fieldName": "polarity"
             },
             {
@@ -831,6 +953,7 @@
                 "text": "string"
               },
               "default": "'initializing'",
+              "description": "The status of dom initalization.",
               "fieldName": "dom"
             }
           ],
@@ -838,9 +961,9 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kemet-avatars",
+          "tagName": "kemet-badge",
           "customElement": true,
-          "summary": "Groups multiple avatar elements."
+          "summary": "Badges display the status of information."
         }
       ],
       "exports": [
@@ -848,30 +971,30 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "KemetAvatars",
-            "module": "src/elements/avatars/index.ts"
+            "name": "KemetBadge",
+            "module": "src/elements/badge/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "kemet-avatars",
+          "name": "kemet-badge",
           "declaration": {
-            "name": "KemetAvatars",
-            "module": "src/elements/avatars/index.ts"
+            "name": "KemetBadge",
+            "module": "src/elements/badge/index.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/avatars/styles.css.ts",
+      "path": "src/elements/badge/styles.css.ts",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
           "name": "default",
           "declaration": {
-            "module": "src/elements/avatars/styles.css.ts"
+            "module": "src/elements/badge/styles.css.ts"
           }
         }
       ]
@@ -1309,66 +1432,383 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/badge/index.ts",
+      "path": "src/elements/accordion-panel/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KemetBadge",
-          "cssProperties": [
+          "name": "KemetAccordionPanel",
+          "cssParts": [
             {
-              "description": "The padding of the badge.",
-              "name": "--kemet-badge-padding"
+              "description": "Contains the trigger for the panel.",
+              "name": "trigger"
             },
             {
-              "description": "The border width of the badge.",
-              "name": "--kemet-badge-border-width"
+              "description": "Contains the body for the panel.",
+              "name": "body"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The trigger button that opens and closes the panel.",
+              "name": "trigger"
             },
             {
-              "description": "The border style of the badge.",
-              "name": "--kemet-badge-border-style"
+              "description": "The body content of the panel.",
+              "name": "body"
+            },
+            {
+              "description": "The icon for the panel.",
+              "name": "icon"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "appearance",
+              "name": "opened",
               "type": {
-                "text": "EnumAppearance"
+                "text": "boolean"
               },
-              "description": "The appearance of the badge's color",
-              "attribute": "appearance",
+              "default": "undefined",
+              "description": "Determines the opened state of the panel",
+              "attribute": "opened",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "circlePadding",
+              "name": "maxHeight",
+              "type": {
+                "text": "string"
+              },
+              "default": "'0px'",
+              "description": "Sets the max height of the panel's body",
+              "attribute": "max-height"
+            },
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'panel'",
+              "description": "Uniquely identifies a panel for accessibility purposes",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "index",
               "type": {
                 "text": "number"
               },
-              "default": "0",
-              "description": "Padding on the badge as a circle",
-              "attribute": "circle-padding"
+              "attribute": "index"
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark' | undefined"
+              },
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "description": "Toggles the opened state of the panel.",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focusableBodyElements"
+            },
+            {
+              "kind": "method",
+              "name": "a11y"
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when a panel is opened",
+              "name": "kemet-opened"
+            },
+            {
+              "description": "Fires when a panel is closed",
+              "name": "kemet-closed"
+            },
+            {
+              "description": "Fired when the accordion panel is mounted to the DOM",
+              "name": "kemet-accordion-panel-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "undefined",
+              "description": "Determines the opened state of the panel",
+              "fieldName": "opened"
+            },
+            {
+              "name": "max-height",
+              "type": {
+                "text": "string"
+              },
+              "default": "'0px'",
+              "description": "Sets the max height of the panel's body",
+              "fieldName": "maxHeight"
+            },
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "'panel'",
+              "description": "Uniquely identifies a panel for accessibility purposes",
+              "fieldName": "slug"
+            },
+            {
+              "name": "index",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "index"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark' | undefined"
+              },
+              "fieldName": "polarity"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-accordion-panel",
+          "customElement": true,
+          "summary": "A blade for an accordion."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAccordionPanel",
+            "module": "src/elements/accordion-panel/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-accordion-panel",
+          "declaration": {
+            "name": "KemetAccordionPanel",
+            "module": "src/elements/accordion-panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/accordion-panel/styles.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/accordion-panel/styles.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/card/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetCard",
+          "cssProperties": [
+            {
+              "description": "The space around elements.",
+              "name": "--kemet-card-padding"
+            },
+            {
+              "description": "The color of the borders.",
+              "name": "--kemet-card-border-color"
+            },
+            {
+              "description": "The color of the text. Default:",
+              "name": "--kemet-card-color"
+            },
+            {
+              "description": "The max width of the card.",
+              "name": "--kemet-card-max-width"
+            },
+            {
+              "description": "The border around the card.",
+              "name": "--kemet-card-border"
+            },
+            {
+              "description": "The body spacing.",
+              "name": "--kemet-card-body-padding"
+            },
+            {
+              "description": "The header spacing.",
+              "name": "--kemet-card-header-padding"
+            },
+            {
+              "description": "The header border.",
+              "name": "--kemet-card-header-border-bottom"
+            },
+            {
+              "description": "The caption text color.",
+              "name": "--kemet-card-caption-color"
+            },
+            {
+              "description": "The caption spacing.",
+              "name": "--kemet-card-caption-padding"
+            },
+            {
+              "description": "The caption background color.",
+              "name": "--kemet-card-caption-background-color"
+            },
+            {
+              "description": "The footer spacing.",
+              "name": "--kemet-card-footer-padding"
+            },
+            {
+              "description": "The footer border.",
+              "name": "--kemet-card-footer-border-top"
+            },
+            {
+              "description": "The filled background color.",
+              "name": "--kemet-card-filled-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The media area of the card.",
+              "name": "media"
+            },
+            {
+              "description": "The main contents of the card.",
+              "name": "body"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The contents of the alert.",
+              "name": "default"
+            },
+            {
+              "description": "The card's header.",
+              "name": "header"
+            },
+            {
+              "description": "A slot for images, videos, or embeds.",
+              "name": "media"
+            },
+            {
+              "description": "Text for the media slot.",
+              "name": "caption"
+            },
+            {
+              "description": "The card's footer.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "center",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Centers the elements in the card.",
+              "attribute": "center",
+              "reflects": true
             },
             {
               "kind": "field",
               "name": "rounded",
               "type": {
-                "text": "TypeRoundedSizes"
+                "text": "EnumRoundedSizes"
               },
-              "description": "Rounds the corners on the badge",
               "attribute": "rounded",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "outlined",
+              "name": "filled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Outlines the badge",
-              "attribute": "outlined",
+              "description": "Fills the card with a background color.",
+              "attribute": "filled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the border from the card.",
+              "attribute": "borderless",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "elevation",
+              "type": {
+                "text": "EnumElevation"
+              },
+              "description": "The elevation level of the card.",
+              "attribute": "elevation",
               "reflects": true
             },
             {
@@ -1391,84 +1831,56 @@
               "description": "The status of dom initalization.",
               "attribute": "dom",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "iconLeft",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "iconRight",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleLeftChange"
-            },
-            {
-              "kind": "method",
-              "name": "handleRightChange"
-            },
-            {
-              "type": {
-                "text": "TypeStatus"
-              },
-              "description": "The status of the badge",
-              "name": "status",
-              "kind": "field"
             }
           ],
           "events": [
             {
-              "description": "Fires when the badge is mounted",
-              "name": "kemet-badge-mounted"
+              "description": "Fired when the card is mounted to the DOM",
+              "name": "kemet-card-mounted"
             }
           ],
           "attributes": [
             {
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearance"
-              },
-              "description": "The appearance of the badge's color",
-              "fieldName": "appearance"
-            },
-            {
-              "name": "circle-padding",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Padding on the badge as a circle",
-              "fieldName": "circlePadding"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "TypeRoundedSizes"
-              },
-              "description": "Rounds the corners on the badge",
-              "fieldName": "rounded"
-            },
-            {
-              "name": "outlined",
+              "name": "center",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Outlines the badge",
-              "fieldName": "outlined"
+              "description": "Centers the elements in the card.",
+              "fieldName": "center"
+            },
+            {
+              "name": "rounded",
+              "type": {
+                "text": "EnumRoundedSizes"
+              },
+              "fieldName": "rounded"
+            },
+            {
+              "name": "filled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Fills the card with a background color.",
+              "fieldName": "filled"
+            },
+            {
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the border from the card.",
+              "fieldName": "borderless"
+            },
+            {
+              "name": "elevation",
+              "type": {
+                "text": "EnumElevation"
+              },
+              "description": "The elevation level of the card.",
+              "fieldName": "elevation"
             },
             {
               "name": "polarity",
@@ -1492,9 +1904,9 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kemet-badge",
+          "tagName": "kemet-card",
           "customElement": true,
-          "summary": "Badges display the status of information."
+          "summary": "A highly configurable panel design to display media and information."
         }
       ],
       "exports": [
@@ -1502,30 +1914,130 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "KemetBadge",
-            "module": "src/elements/badge/index.ts"
+            "name": "KemetCard",
+            "module": "src/elements/card/index.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "kemet-badge",
+          "name": "kemet-card",
           "declaration": {
-            "name": "KemetBadge",
-            "module": "src/elements/badge/index.ts"
+            "name": "KemetCard",
+            "module": "src/elements/card/index.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/badge/styles.css.ts",
+      "path": "src/elements/card/styles.css.ts",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
           "name": "default",
           "declaration": {
-            "module": "src/elements/badge/styles.css.ts"
+            "module": "src/elements/card/styles.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/avatars/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetAvatars",
+          "cssProperties": [
+            {
+              "description": "The space between avatars. Default: -1.5rem.",
+              "name": "--kemet-avatars-squeeze"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark' | undefined"
+              },
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "attribute": "dom",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the avatars are mounted.",
+              "name": "kemet-avatars-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark' | undefined"
+              },
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-avatars",
+          "customElement": true,
+          "summary": "Groups multiple avatar elements."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetAvatars",
+            "module": "src/elements/avatars/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-avatars",
+          "declaration": {
+            "name": "KemetAvatars",
+            "module": "src/elements/avatars/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/avatars/styles.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/avatars/styles.css.ts"
           }
         }
       ]
@@ -1956,288 +2468,6 @@
           "name": "default",
           "declaration": {
             "module": "src/elements/checkbox/styles.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/card/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetCard",
-          "cssProperties": [
-            {
-              "description": "The space around elements.",
-              "name": "--kemet-card-padding"
-            },
-            {
-              "description": "The color of the borders.",
-              "name": "--kemet-card-border-color"
-            },
-            {
-              "description": "The color of the text. Default:",
-              "name": "--kemet-card-color"
-            },
-            {
-              "description": "The max width of the card.",
-              "name": "--kemet-card-max-width"
-            },
-            {
-              "description": "The border around the card.",
-              "name": "--kemet-card-border"
-            },
-            {
-              "description": "The body spacing.",
-              "name": "--kemet-card-body-padding"
-            },
-            {
-              "description": "The header spacing.",
-              "name": "--kemet-card-header-padding"
-            },
-            {
-              "description": "The header border.",
-              "name": "--kemet-card-header-border-bottom"
-            },
-            {
-              "description": "The caption text color.",
-              "name": "--kemet-card-caption-color"
-            },
-            {
-              "description": "The caption spacing.",
-              "name": "--kemet-card-caption-padding"
-            },
-            {
-              "description": "The caption background color.",
-              "name": "--kemet-card-caption-background-color"
-            },
-            {
-              "description": "The footer spacing.",
-              "name": "--kemet-card-footer-padding"
-            },
-            {
-              "description": "The footer border.",
-              "name": "--kemet-card-footer-border-top"
-            },
-            {
-              "description": "The filled background color.",
-              "name": "--kemet-card-filled-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The media area of the card.",
-              "name": "media"
-            },
-            {
-              "description": "The main contents of the card.",
-              "name": "body"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The contents of the alert.",
-              "name": "default"
-            },
-            {
-              "description": "The card's header.",
-              "name": "header"
-            },
-            {
-              "description": "A slot for images, videos, or embeds.",
-              "name": "media"
-            },
-            {
-              "description": "Text for the media slot.",
-              "name": "caption"
-            },
-            {
-              "description": "The card's footer.",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "center",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Centers the elements in the card.",
-              "attribute": "center",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "rounded",
-              "type": {
-                "text": "EnumRoundedSizes"
-              },
-              "attribute": "rounded",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Fills the card with a background color.",
-              "attribute": "filled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "borderless",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes the border from the card.",
-              "attribute": "borderless",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "elevation",
-              "type": {
-                "text": "EnumElevation"
-              },
-              "description": "The elevation level of the card.",
-              "attribute": "elevation",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the card is mounted to the DOM",
-              "name": "kemet-card-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "center",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Centers the elements in the card.",
-              "fieldName": "center"
-            },
-            {
-              "name": "rounded",
-              "type": {
-                "text": "EnumRoundedSizes"
-              },
-              "fieldName": "rounded"
-            },
-            {
-              "name": "filled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Fills the card with a background color.",
-              "fieldName": "filled"
-            },
-            {
-              "name": "borderless",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes the border from the card.",
-              "fieldName": "borderless"
-            },
-            {
-              "name": "elevation",
-              "type": {
-                "text": "EnumElevation"
-              },
-              "description": "The elevation level of the card.",
-              "fieldName": "elevation"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-card",
-          "customElement": true,
-          "summary": "A highly configurable panel design to display media and information."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetCard",
-            "module": "src/elements/card/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-card",
-          "declaration": {
-            "name": "KemetCard",
-            "module": "src/elements/card/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/card/styles.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/card/styles.css.ts"
           }
         }
       ]
@@ -2677,363 +2907,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/drawer/effects.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/drawer/effects.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/drawer/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetDrawer",
-          "cssProperties": [
-            {
-              "description": "The width of the drawer.",
-              "name": "--kemet-drawer-width"
-            },
-            {
-              "description": "The height of the drawer.",
-              "name": "--kemet-drawer-height"
-            },
-            {
-              "description": "The text color of the drawer.",
-              "name": "--kemet-drawer-color"
-            },
-            {
-              "description": "The background color of the drawer.",
-              "name": "--kemet-drawer-background-color"
-            },
-            {
-              "description": "The color of the overlay.",
-              "name": "--kemet-drawer-overlay-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "container"
-            },
-            {
-              "name": "drawer"
-            },
-            {
-              "name": "pusher"
-            },
-            {
-              "name": "content"
-            },
-            {
-              "name": "wrapper"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The off-screen nav area of your app or site",
-              "name": "sidebar"
-            },
-            {
-              "description": "The main content area of your app or site.",
-              "name": "body"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the drawer is opened or not.",
-              "attribute": "opened",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "effect",
-              "type": {
-                "text": "string"
-              },
-              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
-              "attribute": "effect",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "side",
-              "type": {
-                "text": "EnumDirection"
-              },
-              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
-              "attribute": "side",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "overlay",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds an overlay over the content section of the Drawer when opened",
-              "attribute": "overlay",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "fillViewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Makes the drawer fill the viewport height",
-              "attribute": "fill-viewport",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the drawer opens.",
-              "name": "kemet-drawer-opened"
-            },
-            {
-              "description": "Fires when the drawer closes.",
-              "name": "kemet-drawer-closed"
-            },
-            {
-              "description": "Fired when the button is mounted to the DOM",
-              "name": "kemet-drawer-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines if the drawer is opened or not.",
-              "fieldName": "opened"
-            },
-            {
-              "name": "effect",
-              "type": {
-                "text": "string"
-              },
-              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
-              "fieldName": "effect"
-            },
-            {
-              "name": "side",
-              "type": {
-                "text": "EnumDirection"
-              },
-              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
-              "fieldName": "side"
-            },
-            {
-              "name": "overlay",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds an overlay over the content section of the Drawer when opened",
-              "fieldName": "overlay"
-            },
-            {
-              "name": "fill-viewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Makes the drawer fill the viewport height",
-              "fieldName": "fillViewport"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-drawer",
-          "customElement": true,
-          "summary": "A component that adds an off-canvas menu with different effects."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetDrawer",
-            "module": "src/elements/drawer/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-drawer",
-          "declaration": {
-            "name": "KemetDrawer",
-            "module": "src/elements/drawer/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/drawer/styles.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/drawer/styles.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/dialog-close/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "DialogClose",
-          "members": [
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "close"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when the close button is pressed",
-              "name": "kemet-dialog-close-pressed"
-            },
-            {
-              "description": "Fired when the dialog close button is mounted to the DOM",
-              "name": "kemet-dialog-close-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-dialog-close",
-          "customElement": true,
-          "summary": "A close button for a dialog."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "DialogClose",
-            "module": "src/elements/dialog-close/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-dialog-close",
-          "declaration": {
-            "name": "DialogClose",
-            "module": "src/elements/dialog-close/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/dialog/effects.css.ts",
       "declarations": [],
       "exports": [
@@ -3316,6 +3189,363 @@
           "name": "default",
           "declaration": {
             "module": "src/elements/dialog/styles.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/dialog-close/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "DialogClose",
+          "members": [
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "close"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the close button is pressed",
+              "name": "kemet-dialog-close-pressed"
+            },
+            {
+              "description": "Fired when the dialog close button is mounted to the DOM",
+              "name": "kemet-dialog-close-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-dialog-close",
+          "customElement": true,
+          "summary": "A close button for a dialog."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DialogClose",
+            "module": "src/elements/dialog-close/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-dialog-close",
+          "declaration": {
+            "name": "DialogClose",
+            "module": "src/elements/dialog-close/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/drawer/effects.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/drawer/effects.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/drawer/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetDrawer",
+          "cssProperties": [
+            {
+              "description": "The width of the drawer.",
+              "name": "--kemet-drawer-width"
+            },
+            {
+              "description": "The height of the drawer.",
+              "name": "--kemet-drawer-height"
+            },
+            {
+              "description": "The text color of the drawer.",
+              "name": "--kemet-drawer-color"
+            },
+            {
+              "description": "The background color of the drawer.",
+              "name": "--kemet-drawer-background-color"
+            },
+            {
+              "description": "The color of the overlay.",
+              "name": "--kemet-drawer-overlay-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "container"
+            },
+            {
+              "name": "drawer"
+            },
+            {
+              "name": "pusher"
+            },
+            {
+              "name": "content"
+            },
+            {
+              "name": "wrapper"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The off-screen nav area of your app or site",
+              "name": "sidebar"
+            },
+            {
+              "description": "The main content area of your app or site.",
+              "name": "body"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the drawer is opened or not.",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "effect",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
+              "attribute": "effect",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "side",
+              "type": {
+                "text": "EnumDirection"
+              },
+              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
+              "attribute": "side",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "overlay",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds an overlay over the content section of the Drawer when opened",
+              "attribute": "overlay",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fillViewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer fill the viewport height",
+              "attribute": "fill-viewport",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the drawer opens.",
+              "name": "kemet-drawer-opened"
+            },
+            {
+              "description": "Fires when the drawer closes.",
+              "name": "kemet-drawer-closed"
+            },
+            {
+              "description": "Fired when the button is mounted to the DOM",
+              "name": "kemet-drawer-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the drawer is opened or not.",
+              "fieldName": "opened"
+            },
+            {
+              "name": "effect",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation effect for opening and closing the drawer. Values include: (slide | reveal | push | scale)",
+              "fieldName": "effect"
+            },
+            {
+              "name": "side",
+              "type": {
+                "text": "EnumDirection"
+              },
+              "description": "Allows you to control which side the drawer opens from. Values include: (left | right | top | bottom)",
+              "fieldName": "side"
+            },
+            {
+              "name": "overlay",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds an overlay over the content section of the Drawer when opened",
+              "fieldName": "overlay"
+            },
+            {
+              "name": "fill-viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer fill the viewport height",
+              "fieldName": "fillViewport"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-drawer",
+          "customElement": true,
+          "summary": "A component that adds an off-canvas menu with different effects."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetDrawer",
+            "module": "src/elements/drawer/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-drawer",
+          "declaration": {
+            "name": "KemetDrawer",
+            "module": "src/elements/drawer/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/drawer/styles.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/drawer/styles.css.ts"
           }
         }
       ]
@@ -3610,236 +3840,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/accordion-panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetAccordionPanel",
-          "cssParts": [
-            {
-              "description": "Contains the trigger for the panel.",
-              "name": "trigger"
-            },
-            {
-              "description": "Contains the body for the panel.",
-              "name": "body"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The trigger button that opens and closes the panel.",
-              "name": "trigger"
-            },
-            {
-              "description": "The body content of the panel.",
-              "name": "body"
-            },
-            {
-              "description": "The icon for the panel.",
-              "name": "icon"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "undefined",
-              "description": "Determines the opened state of the panel",
-              "attribute": "opened",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "maxHeight",
-              "type": {
-                "text": "string"
-              },
-              "default": "'0px'",
-              "description": "Sets the max height of the panel's body",
-              "attribute": "max-height"
-            },
-            {
-              "kind": "field",
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'panel'",
-              "description": "Uniquely identifies a panel for accessibility purposes",
-              "attribute": "slug"
-            },
-            {
-              "kind": "field",
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "attribute": "index"
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark' | undefined"
-              },
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "toggle",
-              "description": "Toggles the opened state of the panel.",
-              "privacy": "public",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "focusableBodyElements"
-            },
-            {
-              "kind": "method",
-              "name": "a11y"
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when a panel is opened",
-              "name": "kemet-opened"
-            },
-            {
-              "description": "Fires when a panel is closed",
-              "name": "kemet-closed"
-            },
-            {
-              "description": "Fired when the accordion panel is mounted to the DOM",
-              "name": "kemet-accordion-panel-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "opened",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "undefined",
-              "description": "Determines the opened state of the panel",
-              "fieldName": "opened"
-            },
-            {
-              "name": "max-height",
-              "type": {
-                "text": "string"
-              },
-              "default": "'0px'",
-              "description": "Sets the max height of the panel's body",
-              "fieldName": "maxHeight"
-            },
-            {
-              "name": "slug",
-              "type": {
-                "text": "string"
-              },
-              "default": "'panel'",
-              "description": "Uniquely identifies a panel for accessibility purposes",
-              "fieldName": "slug"
-            },
-            {
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "fieldName": "index"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "fieldName": "dom"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark' | undefined"
-              },
-              "fieldName": "polarity"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-accordion-panel",
-          "customElement": true,
-          "summary": "A blade for an accordion."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetAccordionPanel",
-            "module": "src/elements/accordion-panel/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-accordion-panel",
-          "declaration": {
-            "name": "KemetAccordionPanel",
-            "module": "src/elements/accordion-panel/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/accordion-panel/styles.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/accordion-panel/styles.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/field/index.ts",
       "declarations": [
         {
@@ -3995,10 +3995,6 @@
               "type": {
                 "text": "HTMLKemetComboElement"
               }
-            },
-            {
-              "kind": "method",
-              "name": "makeStatusMessage"
             },
             {
               "kind": "method",
@@ -7226,287 +7222,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/password/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetPassword",
-          "cssParts": [
-            {
-              "description": "Indicates password strength.",
-              "name": "strength"
-            },
-            {
-              "description": "The strength indicator bars.",
-              "name": "indicator"
-            },
-            {
-              "description": "A message to display to the user.",
-              "name": "message"
-            },
-            {
-              "description": "A description of rules to follow.",
-              "name": "rules"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "rules",
-              "type": {
-                "text": "array"
-              },
-              "default": "[ { pattern: '(?=.{8,}$)', message: 'At least 8 characters long' }, { pattern: '(?=.*[a-z])(?=.*[A-Z])', message: 'Uppercase and lowercase' }, { pattern: '(?=.*[0-9])', message: 'At least one number (0-9)' }, ]",
-              "description": "An array of objects containing the rules the password must meet.",
-              "attribute": "rules"
-            },
-            {
-              "kind": "field",
-              "name": "show",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Controls the display of the component.",
-              "attribute": "show",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "The value of the input component.",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Please make sure you meet all the requirements.'",
-              "description": "A message that is above the rules.",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "strength",
-              "type": {
-                "text": "string"
-              },
-              "description": "The strength of the password. Weak | Better | Strong.",
-              "attribute": "strength"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'check2'",
-              "attribute": "icon"
-            },
-            {
-              "kind": "field",
-              "name": "iconSize",
-              "type": {
-                "text": "number"
-              },
-              "default": "18",
-              "attribute": "iconSize"
-            },
-            {
-              "kind": "field",
-              "name": "appearance",
-              "type": {
-                "text": "EnumAppearances | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "type": {
-                "text": "HTMLKemetFieldElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "HTMLKemetInputElement | HTMLKemetTextareaElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "makeRules",
-              "return": {
-                "type": {
-                  "text": "TemplateResult<1>[]"
-                }
-              },
-              "description": "Makes the list of rules",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "makeCheckIcon",
-              "return": {
-                "type": {
-                  "text": "TemplateResult"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "meetsCriteria",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "Makes the check icon if the criteria has been met",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "*"
-                  }
-                }
-              ],
-              "description": "Handles the kemet-input-input event",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "setStrength",
-              "description": "Determines the strength of the password",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "visibility",
-              "description": "Determines whether to show or hide the component",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fires when there's a change in strength.",
-              "name": "kemet-password-strength-change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "rules",
-              "type": {
-                "text": "array"
-              },
-              "default": "[ { pattern: '(?=.{8,}$)', message: 'At least 8 characters long' }, { pattern: '(?=.*[a-z])(?=.*[A-Z])', message: 'Uppercase and lowercase' }, { pattern: '(?=.*[0-9])', message: 'At least one number (0-9)' }, ]",
-              "description": "An array of objects containing the rules the password must meet.",
-              "fieldName": "rules"
-            },
-            {
-              "name": "show",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Controls the display of the component.",
-              "fieldName": "show"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "The value of the input component.",
-              "fieldName": "value"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Please make sure you meet all the requirements.'",
-              "description": "A message that is above the rules.",
-              "fieldName": "message"
-            },
-            {
-              "name": "strength",
-              "type": {
-                "text": "string"
-              },
-              "description": "The strength of the password. Weak | Better | Strong.",
-              "fieldName": "strength"
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'check2'",
-              "fieldName": "icon"
-            },
-            {
-              "name": "iconSize",
-              "type": {
-                "text": "number"
-              },
-              "default": "18",
-              "fieldName": "iconSize"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-password",
-          "customElement": true,
-          "summary": "Gauges the strength of a password entered by the user."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetPassword",
-            "module": "src/elements/password/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-password",
-          "declaration": {
-            "name": "KemetPassword",
-            "module": "src/elements/password/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/password/styles.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/password/styles.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/radio/index.ts",
       "declarations": [
         {
@@ -7851,6 +7566,508 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/password/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetPassword",
+          "cssParts": [
+            {
+              "description": "Indicates password strength.",
+              "name": "strength"
+            },
+            {
+              "description": "The strength indicator bars.",
+              "name": "indicator"
+            },
+            {
+              "description": "A message to display to the user.",
+              "name": "message"
+            },
+            {
+              "description": "A description of rules to follow.",
+              "name": "rules"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "rules",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ { pattern: '(?=.{8,}$)', message: 'At least 8 characters long' }, { pattern: '(?=.*[a-z])(?=.*[A-Z])', message: 'Uppercase and lowercase' }, { pattern: '(?=.*[0-9])', message: 'At least one number (0-9)' }, ]",
+              "description": "An array of objects containing the rules the password must meet.",
+              "attribute": "rules"
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Controls the display of the component.",
+              "attribute": "show",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The value of the input component.",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Please make sure you meet all the requirements.'",
+              "description": "A message that is above the rules.",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "strength",
+              "type": {
+                "text": "string"
+              },
+              "description": "The strength of the password. Weak | Better | Strong.",
+              "attribute": "strength"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "'check2'",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "iconSize",
+              "type": {
+                "text": "number"
+              },
+              "default": "18",
+              "attribute": "iconSize"
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "EnumAppearances | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "field",
+              "type": {
+                "text": "HTMLKemetFieldElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "HTMLKemetInputElement | HTMLKemetTextareaElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeRules",
+              "return": {
+                "type": {
+                  "text": "TemplateResult<1>[]"
+                }
+              },
+              "description": "Makes the list of rules",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "makeCheckIcon",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "meetsCriteria",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "Makes the check icon if the criteria has been met",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "Handles the kemet-input-input event",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "setStrength",
+              "description": "Determines the strength of the password",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "visibility",
+              "description": "Determines whether to show or hide the component",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when there's a change in strength.",
+              "name": "kemet-password-strength-change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "rules",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ { pattern: '(?=.{8,}$)', message: 'At least 8 characters long' }, { pattern: '(?=.*[a-z])(?=.*[A-Z])', message: 'Uppercase and lowercase' }, { pattern: '(?=.*[0-9])', message: 'At least one number (0-9)' }, ]",
+              "description": "An array of objects containing the rules the password must meet.",
+              "fieldName": "rules"
+            },
+            {
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Controls the display of the component.",
+              "fieldName": "show"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "The value of the input component.",
+              "fieldName": "value"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Please make sure you meet all the requirements.'",
+              "description": "A message that is above the rules.",
+              "fieldName": "message"
+            },
+            {
+              "name": "strength",
+              "type": {
+                "text": "string"
+              },
+              "description": "The strength of the password. Weak | Better | Strong.",
+              "fieldName": "strength"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "'check2'",
+              "fieldName": "icon"
+            },
+            {
+              "name": "iconSize",
+              "type": {
+                "text": "number"
+              },
+              "default": "18",
+              "fieldName": "iconSize"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-password",
+          "customElement": true,
+          "summary": "Gauges the strength of a password entered by the user."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetPassword",
+            "module": "src/elements/password/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-password",
+          "declaration": {
+            "name": "KemetPassword",
+            "module": "src/elements/password/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/password/styles.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/password/styles.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/rotator/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetRotator",
+          "cssProperties": [
+            {
+              "description": "How long, in css time units, the transition effect lasts.",
+              "name": "--kemet-rotator-transition-speed"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "activeSlide",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "The index number for the current slide.",
+              "attribute": "active-slide"
+            },
+            {
+              "kind": "field",
+              "name": "messages",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "description": "Text in the rotator. Supports HTML.",
+              "attribute": "messages"
+            },
+            {
+              "kind": "field",
+              "name": "effect",
+              "type": {
+                "text": "TypeEffects"
+              },
+              "description": "The transition effect type.",
+              "attribute": "effect",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "speed",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "description": "How fast, in seconds, each slide lasts. Stop the rotator with 0.",
+              "attribute": "speed"
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background.",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "'auto'"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "default": "'auto'"
+            },
+            {
+              "kind": "field",
+              "name": "prevSlide",
+              "type": {
+                "text": "number | null"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeMessages"
+            },
+            {
+              "kind": "method",
+              "name": "setDimensions"
+            },
+            {
+              "kind": "method",
+              "name": "nextSlide",
+              "description": "Rotates to the next slide.",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the rotator is mounted to the DOM",
+              "name": "kemet-rotator-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active-slide",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "The index number for the current slide.",
+              "fieldName": "activeSlide"
+            },
+            {
+              "name": "messages",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "description": "Text in the rotator. Supports HTML.",
+              "fieldName": "messages"
+            },
+            {
+              "name": "effect",
+              "type": {
+                "text": "TypeEffects"
+              },
+              "description": "The transition effect type.",
+              "fieldName": "effect"
+            },
+            {
+              "name": "speed",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "description": "How fast, in seconds, each slide lasts. Stop the rotator with 0.",
+              "fieldName": "speed"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background.",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-rotator",
+          "customElement": true,
+          "summary": "A component that rotates through an array of text."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetRotator",
+            "module": "src/elements/rotator/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-rotator",
+          "declaration": {
+            "name": "KemetRotator",
+            "module": "src/elements/rotator/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/rotator/styles.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/rotator/styles.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/radios/index.ts",
       "declarations": [
         {
@@ -8121,227 +8338,6 @@
           "name": "default",
           "declaration": {
             "module": "src/elements/radios/styles.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/rotator/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetRotator",
-          "cssProperties": [
-            {
-              "description": "How long, in css time units, the transition effect lasts.",
-              "name": "--kemet-rotator-transition-speed"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "activeSlide",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The index number for the current slide.",
-              "attribute": "active-slide"
-            },
-            {
-              "kind": "field",
-              "name": "messages",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]",
-              "description": "Text in the rotator. Supports HTML.",
-              "attribute": "messages"
-            },
-            {
-              "kind": "field",
-              "name": "effect",
-              "type": {
-                "text": "TypeEffects"
-              },
-              "description": "The transition effect type.",
-              "attribute": "effect",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "speed",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "description": "How fast, in seconds, each slide lasts. Stop the rotator with 0.",
-              "attribute": "speed"
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background.",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "default": "'auto'"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "default": "'auto'"
-            },
-            {
-              "kind": "field",
-              "name": "prevSlide",
-              "type": {
-                "text": "number | null"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "makeMessages"
-            },
-            {
-              "kind": "method",
-              "name": "setDimensions"
-            },
-            {
-              "kind": "method",
-              "name": "nextSlide",
-              "description": "Rotates to the next slide.",
-              "privacy": "public",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the rotator is mounted to the DOM",
-              "name": "kemet-rotator-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "active-slide",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "The index number for the current slide.",
-              "fieldName": "activeSlide"
-            },
-            {
-              "name": "messages",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]",
-              "description": "Text in the rotator. Supports HTML.",
-              "fieldName": "messages"
-            },
-            {
-              "name": "effect",
-              "type": {
-                "text": "TypeEffects"
-              },
-              "description": "The transition effect type.",
-              "fieldName": "effect"
-            },
-            {
-              "name": "speed",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "description": "How fast, in seconds, each slide lasts. Stop the rotator with 0.",
-              "fieldName": "speed"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background.",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-rotator",
-          "customElement": true,
-          "summary": "A component that rotates through an array of text."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetRotator",
-            "module": "src/elements/rotator/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-rotator",
-          "declaration": {
-            "name": "KemetRotator",
-            "module": "src/elements/rotator/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/rotator/styles.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/rotator/styles.css.ts"
           }
         }
       ]
@@ -10909,144 +10905,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/timer-display/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KemetTimerDisplay",
-          "members": [
-            {
-              "kind": "field",
-              "name": "format",
-              "type": {
-                "text": "EnumFormats"
-              },
-              "description": "The format to display the remaining time in",
-              "attribute": "format"
-            },
-            {
-              "kind": "field",
-              "name": "displayTime",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "attribute": "polarity",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "attribute": "dom",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "getTime"
-            },
-            {
-              "kind": "method",
-              "name": "getTimeInSeconds",
-              "parameters": [
-                {
-                  "name": "time",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the timer display is mounted to the DOM",
-              "name": "kemet-timer-display-mounted"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "format",
-              "type": {
-                "text": "EnumFormats"
-              },
-              "description": "The format to display the remaining time in",
-              "fieldName": "format"
-            },
-            {
-              "name": "polarity",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "description": "Determines if the component has a dark or light background",
-              "fieldName": "polarity"
-            },
-            {
-              "name": "dom",
-              "type": {
-                "text": "string"
-              },
-              "default": "'initializing'",
-              "description": "The status of dom initalization.",
-              "fieldName": "dom"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kemet-timer-display",
-          "customElement": true,
-          "summary": "Displays remaining time"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "KemetTimerDisplay",
-            "module": "src/elements/timer-display/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "kemet-timer-display",
-          "declaration": {
-            "name": "KemetTimerDisplay",
-            "module": "src/elements/timer-display/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/timer-display/styles.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/timer-display/styles.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/toggle/index.ts",
       "declarations": [
         {
@@ -11375,6 +11233,144 @@
           "name": "default",
           "declaration": {
             "module": "src/elements/toggle/styles.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/timer-display/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KemetTimerDisplay",
+          "members": [
+            {
+              "kind": "field",
+              "name": "format",
+              "type": {
+                "text": "EnumFormats"
+              },
+              "description": "The format to display the remaining time in",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "displayTime",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "attribute": "polarity",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "attribute": "dom",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "getTime"
+            },
+            {
+              "kind": "method",
+              "name": "getTimeInSeconds",
+              "parameters": [
+                {
+                  "name": "time",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the timer display is mounted to the DOM",
+              "name": "kemet-timer-display-mounted"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "format",
+              "type": {
+                "text": "EnumFormats"
+              },
+              "description": "The format to display the remaining time in",
+              "fieldName": "format"
+            },
+            {
+              "name": "polarity",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "description": "Determines if the component has a dark or light background",
+              "fieldName": "polarity"
+            },
+            {
+              "name": "dom",
+              "type": {
+                "text": "string"
+              },
+              "default": "'initializing'",
+              "description": "The status of dom initalization.",
+              "fieldName": "dom"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kemet-timer-display",
+          "customElement": true,
+          "summary": "Displays remaining time"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "KemetTimerDisplay",
+            "module": "src/elements/timer-display/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "kemet-timer-display",
+          "declaration": {
+            "name": "KemetTimerDisplay",
+            "module": "src/elements/timer-display/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/timer-display/styles.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/timer-display/styles.css.ts"
           }
         }
       ]
@@ -12092,24 +12088,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/accordion-panel/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/alert/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/avatars/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/accordion/styles.css",
       "declarations": [],
       "exports": []
@@ -12122,7 +12100,25 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/avatars/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/badge/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/alert/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/accordion-panel/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -12164,13 +12160,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/fab/styles.css",
+      "path": "src/elements/drawer/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/drawer/styles.css",
+      "path": "src/elements/fab/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -12188,25 +12184,19 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/icon/styles.css",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/input/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/input-combo/styles.css",
+      "path": "src/elements/icon/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/input-files/styles.css",
+      "path": "src/elements/input-combo/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -12224,13 +12214,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/input-otp/styles.css",
+      "path": "src/elements/input-files/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/loader/styles.css",
+      "path": "src/elements/input-otp/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -12242,19 +12232,25 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/loader/styles.css",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/radio/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/rotator/styles.css",
+      "path": "src/elements/radios/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/radios/styles.css",
+      "path": "src/elements/rotator/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -12290,13 +12286,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/tabs/styles.css",
+      "path": "src/elements/textarea/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/textarea/styles.css",
+      "path": "src/elements/tabs/styles.css",
       "declarations": [],
       "exports": []
     },
@@ -12320,13 +12316,13 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/tracker/styles.css",
+      "path": "src/elements/tracker-step/styles.css",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/tracker-step/styles.css",
+      "path": "src/elements/tracker/styles.css",
       "declarations": [],
       "exports": []
     }

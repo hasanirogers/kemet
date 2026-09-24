@@ -136,6 +136,15 @@ export default class KemetSelect extends LitElement {
     this.formSubmitController = new FormSubmitController(this);
   }
 
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('appearance')) {
+      emitEvent(this, 'kemet-select-appearance-change', {
+        appearance: this.appearance,
+        element: this,
+      });
+    }
+  }
+
   firstUpdated() {
     this.control = this.closest('kemet-field') as HTMLKemetFieldElement;
     this.select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
@@ -248,6 +257,8 @@ export default class KemetSelect extends LitElement {
    */
   handleChange(event: Event) {
     this.value = this.select.value;
+    this.appearance = EnumAppearances.Neutral;
+
     emitEvent(this, 'kemet-select-change', {
       appearance: this.appearance,
       validity: this.select.validity,

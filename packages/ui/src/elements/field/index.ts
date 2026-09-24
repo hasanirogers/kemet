@@ -54,7 +54,7 @@ export default class HTMLKemetFieldElement extends LitElement {
   focused!: boolean;
 
   @property({ type: String, reflect: true })
-  appearance: EnumAppearances = EnumAppearances.Neutral;
+  appearance?: EnumAppearances;
 
   @property({ type: Boolean, reflect: true })
   filled!: boolean;
@@ -87,10 +87,11 @@ export default class HTMLKemetFieldElement extends LitElement {
     this.slotInput = this.querySelector('[slot="input"]') as HTMLKemetInputElement | HTMLKemetTextareaElement;
     this.slotCombo = this.querySelector('[slot="combo"]') as HTMLKemetComboElement;
 
-    // TODO: trace what components should be listened to
     // this.slotInput.addEventListener('kemet-focus', (event: Event) => this.handleFocused(event));
-    // this.slotInput.addEventListener('kemet-status-change', (event: Event) => this.handleAppearance(event));
-    // this.slotInput.addEventListener('kemet-input', (event: Event) => this.handleInput(event));
+    this.slotInput?.addEventListener('kemet-input-appearance-change', (event: Event) => this.handleAppearance(event));
+    this.slotInput?.addEventListener('kemet-select-appearance-change', (event: Event) => this.handleAppearance(event));
+    this.slotInput?.addEventListener('kemet-textarea-appearance-change', (event: Event) => this.handleAppearance(event));
+    this.slotCombo?.addEventListener('kemet-select-appearance-change', (event: Event) => this.handleAppearance(event));
     this.slotCombo?.addEventListener('kemet-input-combo-selection', (event: Event) => this.handleSelection(event));
 
 
@@ -111,22 +112,17 @@ export default class HTMLKemetFieldElement extends LitElement {
   }
 
   render() {
+    this.appearance = this.appearance ?? EnumAppearances.Neutral;
     return html`
       <label for="${this.slug}" id="${this.slug}-label" part="label">
         <span part="text">${this.label}</span>
         <slot name="input"></slot>
       </label>
-      ${this.makeStatusMessage()}
+     ${this.appearance === EnumAppearances.Neutral
+      ? null
+      : html`<span part="message">${this.message}</span>`}
       <slot name="component"></slot>
     `;
-  }
-
-  makeStatusMessage() {
-    if (this.appearance !== 'neutral') {
-      return html`<span class="message" part="message">${this.message}</span>`;
-    }
-
-    return null;
   }
 
   handleFocused(event: Event) {
@@ -138,7 +134,9 @@ export default class HTMLKemetFieldElement extends LitElement {
   }
 
   handleAppearance(event: Event) {
-    this.appearance = (event as CustomEvent).detail.appearance;
+    const detail = (event as CustomEvent).detail;
+    const appearance = !!detail.appearance ? detail.appearance : 'neutral';
+    this.appearance = appearance;
   }
 
   handleInput(event: Event) {

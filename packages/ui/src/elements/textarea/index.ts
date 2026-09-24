@@ -170,6 +170,15 @@ export default class HTMLKemetTextareaElement extends LitElement {
     this.dom = 'mounted';
   }
 
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('appearance')) {
+      emitEvent(this, 'kemet-textarea-appearance-change', {
+        appearance: this.appearance,
+        element: this,
+      });
+    }
+  }
+
   render() {
     return html`
       <textarea
@@ -274,6 +283,7 @@ export default class HTMLKemetTextareaElement extends LitElement {
    */
   handleInput() {
     this.value = this.textarea.value;
+    this.appearance = EnumAppearances.Neutral;
 
     /**
      * Fires when the input receives input

@@ -252,6 +252,15 @@ export default class HTMLKemetInputElement extends LitElement {
     this.formSubmitController = new FormSubmitController(this);
   }
 
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('appearance')) {
+      emitEvent(this, 'kemet-input-appearance-change', {
+        appearance: this.appearance,
+        element: this,
+      });
+    }
+  }
+
   firstUpdated() {
     // elements
     this.input = this.shadowRoot?.querySelector('input') as HTMLInputElement;
@@ -394,6 +403,8 @@ export default class HTMLKemetInputElement extends LitElement {
    */
   handleInput(event: InputEvent) {
     this.value = this.input.value;
+    this.appearance = EnumAppearances.Neutral;
+
     emitEvent(this, 'kemet-input-input', {
       appearance: this.appearance,
       validity: this.input.validity,
@@ -414,7 +425,7 @@ export default class HTMLKemetInputElement extends LitElement {
       this.appearance = EnumAppearances.Error;
 
       emitEvent(this, 'kemet-input-appearance-change', {
-        status: EnumAppearances.Error,
+        appearance: EnumAppearances.Error,
         validity: this.input?.validity,
         element: this,
         value: (event.target as HTMLInputElement).value,
@@ -423,7 +434,7 @@ export default class HTMLKemetInputElement extends LitElement {
   }
 
   handleStatus(event: Event) {
-    this.appearance = (event as CustomEvent).detail.status;
+    this.appearance = (event as CustomEvent).detail.appearance;
   }
 
   /**

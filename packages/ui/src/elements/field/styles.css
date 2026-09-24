@@ -1,6 +1,7 @@
 :host {
   /* private */
   --_kemet-field-message-color: inherit;
+  --_kemet-field-message-display: none;
 
   display: block;
 }
@@ -22,26 +23,34 @@ label span {
   margin-bottom: 0.8rem;
 }
 
-.message {
+[part=message] {
+  display: var(--_kemet-field-message-display);
   color: var(--_kemet-field-message-color);
   font-size: 0.9rem;
   line-height: 1;
-  display: block;
   margin-top: 0.8rem;
 }
 
-:host([appearance=error]) .message {
+:host([appearance]) {
+  --_kemet-field-message-display: block;
+}
+
+:host([appearance=neutral]) {
+  --_kemet-field-message-display: none;
+}
+
+:host([appearance=error]) {
   --_kemet-field-message-color: var(--kemet-color-font-error);
 }
 
-:host([appearance=success]) .message {
+:host([appearance=success]) {
   --_kemet-field-message-color: var(--kemet-color-font-success);
 }
 
-:host([appearance=warning]) .message {
+:host([appearance=warning]) {
   --_kemet-field-message-color: var(--kemet-color-font-warning);
 }
 
-:host([appearance=link]) .message {
+:host([appearance=link]) {
   --_kemet-field-message-color: var(--kemet-color-font-link);
 }

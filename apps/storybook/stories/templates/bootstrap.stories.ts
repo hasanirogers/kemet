@@ -11,6 +11,7 @@ import '../../../../packages/ui/src/elements/radio';
 import '../../../../packages/ui/src/elements/radios';
 import '../../../../packages/ui/src/elements/badge';
 import '../../../../packages/ui/src/elements/icon';
+import '../../../../packages/ui/src/elements/textarea';
 
 const meta: Meta = {
   title: 'Templates / Bootstrap',
@@ -205,6 +206,10 @@ const CheckoutTemplate = () => html`
           </kemet-field>
         </div>
         <kemet-checkbox required filled rounded name="terms" label="Do you agree to our terms of service?" message="You must agree to the terms."></kemet-checkbox>
+        <h2>Feedback</h2>
+        <kemet-field slug="comments" label="Comment" message="A comment is required.">
+          <kemet-textarea slot="input" name="comments" rounded required></kemet-textarea>
+        </kemet-field>
         <br /><hr /><br />
         <kemet-button type="submit" appearance="brand" rounded>CONTINUE TO CHECKOUT</kemet-button>
       </form>

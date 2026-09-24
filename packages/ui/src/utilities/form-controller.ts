@@ -33,11 +33,9 @@ export class FormSubmitController {
   }
 
   hostConnected() {
-    console.log('what?!');
     this.form = this.options.form(this.host);
 
     if (this.form) {
-      console.log('Adding form listeners');
       this.form.addEventListener('formdata', this.handleFormData);
       this.form.addEventListener('submit', this.handleFormSubmit);
     }
@@ -70,7 +68,6 @@ export class FormSubmitController {
   }
 
   handleFormSubmit(event: SubmitEvent) {
-    console.log('~~Form submitted~~');
     event.preventDefault();
     event.stopImmediatePropagation();
 
@@ -80,20 +77,20 @@ export class FormSubmitController {
     if (this.form && !disabled) {
       const components = this.form.querySelectorAll('kemet-input, kemet-textarea, kemet-select, kemet-checkbox, kemet-radios');
 
+
       components.forEach((component: any) => {
         if (component.checkValidity) {
           component.checkValidity();
 
           if (!component.checkValidity()) {
+            console.log('invalid', component);
             component.appearance = EnumAppearances.Error;
             component.invalid = true;
 
             component.dispatchEvent(
               new CustomEvent('kemet-input-status', {
-                bubbles: true,
-                composed: true,
                 detail: {
-                  status: EnumAppearances.Error,
+                  appearance: EnumAppearances.Error,
                   validity: component.validity ? component.validity : {},
                   element: component,
                 },
